@@ -1,0 +1,13 @@
+<div *ngIf="vm$ | async as vm"
+>
+    <form [formGroup]="form"
+          [patchFormGroupValues]="vm"
+    >
+        <div formGroupName="infoUser">
+
+            <input
+                    formControlName="icon"/>
+        </div>
+
+    </form>
+</div>

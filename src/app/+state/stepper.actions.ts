@@ -12,3 +12,8 @@ export const loadStepperFailure = createAction(
   '[Stepper/API] Load Stepper Failure',
   props<{ error: any }>()
 );
+
+export const formValueChange = createAction(
+    '[Stepper] Form Value change',
+    props<StepperEntity>()
+);
