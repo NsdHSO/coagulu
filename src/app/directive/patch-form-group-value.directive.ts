@@ -8,7 +8,6 @@ export class PatchFormGroupValueDirective {
     @Input() formGroup: any;
 
     @Input() set patchFormGroupValues(val: any) {
-        console.log(val);
         if (!val) {
             return;
         }

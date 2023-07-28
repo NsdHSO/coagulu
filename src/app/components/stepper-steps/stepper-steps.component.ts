@@ -4,6 +4,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {StepperEntity, StepperValues} from "../../+state/stepper.models";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {ButtonComponent} from "../../shared/button/button.component";
+import {MatRippleModule} from "@angular/material/core";
 
 @Component({
     selector : 'stepper-steps',
@@ -13,14 +14,15 @@ import {ButtonComponent} from "../../shared/button/button.component";
         MatIconModule,
         RouterLink,
         ButtonComponent,
-        RouterLinkActive],
+        RouterLinkActive,
+        MatRippleModule],
     templateUrl : './stepper-steps.component.html',
     styleUrls : ['./stepper-steps.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection : ChangeDetectionStrategy.OnPush,
 })
 export class StepperStepsComponent {
 
-    @Input() vm: StepperEntity | any= {};
+    @Input() vm: StepperEntity | any = {};
 
     trackBy(
         index: number,
@@ -29,6 +31,6 @@ export class StepperStepsComponent {
     }
 
     public nextTab() {
-        console.log('Ivan')
+        console.log('Ivan');
     }
 }

@@ -23,7 +23,7 @@ export const stepperAdapter: EntityAdapter<StepperEntity> = createEntityAdapter<
 export const initialStepperState: StepperState = stepperAdapter.getInitialState({
     // set initial required properties
     loaded : false,
-    entities : mockStepper()
+    entities : mockStepper(),
 });
 
 const reducer = createReducer(
@@ -34,7 +34,7 @@ const reducer = createReducer(
             ... state,
             loaded : false,
             error : null,
-        })
+        }),
     ),
     on(
         StepperActions.loadStepperSuccess,
@@ -44,9 +44,9 @@ const reducer = createReducer(
             stepper,
             {
                 ... state,
-                loaded : true
-            }
-        )
+                loaded : true,
+            },
+        ),
     ),
     on(
         StepperActions.loadStepperFailure,
@@ -55,7 +55,7 @@ const reducer = createReducer(
             {error}) => ({
             ... state,
             error,
-        })
+        }),
     ),
     on(
         formValueChange,
@@ -64,8 +64,11 @@ const reducer = createReducer(
             {
                 type,
                 ... update
-            }) =>({... state, entities: {... state.entities,... update} as any})
-    )
+            }) => ({
+            ... state,
+            entities : {... state.entities, ... update} as any,
+        }),
+    ),
 );
 
 export function stepperReducer(
@@ -73,6 +76,6 @@ export function stepperReducer(
     action: Action) {
     return reducer(
         state,
-        action
+        action,
     );
 }
