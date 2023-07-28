@@ -2,10 +2,10 @@
     <div class="relative flex gap-5">
         <div *ngFor="let elm of vm.steps ; trackBy: trackBy"
              class="bg-white"
-             [routerLink]="elm"
+             [routerLink]="elm.value"
 
         >
-            <div *ngIf="vm[elm] as element">
+            <div *ngIf="vm[elm.value] as element">
                 <mat-icon
                         mat-ripple
                         [svgIcon]="element.icon"
