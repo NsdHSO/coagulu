@@ -20,6 +20,10 @@ export const appRoutes: Route[] = [
             {
                 path : 'reserveBook',
                 loadComponent : () => import('./components/contentSteps/reserveBook/reserve-book.component').then(c => c.ReserveBookComponent),
+            },
+            {
+                path : '**',
+                redirectTo : 'intro',
             }],
     },
     {
