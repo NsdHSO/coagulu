@@ -1,9 +1,9 @@
 export const mockStepper = () => ({
-  name: "strings",
+  name: 'strings',
   intro: {
     check: true,
     id: generateRandomId(),
-    icon: "fa_brands:sitrox",
+    icon: 'fa_brands:sitrox',
     values: null,
   },
   infoUser: {
@@ -14,23 +14,23 @@ export const mockStepper = () => ({
       roleOfMember: [
         {
           id: generateRandomId(),
-          value: "Parent",
+          value: 'Parent',
           check: true,
         },
         {
           id: generateRandomId(),
-          value: "Child",
+          value: 'Child',
           check: false,
         },
         {
           id: generateRandomId(),
-          value: "Child",
+          value: 'Child',
           check: true,
         },
       ],
       childrens: 2,
     },
-    icon: "fa_brands:twitter",
+    icon: 'fa_brands:twitter',
   },
   spendMoney: {
     id: generateRandomId(),
@@ -43,16 +43,16 @@ export const mockStepper = () => ({
         {
           id: generateRandomId(),
           value: 100,
-          label: "Groceries",
+          label: 'Groceries',
           scope: [
             {
               id: generateRandomId(),
-              label: "Food",
+              label: 'Food',
               check: true,
             },
             {
               id: generateRandomId(),
-              label: "Drinks",
+              label: 'Drinks',
               check: false,
             },
           ],
@@ -60,16 +60,16 @@ export const mockStepper = () => ({
         {
           id: generateRandomId(),
           value: 500,
-          label: "Entertainment",
+          label: 'Entertainment',
           scope: [
             {
               id: generateRandomId(),
-              label: "Movies",
+              label: 'Movies',
               check: true,
             },
             {
               id: generateRandomId(),
-              label: "Concerts",
+              label: 'Concerts',
               check: false,
             },
           ],
@@ -78,15 +78,15 @@ export const mockStepper = () => ({
       recommendations: [
         {
           check: true,
-          label: "Cut down on eating out",
+          label: 'Cut down on eating out',
         },
         {
           check: false,
-          label: "Cancel unused subscriptions",
+          label: 'Cancel unused subscriptions',
         },
       ],
     },
-    icon: "fa_solid:music",
+    icon: 'fa_solid:music',
   },
   reserveBook: {
     id: generateRandomId(),
@@ -98,19 +98,19 @@ export const mockStepper = () => ({
         values: [
           {
             id: generateRandomId(),
-            label: "Jan",
+            label: 'Jan',
             start: 500,
             end: 800,
           },
           {
             id: generateRandomId(),
-            label: "Feb",
+            label: 'Feb',
             start: 800,
             end: 1000,
           },
           {
             id: generateRandomId(),
-            label: "Mar",
+            label: 'Mar',
             start: 1000,
             end: 1200,
           },
@@ -122,12 +122,12 @@ export const mockStepper = () => ({
         currentReserve: {
           id: generateRandomId(),
           value: 1000,
-          labelCurrency: "USD",
+          labelCurrency: 'USD',
         },
         recommendationReserve: {
           id: generateRandomId(),
           value: 1200,
-          labelCurrency: "USD",
+          labelCurrency: 'USD',
         },
         howMannyMonth: 6,
       },
@@ -137,15 +137,15 @@ export const mockStepper = () => ({
         values: [
           {
             id: generateRandomId(),
-            name: "Book 1",
-            author: "Author A",
-            genre: "Fiction",
+            name: 'Book 1',
+            author: 'Author A',
+            genre: 'Fiction',
           },
           {
             id: generateRandomId(),
-            name: "Book 2",
-            author: "Author B",
-            genre: "Mystery",
+            name: 'Book 2',
+            author: 'Author B',
+            genre: 'Mystery',
           },
         ],
       },
@@ -153,37 +153,37 @@ export const mockStepper = () => ({
         setBookType: {
           id: generateRandomId(),
           value: 50,
-          labelCurrency: "USD",
+          labelCurrency: 'USD',
         },
         sumBook: {
           id: generateRandomId(),
           value: 30,
-          labelCurrency: "USD",
+          labelCurrency: 'USD',
         },
       },
     },
-    icon: "fa_brands:codepen",
+    icon: 'fa_brands:codepen',
   },
   steps: [
     {
-      value: "intro",
+      value: 'intro',
       id: generateRandomId(),
-      label: "Intro",
+      label: 'Intro',
     },
     {
-      value: "infoUser",
+      value: 'infoUser',
       id: generateRandomId(),
-      label: "Info User",
+      label: 'Info User',
     },
     {
-      value: "spendMoney",
+      value: 'spendMoney',
       id: generateRandomId(),
-      label: "Spend Money",
+      label: 'Spend Money',
     },
     {
-      value: "reserveBook",
+      value: 'reserveBook',
       id: generateRandomId(),
-      label: "ReserveBook",
+      label: 'ReserveBook',
     },
   ],
 });

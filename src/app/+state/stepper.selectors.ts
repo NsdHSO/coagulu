@@ -4,7 +4,7 @@ import {
   StepperState,
   stepperAdapter,
 } from './stepper.reducer';
-import {Observable} from "rxjs";
+import { Observable } from 'rxjs';
 
 // Lookup the 'Stepper' feature state managed by NgRx
 export const selectStepperState =
@@ -30,7 +30,7 @@ export const selectAllStepper = createSelector(
 export const selectStepperEntities = createSelector(
   selectStepperState,
   (state: StepperState) => selectEntities(state)
-) ;
+);
 
 export const selectSelectedId = createSelector(
   selectStepperState,

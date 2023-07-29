@@ -3,15 +3,15 @@ import { Action } from '@ngrx/store';
 import * as StepperActions from './stepper.actions';
 import { StepperEntity } from './stepper.models';
 import {
-  StepperState,
   initialStepperState,
   stepperReducer,
+  StepperState,
 } from './stepper.reducer';
+import { mockStepper } from './mock';
 
 describe('Stepper Reducer', () => {
   const createStepperEntity = (id: string, name = ''): StepperEntity => ({
-    id,
-    name: name || `name-${id}`,
+    ...mockStepper(),
   });
 
   describe('valid Stepper actions', () => {
