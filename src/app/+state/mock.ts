@@ -167,11 +167,13 @@ export const mockStepper = () => ({
             value : 'infoUser',
             id : generateRandomId(),
             label : 'Info User',
-        },{
+        },
+        {
             value : 'spendMoney',
             id : generateRandomId(),
             label : 'Spend Money',
-        },{
+        },
+        {
             value : 'reserveBook',
             id : generateRandomId(),
             label : 'ReserveBook',
