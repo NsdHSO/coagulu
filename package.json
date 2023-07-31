@@ -8,7 +8,9 @@
     "test": "nx test",
     "prepare": "husky install",
     "test:w": "nx test --watch",
-    "coverage": "nx test  --coverage --watch"
+    "coverage": "nx test  --coverage --watch",
+    "lint": "eslint . --ext .js,ts",
+    "lint:fix": "eslint . --ext .js,ts --fix"
   },
   "private": true,
   "dependencies": {

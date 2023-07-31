@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: 🚨 Run ESLint
-        run: eslint . --ext .js,.ts
+        run: npm run-script eslint
 
       - name: ▶️ Run tests
         run: npm test
