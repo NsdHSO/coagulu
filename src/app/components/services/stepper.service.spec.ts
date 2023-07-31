@@ -18,15 +18,15 @@ describe('Stepper Service', () => {
     return new StepperService();
   };
 
-  it('should count the lookups', () => {
+  it('should return the same obj', () => {
     const storeMock = { get: jest.fn(() => of([])) };
     const formBuilder = {
       isValid: () => true,
       group: () => ({ name: 'ivan' }),
     };
 
-    const lookuper = setupSpy(storeMock, formBuilder);
+    const stepperService = setupSpy(storeMock, formBuilder);
 
-    expect(lookuper.stepperForm).toStrictEqual({ name: 'ivan' });
+    expect(stepperService.stepperForm).toStrictEqual({ name: 'ivan' });
   });
 });

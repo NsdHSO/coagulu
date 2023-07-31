@@ -2,7 +2,7 @@
 export default {
   displayName: 'coagulu',
   preset: './jest.preset.js',
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
+  setupFilesAfterEnv: ['./setup.js'],
   coverageDirectory: './coverage/coagulu',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
