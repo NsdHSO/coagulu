@@ -1,35 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StepperComponent } from './stepper.component';
-import { BehaviorSubject } from 'rxjs';
+import * as angularCore from '@angular/core';
 import { StepperService } from '../services/stepper.service';
+import { of } from 'rxjs';
 
-fdescribe('StepperComponent', () => {
-  let component: StepperComponent;
-  let fixture: ComponentFixture<StepperComponent>;
-  let stepperSpy;
-  const formValues$ = new BehaviorSubject({ name: '' });
-  beforeEach(async () => {
-    stepperSpy = {
-      formValues$: formValues$.asObservable(),
+describe('StepperComponent', () => {
+  const spyInject = jest.spyOn(angularCore, 'inject');
+
+  const setup = (stepperSerivce: unknown) => {
+    spyInject.mockImplementation((providerToken: unknown) => {
+      if (providerToken === StepperService) {
+        return stepperSerivce;
+      }
+      return;
+    });
+
+    return new StepperComponent();
+  };
+  it('should create', () => {
+    const mockService = {
+      formValues$: () => of(''),
       stepperForm: {},
     };
 
-    await TestBed.configureTestingModule({
-      imports: [StepperComponent],
-      providers: [
-        {
-          provide: StepperService,
-          useValue: stepperSpy,
-        },
-      ],
-    }).compileComponents();
+    const stepperComponent = setup(mockService);
 
-    fixture = TestBed.createComponent(StepperComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(stepperComponent.form).toEqual({});
   });
 });

@@ -1,21 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InfoUserComponent } from './info-user.component';
+import * as angularCore from '@angular/core';
+import { StepperService } from '../../services/stepper.service';
+import { StepperComponent } from '../../stepper/stepper.component';
+import { of } from 'rxjs';
 
 describe('InfoUserComponent', () => {
-  let component: InfoUserComponent;
-  let fixture: ComponentFixture<InfoUserComponent>;
+  const spyInject = jest.spyOn(angularCore, 'inject');
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [InfoUserComponent],
-    }).compileComponents();
+  const setup = (stepperSerivce: unknown) => {
+    spyInject.mockImplementation((providerToken: unknown) => {
+      if (providerToken === StepperService) {
+        return stepperSerivce;
+      }
+      return;
+    });
 
-    fixture = TestBed.createComponent(InfoUserComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
+    return new StepperComponent();
+  };
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const mockService = {
+      formValues$: () => of(''),
+      stepperForm: {},
+    };
+
+    const stepperComponent = setup(mockService);
+
+    expect(stepperComponent.form).toEqual({});
   });
 });
