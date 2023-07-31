@@ -8,18 +8,14 @@ import * as StepperSelectors from './stepper.selectors';
 
 describe('Stepper Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const createStepperEntity = (id: string, name = '') => ({ ...mockStepper() });
+  const createStepperEntity = () => ({ ...mockStepper() });
 
   let state: StepperPartialState;
 
   beforeEach(() => {
     state = {
       stepper: stepperAdapter.setAll(
-        [
-          createStepperEntity('PRODUCT-AAA'),
-          createStepperEntity('PRODUCT-BBB'),
-          createStepperEntity('PRODUCT-CCC'),
-        ],
+        [createStepperEntity(), createStepperEntity(), createStepperEntity()],
         {
           ...initialStepperState,
           selectedId: 'PRODUCT-BBB',

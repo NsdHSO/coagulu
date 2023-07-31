@@ -46,10 +46,19 @@ const reducer = createReducer(
     ...state,
     error,
   })),
-  on(formValueChange, (state, { type, ...update }) => ({
-    ...state,
-    entities: { ...state.entities, ...update } as any,
-  }))
+  on(
+    formValueChange,
+    (
+      state,
+      {
+        type, //eslint-disable-line
+        ...update
+      }
+    ) => ({
+      ...state,
+      entities: { ...state.entities, ...update } as any, //eslint-disable-line
+    })
+  )
 );
 
 export function stepperReducer(

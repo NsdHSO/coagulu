@@ -1,16 +1,10 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "!**/*"
-  ],
-  "plugins": [
-    "@nx"
-  ],
+  "ignorePatterns": ["!**/*", "jest.preset.js"],
+  "plugins": ["@nx"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "extends": [
         "plugin:@nx/typescript",
         "plugin:@nx/angular",
@@ -40,19 +34,12 @@
             "allowTemplateLiterals": true
           }
         ],
-        "arrow-body-style": [
-          "warn",
-          "as-needed"
-        ]
+        "arrow-body-style": ["warn", "as-needed"]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@nx/angular-template"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@nx/angular-template"],
       "rules": {}
     }
   ]

@@ -1,10 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   STEPPER_FEATURE_KEY,
-  StepperState,
   stepperAdapter,
+  StepperState,
 } from './stepper.reducer';
-import { Observable } from 'rxjs';
 
 // Lookup the 'Stepper' feature state managed by NgRx
 export const selectStepperState =
@@ -38,7 +37,7 @@ export const selectSelectedId = createSelector(
 );
 
 export const selectEntity = createSelector(
-  selectStepperEntities,
+  selectStepperEntities, //eslint-disable-line
   selectSelectedId,
   (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
 );

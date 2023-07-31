@@ -13,7 +13,24 @@ describe('Stepper Reducer', () => {
         StepperActions.initStepper
       );
 
-      expect({ ...(result.entities['infoUser'] as any) }.check).toBe(true);
+      expect(
+        {
+          ...(result.entities['infoUser'] as unknown as {
+            check: boolean;
+            icon: string;
+            id: string;
+            values: {
+              familyNumber: number;
+              roleOfMember: {
+                id: string;
+                value: string;
+                check: boolean;
+              }[];
+              childrens: number;
+            };
+          }),
+        }.check
+      ).toBe(true);
     });
   });
 });

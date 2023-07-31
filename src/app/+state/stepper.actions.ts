@@ -2,23 +2,23 @@ import { createAction, props } from '@ngrx/store';
 import { StepperEntity } from './stepper.models';
 
 const prefixStepper = 'Stepper';
-export const initStepper = createAction('[Stepper Page] Init');
+export const initStepper = createAction(`[${prefixStepper} Page] Init`);
 
 export const loadStepperSuccess = createAction(
-  '[Stepper/API] Load Stepper Success',
+  `[${prefixStepper}/API] Load Stepper Success`,
   props<{
     stepper: StepperEntity[];
   }>()
 );
 
 export const loadStepperFailure = createAction(
-  '[Stepper/API] Load Stepper Failure',
+  `[${prefixStepper}/API] Load Stepper Failure`,
   props<{
-    error: any;
+    error: any; //eslint-disable-line
   }>()
 );
 
 export const formValueChange = createAction(
-  '[Stepper] Form Value change',
+  `[${prefixStepper}] Form Value change`,
   props<StepperEntity>()
 );

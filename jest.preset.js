@@ -1,3 +1,4 @@
-const nxPreset = require('@nx/jest/preset').default;
+/* eslint-disable */
 
+const nxPreset = require('@nx/jest/preset').default;
 module.exports = { ...nxPreset };

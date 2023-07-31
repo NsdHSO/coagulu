@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { StepperEntity, StepperValues } from '../../+state/stepper.models';
+import { StepperValues } from '../../+state/stepper.models';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
@@ -22,7 +22,7 @@ import { MatRippleModule } from '@angular/material/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepperStepsComponent {
-  @Input() vm: StepperEntity | any = {};
+  @Input() vm: any; //eslint-disable-line
 
   trackBy(index: number, item: StepperValues) {
     return item.id;

@@ -103,8 +103,9 @@ export class StepperService {
     () =>
       this.stepperForm.valueChanges
         .pipe(
-          tap((values) =>
-            this._stepperStore.dispatch(formValueChange(values as any))
+          tap(
+            (values) =>
+              this._stepperStore.dispatch(formValueChange(values as any)) //eslint-disable-line
           )
         )
         .subscribe(),

@@ -2,11 +2,11 @@
  * Interface for the 'Stepper' data
  */
 export interface StepperEntity {
-  steps: {
+  steps: Array<{
     value: string;
     label: string;
     id: string;
-  }[];
+  }>;
   intro: {
     icon: string;
     check: boolean;
@@ -95,7 +95,7 @@ export interface Label {
 
 export interface StepperValues {
   id: string;
-  values: any;
+  values: string;
   check: boolean;
   icon: string;
 }
