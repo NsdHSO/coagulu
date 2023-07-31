@@ -61,9 +61,6 @@ const reducer = createReducer(
   )
 );
 
-export function stepperReducer(
-  state: StepperState | undefined,
-  action: Action
-) {
+export function stepperReducer(state: StepperState, action: Action) {
   return reducer(state, action);
 }

@@ -11,7 +11,6 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
-import { getSteps } from '../../+state/stepper.actions';
 import { tap } from 'rxjs';
 import { selectStepsEntities } from '../../+state/stepper.selectors';
 
