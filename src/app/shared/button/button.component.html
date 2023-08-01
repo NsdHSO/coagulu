@@ -1,3 +1,9 @@
-<button mat-button (click)="clicken.emit()" class="mat-primary mat-raised-button !bg-blue-500 !text-white !rounded-full" >
-    <ng-content></ng-content>
+<button
+  [disabled]="disable"
+  mat-button
+  (click)="clicken.emit()"
+  class="mat-primary mat-raised-button !bg-blue-500 !text-white !rounded-full"
+>
+  <ng-content></ng-content>
 </button>
+{{ disable }}

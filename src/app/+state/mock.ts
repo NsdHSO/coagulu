@@ -1,5 +1,4 @@
 export const mockStepper = () => ({
-  name: 'strings',
   intro: {
     check: true,
     id: generateRandomId(),
@@ -29,7 +28,7 @@ export const mockStepper = () => ({
   },
   spendMoney: {
     id: generateRandomId(),
-    check: true,
+    check: false,
     values: {
       incoming: 5000,
       spendMoney: 3000,

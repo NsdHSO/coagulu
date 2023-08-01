@@ -4,18 +4,18 @@
       <div formGroupName="info">
         <div class="sm:col-span-3">
           <label
-            for="familyNumber"
             class="block text-sm font-medium leading-6 text-gray-900"
+            for="familyNumber"
             >Family Number</label
           >
           <div class="mt-2">
             <input
-              type="text"
-              name="familyNumber"
-              id="familyNumber"
-              formControlName="familyNumber"
               autocomplete="family-name"
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              formControlName="familyNumber"
+              id="familyNumber"
+              name="familyNumber"
+              type="text"
             />
           </div>
         </div>
@@ -32,8 +32,34 @@
               "
               [formGroupName]="index"
             >
-              <label>Check:</label>
-              <input type="checkbox" formControlName="check" />
+              <label class="block text-sm font-medium leading-6 text-gray"
+                >Value:</label
+              >
+              <input
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                formControlName="value"
+                type="text"
+              />
+              <div
+                class="flex shadow-sm items-center gap-y-4 w-16 justify-between"
+              >
+                <label class="block text-sm font-medium leading-6 text-gray"
+                  >Check:</label
+                >
+                <input
+                  class="h-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  formControlName="check"
+                  type="checkbox"
+                />
+              </div>
+              <label class="block text-sm font-medium leading-6 text-gray"
+                >ID:</label
+              >
+              <input
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                formControlName="id"
+                type="text"
+              />
             </div>
           </div>
         </div>
@@ -41,8 +67,5 @@
     </div>
   </form>
 
-  <pre>
-        {{ form.getRawValue() | json }}
-    </pre
-  >
+  <button-component (clicken)="addRole()"> Add new Role </button-component>
 </div>

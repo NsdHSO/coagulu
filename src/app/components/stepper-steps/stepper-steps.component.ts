@@ -13,6 +13,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 import { selectStepsEntities } from '../../+state/stepper.selectors';
+import { StepperService } from '../services/stepper.service';
 
 @Component({
   selector: 'stepper-steps',
@@ -33,6 +34,7 @@ export class StepperStepsComponent {
   @Input() vm: any; //eslint-disable-line
   private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _store = inject(Store);
+  readonly stepperService = inject(StepperService);
   steps$ = this._store.select(selectStepsEntities);
 
   trackBy(index: number, item: StepperValues) {

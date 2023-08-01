@@ -1,42 +1,55 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormBuilder } from '@angular/forms';
-import { shareReplay, tap, using } from 'rxjs';
+import { of, shareReplay, Subject, switchMap, tap, using } from 'rxjs';
 import { formValueChange } from '../../+state/stepper.actions';
 import { selectStepperEntities } from '../../+state/stepper.selectors';
-import { generateRandomId } from '../../+state/mock';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class StepperService {
+  flagUrl$ = new Subject();
+  buttonDisable$ = this.flagUrl$.pipe(
+    switchMap(
+      (
+        value: any //eslint-disable-line
+      ) => of((this.steppForm?.controls as any)[value].controls.check.value) //eslint-disable-line
+    ),
+    tap(console.log)
+  );
   private readonly _stepperStore = inject(Store);
   private readonly _fb = inject(FormBuilder);
   steppForm = this._fb.group({
-    intro: {
+    intro: this._fb.group({
       icon: '',
-      check: false,
+      check: this._fb.control(false),
       id: '',
       values: {},
-    },
-    name: '',
+    }),
     infoUser: this._fb.group({
-      check: false,
+      check: this._fb.control(true),
       icon: '',
       id: '',
       info: this._fb.group({
         familyNumber: 0,
         roleOfMember: this._fb.array([
-          this._fb.group(
-            { id: 0, value: '', check: false },
-            { id: 0, value: '', check: false }
-          ),
+          this._fb.group({
+            id: 0,
+            value: '',
+            check: false,
+          }),
+          this._fb.group({
+            id: 0,
+            value: '',
+            check: false,
+          }),
         ]),
         childrens: this._fb.control(0),
       }),
     }),
-    spendMoney: {
+    spendMoney: this._fb.group({
       id: '',
       icon: '',
-      check: false,
+      check: this._fb.control(false),
       values: {
         incoming: null,
         spendMoney: null,
@@ -62,11 +75,11 @@ export class StepperService {
           },
         ],
       },
-    }, // Exteotera graph
-    reserveBook: {
+    }), // Exteotera graph
+    reserveBook: this._fb.group({
       icon: '',
       id: '',
-      check: false,
+      check: this._fb.control(false),
       values: {
         id: '',
         graph: {
@@ -97,7 +110,7 @@ export class StepperService {
           sumBook: {},
         },
       },
-    },
+    }),
   });
   private formValue$ = using(
     () =>
@@ -118,5 +131,17 @@ export class StepperService {
 
   get stepperForm() {
     return this.steppForm;
+  }
+
+  public addRoleOfMember() {
+    const newRole = this._fb.group({
+      id: 0,
+      value: '',
+      check: false,
+    });
+
+    this.stepperForm.controls.infoUser.controls.info.controls.roleOfMember.push(
+      newRole
+    );
   }
 }
