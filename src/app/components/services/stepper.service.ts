@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { shareReplay, tap, using } from 'rxjs';
 import { formValueChange } from '../../+state/stepper.actions';
 import { selectStepperEntities } from '../../+state/stepper.selectors';
+import { generateRandomId } from '../../+state/mock';
 
 @Injectable()
 export class StepperService {
@@ -21,9 +22,14 @@ export class StepperService {
       check: false,
       icon: '',
       id: '',
-      values: this._fb.group({
+      info: this._fb.group({
         familyNumber: 0,
-        roleOfMember: [{ value: '' }],
+        roleOfMember: this._fb.array([
+          this._fb.group(
+            { id: 0, value: '', check: false },
+            { id: 0, value: '', check: false }
+          ),
+        ]),
         childrens: this._fb.control(0),
       }),
     }),

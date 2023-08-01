@@ -9,28 +9,18 @@ export const mockStepper = () => ({
   infoUser: {
     check: true,
     id: generateRandomId(),
-    values: {
+    info: {
       familyNumber: 4,
       roleOfMember: [
         {
-          id: generateRandomId(),
+          id: 0,
           value: 'Parent',
           check: true,
         },
         {
-          id: generateRandomId(),
+          id: 1,
           value: 'Child',
           check: false,
-        },
-        {
-          id: generateRandomId(),
-          value: 'Child',
-          check: true,
-        },
-        {
-          id: generateRandomId(),
-          value: 'Child',
-          check: true,
         },
       ],
       childrens: 2,
