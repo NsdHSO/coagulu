@@ -21,17 +21,11 @@ export class StepperService {
       check: false,
       icon: '',
       id: '',
-      values: {
-        familyNumber: null,
-        roleOfMember: [
-          {
-            id: '',
-            value: '',
-            check: false,
-          },
-        ],
-        childrens: null,
-      },
+      values: this._fb.group({
+        familyNumber: 0,
+        roleOfMember: [{ value: '' }],
+        childrens: this._fb.control(0),
+      }),
     }),
     spendMoney: {
       id: '',

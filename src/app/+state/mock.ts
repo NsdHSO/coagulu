@@ -27,6 +27,11 @@ export const mockStepper = () => ({
           value: 'Child',
           check: true,
         },
+        {
+          id: generateRandomId(),
+          value: 'Child',
+          check: true,
+        },
       ],
       childrens: 2,
     },

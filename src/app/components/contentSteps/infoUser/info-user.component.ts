@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { StepperService } from '../../services/stepper.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PatchFormGroupValueDirective } from '../../../directive/patch-form-group-value.directive';
+import { Observable } from 'rxjs';
+import { Dictionary } from '@ngrx/entity';
 
 @Component({
   selector: 'info-user',
@@ -13,6 +15,6 @@ import { PatchFormGroupValueDirective } from '../../../directive/patch-form-grou
 })
 export class InfoUserComponent {
   private _stepperService = inject(StepperService);
-  vm$ = this._stepperService.formValues$;
+  vm$: Observable<Dictionary<any>> = this._stepperService.formValues$;
   form = this._stepperService.stepperForm;
 }
