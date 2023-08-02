@@ -28,6 +28,4 @@ export class StepperComponent {
   private readonly _stepperService = inject(StepperService);
   vm$ = this._stepperService.formValues$;
   form = this._stepperService.stepperForm;
-
-  button$ = this._activatedRoute.url.pipe(tap(console.log));
 }
