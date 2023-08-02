@@ -9,7 +9,6 @@ import { StepperService } from '../services/stepper.service';
 import { tap } from 'rxjs';
 
 @Component({
-  selector: 'coagulu-stepper',
   standalone: true,
   imports: [
     CommonModule,

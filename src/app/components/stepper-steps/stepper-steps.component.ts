@@ -3,6 +3,7 @@ import {
   Component,
   inject,
   Input,
+  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,7 +12,7 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 import { selectStepsEntities } from '../../+state/stepper.selectors';
 import { StepperService } from '../services/stepper.service';
 
@@ -30,10 +31,11 @@ import { StepperService } from '../services/stepper.service';
   styleUrls: ['./stepper-steps.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StepperStepsComponent {
-  @Input() vm: any; //eslint-disable-line
+export class StepperStepsComponent implements OnDestroy {
   private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _store = inject(Store);
+  private readonly destroyed$ = new Subject();
+  @Input() vm: any; //eslint-disable-line
   readonly stepperService = inject(StepperService);
   steps$ = this._store.select(selectStepsEntities);
 
@@ -42,6 +44,11 @@ export class StepperStepsComponent {
   }
 
   public nextTab() {
-    this.steps$.pipe(tap(console.log)).subscribe();
+    this.steps$.pipe(tap(console.log), takeUntil(this.destroyed$)).subscribe();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }
