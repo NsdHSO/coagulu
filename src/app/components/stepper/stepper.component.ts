@@ -6,7 +6,6 @@ import { StepperStepsComponent } from '../stepper-steps/stepper-steps.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatchFormGroupValueDirective } from '../../directive/patch-form-group-value.directive';
 import { StepperService } from '../services/stepper.service';
-import { tap } from 'rxjs';
 
 @Component({
   standalone: true,
