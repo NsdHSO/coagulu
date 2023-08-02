@@ -1,24 +1,43 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormBuilder } from '@angular/forms';
-import { of, shareReplay, Subject, switchMap, tap, using } from 'rxjs';
+import {
+  combineLatest,
+  Observable,
+  of,
+  shareReplay,
+  Subject,
+  switchMap,
+  tap,
+  using,
+} from 'rxjs';
 import { formValueChange } from '../../+state/stepper.actions';
 import { selectStepperEntities } from '../../+state/stepper.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class StepperService {
-  flagUrl$ = new Subject();
-  buttonDisable$ = this.flagUrl$.pipe(
-    switchMap(
-      (
-        value: any //eslint-disable-line
-      ) => of((this.steppForm?.controls as any)[value].controls.check.value) //eslint-disable-line
-    ),
-    tap(console.log)
-  );
+  /**
+   * An instance of the Store class injected using @ngrx/store.
+   * @type {Store}
+   * @private
+   */
   private readonly _stepperStore = inject(Store);
+  /**
+   * An instance of the FormBuilder class injected from '@angular/forms'.
+   * @type {FormBuilder}
+   * @private
+   */
   private readonly _fb = inject(FormBuilder);
-  steppForm = this._fb.group({
+  /**
+   * Flag URL Subject for tracking flag changes.
+   * @type {Subject}
+   */
+  public flagUrl$ = new Subject();
+  /**
+   * FormGroup representing the stepper form.
+   * @type {FormGroup}
+   */
+  public steppForm = this._fb.group({
     intro: this._fb.group({
       icon: '',
       check: this._fb.control(false),
@@ -112,6 +131,10 @@ export class StepperService {
       },
     }),
   });
+  /**
+   * Observable that emits the value of form changes.
+   * @type {Observable}
+   */
   private formValue$ = using(
     () =>
       this.stepperForm.valueChanges
@@ -124,15 +147,45 @@ export class StepperService {
         .subscribe(),
     () => this._stepperStore.select(selectStepperEntities)
   ).pipe(shareReplay());
+  //    public buttonDisable$ = this.formValue$.pipe(
+  //        tap(v => console.log(v, 'Ivsan')),
+  //        switchMap(v => {
+  //            return this.flagUrl$
+  //        }),
+  //        tap(v => console.log(v, 'Ivan')),
+  //        switchMap(v => {
+  //            return this.flagUrl$.pipe(switchMap((value: any) => of((this.steppForm?.controls as any)[value].controls.check.value), //eslint-disable-line
+  //            ), tap(console.log));
+  //        }),
+  //        tap(console.log),
+  //    );
 
+  public buttonDisable$ = combineLatest([this.formValue$, this.flagUrl$]).pipe(
+    switchMap(
+      (valuesCombined: any): Observable<boolean> =>
+        of(!valuesCombined[0][valuesCombined[1]].check)
+    )
+  );
+
+  /**
+   * Retrieves the observable for form values.
+   * @type {Observable}
+   */
   get formValues$() {
     return this.formValue$;
   }
 
+  /**
+   * Retrieves the stepper form.
+   * @type {FormGroup}
+   */
   get stepperForm() {
     return this.steppForm;
   }
 
+  /**
+   * Adds a new role to the 'roleOfMember' array in 'infoUser' control.
+   */
   public addRoleOfMember() {
     const newRole = this._fb.group({
       id: 0,

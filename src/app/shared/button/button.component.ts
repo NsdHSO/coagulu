@@ -18,5 +18,5 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ButtonComponent {
   @Output() clicken = new EventEmitter();
-  @Input() public disable: boolean = false;
+  @Input() public disable: boolean | any = false;
 }
