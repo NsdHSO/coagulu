@@ -42,14 +42,14 @@ export class StepperStepsComponent implements OnDestroy {
   @Output() ivan? = new EventEmitter();
   @Input() vm: FormStepper | any; //eslint-disable-line
 
-  trackBy(index: number, item: Step) {
+  trackBy(index: number) {
     return index;
   }
 
   nextTab() {
     return this.steps$
       .pipe(
-        switchMap((step: Step[], index: number) =>
+        switchMap((step: Step[]) =>
           of({
             index: step.findIndex(
               (v) => v.value === this.stepperService.flagUrl$.value

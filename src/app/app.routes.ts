@@ -16,12 +16,12 @@ export const appRoutes: Route[] = [
         const router = inject(Router);
         router.events
           .pipe(
-            filter((event: any) => event instanceof NavigationEnd),
+            filter((event: any) => event instanceof NavigationEnd), //eslint-disable-line
             map((v: NavigationEnd) => v.url.split('/')[1]),
             tap((url) => stepperService.flagUrl$.next(url)),
             catchError((err) => {
               console.warn(err);
-              return of(false); // If there's an error, prevent navigation by returning false
+              return of(false);
             })
           )
           .subscribe();

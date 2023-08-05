@@ -7,7 +7,6 @@ import {
   Observable,
   of,
   shareReplay,
-  Subject,
   switchMap,
   tap,
   using,
@@ -125,7 +124,6 @@ export class StepperService {
           check: false,
           values: [],
         },
-
         modals: {
           setBookType: {},
           sumBook: {},
@@ -149,11 +147,11 @@ export class StepperService {
         .subscribe(),
     () => this._stepperStore.select(selectStepperEntities)
   ).pipe(shareReplay());
-
   public buttonDisable$ = combineLatest([this.formValue$, this.flagUrl$]).pipe(
     switchMap(
-      (valuesCombined: any): Observable<boolean> =>
-        of(!valuesCombined[0][valuesCombined[1]].check)
+      (
+        valuesCombined: any
+      ): Observable<boolean> => of(!valuesCombined[0][valuesCombined[1]].check) //eslint-disable-line
     )
   );
 
@@ -182,7 +180,6 @@ export class StepperService {
       value: '',
       check: false,
     });
-
     this.stepperForm.controls.infoUser.controls.info.controls.roleOfMember.push(
       newRole
     );

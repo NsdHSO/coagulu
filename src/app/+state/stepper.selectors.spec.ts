@@ -8,7 +8,7 @@ import * as StepperSelectors from './stepper.selectors';
 
 describe('Stepper Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const createStepperEntity = (): any => ({ ...mockStepper() });
+  const createStepperEntity = (): any => ({ ...mockStepper() }); //eslint-disable-line
 
   let state: StepperPartialState;
 

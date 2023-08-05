@@ -6,7 +6,11 @@ import { of } from 'rxjs';
 
 describe('StepperStepsComponent', () => {
   const spyInject = jest.spyOn(ang, 'inject');
-  const activate = { navigate: () => {} };
+  const activate = {
+    navigate: () => {
+      console.log('Ivan');
+    },
+  };
   const store = {
     select: () => of(''),
   };

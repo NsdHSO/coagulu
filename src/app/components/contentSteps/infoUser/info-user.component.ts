@@ -21,7 +21,7 @@ import { ButtonComponent } from '../../../shared/button/button.component';
 })
 export class InfoUserComponent {
   private _stepperService = inject(StepperService);
-  vm$: Observable<Dictionary<any>> = this._stepperService.formValues$;
+  vm$: Observable<Dictionary<any>> = this._stepperService.formValues$; //eslint-disable-line
   form = this._stepperService.stepperForm;
 
   public addRole() {
