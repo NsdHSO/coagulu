@@ -43,7 +43,7 @@ jobs:
           echo "$SUMMARY" > issue_summary.txt
 
       - name: Create Issue
-        uses: peter-evans/create-issue@v3
+        uses: peter-evans/create-issue-from-file@v4
         with:
           title: "Issue Summary - $(date +'%Y-%m-%d')"
           body-file: ./issue_summary.txt
