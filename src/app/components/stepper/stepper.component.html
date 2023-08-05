@@ -1,14 +1,14 @@
-<div class="stepper-container-wrapper animate-fade transition-all animate-once animate-duration-1000 animate-ease-in-out"
-     *ngIf="vm$ | async as vm"
+<div
+  class="stepper-container-wrapper animate-fade transition-all animate-once animate-duration-1000 animate-ease-in-out"
 >
-    <div class="stepper-container-wrapper-outlet h-[calc(100vh-73px-0.65rem)]">
-        <router-outlet></router-outlet>
-    </div>
-    <div
-            class="stepper-container-wrapper__content flex py-4 px-3 bottom-0 w-full my-2 border-t-2 border-solid border-gray-200">
-        <stepper-steps [vm]="vm"></stepper-steps>
-    </div>
+  <div
+    class="stepper-container-wrapper-outlet h-[calc(100vh-73px-0.65rem)] overflow-x-auto"
+  >
+    <router-outlet></router-outlet>
+  </div>
+  <div
+    class="stepper-container-wrapper__content flex py-4 px-3 bottom-0 w-full my-2 border-t-2 border-solid border-gray-200"
+  >
+    <stepper-steps *ngIf="vm$ | async as vm" [vm]="vm"></stepper-steps>
+  </div>
 </div>
-
-
-

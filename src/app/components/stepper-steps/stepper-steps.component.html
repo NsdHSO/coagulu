@@ -22,6 +22,10 @@
     ></div>
   </div>
   <div>
-    <button-component (clicken)="nextTab()">Continue</button-component>
+    <button-component
+      [disable]="stepperService.buttonDisable$ | async"
+      (clicken)="nextTab()"
+      >Continue
+    </button-component>
   </div>
 </div>

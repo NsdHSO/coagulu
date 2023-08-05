@@ -6,26 +6,46 @@ on:
       - master
 
 jobs:
-  lint-and-test:
+  test:
+    name: Test application
     runs-on: ubuntu-latest
-
+    timeout-minutes: 10
     steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v2
+      - name: '☁️ checkout repository'
+        uses: actions/checkout@v3
 
-      - name: 📦 Install Node.js
-        uses: actions/setup-node@v2
+      - name: '🔧 setup node'
+        uses: actions/setup-node@v3
         with:
-          node-version: '14' # Change this to the appropriate Node.js version
+          node-version: 18
 
-      - name: 📥 Install ESLint
-        run: npm install eslint --global
+      - name: '🔧 install npm@latest'
+        run: npm i -g npm@latest
 
-      - name: 📥 Install dependencies
-        run: npm install
+      - name: '📦 install dependencies'
+        uses: bahmutov/npm-install@v1
 
-      - name: 🚨 Run ESLint
-        run: eslint . --ext .js,.ts
+      - name: '🔍 run tests'
+        run: npm run test --if-present
 
-      - name: ▶️ Run tests
-        run: npm test
+  lint:
+    name: Code standards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: '☁️ checkout repository'
+        uses: actions/checkout@v3
+
+      - name: '🔧 setup node'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: '🔧 install npm@latest'
+        run: npm i -g npm@latest
+
+      - name: '📦 install dependencies'
+        uses: bahmutov/npm-install@v1
+
+      - name: '🔍 lint code'
+        run: npm run lint --if-present

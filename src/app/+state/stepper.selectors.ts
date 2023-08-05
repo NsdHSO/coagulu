@@ -4,6 +4,8 @@ import {
   stepperAdapter,
   StepperState,
 } from './stepper.reducer';
+import { getSteps } from './stepper.actions';
+import { StepperEntity } from './stepper.models';
 
 // Lookup the 'Stepper' feature state managed by NgRx
 export const selectStepperState =
@@ -31,13 +33,11 @@ export const selectStepperEntities = createSelector(
   (state: StepperState) => selectEntities(state)
 );
 
-export const selectSelectedId = createSelector(
-  selectStepperState,
-  (state: StepperState) => state.selectedId
-);
-
-export const selectEntity = createSelector(
-  selectStepperEntities, //eslint-disable-line
-  selectSelectedId,
-  (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
+export const selectStepsEntities = createSelector(
+  getSteps,
+  (state: {
+    stepper: {
+      entities: StepperEntity;
+    };
+  }) => state.stepper.entities.steps
 );

@@ -22,3 +22,12 @@ export const formValueChange = createAction(
   `[${prefixStepper}] Form Value change`,
   props<StepperEntity>()
 );
+
+export const getSteps = createAction(
+  `[${prefixStepper}] Get Steps`,
+  props<{
+    stepper: {
+      entities: StepperEntity;
+    };
+  }>()
+);
