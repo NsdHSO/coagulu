@@ -1,20 +1,22 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   inject,
   Input,
   OnDestroy,
+  Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { StepperValues } from '../../+state/stepper.models';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { map, of, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { selectStepsEntities } from '../../+state/stepper.selectors';
 import { StepperService } from '../services/stepper.service';
+import { FormStepper, Step } from '../../+state/mock';
 
 @Component({
   selector: 'stepper-steps',
@@ -32,23 +34,38 @@ import { StepperService } from '../services/stepper.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepperStepsComponent implements OnDestroy {
-  private readonly _activatedRoute = inject(ActivatedRoute);
+  private readonly _router = inject(Router);
+  private readonly _destroyed$ = new Subject();
   private readonly _store = inject(Store);
-  private readonly destroyed$ = new Subject();
-  @Input() vm: any; //eslint-disable-line
   readonly stepperService = inject(StepperService);
   steps$ = this._store.select(selectStepsEntities);
+  @Output() ivan? = new EventEmitter();
+  @Input() vm: FormStepper | any; //eslint-disable-line
 
-  trackBy(index: number, item: StepperValues) {
-    return item.id;
+  trackBy(index: number, item: Step) {
+    return index;
   }
 
-  public nextTab() {
-    this.steps$.pipe(tap(console.log), takeUntil(this.destroyed$)).subscribe();
+  nextTab() {
+    return this.steps$
+      .pipe(
+        switchMap((step: Step[], index: number) =>
+          of({
+            index: step.findIndex(
+              (v) => v.value === this.stepperService.flagUrl$.value
+            ),
+            step,
+          })
+        ),
+        map((v) => v.step[v.index >= v.step.length - 1 ? 0 : v.index + 1]),
+        tap((value) => this._router.navigate([value.value])),
+        takeUntil(this._destroyed$)
+      )
+      .subscribe();
   }
 
-  public ngOnDestroy(): void {
-    this.destroyed$.next(true);
-    this.destroyed$.complete();
+  ngOnDestroy(): void {
+    this._destroyed$.next(true);
+    this._destroyed$.complete();
   }
 }

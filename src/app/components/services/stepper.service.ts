@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormBuilder } from '@angular/forms';
 import {
+  BehaviorSubject,
   combineLatest,
   Observable,
   of,
@@ -32,7 +33,7 @@ export class StepperService {
    * Flag URL Subject for tracking flag changes.
    * @type {Subject}
    */
-  public flagUrl$ = new Subject();
+  public flagUrl$ = new BehaviorSubject<string>('');
   /**
    * FormGroup representing the stepper form.
    * @type {FormGroup}
@@ -124,6 +125,7 @@ export class StepperService {
           check: false,
           values: [],
         },
+
         modals: {
           setBookType: {},
           sumBook: {},
@@ -147,18 +149,6 @@ export class StepperService {
         .subscribe(),
     () => this._stepperStore.select(selectStepperEntities)
   ).pipe(shareReplay());
-  //    public buttonDisable$ = this.formValue$.pipe(
-  //        tap(v => console.log(v, 'Ivsan')),
-  //        switchMap(v => {
-  //            return this.flagUrl$
-  //        }),
-  //        tap(v => console.log(v, 'Ivan')),
-  //        switchMap(v => {
-  //            return this.flagUrl$.pipe(switchMap((value: any) => of((this.steppForm?.controls as any)[value].controls.check.value), //eslint-disable-line
-  //            ), tap(console.log));
-  //        }),
-  //        tap(console.log),
-  //    );
 
   public buttonDisable$ = combineLatest([this.formValue$, this.flagUrl$]).pipe(
     switchMap(

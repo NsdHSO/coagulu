@@ -23,6 +23,8 @@ describe('Stepper Service', () => {
     const formBuilder = {
       isValid: () => true,
       group: () => ({ name: 'ivan' }),
+      control: (...args: any) => args,
+      array: (...args: any) => args,
     };
 
     const stepperService = setupSpy(storeMock, formBuilder);
