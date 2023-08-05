@@ -11,18 +11,18 @@ jobs:
     steps:
       - name: Check if PR is merged
         id: pr_check
-        run: echo "::set-output name=is_merged::${{ github.event.pull_request.merged }}"
+        run: echo "is_merged=${{ github.event.pull_request.merged }}" >> $GITHUB_ENV
 
       - name: Close Issue
-        if: ${{ steps.pr_check.outputs.is_merged == 'true' }}
+        if: ${{ env.pr_check == 'true' }}
         run: |
           # Extract the issue number from the pull request description
-          ISSUE_NUMBER=$(grep -oP '(?<=#)\d+' ${{ github.event.pull_request.body }} | head -n1)
-
+          ISSUE_NUMBER=$(grep -oP '(?<=#)\d+' "${{ github.event.pull_request.body }}" | head -n1)
+          
           # Close the referenced issue
           if [[ $ISSUE_NUMBER ]]; then
             echo "Closing Issue #$ISSUE_NUMBER"
-            curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d '{"state": "closed"}' "https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER"
+            curl -X POST -H "Authorization: token ${{ secrets.GH_TOKEN }}" -d '{"state": "closed"}' "https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER"
           else
             echo "No referenced issue found in the pull request description."
           fi
