@@ -11,3 +11,7 @@ To start the development server run `npm start`. Open your browser and navigate 
     npm run lint:fix
 
 ```
+```
+    Test
+    npm run test
+```
