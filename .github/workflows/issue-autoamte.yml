@@ -2,7 +2,7 @@ name: Issue Summary
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: "*/6 * * * *"
 
 jobs:
   summary:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "16" # Use Node.js 16
 
       - name: Install jq
         run: sudo apt-get install jq -y
@@ -43,7 +43,7 @@ jobs:
           echo "$SUMMARY" > issue_summary.txt
 
       - name: Create Issue
-        uses: peter-evans/create-issue-from-file@v4
+        uses: peter-evans/create-issue@v4
         with:
           title: "Issue Summary - $(date +'%Y-%m-%d')"
-          body-file: ./issue_summary.txt
+          body: ${{ steps.generate_summary.outputs.stdout }} # Use the generated summary as the issuing body
