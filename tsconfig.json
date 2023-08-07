@@ -33,6 +33,9 @@
     },
     {
       "path": "./tsconfig.editor.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
     }
   ],
   "compileOnSave": false,
@@ -42,5 +45,10 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
   }
 }

@@ -10,7 +10,8 @@
     "test:w": "nx test --watch",
     "coverage": "nx test  --coverage --watch",
     "lint": "eslint . --ext .js,ts",
-    "lint:fix": "eslint . --ext .js,ts --fix"
+    "lint:fix": "eslint . --ext .js,ts --fix",
+    "storybook": "nx run coagulu:storybook"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +32,8 @@
     "@ngrx/store": "~16.0.0",
     "@nx/angular": "16.5.5",
     "ngx-liburg-icon": "^0.0.26",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "reset-css": "^5.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -53,9 +56,13 @@
     "@nx/jest": "16.5.5",
     "@nx/js": "16.5.5",
     "@nx/linter": "16.5.5",
+    "@nx/storybook": "16.5.5",
     "@nx/web": "16.5.5",
     "@nx/workspace": "16.5.5",
     "@schematics/angular": "~16.1.0",
+    "@storybook/addon-essentials": "^7.0.24",
+    "@storybook/angular": "^7.0.24",
+    "@storybook/core-server": "^7.0.24",
     "@types/jest": "^29.4.0",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.60.1",

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { StepperStepsComponent } from '../stepper-steps/stepper-steps.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +23,6 @@ import { StepperService } from '../services/stepper.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepperComponent {
-  private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _stepperService = inject(StepperService);
   vm$ = this._stepperService.formValues$;
   form = this._stepperService.stepperForm;
