@@ -11,6 +11,6 @@ export const Primary = {
     props: args,
   }),
   args: {
-    disable: false,
+    disable: true,
   },
 };
