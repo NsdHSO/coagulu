@@ -25,6 +25,7 @@
   <div>
     <button-component
       [disable]="stepperService.buttonDisable$ | async"
+      roundedFull="rounded-md"
       (clicken)="nextTab()"
       >Continue
     </button-component>

@@ -6,7 +6,6 @@ const config = {
     options: {},
   },
   staticDirs: [{ from: './../src/assets', to: '/assets' }],
-  // Storybook
 };
 
 export default config;

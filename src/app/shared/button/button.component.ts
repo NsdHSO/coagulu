@@ -19,4 +19,5 @@ import { MatButtonModule } from '@angular/material/button';
 export class ButtonComponent {
   @Output() clicken = new EventEmitter();
   @Input() public disable: boolean | unknown = false;
+  @Input() public roundedFull: string | unknown = '';
 }
