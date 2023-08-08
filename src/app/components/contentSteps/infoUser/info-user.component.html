@@ -1,35 +1,22 @@
 <div *ngIf="vm$ | async as vm" class="p-4">
   <form [formGroup]="form" [patchFormGroupValues]="vm">
     <div formGroupName="infoUser">
-      <input
-        class="h-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        formControlName="check"
-        type="checkbox"
-      />
+      <input-component formControlName="check" type="checkbox" />
       <div formGroupName="info">
         <div class="sm:col-span-3">
-          <label
-            class="block text-sm font-medium leading-6 text-gray-900"
-            for="familyNumber"
+          <label class="block text-sm font-medium leading-6 text-gray-900"
             >Family Number</label
           >
           <div class="mt-2">
-            <input
-              autocomplete="family-name"
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              formControlName="familyNumber"
-              id="familyNumber"
-              name="familyNumber"
-              type="text"
-            />
+            <input-component formControlName="familyNumber" />
           </div>
         </div>
         <div class="sm:col-span-3">
           <label class="block text-sm font-medium leading-6 text-gray-900"
             >Role Of Member</label
           >
-          <div formArrayName="roleOfMember">
-            <div
+          <ng-container formArrayName="roleOfMember">
+            <ng-container
               *ngFor="
                 let role of form.controls.infoUser.controls.info.controls
                   .roleOfMember.controls;
@@ -40,33 +27,21 @@
               <label class="block text-sm font-medium leading-6 text-gray"
                 >Value:</label
               >
-              <input
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                formControlName="value"
-                type="text"
-              />
+              <input-component formControlName="value" />
               <div
                 class="flex shadow-sm items-center gap-y-4 w-16 justify-between"
               >
                 <label class="block text-sm font-medium leading-6 text-gray"
                   >Check:</label
                 >
-                <input
-                  class="h-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  formControlName="check"
-                  type="checkbox"
-                />
+                <input-component formControlName="check" type="checkbox" />
               </div>
               <label class="block text-sm font-medium leading-6 text-gray"
                 >ID:</label
               >
-              <input
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                formControlName="id"
-                type="text"
-              />
-            </div>
-          </div>
+              <input-component formControlName="id" />
+            </ng-container>
+          </ng-container>
         </div>
       </div>
     </div>
