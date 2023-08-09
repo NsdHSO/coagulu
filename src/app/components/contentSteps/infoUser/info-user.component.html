@@ -1,13 +1,13 @@
 <div *ngIf="vm$ | async as vm" class="p-4">
   <form [formGroup]="form" [patchFormGroupValues]="vm">
     <div formGroupName="infoUser">
-      <input-component formControlName="check" type="checkbox" />
+      <input-component formControlName="check" typeInput="checkbox" />
       <div formGroupName="info">
         <div class="sm:col-span-3">
-          <label class="block text-sm font-medium leading-6 text-gray-900"
-            >Family Number</label
-          >
-          <div class="mt-2">
+          <div>
+            <label class="block text-sm font-medium leading-6 text-gray-900"
+              >Family Number</label
+            >
             <input-component formControlName="familyNumber" />
           </div>
         </div>
@@ -24,22 +24,29 @@
               "
               [formGroupName]="index"
             >
-              <label class="block text-sm font-medium leading-6 text-gray"
-                >Value:</label
-              >
-              <input-component formControlName="value" />
+              <ng-container>
+                <label class="block text-sm font-medium leading-6 text-gray"
+                  >Value:</label
+                >
+                <input-component formControlName="value" />
+              </ng-container>
               <div
                 class="flex shadow-sm items-center gap-y-4 w-16 justify-between"
               >
                 <label class="block text-sm font-medium leading-6 text-gray"
                   >Check:</label
                 >
-                <input-component formControlName="check" type="checkbox" />
+                <input-component
+                  formControlName="check"
+                  [typeInput]="'checkbox'"
+                />
               </div>
-              <label class="block text-sm font-medium leading-6 text-gray"
-                >ID:</label
-              >
-              <input-component formControlName="id" />
+              <ng-container>
+                <label class="block text-sm font-medium leading-6 text-gray"
+                  >ID:</label
+                >
+                <input-component formControlName="id" />
+              </ng-container>
             </ng-container>
           </ng-container>
         </div>

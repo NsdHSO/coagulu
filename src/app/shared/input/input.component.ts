@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PapControlDirective } from './pap-control.directive';
 import {
@@ -25,9 +25,11 @@ import {
 })
 export class InputComponent {
   ngControl: any = injectNgControl();
-
+  /**
+   * Type of Input checkbox text
+   */
   @Input()
-  type = 'text';
+  typeInput? = 'text';
 }
 
 function injectNgControl() {
