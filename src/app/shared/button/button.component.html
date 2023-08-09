@@ -3,7 +3,8 @@
   [ngClass]="{ '!bg-blue-700': disable }"
   mat-button
   (click)="clicken.emit()"
-  class="mat-primary mat-raised-button !bg-blue-500 !text-white !rounded-full"
+  class="mat-primary mat-raised-button !bg-blue-500 !text-white p-2"
+  [className]="roundedFull"
 >
   <ng-content></ng-content>
 </button>

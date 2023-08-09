@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import {
   BehaviorSubject,
   combineLatest,
+  debounceTime,
   Observable,
   of,
   shareReplay,
@@ -139,6 +140,7 @@ export class StepperService {
     () =>
       this.stepperForm.valueChanges
         .pipe(
+          debounceTime(200),
           tap(
             (values) =>
               this._stepperStore.dispatch(formValueChange(values as any)) //eslint-disable-line
