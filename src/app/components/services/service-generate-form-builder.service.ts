@@ -101,6 +101,16 @@ export class GenerateFormBuilderService {
         } else {
           throw new Error('Invalid option for pattern validator');
         }
+
+      case 'email':
+        return (control: FormControl) => {
+          if (!control.value) {
+            return null; // Allow empty values for the email validator
+          }
+          const emailPattern =
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          return emailPattern.test(control.value) ? null : { email: true };
+        };
       // Add more cases for other validator types as needed
 
       default:
