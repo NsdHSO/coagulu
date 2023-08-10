@@ -29,6 +29,11 @@ export class ReserveBookComponent {
         validators: [{ type: 'required' }],
       },
       {
+        label: 'email',
+        value: 's',
+        validators: [{ type: 'required' }, { type: 'email' }],
+      },
+      {
         label: 'age',
         value: '20',
         validators: [{ type: 'min', option: 20 }],
@@ -53,7 +58,7 @@ export class ReserveBookComponent {
           },
           {
             label: 'ds',
-            value: '123141232311',
+            value: 'TEST',
             validators: [
               { type: 'required' },
               { type: 'pattern', option: /^[a-zA-Z\s]*$/ },
