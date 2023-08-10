@@ -7,16 +7,18 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { DataFormBuilder } from '../../interfaces/data-form-builder';
+import { InputComponent } from '../../../shared/input/input.component';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'reserve-book',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, InputComponent],
   templateUrl: './reserve-book.component.html',
   styleUrls: ['./reserve-book.component.scss'],
 })
 export class ReserveBookComponent {
-  dynamicForm: FormGroup | any;
+  dynamicForm: FormGroup = {} as FormGroup;
 
   jsonData: DataFormBuilder = {
     values: [
@@ -34,12 +36,8 @@ export class ReserveBookComponent {
         label: 'address',
         values: [
           {
-            label: 'Ocamel',
-            values: [
-              {
-                value: 'TESD',
-              },
-            ],
+            label: 'street',
+            value: 'Ivan',
           },
         ],
       },
@@ -49,6 +47,7 @@ export class ReserveBookComponent {
           {
             label: 'cnp',
             value: '123141232311',
+            validators: [{ type: 'min', option: 20 }],
           },
           {
             label: 'ds',
@@ -63,6 +62,7 @@ export class ReserveBookComponent {
 
   ngOnInit() {
     this.dynamicForm = this.formBuilder.buildFormFromJson(this.jsonData);
+    this.dynamicForm.valueChanges.pipe(tap(console.log)).subscribe();
   }
 
   onSubmit() {

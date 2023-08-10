@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { DataFormBuilder, Section } from '../interfaces/data-form-builder';
+import { ConstantsEnum } from '../../shared/utils/constants.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,8 @@ import { DataFormBuilder, Section } from '../interfaces/data-form-builder';
 export class GenerateFormBuilderService {
   constructor(private fb: FormBuilder) {}
 
-  buildFormFromJson(jsonData: DataFormBuilder): any {
+  buildFormFromJson(jsonData: DataFormBuilder): FormGroup {
+    console.log(this.buildGroup(jsonData));
     return this.buildGroup(jsonData);
   }
 
@@ -27,15 +29,18 @@ export class GenerateFormBuilderService {
       }
       if (
         item.values &&
-        item.values.length > 0 &&
-        !(item.values[0].values && item.values[0].values.length > 0)
+        item.values.length > ConstantsEnum.ZERO &&
+        !(
+          item.values[ConstantsEnum.ZERO].values &&
+          item.values[ConstantsEnum.ZERO].values.length > ConstantsEnum.ZERO
+        )
       ) {
         group[item.label] = this.buildGroup(item);
       }
       if (
         item.values &&
-        item.values[0].values &&
-        item.values[0].values.length > 0
+        item.values[ConstantsEnum.ZERO].values &&
+        item.values[ConstantsEnum.ZERO].values.length > ConstantsEnum.ZERO
       ) {
         //TODO: Add statement for FormArray
       }
@@ -47,7 +52,7 @@ export class GenerateFormBuilderService {
   private buildArray(items: Section[]): FormArray {
     const array = this.fb.array([]);
     items.forEach((item: Section) => {
-      if (item.values && item.values.length > 0) {
+      if (item.values && item.values.length > ConstantsEnum.ZERO) {
         //        (array as FormArray).push(this.buildArray(item.values));
       }
     });

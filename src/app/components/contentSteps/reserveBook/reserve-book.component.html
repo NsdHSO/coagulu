@@ -1,3 +1,17 @@
 <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+  <ng-container *ngFor="let controls of jsonData.values">
+    <ng-container
+      *ngIf="!(controls.values && controls.values.length); else groups"
+    >
+      <input-component [formControlName]="controls.label" />
+    </ng-container>
+    <ng-template #groups>
+      <ng-container *ngFor="let group of controls.values">
+        <ng-container [formGroupName]="controls.label">
+          <input-component [formControlName]="group.label" />
+        </ng-container>
+      </ng-container>
+    </ng-template>
+  </ng-container>
   <button type="submit">Submit</button>
 </form>

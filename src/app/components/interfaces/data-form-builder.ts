@@ -18,7 +18,7 @@ export interface SubSection {
 export interface Section {
   label: string;
   value?: number | string;
-  values?: SubSection[];
+  values?: SubSection[] | any;
   validators?: Validator[];
 }
 
