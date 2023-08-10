@@ -1,17 +1,38 @@
-<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+<form
+  [formGroup]="dynamicForm"
+  (ngSubmit)="onSubmit()"
+  class="p-3 flex gap-1 flex-col"
+>
   <ng-container *ngFor="let controls of jsonData.values">
     <ng-container
       *ngIf="!(controls.values && controls.values.length); else groups"
     >
-      <input-component [formControlName]="controls.label" />
+      <div class="grid grid-cols-12">
+        <p>
+          {{ controls.label }}
+        </p>
+        <input-component [formControlName]="controls.label" />
+      </div>
     </ng-container>
     <ng-template #groups>
-      <ng-container *ngFor="let group of controls.values">
+      <ng-container *ngFor="let group of controls.values; let index = index">
         <ng-container [formGroupName]="controls.label">
-          <input-component [formControlName]="group.label" />
+          <div class="grid grid-cols-12">
+            <p>
+              {{ group.label }}
+            </p>
+            <input-component [formControlName]="group.label" />
+          </div>
         </ng-container>
       </ng-container>
     </ng-template>
   </ng-container>
-  <button type="submit">Submit</button>
+  <button-component
+    roundedFull="rounded-md"
+    [disable]="dynamicForm.pristine || dynamicForm.invalid"
+    type="submit"
+    >Submit
+  </button-component>
 </form>
+
+{{ dynamicForm.invalid | json }}

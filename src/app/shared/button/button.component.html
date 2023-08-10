@@ -1,8 +1,9 @@
 <button
+  [type]="typeButton"
   [disabled]="disable"
   [ngClass]="{ '!bg-blue-700': disable }"
   mat-button
-  (click)="clicken.emit()"
+  (click)="marian.emit()"
   class="mat-primary mat-raised-button !bg-blue-500 !text-white p-2"
   [className]="roundedFull"
 >

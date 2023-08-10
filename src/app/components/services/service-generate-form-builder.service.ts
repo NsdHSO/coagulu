@@ -4,9 +4,13 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
+  ValidatorFn,
 } from '@angular/forms';
-import { DataFormBuilder, Section } from '../interfaces/data-form-builder';
+import {
+  DataFormBuilder,
+  Section,
+  Validator,
+} from '../interfaces/data-form-builder';
 import { ConstantsEnum } from '../../shared/utils/constants.enum';
 
 @Injectable({
@@ -21,11 +25,14 @@ export class GenerateFormBuilderService {
   }
 
   private buildGroup(data: any): FormGroup {
-    const group: { [key: string]: any } = {};
+    const group: { [key: string]: unknown } = {};
 
-    data.values.forEach((item: Section, idx: number) => {
+    data.values.forEach((item: Section) => {
       if (item.value) {
-        group[item.label] = new FormControl(item.value);
+        group[item.label] = new FormControl(
+          item.value,
+          this.extractValidator(item)
+        );
       }
       if (
         item.values &&
@@ -53,27 +60,52 @@ export class GenerateFormBuilderService {
     const array = this.fb.array([]);
     items.forEach((item: Section) => {
       if (item.values && item.values.length > ConstantsEnum.ZERO) {
-        //        (array as FormArray).push(this.buildArray(item.values));
+        (array as FormArray).push(this.buildArray(item.values));
       }
     });
     return array;
   }
 
-  private getValidators(item: any): any[] {
-    const validators: any[] = [];
-    if (item.validators && Array.isArray(item.validators)) {
-      item.validators.forEach((validator: string) => {
-        if (validator.startsWith('minLength')) {
-          const minLength = Number(validator.split(':')[1]);
-          validators.push(Validators.minLength(minLength));
-        } else if (validator.startsWith('min')) {
-          const min = Number(validator.split(':')[1]);
-          validators.push(Validators.min(min));
-        } else if (validator === 'required') {
-          validators.push(Validators.required);
-        }
-      });
+  extractValidator(item: Section): ValidatorFn[] {
+    let validators: ValidatorFn[] = [];
+    if (item.validators && item.validators.length > 0) {
+      validators = item.validators.map((validatorConfig) =>
+        this.getValidator(validatorConfig)
+      );
     }
     return validators;
+  }
+
+  getValidator(validatorConfig: Validator): ValidatorFn | any {
+    const { type, option } = validatorConfig;
+
+    switch (type) {
+      case 'required':
+        return (control: { value: any }) =>
+          control.value ? null : { required: true };
+      case 'min':
+        if (typeof option === 'number') {
+          // Check if option is a number
+          return (control: { value: number }) =>
+            control.value >= option ? null : { min: true };
+        } else {
+          throw new Error('Other Error extract validator'); // Handle other
+          // cases or throw an error
+        }
+      case 'pattern':
+        if (typeof option === 'string' || option instanceof RegExp) {
+          const pattern =
+            typeof option === 'string' ? new RegExp(option) : option;
+          return (control: FormControl) =>
+            pattern.test(control.value) ? null : { pattern: true };
+        } else {
+          throw new Error('Invalid option for pattern validator');
+        }
+      // Add more cases for other validator types as needed
+
+      default:
+        // Return null for unknown validator types
+        throw new Error('Please Implement this Validator');
+    }
   }
 }
