@@ -9,11 +9,12 @@ import {
 import { DataFormBuilder } from '../../interfaces/data-form-builder';
 import { InputComponent } from '../../../shared/input/input.component';
 import { tap } from 'rxjs';
+import { ButtonComponent } from '../../../shared/button/button.component';
 
 @Component({
   selector: 'reserve-book',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, InputComponent],
+  imports: [CommonModule, ReactiveFormsModule, InputComponent, ButtonComponent],
   templateUrl: './reserve-book.component.html',
   styleUrls: ['./reserve-book.component.scss'],
 })
@@ -30,7 +31,7 @@ export class ReserveBookComponent {
       {
         label: 'age',
         value: '20',
-        validators: [{ type: 'required' }, { type: 'min', option: 30 }],
+        validators: [{ type: 'min', option: 20 }],
       },
       {
         label: 'address',
@@ -38,6 +39,7 @@ export class ReserveBookComponent {
           {
             label: 'street',
             value: 'Ivan',
+            validators: [{ type: 'required' }],
           },
         ],
       },
@@ -52,6 +54,10 @@ export class ReserveBookComponent {
           {
             label: 'ds',
             value: '123141232311',
+            validators: [
+              { type: 'required' },
+              { type: 'pattern', option: /^[a-zA-Z\s]*$/ },
+            ],
           },
         ],
       },
@@ -67,9 +73,9 @@ export class ReserveBookComponent {
 
   onSubmit() {
     if (this.dynamicForm.valid) {
+      console.log('tesra');
       // Handle form submission
     } else {
-      // Form is not valid, display errors or take action
     }
   }
 

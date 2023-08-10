@@ -17,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
-  @Output() clicken = new EventEmitter();
+  @Output() marian = new EventEmitter();
   @Input() public disable: boolean | unknown = false;
   @Input() public roundedFull: string | unknown = '';
+  @Input() public typeButton = '';
 }
