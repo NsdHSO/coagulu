@@ -1,6 +1,10 @@
 {
   "values": [
     {
+      "label": "name",
+      "value": 3
+    },
+    {
       "label": "ivan",
       "values": [
         {
@@ -30,6 +34,14 @@
           ]
         }
       ]
+    },
+    {
+      "label": "agro",
+      "value": 42
+    },
+    {
+      "label": "car",
+      "value": 3
     }
   ]
 }
