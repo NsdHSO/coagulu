@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GenerateFormBuilderService } from '../../services/service-generate-form-builder.service';
 import {
@@ -123,8 +123,10 @@ export class ReserveBookComponent {
       },
     ],
   };
-
-  constructor(private formBuilder: GenerateFormBuilderService) {}
+  protected readonly formBuilder: GenerateFormBuilderService = inject(
+    GenerateFormBuilderService
+  );
+  constructor() {}
 
   ngOnInit() {
     this.dynamicForm = this.formBuilder.buildFormFromJson(this.jsonData);

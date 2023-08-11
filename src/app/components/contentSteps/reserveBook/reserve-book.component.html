@@ -38,6 +38,8 @@
       <ng-container *ngIf="controls.bulkValues">
         <ng-container formArrayName="{{ controls.label }}">
           <!-- Iterate through section.bulkValues -->
+          <h1>{{ controls.label }}</h1>
+
           <ng-container
             *ngFor="let bulkValue of controls.bulkValues; let index = index"
           >
