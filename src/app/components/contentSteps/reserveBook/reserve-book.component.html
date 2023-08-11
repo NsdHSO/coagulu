@@ -4,15 +4,20 @@
   class="p-3 flex gap-1 flex-col"
 >
   <ng-container *ngFor="let controls of jsonData.values">
-    <ng-container
-      *ngIf="!(controls.values && controls.values.length); else groups"
-    >
-      <div class="grid grid-cols-12">
-        <p>
-          {{ controls.label }}
-        </p>
-        <input-component [formControlName]="controls.label" />
-      </div>
+    <ng-container *ngIf="!controls.bulkValues; else array">
+      <ng-container
+        *ngIf="!(controls.values && controls.values.length); else groups"
+      >
+        <div class="grid grid-cols-12">
+          <p>
+            {{ controls.label }}
+          </p>
+          <input-component
+            [formControlName]="controls.label"
+            class="col-span-4"
+          />
+        </div>
+      </ng-container>
     </ng-container>
     <ng-template #groups>
       <ng-container *ngFor="let group of controls.values; let index = index">
@@ -21,8 +26,29 @@
             <p>
               {{ group.label }}
             </p>
-            <input-component [formControlName]="group.label" />
+            <input-component
+              [formControlName]="group.label"
+              class="col-span-4"
+            />
           </div>
+        </ng-container>
+      </ng-container>
+    </ng-template>
+    <ng-template #array>
+      <ng-container *ngIf="controls.bulkValues">
+        <ng-container formArrayName="{{ controls.label }}">
+          <!-- Iterate through section.bulkValues -->
+          <ng-container
+            *ngFor="let bulkValue of controls.bulkValues; let index = index"
+          >
+            <!-- Create a formGroup for each bulkValue -->
+            <ng-container [formGroupName]="index">
+              <div class="grid grid-cols-12">
+                <p class="col-span-2">{{ bulkValue.label }}</p>
+                <input-component formControlName="value" class="col-span-4" />
+              </div>
+            </ng-container>
+          </ng-container>
         </ng-container>
       </ng-container>
     </ng-template>
@@ -35,4 +61,6 @@
   </button-component>
 </form>
 
-{{ dynamicForm.invalid | json }}
+<pre
+  >{{ dynamicForm.getRawValue() | json }}
+</pre>

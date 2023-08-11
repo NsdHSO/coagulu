@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -8,6 +7,7 @@ import {
 } from '@angular/forms';
 import {
   DataFormBuilder,
+  NestedValue,
   Section,
   Validator,
 } from '../interfaces/data-form-builder';
@@ -47,29 +47,24 @@ export class GenerateFormBuilderService {
       ) {
         group[item.label] = this.buildGroup(item);
       }
-      if (
-        item.values &&
-        item.values[ConstantsEnum.ZERO].values &&
-        item.values[ConstantsEnum.ZERO].values.length > ConstantsEnum.ZERO
-      ) {
-        //TODO: Add statement for FormArray
+      if (item.bulkValues && item.bulkValues.length > ConstantsEnum.ZERO) {
+        const arrayBulks = this.fb.array([]) as any;
+        item.bulkValues.forEach((arrayBulk) => {
+          const bulkValues = this.fb.group({
+            value: [arrayBulk.value, this.extractValidator(arrayBulk)],
+            title: [arrayBulk.label],
+          });
+
+          arrayBulks.push(bulkValues);
+        });
+        group[item.label] = arrayBulks;
       }
     });
 
     return this.fb.group(group);
   }
 
-  private buildArray(items: Section[]): FormArray {
-    const array = this.fb.array([]);
-    items.forEach((item: Section) => {
-      if (item.values && item.values.length > ConstantsEnum.ZERO) {
-        (array as FormArray).push(this.buildArray(item.values));
-      }
-    });
-    return array;
-  }
-
-  extractValidator(item: Section): ValidatorFn[] {
+  extractValidator(item: Section | NestedValue): ValidatorFn[] {
     let validators: ValidatorFn[] = [];
     if (item.validators && item.validators.length > 0) {
       validators = item.validators.map((validatorConfig) =>
@@ -84,7 +79,7 @@ export class GenerateFormBuilderService {
 
     switch (type) {
       case TypeConstantEnum.REQUIRED:
-        return (control: { value: any }) =>
+        return (control: { value: unknown }) =>
           control.value
             ? null
             : { error: errorMsg || 'This field Is must' || true };

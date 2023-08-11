@@ -10,7 +10,7 @@
       *ngSwitchDefault
       [ngClass]="{
         'ring-red-600 !focus:border-red-500 !focus-visible:border-red-500':
-          ngControl.control.errors
+          ngControl.control?.errors
       }"
       type="text"
       [formControl]="ngControl.control"
