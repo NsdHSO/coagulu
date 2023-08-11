@@ -1,6 +1,7 @@
 export interface Validator {
   type: string;
   option?: unknown;
+  errorMsg?: string;
 }
 
 export interface NestedValue {
