@@ -30,7 +30,7 @@ export class ReserveBookComponent {
       },
       {
         label: 'email',
-        value: 's',
+        value: 's@gm.co',
         validators: [{ type: 'required' }, { type: 'email' }],
       },
       {
@@ -44,7 +44,9 @@ export class ReserveBookComponent {
           {
             label: 'street',
             value: 'Ivan',
-            validators: [{ type: 'required' }],
+            validators: [
+              { type: 'required', errorMsg: 'This field it is' + ' must' },
+            ],
           },
         ],
       },
@@ -61,7 +63,11 @@ export class ReserveBookComponent {
             value: 'TEST',
             validators: [
               { type: 'required' },
-              { type: 'pattern', option: /^[a-zA-Z\s]*$/ },
+              {
+                type: 'pattern',
+                option: /^[a-zA-Z\s]*$/,
+                errorMsg: 'Only' + ' char',
+              },
             ],
           },
         ],

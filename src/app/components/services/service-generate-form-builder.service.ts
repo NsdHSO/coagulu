@@ -11,7 +11,10 @@ import {
   Section,
   Validator,
 } from '../interfaces/data-form-builder';
-import { ConstantsEnum } from '../../shared/utils/constants.enum';
+import {
+  ConstantsEnum,
+  TypeConstantEnum,
+} from '../../shared/utils/constants.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -77,39 +80,51 @@ export class GenerateFormBuilderService {
   }
 
   getValidator(validatorConfig: Validator): ValidatorFn | any {
-    const { type, option } = validatorConfig;
+    const { type, option, errorMsg } = validatorConfig;
 
     switch (type) {
-      case 'required':
+      case TypeConstantEnum.REQUIRED:
         return (control: { value: any }) =>
-          control.value ? null : { required: true };
-      case 'min':
-        if (typeof option === 'number') {
+          control.value
+            ? null
+            : { error: errorMsg || 'This field Is must' || true };
+      case TypeConstantEnum.MIN:
+        if (typeof option === TypeConstantEnum.NUMBER) {
           // Check if option is a number
+          const numOption = option as number;
           return (control: { value: number }) =>
-            control.value >= option ? null : { min: true };
+            control.value >= numOption ? null : { error: errorMsg || true };
         } else {
           throw new Error('Other Error extract validator'); // Handle other
           // cases or throw an error
         }
-      case 'pattern':
-        if (typeof option === 'string' || option instanceof RegExp) {
+      case TypeConstantEnum.PATTERN:
+        if (
+          typeof option === TypeConstantEnum.STRING ||
+          option instanceof RegExp
+        ) {
           const pattern =
-            typeof option === 'string' ? new RegExp(option) : option;
+            typeof option === TypeConstantEnum.STRING
+              ? new RegExp(option as string)
+              : (option as RegExp);
           return (control: FormControl) =>
-            pattern.test(control.value) ? null : { pattern: true };
+            (pattern instanceof RegExp ? pattern.test(control.value) : false)
+              ? null
+              : { error: errorMsg || true };
         } else {
           throw new Error('Invalid option for pattern validator');
         }
 
-      case 'email':
+      case TypeConstantEnum.EMAIL:
         return (control: FormControl) => {
           if (!control.value) {
             return null; // Allow empty values for the email validator
           }
           const emailPattern =
             /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          return emailPattern.test(control.value) ? null : { email: true };
+          return emailPattern.test(control.value)
+            ? null
+            : { error: errorMsg || true };
         };
       // Add more cases for other validator types as needed
 
