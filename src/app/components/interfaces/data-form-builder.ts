@@ -8,19 +8,22 @@ export interface NestedValue {
   value: string;
   validators?: Validator[];
   label?: string;
+  bulkValues?: NestedValue[];
 }
 
 export interface SubSection {
   label: string;
   values?: NestedValue[];
   value?: string | null | number;
+  validators?: Validator[];
 }
 
 export interface Section {
   label: string;
   value?: number | string;
-  values?: SubSection[] | any;
+  values?: SubSection[];
   validators?: Validator[];
+  bulkValues?: NestedValue[];
 }
 
 export interface DataFormBuilder {

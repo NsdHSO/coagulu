@@ -72,6 +72,55 @@ export class ReserveBookComponent {
           },
         ],
       },
+      {
+        label: 'course',
+        bulkValues: [
+          {
+            value: '2211',
+            label: 'angularPatterns',
+            validators: [
+              { type: 'required' },
+              {
+                type: 'pattern',
+                option: /^[a-zA-Z\s]*$/,
+                errorMsg: 'Only' + ' char',
+              },
+            ],
+          },
+          {
+            value: '555',
+            label: 'reactPatterns',
+          },
+        ],
+      },
+
+      {
+        label: 'age',
+        bulkValues: [
+          {
+            value: '2312',
+            label: 'angularPatterns',
+          },
+          {
+            value: '321',
+            label: 'reactPatterns',
+          },
+        ],
+      },
+
+      {
+        label: 'home',
+        bulkValues: [
+          {
+            value: '1231',
+            label: 'AngularMIkie',
+          },
+          {
+            value: '444',
+            label: 'Miki',
+          },
+        ],
+      },
     ],
   };
 
