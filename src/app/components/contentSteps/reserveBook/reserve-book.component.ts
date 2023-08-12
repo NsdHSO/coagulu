@@ -19,8 +19,10 @@ import { ButtonComponent } from '../../../shared/button/button.component';
   styleUrls: ['./reserve-book.component.scss'],
 })
 export class ReserveBookComponent {
+  protected readonly formBuilder: GenerateFormBuilderService = inject(
+    GenerateFormBuilderService
+  );
   dynamicForm: FormGroup = {} as FormGroup;
-
   jsonData: DataFormBuilder = {
     values: [
       {
@@ -93,7 +95,6 @@ export class ReserveBookComponent {
           },
         ],
       },
-
       {
         label: 'age',
         bulkValues: [
@@ -107,25 +108,27 @@ export class ReserveBookComponent {
           },
         ],
       },
-
       {
         label: 'home',
         bulkValues: [
           {
-            value: '1231',
-            label: 'AngularMIkie',
-          },
-          {
             value: '444',
             label: 'Miki',
+          },
+          {
+            label: 'Ivan',
+            bulkValues: [
+              {
+                value: 4,
+              },
+              { value: 2 },
+            ],
           },
         ],
       },
     ],
   };
-  protected readonly formBuilder: GenerateFormBuilderService = inject(
-    GenerateFormBuilderService
-  );
+
   constructor() {}
 
   ngOnInit() {

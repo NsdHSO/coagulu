@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -23,7 +24,7 @@ export class GenerateFormBuilderService {
   constructor(private fb: FormBuilder) {}
 
   buildFormFromJson(jsonData: DataFormBuilder): FormGroup {
-    console.log(this.buildGroup(jsonData));
+    console.log(this.buildGroup(jsonData).controls['home']);
     return this.buildGroup(jsonData);
   }
 
@@ -49,13 +50,25 @@ export class GenerateFormBuilderService {
       }
       if (item.bulkValues && item.bulkValues.length > ConstantsEnum.ZERO) {
         const arrayBulks = this.fb.array([]) as any;
-        item.bulkValues.forEach((arrayBulk) => {
-          const bulkValues = this.fb.group({
-            value: [arrayBulk.value, this.extractValidator(arrayBulk)],
-            title: [arrayBulk.label],
-          });
-
-          arrayBulks.push(bulkValues);
+        item.bulkValues.forEach((arrayBulk, index: number) => {
+          if (!arrayBulk.bulkValues) {
+            const bulkValues = this.fb.group({
+              value: [arrayBulk.value, this.extractValidator(arrayBulk)],
+              title: [arrayBulk.label],
+            });
+            arrayBulks.push(bulkValues);
+          }
+          if (
+            arrayBulk &&
+            arrayBulk.bulkValues &&
+            arrayBulk.bulkValues.length > 0
+          ) {
+            const bulkValues = this.fb.array([]) as any;
+            arrayBulk.bulkValues.forEach((vmx) => {
+              bulkValues.push(this.fb.control(vmx.value));
+            });
+            arrayBulks.push(bulkValues);
+          }
         });
         group[item.label] = arrayBulks;
       }
