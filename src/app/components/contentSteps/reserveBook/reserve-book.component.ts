@@ -8,8 +8,12 @@ import {
 } from '@angular/forms';
 import { DataFormBuilder } from '../../interfaces/data-form-builder';
 import { InputComponent } from '../../../shared/input/input.component';
-import { tap } from 'rxjs';
+import { debounceTime, shareReplay, tap, using } from 'rxjs';
 import { ButtonComponent } from '../../../shared/button/button.component';
+import { GenerativeService } from '../../services/generative.service';
+import { formValueChange } from '../../../+state/stepper.actions';
+import { selectStepperEntities } from '../../../+state/stepper.selectors';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'reserve-book',
@@ -19,8 +23,11 @@ import { ButtonComponent } from '../../../shared/button/button.component';
   styleUrls: ['./reserve-book.component.scss'],
 })
 export class ReserveBookComponent {
-  protected readonly generateFormBuilderService: GenerateFormBuilderService =
-    inject(GenerateFormBuilderService);
+  private readonly _stepperStore = inject(Store);
+  readonly generateFormBuilderService: GenerateFormBuilderService = inject(
+    GenerateFormBuilderService
+  );
+  readonly _injectGenerative = inject(GenerativeService);
   dynamicForm: FormGroup = {} as FormGroup;
   jsonData: DataFormBuilder = {
     values: [
@@ -133,12 +140,24 @@ export class ReserveBookComponent {
       },
     ],
   };
+  formValue$ = using(
+    () =>
+      this.dynamicForm.valueChanges
+        .pipe(
+          debounceTime(200),
+          tap(
+            (values) =>
+              this._stepperStore.dispatch(formValueChange(values as any)) //eslint-disable-line
+          )
+        )
+        .subscribe(),
+    () => this._stepperStore.select(selectStepperEntities)
+  ).pipe(shareReplay());
 
   ngOnInit() {
     this.dynamicForm = this.generateFormBuilderService.buildFormFromJson(
       this.jsonData
     );
-    this.dynamicForm.valueChanges.pipe(tap(console.log)).subscribe();
   }
 
   onSubmit() {
