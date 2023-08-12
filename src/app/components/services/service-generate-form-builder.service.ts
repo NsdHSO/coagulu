@@ -65,7 +65,9 @@ export class GenerateFormBuilderService {
           ) {
             const bulkValues = this.fb.array([]) as any;
             arrayBulk.bulkValues.forEach((vmx) => {
-              bulkValues.push(this.fb.control(vmx.value));
+              bulkValues.push(
+                this.fb.control(vmx.value, this.extractValidator(vmx))
+              );
             });
             arrayBulks.push(bulkValues);
           }

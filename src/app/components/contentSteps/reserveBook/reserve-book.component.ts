@@ -120,6 +120,7 @@ export class ReserveBookComponent {
             bulkValues: [
               {
                 value: 4,
+                validators: [{ type: 'required' }],
               },
               { value: 2 },
             ],
