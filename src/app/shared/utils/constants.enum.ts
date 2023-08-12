@@ -10,4 +10,5 @@ export enum TypeConstantEnum {
   PATTERN = 'pattern',
   REQUIRED = 'required',
   STRING = 'string',
+  MIN_CHAR = 'minChar',
 }
