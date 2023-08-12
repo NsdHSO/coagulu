@@ -19,9 +19,8 @@ import { ButtonComponent } from '../../../shared/button/button.component';
   styleUrls: ['./reserve-book.component.scss'],
 })
 export class ReserveBookComponent {
-  protected readonly formBuilder: GenerateFormBuilderService = inject(
-    GenerateFormBuilderService
-  );
+  protected readonly generateFormBuilderService: GenerateFormBuilderService =
+    inject(GenerateFormBuilderService);
   dynamicForm: FormGroup = {} as FormGroup;
   jsonData: DataFormBuilder = {
     values: [
@@ -135,10 +134,10 @@ export class ReserveBookComponent {
     ],
   };
 
-  constructor() {}
-
   ngOnInit() {
-    this.dynamicForm = this.formBuilder.buildFormFromJson(this.jsonData);
+    this.dynamicForm = this.generateFormBuilderService.buildFormFromJson(
+      this.jsonData
+    );
     this.dynamicForm.valueChanges.pipe(tap(console.log)).subscribe();
   }
 

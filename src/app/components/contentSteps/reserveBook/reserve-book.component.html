@@ -3,7 +3,12 @@
   (ngSubmit)="onSubmit()"
   class="p-3 flex gap-1 flex-col"
 >
-  <ng-container *ngFor="let controls of jsonData.values">
+  <ng-container
+    *ngFor="
+      let controls of jsonData.values;
+      trackBy: generateFormBuilderService.trackBy
+    "
+  >
     <ng-container *ngIf="!controls.bulkValues; else array">
       <ng-container
         *ngIf="!(controls.values && controls.values.length); else groups"
@@ -20,7 +25,13 @@
       </ng-container>
     </ng-container>
     <ng-template #groups>
-      <ng-container *ngFor="let group of controls.values; let index = index">
+      <ng-container
+        *ngFor="
+          let group of controls.values;
+          let index = index;
+          trackBy: generateFormBuilderService.trackBy
+        "
+      >
         <ng-container [formGroupName]="controls.label">
           <div class="grid grid-cols-12">
             <p>
@@ -40,7 +51,11 @@
           <!-- Iterate through section.bulkValues -->
           <h1>{{ controls.label }}</h1>
           <ng-container
-            *ngFor="let bulkValue of controls.bulkValues; let index = index"
+            *ngFor="
+              let bulkValue of controls.bulkValues;
+              let index = index;
+              trackBy: generateFormBuilderService.trackBy
+            "
           >
             <!-- Create a formGroup for each bulkValue -->
             <ng-container
@@ -61,7 +76,8 @@
                   <ng-container
                     *ngFor="
                       let nestedControl of bulkValue.bulkValues;
-                      let nestedIndex = index
+                      let nestedIndex = index;
+                      trackBy: generateFormBuilderService.trackBy
                     "
                   >
                     <input-component
@@ -84,7 +100,3 @@
     >Submit
   </button-component>
 </form>
-
-<pre
-  >{{ dynamicForm.getRawValue() | json }}
-</pre>
