@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -15,6 +15,7 @@ import {
   ConstantsEnum,
   TypeConstantEnum,
 } from '../../shared/utils/constants.enum';
+import { GenerativeService } from './generative.service';
 
 @Injectable({
   providedIn: 'root',
@@ -100,6 +101,11 @@ export class GenerateFormBuilderService {
         // Return null for unknown validator types
         throw new Error('Please Implement this Validator');
     }
+  }
+
+  public trackBy<T>(item: number, entity: T) {
+    const injectGenerative = inject(GenerativeService);
+    return injectGenerative.trackBy(item, entity);
   }
 
   private buildGroup(data: any): FormGroup {
