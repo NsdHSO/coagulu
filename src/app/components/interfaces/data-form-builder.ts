@@ -5,7 +5,7 @@ export interface Validator {
 }
 
 export interface NestedValue {
-  value: string;
+  value?: unknown;
   validators?: Validator[];
   label?: string;
   bulkValues?: NestedValue[];

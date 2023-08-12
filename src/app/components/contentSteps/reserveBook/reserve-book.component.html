@@ -36,20 +36,39 @@
     </ng-template>
     <ng-template #array>
       <ng-container *ngIf="controls.bulkValues">
-        <ng-container formArrayName="{{ controls.label }}">
+        <ng-container [formArrayName]="controls.label">
           <!-- Iterate through section.bulkValues -->
           <h1>{{ controls.label }}</h1>
-
           <ng-container
             *ngFor="let bulkValue of controls.bulkValues; let index = index"
           >
             <!-- Create a formGroup for each bulkValue -->
-            <ng-container [formGroupName]="index">
-              <div class="grid grid-cols-12">
-                <p class="col-span-2">{{ bulkValue.label }}</p>
-                <input-component formControlName="value" class="col-span-4" />
-              </div>
+            <ng-container
+              [formGroupName]="index"
+              *ngIf="!bulkValue.bulkValues; else arrayOfArray"
+            >
+              <ng-container>
+                <div class="grid grid-cols-12">
+                  <p class="col-span-2">{{ bulkValue.label }}</p>
+                  <input-component formControlName="value" class="col-span-4" />
+                </div>
+              </ng-container>
             </ng-container>
+            <ng-template #arrayOfArray>
+              <ng-container [formArrayName]="index">
+                <div class="grid grid-cols-12">
+                  <p class="col-span-2">{{ bulkValue.label }}</p>
+                  <ng-container
+                    *ngFor="
+                      let nestedControl of bulkValue.bulkValues;
+                      let nestedIndex = index
+                    "
+                  >
+                    <input-component [formControlName]="nestedIndex" />
+                  </ng-container>
+                </div>
+              </ng-container>
+            </ng-template>
           </ng-container>
         </ng-container>
       </ng-container>
