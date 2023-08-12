@@ -78,7 +78,7 @@ export class ReserveBookComponent {
         label: 'course',
         bulkValues: [
           {
-            value: '2211',
+            value: 's',
             label: 'angularPatterns',
             validators: [
               { type: 'required' },
@@ -86,6 +86,11 @@ export class ReserveBookComponent {
                 type: 'pattern',
                 option: /^[a-zA-Z\s]*$/,
                 errorMsg: 'Only' + ' char',
+              },
+              {
+                type: 'minChar',
+                option: 2,
+                errorMsg: 'Must filled with min 2 char',
               },
             ],
           },
