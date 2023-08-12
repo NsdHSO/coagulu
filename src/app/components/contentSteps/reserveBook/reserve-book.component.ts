@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GenerateFormBuilderService } from '../../services/service-generate-form-builder.service';
 import {
@@ -22,7 +22,7 @@ import { Store } from '@ngrx/store';
   templateUrl: './reserve-book.component.html',
   styleUrls: ['./reserve-book.component.scss'],
 })
-export class ReserveBookComponent {
+export class ReserveBookComponent implements OnInit {
   private readonly _stepperStore = inject(Store);
   readonly generateFormBuilderService: GenerateFormBuilderService = inject(
     GenerateFormBuilderService
