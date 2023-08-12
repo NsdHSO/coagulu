@@ -1,4 +1,9 @@
-import { Component, inject, Input, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PapControlDirective } from './pap-control.directive';
 import {
@@ -22,6 +27,7 @@ import {
   hostDirectives: [PapControlDirective],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent {
   ngControl: any = injectNgControl();
