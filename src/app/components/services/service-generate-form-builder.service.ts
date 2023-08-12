@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { EnvironmentInjector, inject, Injectable } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -21,8 +21,8 @@ import { GenerativeService } from './generative.service';
   providedIn: 'root',
 })
 export class GenerateFormBuilderService {
-  constructor(private fb: FormBuilder) {}
-
+  private readonly _fb = inject(FormBuilder);
+  private readonly _injectGenerative = inject(GenerativeService);
   buildFormFromJson(jsonData: DataFormBuilder): FormGroup {
     console.log(this.buildGroup(jsonData).controls['home']);
     return this.buildGroup(jsonData);
@@ -104,8 +104,7 @@ export class GenerateFormBuilderService {
   }
 
   public trackBy<T>(item: number, entity: T) {
-    const injectGenerative = inject(GenerativeService);
-    return injectGenerative.trackBy(item, entity);
+    return this._injectGenerative.trackBy(item, entity);
   }
 
   private buildGroup(data: any): FormGroup {
@@ -125,10 +124,10 @@ export class GenerateFormBuilderService {
         group[item.label] = this.buildGroup(item);
       }
       if (item.bulkValues && item.bulkValues.length > ConstantsEnum.ZERO) {
-        const arrayBulks = this.fb.array([]) as any;
+        const arrayBulks = this._fb.array([]) as any;
         item.bulkValues.forEach((arrayBulk, index: number) => {
           if (!arrayBulk.bulkValues) {
-            const bulkValues = this.fb.group({
+            const bulkValues = this._fb.group({
               value: [arrayBulk.value, this.extractValidator(arrayBulk)],
               title: [arrayBulk.label],
             });
@@ -139,7 +138,7 @@ export class GenerateFormBuilderService {
             arrayBulk.bulkValues &&
             arrayBulk.bulkValues.length > 0
           ) {
-            const bulkValues = this.fb.array([]) as any;
+            const bulkValues = this._fb.array([]) as any;
             arrayBulk.bulkValues.forEach((vmx) => {
               bulkValues.push(this.getFormControl(vmx));
             });
@@ -149,10 +148,10 @@ export class GenerateFormBuilderService {
         group[item.label] = arrayBulks;
       }
     });
-    return this.fb.group(group);
+    return this._fb.group(group);
   }
 
   private getFormControl(item: Section | NestedValue) {
-    return this.fb.control(item.value, this.extractValidator(item));
+    return this._fb.control(item.value, this.extractValidator(item));
   }
 }
