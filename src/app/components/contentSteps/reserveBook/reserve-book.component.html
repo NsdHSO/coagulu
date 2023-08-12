@@ -1,12 +1,12 @@
 <form
-  [formGroup]="dynamicForm"
   (ngSubmit)="onSubmit()"
+  [formGroup]="dynamicForm"
   class="p-3 flex gap-1 flex-col"
 >
   <ng-container
     *ngFor="
       let controls of jsonData.values;
-      trackBy: generateFormBuilderService.trackBy
+      trackBy: generateFormBuilderService.trackBy.bind(this)
     "
   >
     <ng-container *ngIf="!controls.bulkValues; else array">
@@ -29,7 +29,7 @@
         *ngFor="
           let group of controls.values;
           let index = index;
-          trackBy: generateFormBuilderService.trackBy
+          trackBy: generateFormBuilderService.trackBy.bind(this)
         "
       >
         <ng-container [formGroupName]="controls.label">
@@ -54,18 +54,18 @@
             *ngFor="
               let bulkValue of controls.bulkValues;
               let index = index;
-              trackBy: generateFormBuilderService.trackBy
+              trackBy: generateFormBuilderService.trackBy.bind(this)
             "
           >
             <!-- Create a formGroup for each bulkValue -->
             <ng-container
-              [formGroupName]="index"
               *ngIf="!bulkValue.bulkValues; else arrayOfArray"
+              [formGroupName]="index"
             >
               <ng-container>
                 <div class="grid grid-cols-12">
                   <p class="col-span-2">{{ bulkValue.label }}</p>
-                  <input-component formControlName="value" class="col-span-4" />
+                  <input-component class="col-span-4" formControlName="value" />
                 </div>
               </ng-container>
             </ng-container>
@@ -77,12 +77,12 @@
                     *ngFor="
                       let nestedControl of bulkValue.bulkValues;
                       let nestedIndex = index;
-                      trackBy: generateFormBuilderService.trackBy
+                      trackBy: generateFormBuilderService.trackBy.bind(this)
                     "
                   >
                     <input-component
-                      class="col-span-4"
                       [formControlName]="nestedIndex"
+                      class="col-span-4"
                     />
                   </ng-container>
                 </div>
@@ -94,8 +94,8 @@
     </ng-template>
   </ng-container>
   <button-component
-    roundedFull="rounded-md"
     [disable]="dynamicForm.pristine || dynamicForm.invalid"
+    roundedFull="rounded-md"
     type="submit"
     >Submit
   </button-component>
