@@ -1,4 +1,9 @@
-import { Component, inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControlDirective,
@@ -32,6 +37,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
       useValue: { subscriptSizing: 'dynamic' },
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormControlLabelComponent {
   @Input()

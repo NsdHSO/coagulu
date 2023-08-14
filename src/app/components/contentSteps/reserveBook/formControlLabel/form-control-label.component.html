@@ -1,11 +1,25 @@
 <div class="grid grid-cols-6 gap-4">
-  <p class="col-span-1" *ngIf="label">{{ label }}</p>
-  <div class="col-span-4 flex">
+  <p
+    [ngClass]="{ invisible: typeInput === 'boolean' }"
+    class="col-span-1"
+    *ngIf="label || labelInput"
+  >
+    {{ label }}
+  </p>
+  <div
+    class="flex"
+    [ngClass]="
+      typeInput === 'boolean' ? 'col-span-1 gap-4 items-center' : 'col-span-4'
+    "
+  >
     <input-component
       [control]="ngControl"
       [typeInput]="typeInput"
       [placeholderInput]="placeholderInput"
       [labelInput]="labelInput"
     />
+    <p class="!m-0" *ngIf="labelInput && typeInput === 'boolean'">
+      {{ labelInput }}
+    </p>
   </div>
 </div>
