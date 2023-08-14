@@ -129,7 +129,6 @@ export class GenerateFormBuilderService {
           if (!arrayBulk.bulkValues) {
             const bulkValues = this._fb.group({
               value: [arrayBulk.value, this.extractValidator(arrayBulk)],
-              title: [arrayBulk.label],
             });
             arrayBulks.push(bulkValues);
           }

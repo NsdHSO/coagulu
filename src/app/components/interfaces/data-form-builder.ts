@@ -10,6 +10,7 @@ export interface NestedValue {
   label?: string;
   bulkValues?: NestedValue[];
   placeholder?: string;
+  labelHint?: string;
 }
 
 export interface SubSection {
@@ -18,6 +19,7 @@ export interface SubSection {
   value?: string | null | number;
   validators?: Validator[];
   placeholder?: string;
+  labelHint?: string;
 }
 
 export interface Section {

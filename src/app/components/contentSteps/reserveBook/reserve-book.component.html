@@ -15,38 +15,28 @@
       <ng-container
         *ngIf="!(controls.values && controls.values.length); else groups"
       >
-        <div class="grid grid-cols-12">
-          <p>
-            {{ controls.label }}
-          </p>
-          <input-component
-            [formControlName]="controls.label"
-            class="col-span-4"
-            [typeInput]="typeOf(controls.value)"
-            [placeholderInput]="controls.placeholder"
-            [labelInput]="controls.labelHint"
-          />
-        </div>
+        <form-control-label
+          [label]="controls.label"
+          [formControlName]="controls.label"
+          class="col-span-4"
+          [typeInput]="typeOf(controls.value)"
+          [placeholderInput]="controls.placeholder"
+          [labelInput]="controls.labelHint"
+        />
       </ng-container>
     </ng-container>
     <ng-template #groups>
       <ng-container
         *ngFor="
           let group of controls.values;
-          let index = index;
           trackBy: generateFormBuilderService.trackBy.bind(this)
         "
       >
         <ng-container [formGroupName]="controls.label">
-          <div class="grid grid-cols-12">
-            <p>
-              {{ group.label }}
-            </p>
-            <input-component
-              [formControlName]="group.label"
-              class="col-span-4"
-            />
-          </div>
+          <form-control-label
+            [label]="group.label"
+            [formControlName]="group.label"
+          />
         </ng-container>
       </ng-container>
     </ng-template>
@@ -59,7 +49,8 @@
           >
             {{ controls.label }}
           </div>
-          <ng-container
+          <div
+            class="bg-gray-50"
             *ngFor="
               let bulkValue of controls.bulkValues;
               let index = index;
@@ -72,10 +63,10 @@
               [formGroupName]="index"
             >
               <ng-container>
-                <div class="grid grid-cols-12 bg-gray-50">
-                  <p class="col-span-2">{{ bulkValue.label }}</p>
-                  <input-component class="col-span-4" formControlName="value" />
-                </div>
+                <form-control-label
+                  [label]="bulkValue.label"
+                  formControlName="value"
+                />
               </ng-container>
             </ng-container>
             <ng-template #arrayOfArray>
@@ -89,15 +80,17 @@
                       trackBy: generateFormBuilderService.trackBy.bind(this)
                     "
                   >
-                    <input-component
+                    <form-control-label
+                      class="col-span-3"
                       [formControlName]="nestedIndex"
-                      class="col-span-4"
+                      [placeholderInput]="nestedControl.placeholder"
+                      [labelInput]="nestedControl.labelHint"
                     />
                   </ng-container>
                 </div>
               </ng-container>
             </ng-template>
-          </ng-container>
+          </div>
         </ng-container>
       </ng-container>
     </ng-template>

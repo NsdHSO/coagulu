@@ -15,6 +15,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @Component({
   selector: 'input-component',
@@ -26,42 +27,23 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatInputModule,
   ],
-  hostDirectives: [PapControlDirective],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent {
-  ngControl: any = injectNgControl();
   /**
    * Type of Input checkbox text
    */
-  @Input()
-  typeInput? = 'text';
+  @Input() typeInput? = 'text';
   /**
    * Placeholder for input
    */
-  @Input()
-  placeholderInput? = '';
+  @Input() placeholderInput? = '';
   /**
    * Label for input
    */
+  @Input() labelInput? = 'Complete label';
   @Input()
-  labelInput? = 'Complete label';
-}
-
-function injectNgControl() {
-  const ngControl = inject(NgControl, { self: true, optional: true });
-
-  if (!ngControl) throw new Error('...');
-
-  if (
-    ngControl instanceof FormControlDirective ||
-    ngControl instanceof FormControlName ||
-    ngControl instanceof NgModel
-  ) {
-    return ngControl;
-  }
-
-  throw new Error(`...`);
+  control?: NgControl | any;
 }
