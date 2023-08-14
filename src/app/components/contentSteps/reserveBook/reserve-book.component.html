@@ -1,7 +1,7 @@
 <form
   (ngSubmit)="onSubmit()"
   [formGroup]="dynamicForm"
-  class="p-3 flex gap-1 flex-col"
+  class="p-3 flex flex-col"
   *ngIf="formValue$ | async"
 >
   <ng-container
@@ -45,12 +45,12 @@
         <ng-container [formArrayName]="controls.label">
           <!-- Iterate through section.bulkValues -->
           <div
-            class="bg-gray-200 font-serif text-cyan-400 text-2xl rounded-t-xl pl-2"
+            class="bg-gray-300 font-serif text-cyan-400 text-2xl rounded-t-xl pl-2"
           >
             {{ controls.label }}
           </div>
           <div
-            class="bg-gray-50"
+            class="bg-slate-50"
             *ngFor="
               let bulkValue of controls.bulkValues;
               let index = index;

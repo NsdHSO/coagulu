@@ -15,6 +15,7 @@ import { formValueChange } from '../../../+state/stepper.actions';
 import { selectStepperEntities } from '../../../+state/stepper.selectors';
 import { Store } from '@ngrx/store';
 import { FormControlLabelComponent } from './formControlLabel/form-control-label.component';
+import { TypeConstantEnum } from '../../../shared/utils/constants.enum';
 
 @Component({
   selector: 'reserve-book',
@@ -52,10 +53,18 @@ export class ReserveBookComponent implements OnInit {
         labelHint: 'Email Address',
       },
       {
-        label: 'age',
-        value: '20',
-        validators: [{ type: 'min', option: 20 }],
-        labelHint: 'Age for user',
+        label: 'Ageu',
+        value: 2,
+        validators: [
+          { type: 'required' },
+          {
+            type: TypeConstantEnum.PATTERN,
+            option: /^\d+(\.\d+)?$/,
+            errorMsg: 'Only Integer Number',
+          },
+          { type: 'min', option: 20, errorMsg: 'Age min is 20' },
+        ],
+        labelHint: 'age',
       },
       {
         label: 'summary',
