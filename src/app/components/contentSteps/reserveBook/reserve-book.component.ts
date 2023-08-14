@@ -35,18 +35,28 @@ export class ReserveBookComponent implements OnInit {
         label: 'name',
         value: 'IVan',
         validators: [{ type: 'required' }],
+        placeholder: 'Isvan Avramescu',
+        labelHint: 'Name for User',
       },
       {
         label: 'email',
         value: 's@gm.co',
         validators: [{ type: 'required' }, { type: 'email' }],
+        labelHint: 'Email Address',
       },
       {
         label: 'age',
         value: '20',
         validators: [{ type: 'min', option: 20 }],
+        labelHint: 'Age for user',
       },
       {
+        label: 'summary',
+        value: true,
+        labelHint: 'Summary Type',
+      },
+      {
+        labelHint: 'Address street',
         label: 'address',
         values: [
           {
@@ -60,6 +70,7 @@ export class ReserveBookComponent implements OnInit {
       },
       {
         label: 'personalData',
+        labelHint: 'Personal Data',
         values: [
           {
             label: 'cnp',
@@ -81,6 +92,7 @@ export class ReserveBookComponent implements OnInit {
         ],
       },
       {
+        labelHint: 'Course what user take',
         label: 'course',
         bulkValues: [
           {
@@ -107,6 +119,7 @@ export class ReserveBookComponent implements OnInit {
         ],
       },
       {
+        labelHint: 'Name for User',
         label: 'age',
         bulkValues: [
           {
@@ -121,6 +134,7 @@ export class ReserveBookComponent implements OnInit {
       },
       {
         label: 'home',
+        labelHint: 'Name for User',
         bulkValues: [
           {
             value: '444',
@@ -130,7 +144,7 @@ export class ReserveBookComponent implements OnInit {
             label: 'Ivan',
             bulkValues: [
               {
-                value: 4,
+                value: null,
                 validators: [{ type: 'required' }],
               },
               { value: 2 },
@@ -170,5 +184,9 @@ export class ReserveBookComponent implements OnInit {
 
   getControl(controlKey: string): AbstractControl | null {
     return this.dynamicForm.get(controlKey);
+  }
+
+  public typeOf(value: number | string | undefined | boolean) {
+    return typeof value;
   }
 }
