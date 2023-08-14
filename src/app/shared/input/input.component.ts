@@ -14,6 +14,7 @@ import {
   NgModel,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'input-component',
@@ -23,6 +24,7 @@ import {
     PapControlDirective,
     FormsModule,
     ReactiveFormsModule,
+    MatInputModule,
   ],
   hostDirectives: [PapControlDirective],
   templateUrl: './input.component.html',
@@ -36,6 +38,16 @@ export class InputComponent {
    */
   @Input()
   typeInput? = 'text';
+  /**
+   * Placeholder for input
+   */
+  @Input()
+  placeholderInput? = '';
+  /**
+   * Label for input
+   */
+  @Input()
+  labelInput? = 'Complete label';
 }
 
 function injectNgControl() {

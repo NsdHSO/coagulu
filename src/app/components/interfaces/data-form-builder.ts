@@ -9,6 +9,7 @@ export interface NestedValue {
   validators?: Validator[];
   label?: string;
   bulkValues?: NestedValue[];
+  placeholder?: string;
 }
 
 export interface SubSection {
@@ -16,14 +17,17 @@ export interface SubSection {
   values?: NestedValue[];
   value?: string | null | number;
   validators?: Validator[];
+  placeholder?: string;
 }
 
 export interface Section {
   label: string;
-  value?: number | string;
+  value?: number | string | boolean;
   values?: SubSection[];
   validators?: Validator[];
   bulkValues?: NestedValue[];
+  placeholder?: string;
+  labelHint: string;
 }
 
 export interface DataFormBuilder {

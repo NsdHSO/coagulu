@@ -24,7 +24,7 @@ export class GenerateFormBuilderService {
   private readonly _fb = inject(FormBuilder);
   private readonly _injectGenerative = inject(GenerativeService);
   buildFormFromJson(jsonData: DataFormBuilder): FormGroup {
-    console.log(this.buildGroup(jsonData).controls['home']);
+    console.log(this.buildGroup(jsonData));
     return this.buildGroup(jsonData);
   }
 

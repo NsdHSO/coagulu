@@ -10,6 +10,7 @@
       trackBy: generateFormBuilderService.trackBy.bind(this)
     "
   >
+    <!--    Only single control -->
     <ng-container *ngIf="!controls.bulkValues; else array">
       <ng-container
         *ngIf="!(controls.values && controls.values.length); else groups"
@@ -21,6 +22,9 @@
           <input-component
             [formControlName]="controls.label"
             class="col-span-4"
+            [typeInput]="typeOf(controls.value)"
+            [placeholderInput]="controls.placeholder"
+            [labelInput]="controls.labelHint"
           />
         </div>
       </ng-container>
@@ -50,7 +54,11 @@
       <ng-container *ngIf="controls.bulkValues">
         <ng-container [formArrayName]="controls.label">
           <!-- Iterate through section.bulkValues -->
-          <h1>{{ controls.label }}</h1>
+          <div
+            class="bg-gray-200 font-serif text-cyan-400 text-2xl rounded-t-xl pl-2"
+          >
+            {{ controls.label }}
+          </div>
           <ng-container
             *ngFor="
               let bulkValue of controls.bulkValues;
@@ -64,7 +72,7 @@
               [formGroupName]="index"
             >
               <ng-container>
-                <div class="grid grid-cols-12">
+                <div class="grid grid-cols-12 bg-gray-50">
                   <p class="col-span-2">{{ bulkValue.label }}</p>
                   <input-component class="col-span-4" formControlName="value" />
                 </div>
