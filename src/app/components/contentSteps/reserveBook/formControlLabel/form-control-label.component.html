@@ -1,0 +1,11 @@
+<div class="grid grid-cols-6 gap-4">
+  <p class="col-span-1" *ngIf="label">{{ label }}</p>
+  <div class="col-span-4 flex">
+    <input-component
+      [control]="ngControl"
+      [typeInput]="typeInput"
+      [placeholderInput]="placeholderInput"
+      [labelInput]="labelInput"
+    />
+  </div>
+</div>
