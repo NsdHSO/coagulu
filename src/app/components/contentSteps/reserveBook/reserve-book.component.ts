@@ -14,11 +14,18 @@ import { GenerativeService } from '../../services/generative.service';
 import { formValueChange } from '../../../+state/stepper.actions';
 import { selectStepperEntities } from '../../../+state/stepper.selectors';
 import { Store } from '@ngrx/store';
+import { FormControlLabelComponent } from './formControlLabel/form-control-label.component';
 
 @Component({
   selector: 'reserve-book',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, InputComponent, ButtonComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    InputComponent,
+    ButtonComponent,
+    FormControlLabelComponent,
+  ],
   templateUrl: './reserve-book.component.html',
   styleUrls: ['./reserve-book.component.scss'],
 })
@@ -147,7 +154,7 @@ export class ReserveBookComponent implements OnInit {
                 value: null,
                 validators: [{ type: 'required' }],
               },
-              { value: 2 },
+              { value: 2, placeholder: 'NAMING', labelHint: 'Number' },
             ],
           },
         ],

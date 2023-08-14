@@ -2,20 +2,25 @@
   <ng-container [ngSwitch]="typeInput">
     <input
       *ngSwitchCase="'boolean'"
+      [formControl]="control.control"
       type="checkbox"
-      [formControl]="ngControl.control"
       class="border-0 flex ng-dirty ng-touched ng-valid placeholder:text-gray-400 py-1.5 ring-inset rounded-md shadow-sm sm:leading-6 sm:text-sm text-gray-900"
     />
-    <mat-form-field appearance="outline" *ngSwitchDefault>
+    <mat-form-field
+      appearance="outline"
+      *ngSwitchDefault
+      class="rotate-180 -scale-[0.8]"
+    >
       <mat-label>{{ labelInput }}</mat-label>
       <input
         matInput
         [placeholder]="placeholderInput ?? ''"
-        [formControl]="ngControl.control"
+        [formControl]="control.control"
+        class="font-semibold !text-xl"
       />
     </mat-form-field>
   </ng-container>
-  <div *ngIf="ngControl.control?.errors?.error" class="pl-3 py-2 text-red-500">
-    {{ ngControl.control?.errors?.error }}
+  <div *ngIf="control?.control?.errors?.error" class="pl-3 py-2 text-red-500">
+    {{ control.control?.errors?.error }}
   </div>
 </div>
