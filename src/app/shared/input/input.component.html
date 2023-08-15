@@ -7,14 +7,16 @@
       class="border-0 flex ng-dirty ng-touched ng-valid placeholder:text-gray-400 py-1.5 ring-inset rounded-md shadow-sm sm:leading-6 sm:text-sm text-gray-900"
     />
     <ng-container *ngSwitchCase="'toggle'">
-      <div *ngFor="let radio of toggleData" class="flex items-center">
-        <input
-          type="radio"
-          class="border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-          [value]="radio.value"
-          [formControl]="control.control"
-        />
-        <p class="!m-0">{{ radio.description }}</p>
+      <div class="flex gap-5">
+        <div *ngFor="let radio of toggleData" class="flex items-center gap-3">
+          <input
+            type="radio"
+            class="border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+            [value]="radio.value"
+            [formControl]="control.control"
+          />
+          <p class="!m-0">{{ radio.description }}</p>
+        </div>
       </div>
     </ng-container>
     <mat-form-field
