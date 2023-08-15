@@ -90,12 +90,14 @@ export class ReserveBookComponent implements OnInit {
         values: [
           {
             label: 'cnp',
+            labelHint: 'Personal Nested',
             value: '123141232311',
             validators: [{ type: 'min', option: 20 }],
           },
           {
             label: 'ds',
             value: 'TEST',
+            labelHint: 'Personal TEst',
             validators: [
               { type: 'required' },
               {
@@ -162,6 +164,7 @@ export class ReserveBookComponent implements OnInit {
               {
                 value: null,
                 validators: [{ type: 'required' }],
+                labelHint: 'Childrens',
               },
               { value: 2, placeholder: 'NAMING', labelHint: 'Number' },
             ],
