@@ -16,3 +16,15 @@
     - values are using in input to create multiple formControl -> FormGroup
     - validators are using to put validator
     - bulkValues are using to create formArray
+
+    Validators :
+        - option :
+            - /^\d+(\.\d+)?$/ Only number
+            - /^[a-zA-Z\s]*$/ Only char
+        - type: TypeConstantEnum
+            - email
+            - required
+            - pattern
+            - min
+        - errorMsg:
+            - string "Msg what do you want to see in error workspace UI"

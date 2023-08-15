@@ -36,62 +36,63 @@
           <form-control-label
             [label]="group.label"
             [formControlName]="group.label"
+            class="col-span-4"
+            [typeInput]="typeOf(controls.value)"
+            [placeholderInput]="controls.placeholder"
+            [labelInput]="group.labelHint"
           />
         </ng-container>
       </ng-container>
     </ng-template>
     <ng-template #array>
-      <ng-container *ngIf="controls.bulkValues">
-        <ng-container [formArrayName]="controls.label">
-          <!-- Iterate through section.bulkValues -->
-          <div
-            class="bg-gray-300 font-serif text-cyan-400 text-2xl rounded-t-xl pl-2"
+      <ng-container
+        *ngIf="controls.bulkValues"
+        [formArrayName]="controls.label"
+      >
+        <!-- Iterate through section.bulkValues -->
+        <div
+          class="bg-gray-300 font-serif text-cyan-400 text-2xl rounded-t-xl pl-2"
+        >
+          {{ controls.label }}
+        </div>
+        <div
+          class="bg-slate-50"
+          *ngFor="
+            let bulkValue of controls.bulkValues;
+            let index = index;
+            trackBy: generateFormBuilderService.trackBy.bind(this)
+          "
+        >
+          <!-- Create a formGroup for each bulkValue -->
+          <ng-container
+            *ngIf="!bulkValue.bulkValues; else arrayOfArray"
+            [formGroupName]="index"
           >
-            {{ controls.label }}
-          </div>
-          <div
-            class="bg-slate-50"
-            *ngFor="
-              let bulkValue of controls.bulkValues;
-              let index = index;
-              trackBy: generateFormBuilderService.trackBy.bind(this)
-            "
-          >
-            <!-- Create a formGroup for each bulkValue -->
-            <ng-container
-              *ngIf="!bulkValue.bulkValues; else arrayOfArray"
-              [formGroupName]="index"
-            >
-              <ng-container>
+            <form-control-label
+              [label]="bulkValue.label"
+              formControlName="value"
+            />
+          </ng-container>
+          <ng-template #arrayOfArray [formArrayName]="index">
+            <div class="grid grid-cols-12">
+              <p class="col-span-2">{{ bulkValue.label }}</p>
+              <ng-container
+                *ngFor="
+                  let nestedControl of bulkValue.bulkValues;
+                  let nestedIndex = index;
+                  trackBy: generateFormBuilderService.trackBy.bind(this)
+                "
+              >
                 <form-control-label
-                  [label]="bulkValue.label"
-                  formControlName="value"
+                  class="col-span-3"
+                  [formControlName]="nestedIndex"
+                  [placeholderInput]="nestedControl.placeholder"
+                  [labelInput]="nestedControl.labelHint"
                 />
               </ng-container>
-            </ng-container>
-            <ng-template #arrayOfArray>
-              <ng-container [formArrayName]="index">
-                <div class="grid grid-cols-12">
-                  <p class="col-span-2">{{ bulkValue.label }}</p>
-                  <ng-container
-                    *ngFor="
-                      let nestedControl of bulkValue.bulkValues;
-                      let nestedIndex = index;
-                      trackBy: generateFormBuilderService.trackBy.bind(this)
-                    "
-                  >
-                    <form-control-label
-                      class="col-span-3"
-                      [formControlName]="nestedIndex"
-                      [placeholderInput]="nestedControl.placeholder"
-                      [labelInput]="nestedControl.labelHint"
-                    />
-                  </ng-container>
-                </div>
-              </ng-container>
-            </ng-template>
-          </div>
-        </ng-container>
+            </div>
+          </ng-template>
+        </div>
       </ng-container>
     </ng-template>
   </ng-container>
