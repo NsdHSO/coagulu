@@ -12,3 +12,8 @@ export enum TypeConstantEnum {
   STRING = 'string',
   MIN_CHAR = 'minChar',
 }
+
+export enum TypePattern {
+  ONLY_NUMBER = '^[0-9]+$',
+  ONLY_CHAR = '^[a-zA-Z\\s]*$',
+}

@@ -1,11 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GenerateFormBuilderService } from '../../services/service-generate-form-builder.service';
-import {
-  AbstractControl,
-  FormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DataFormBuilder } from '../../interfaces/data-form-builder';
 import { InputComponent } from '../../../shared/input/input.component';
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
@@ -15,7 +11,10 @@ import { formValueChange } from '../../../+state/stepper.actions';
 import { selectStepperEntities } from '../../../+state/stepper.selectors';
 import { Store } from '@ngrx/store';
 import { FormControlLabelComponent } from './formControlLabel/form-control-label.component';
-import { TypeConstantEnum } from '../../../shared/utils/constants.enum';
+import {
+  TypeConstantEnum,
+  TypePattern,
+} from '../../../shared/utils/constants.enum';
 
 @Component({
   selector: 'reserve-book',
@@ -42,27 +41,29 @@ export class ReserveBookComponent implements OnInit {
       {
         label: 'name',
         value: 'IVan',
-        validators: [{ type: 'required' }],
+        validators: [{ type: TypeConstantEnum.REQUIRED }],
         placeholder: 'Isvan Avramescu',
         labelHint: 'Name for User',
       },
       {
         label: 'email',
         value: 's@gm.co',
-        validators: [{ type: 'required' }, { type: 'email' }],
+        validators: [
+          { type: TypeConstantEnum.REQUIRED },
+          { type: TypeConstantEnum.EMAIL },
+        ],
         labelHint: 'Email Address',
       },
       {
         label: 'Ageu',
-        value: 2,
+        value: '201',
         validators: [
-          { type: 'required' },
+          { type: TypeConstantEnum.REQUIRED },
           {
             type: TypeConstantEnum.PATTERN,
-            option: /^\d+(\.\d+)?$/,
+            option: TypePattern.ONLY_NUMBER,
             errorMsg: 'Only Integer Number',
           },
-          { type: 'min', option: 20, errorMsg: 'Age min is 20' },
         ],
         labelHint: 'age',
       },
@@ -79,7 +80,10 @@ export class ReserveBookComponent implements OnInit {
             label: 'street',
             value: 'Ivan',
             validators: [
-              { type: 'required', errorMsg: 'This field it is' + ' must' },
+              {
+                type: TypeConstantEnum.REQUIRED,
+                errorMsg: 'This field it is' + ' must',
+              },
             ],
           },
         ],
@@ -92,17 +96,17 @@ export class ReserveBookComponent implements OnInit {
             label: 'cnp',
             labelHint: 'Personal Nested',
             value: '123141232311',
-            validators: [{ type: 'min', option: 20 }],
+            validators: [{ type: TypeConstantEnum.MIN, option: 20 }],
           },
           {
             label: 'ds',
             value: 'TEST',
             labelHint: 'Personal TEst',
             validators: [
-              { type: 'required' },
+              { type: TypeConstantEnum.REQUIRED },
               {
-                type: 'pattern',
-                option: /^[a-zA-Z\s]*$/,
+                type: TypeConstantEnum.PATTERN,
+                option: TypePattern.ONLY_CHAR,
                 errorMsg: 'Only' + ' char',
               },
             ],
@@ -117,14 +121,14 @@ export class ReserveBookComponent implements OnInit {
             value: 's',
             label: 'angularPatterns',
             validators: [
-              { type: 'required' },
+              { type: TypeConstantEnum.REQUIRED },
               {
-                type: 'pattern',
-                option: /^[a-zA-Z\s]*$/,
+                type: TypeConstantEnum.PATTERN,
+                option: TypePattern.ONLY_CHAR,
                 errorMsg: 'Only' + ' char',
               },
               {
-                type: 'minChar',
+                type: TypeConstantEnum.MIN_CHAR,
                 option: 2,
                 errorMsg: 'Must filled with min 2 char',
               },
@@ -163,7 +167,7 @@ export class ReserveBookComponent implements OnInit {
             bulkValues: [
               {
                 value: null,
-                validators: [{ type: 'required' }],
+                validators: [{ type: TypeConstantEnum.REQUIRED }],
                 labelHint: 'Childrens',
               },
               { value: 2, placeholder: 'NAMING', labelHint: 'Number' },
@@ -199,10 +203,6 @@ export class ReserveBookComponent implements OnInit {
       // Handle form submission
     } else {
     }
-  }
-
-  getControl(controlKey: string): AbstractControl | null {
-    return this.dynamicForm.get(controlKey);
   }
 
   public typeOf(value: number | string | undefined | boolean) {
