@@ -17,14 +17,15 @@
     - validators are using to put validator
     - bulkValues are using to create formArray
 
-    Validators :
+    Validators :[
         - option :
             - /^\d+(\.\d+)?$/ Only number
             - /^[a-zA-Z\s]*$/ Only char
         - type: TypeConstantEnum
             - email
             - required
-            - pattern
+            - pattern TypePattern
             - min
         - errorMsg:
             - string "Msg what do you want to see in error workspace UI"
+    ]
