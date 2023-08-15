@@ -44,6 +44,10 @@ export class InputComponent {
    * Label for input
    */
   @Input() labelInput? = 'Complete label';
+  /**
+   * When input is radio button
+   */
+  @Input() toggleData? = [{ value: false, description: 'default' }];
   @Input()
   control?: NgControl | any;
 }

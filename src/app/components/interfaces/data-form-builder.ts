@@ -30,6 +30,8 @@ export interface Section {
   bulkValues?: NestedValue[];
   placeholder?: string;
   labelHint: string;
+  typeInput?: string;
+  valueToggleShow?: { value: boolean; description: string }[];
 }
 
 export interface DataFormBuilder {

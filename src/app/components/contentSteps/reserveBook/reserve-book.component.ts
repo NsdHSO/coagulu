@@ -71,6 +71,17 @@ export class ReserveBookComponent implements OnInit {
         label: 'summary',
         value: true,
         labelHint: 'Summary Type',
+        typeInput: 'boolean',
+      },
+      {
+        label: 'toggle',
+        value: true,
+        labelHint: 'Toggle Type',
+        typeInput: 'toggle',
+        valueToggleShow: [
+          { value: true, description: 'TEst' },
+          { value: false, description: 'TEST1' },
+        ],
       },
       {
         labelHint: 'Address street',

@@ -29,3 +29,9 @@
         - errorMsg:
             - string "Msg what do you want to see in error workspace UI"
     ]
+
+### If you want to create a radio button
+
+```json
+        "typeInput": 'toggle'
+```

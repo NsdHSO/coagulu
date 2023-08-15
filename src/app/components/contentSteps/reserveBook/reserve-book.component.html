@@ -19,9 +19,10 @@
           [label]="controls.label"
           [formControlName]="controls.label"
           class="col-span-4"
-          [typeInput]="typeOf(controls.value)"
+          [typeInput]="controls.typeInput"
           [placeholderInput]="controls.placeholder"
           [labelInput]="controls.labelHint"
+          [toggleData]="controls.valueToggleShow"
         />
       </ng-container>
     </ng-container>
@@ -37,7 +38,7 @@
             [label]="group.label"
             [formControlName]="group.label"
             class="col-span-4"
-            [typeInput]="typeOf(controls.value)"
+            [typeInput]="controls.typeInput"
             [placeholderInput]="controls.placeholder"
             [labelInput]="group.labelHint"
           />
