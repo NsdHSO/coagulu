@@ -33,5 +33,5 @@
 ### If you want to create a radio button
 
 ```json
-        "typeInput": 'toggle'
+        "typeInput": 'toggle | boolean | text( default )'
 ```
