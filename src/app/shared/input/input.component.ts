@@ -16,6 +16,8 @@ import {
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 @Component({
   selector: 'input-component',
@@ -26,6 +28,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatRadioModule,
   ],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
