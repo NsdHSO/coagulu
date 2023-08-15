@@ -74,6 +74,12 @@ export class ReserveBookComponent implements OnInit {
         typeInput: 'boolean',
       },
       {
+        label: 'TEST AREA',
+        value: 'dasdasd',
+        labelHint: 'Area Data',
+        typeInput: 'area',
+      },
+      {
         label: 'toggle',
         value: true,
         labelHint: 'Toggle Type',

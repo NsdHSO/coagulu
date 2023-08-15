@@ -19,6 +19,17 @@
         </div>
       </div>
     </ng-container>
+    <ng-container *ngSwitchCase="'area'">
+      <mat-form-field appearance="outline" class="rotate-180 -scale-[0.8]">
+        <mat-label>{{ labelInput }}</mat-label>
+        <textarea
+          matInput
+          [placeholder]="placeholderInput ?? ''"
+          [formControl]="control.control"
+          class="font-semibold !text-xl"
+        ></textarea>
+      </mat-form-field>
+    </ng-container>
     <mat-form-field
       appearance="outline"
       *ngSwitchDefault
