@@ -108,10 +108,8 @@ export class GenerateFormBuilderService {
   public trackBy<T>(item: number, entity: T) {
     return this._injectGenerative.trackBy(item, entity);
   }
-
+  //eslint-disable-next-line
   private buildGroup(data: any): FormGroup {
-    //eslint-disable-line
-
     const group: { [key: string]: unknown } = {};
     data.values.forEach((item: Section) => {
       if (item.value) {
