@@ -13,7 +13,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class PapControlDirective implements ControlValueAccessor {
-  writeValue(obj: any): void {}
+  writeValue(obj: any): void {
+    //
+  }
   registerOnChange(fn: any): void {
     //
   }
