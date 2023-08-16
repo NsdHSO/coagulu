@@ -40,8 +40,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormControlLabelComponent {
-  @Input() public label: string | undefined = '';
-  @Input() public formControlName: string | number | undefined = '';
+  @Input() label: string | undefined = '';
+  @Input() formControlName: string | number | undefined = '';
   /**
    * Type of Input checkbox text
    */
@@ -65,7 +65,7 @@ export class FormControlLabelComponent {
 function injectNgControl() {
   const ngControl = inject(NgControl, { self: true, optional: true });
   if (!ngControl) {
-    throw new Error('...');
+    throw new Error('Not ng Controll');
   }
   if (
     ngControl instanceof FormControlDirective ||
@@ -74,5 +74,5 @@ function injectNgControl() {
   ) {
     return ngControl;
   }
-  throw new Error(`...`);
+  throw new Error(`Not of instance of Form Directive Name Model`);
 }
