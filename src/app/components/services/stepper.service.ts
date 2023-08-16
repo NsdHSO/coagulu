@@ -152,8 +152,8 @@ export class StepperService {
   public buttonDisable$ = combineLatest([this.formValue$, this.flagUrl$]).pipe(
     switchMap(
       (
-        valuesCombined: any
-      ): Observable<boolean> => of(!valuesCombined[0][valuesCombined[1]].check) //eslint-disable-line //eslint-disable-line
+        valuesCombined: any //eslint-disable-line
+      ): Observable<boolean> => of(!valuesCombined[0][valuesCombined[1]].check)
     )
   );
 
