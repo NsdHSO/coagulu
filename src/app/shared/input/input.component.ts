@@ -40,5 +40,5 @@ export class InputComponent {
    */
   @Input() toggleData? = [{ value: false, description: 'default' }];
   @Input()
-  control?: NgControl | any;
+  control?: NgControl | any | unknown; //eslint-disable-line
 }

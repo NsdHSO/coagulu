@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StepperService } from '../../services/stepper.service';
-import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PatchFormGroupValueDirective } from '../../../directive/patch-form-group-value.directive';
 import { Observable } from 'rxjs';
 import { Dictionary } from '@ngrx/entity';
