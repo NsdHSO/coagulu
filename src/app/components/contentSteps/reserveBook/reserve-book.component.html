@@ -41,6 +41,7 @@
             [typeInput]="controls.typeInput"
             [placeholderInput]="controls.placeholder"
             [labelInput]="group.labelHint"
+            [toggleData]="group.valueToggleShow"
           />
         </ng-container>
       </ng-container>
@@ -72,6 +73,11 @@
             <form-control-label
               [label]="bulkValue.label"
               formControlName="value"
+              class="col-span-4"
+              [typeInput]="controls.typeInput"
+              [placeholderInput]="controls.placeholder"
+              [labelInput]="bulkValue.labelHint"
+              [toggleData]="bulkValue.valueToggleShow"
             />
           </ng-container>
           <ng-template #arrayOfArray [formArrayName]="index">
@@ -89,6 +95,10 @@
                   [formControlName]="nestedIndex"
                   [placeholderInput]="nestedControl.placeholder"
                   [labelInput]="nestedControl.labelHint"
+                  [typeInput]="nestedControl.typeInput"
+                  [label]="bulkValue.label"
+                  formControlName="value"
+                  [toggleData]="nestedControl.valueToggleShow"
                 />
               </ng-container>
             </div>

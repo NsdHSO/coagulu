@@ -11,6 +11,8 @@ export interface NestedValue {
   bulkValues?: NestedValue[];
   placeholder?: string;
   labelHint?: string;
+  valueToggleShow?: { value: boolean; description: string }[];
+  typeInput?: string;
 }
 
 export interface SubSection {
@@ -20,6 +22,8 @@ export interface SubSection {
   validators?: Validator[];
   placeholder?: string;
   labelHint?: string;
+  valueToggleShow?: { value: boolean; description: string }[];
+  typeInput?: string;
 }
 
 export interface Section {

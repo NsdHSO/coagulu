@@ -72,6 +72,7 @@ export class ReserveBookComponent implements OnInit {
         value: true,
         labelHint: 'Summary Type',
         typeInput: 'boolean',
+        validators: [{ type: TypeConstantEnum.REQUIRED }],
       },
       {
         label: 'TEST AREA',
@@ -137,6 +138,7 @@ export class ReserveBookComponent implements OnInit {
           {
             value: 's',
             label: 'angularPatterns',
+            labelHint: 'Summary TEST',
             validators: [
               { type: TypeConstantEnum.REQUIRED },
               {
@@ -216,7 +218,7 @@ export class ReserveBookComponent implements OnInit {
 
   onSubmit() {
     if (this.dynamicForm.valid) {
-      console.log('tesra');
+      console.log(this.dynamicForm.getRawValue());
       // Handle form submission
     } else {
     }
