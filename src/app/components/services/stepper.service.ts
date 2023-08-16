@@ -14,7 +14,6 @@ import {
 } from 'rxjs';
 import { formValueChange } from '../../+state/stepper.actions';
 import { selectStepperEntities } from '../../+state/stepper.selectors';
-import { GenerativeService } from './generative.service';
 
 @Injectable({ providedIn: 'root' })
 export class StepperService {
@@ -152,8 +151,9 @@ export class StepperService {
   ).pipe(shareReplay());
   public buttonDisable$ = combineLatest([this.formValue$, this.flagUrl$]).pipe(
     switchMap(
-      (valuesCombined: any): Observable<boolean> =>
-        of(!valuesCombined[0][valuesCombined[1]].check) //eslint-disable-line
+      (
+        valuesCombined: any
+      ): Observable<boolean> => of(!valuesCombined[0][valuesCombined[1]].check) //eslint-disable-line //eslint-disable-line
     )
   );
 

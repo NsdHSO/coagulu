@@ -1,5 +1,6 @@
-import { EnvironmentInjector, inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -39,6 +40,7 @@ export class GenerateFormBuilderService {
   }
 
   getValidator(validatorConfig: Validator): ValidatorFn | any {
+    // eslint-disable-line
     const { type, option, errorMsg } = validatorConfig;
     switch (type) {
       case TypeConstantEnum.REQUIRED:
@@ -108,6 +110,7 @@ export class GenerateFormBuilderService {
   }
 
   private buildGroup(data: any): FormGroup {
+    //eslint-disable-line
     const group: { [key: string]: unknown } = {};
     data.values.forEach((item: Section) => {
       if (item.value) {
@@ -124,7 +127,7 @@ export class GenerateFormBuilderService {
         group[item.label] = this.buildGroup(item);
       }
       if (item.bulkValues && item.bulkValues.length > ConstantsEnum.ZERO) {
-        const arrayBulks = this._fb.array([]) as any;
+        const arrayBulks: FormArray = this._fb.array([]);
         item.bulkValues.forEach((arrayBulk) => {
           if (!arrayBulk.bulkValues) {
             const bulkValues = this._fb.group({
@@ -137,7 +140,7 @@ export class GenerateFormBuilderService {
             arrayBulk.bulkValues &&
             arrayBulk.bulkValues.length > 0
           ) {
-            const bulkValues = this._fb.array([]) as any;
+            const bulkValues: FormArray = this._fb.array([]);
             arrayBulk.bulkValues.forEach((vmx) => {
               bulkValues.push(this.getFormControl(vmx));
             });

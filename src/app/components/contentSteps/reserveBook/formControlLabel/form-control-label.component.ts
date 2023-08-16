@@ -40,10 +40,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormControlLabelComponent {
-  @Input()
-  public label: any;
-  @Input()
-  public formControlName: any;
+  @Input() public label: string | undefined = '';
+  @Input() public formControlName: string | number | undefined = '';
   /**
    * Type of Input checkbox text
    */
@@ -60,7 +58,8 @@ export class FormControlLabelComponent {
    * When input is radio button
    */
   @Input() toggleData? = [{ value: false, description: 'default' }];
-  ngControl: any = injectNgControl();
+  ngControl: FormControlDirective | FormControlName | NgModel =
+    injectNgControl();
 }
 
 function injectNgControl() {
