@@ -38,9 +38,8 @@ export class GenerateFormBuilderService {
     }
     return validators;
   }
-
+  // eslint-disable-next-line
   getValidator(validatorConfig: Validator): ValidatorFn | any {
-    // eslint-disable-line
     const { type, option, errorMsg } = validatorConfig;
     switch (type) {
       case TypeConstantEnum.REQUIRED:

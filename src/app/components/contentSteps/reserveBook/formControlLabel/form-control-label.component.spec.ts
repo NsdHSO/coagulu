@@ -4,7 +4,6 @@ import {
   FormControl,
   FormControlDirective,
   FormControlName,
-  FormGroup,
   FormsModule,
   NgControl,
   NgModel,
@@ -13,6 +12,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 class MockNgControl {}
 
 describe('FormControlLabelComponent', () => {
