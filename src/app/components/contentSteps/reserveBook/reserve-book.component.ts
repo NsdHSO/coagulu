@@ -224,8 +224,4 @@ export class ReserveBookComponent implements OnInit {
       //
     }
   }
-
-  public typeOf(value: number | string | undefined | boolean) {
-    return typeof value;
-  }
 }

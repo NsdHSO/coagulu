@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReserveBookComponent } from './reserve-book.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('ReserveBookComponent', () => {
   let component: ReserveBookComponent;
@@ -8,6 +9,7 @@ describe('ReserveBookComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ReserveBookComponent],
+      providers: [provideMockStore({})],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ReserveBookComponent);
