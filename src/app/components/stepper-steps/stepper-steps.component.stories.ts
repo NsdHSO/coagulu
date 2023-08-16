@@ -59,15 +59,18 @@ export default {
         {
           provide: HttpClientModule,
           useValue: {
-            fetchIcon: () => {},
-            loadSvgIconSetFromConfig: () => {},
+            fetchIcon: () => {
+              //implementation
+            },
+            loadSvgIconSetFromConfig: () => {
+              //implementation
+            },
           },
         },
       ],
     }),
   ],
 } as Meta<StepperStepsComponent>;
-
 export const Primary = {
   render: (args: StepperStepsComponent) => ({
     props: args,

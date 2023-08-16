@@ -125,7 +125,7 @@ export class GenerateFormBuilderService {
       }
       if (item.bulkValues && item.bulkValues.length > ConstantsEnum.ZERO) {
         const arrayBulks = this._fb.array([]) as any;
-        item.bulkValues.forEach((arrayBulk, index: number) => {
+        item.bulkValues.forEach((arrayBulk) => {
           if (!arrayBulk.bulkValues) {
             const bulkValues = this._fb.group({
               value: [arrayBulk.value, this.extractValidator(arrayBulk)],
