@@ -111,6 +111,7 @@ export class GenerateFormBuilderService {
 
   private buildGroup(data: any): FormGroup {
     //eslint-disable-line
+
     const group: { [key: string]: unknown } = {};
     data.values.forEach((item: Section) => {
       if (item.value) {
