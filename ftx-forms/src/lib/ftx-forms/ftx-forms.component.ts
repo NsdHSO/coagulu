@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  AbstractControl,
   FormGroup,
   isFormArray,
   isFormControl,
@@ -17,7 +16,7 @@ import {
 } from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
 import { FormControlLabelComponent } from './components';
-import { ButtonComponent } from '../../../../src/app/shared/button/button.component';
+import { ButtonComponent } from './shared/button/button.component';
 import { GenerativeService } from './service';
 
 @Component({

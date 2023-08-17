@@ -10,7 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { ButtonComponent } from '../../shared/button/button.component';
+import { ButtonComponent } from '../../../../ftx-forms/src/lib/ftx-forms/shared/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 import { map, of, Subject, switchMap, takeUntil, tap } from 'rxjs';
