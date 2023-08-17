@@ -1,22 +1,23 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GenerateFormBuilderService } from '../../services/service-generate-form-builder.service';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { DataFormBuilder } from '../../interfaces/data-form-builder';
+import {
+  DataFormBuilder,
+  FormControlLabelComponent,
+  GenerateFormBuilderService,
+  GenerativeService,
+  TypeConstantEnum,
+  TypePattern,
+} from 'ngx-ftx-forms';
 import { InputComponent } from '../../../shared/input/input.component';
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
 import { ButtonComponent } from '../../../shared/button/button.component';
-import { GenerativeService } from '../../services/generative.service';
 import { Store } from '@ngrx/store';
-import { FormControlLabelComponent } from './formControlLabel/form-control-label.component';
-import {
-  TypeConstantEnum,
-  TypePattern,
-} from '../../../shared/utils/constants.enum';
 import { StepperService } from '../../services/stepper.service';
 import { PatchFormGroupValueDirective } from '../../../directive/patch-form-group-value.directive';
 import { formValueChangeReserve } from '../../../+state/reserve/reserve.actions';
 import { selectReserveEntities } from '../../../+state/reserve/reserve.selectors';
+import { FtxFormsComponent } from 'ngx-ftx-forms';
 
 @Component({
   selector: 'reserve-book',
@@ -28,6 +29,7 @@ import { selectReserveEntities } from '../../../+state/reserve/reserve.selectors
     ButtonComponent,
     FormControlLabelComponent,
     PatchFormGroupValueDirective,
+    FtxFormsComponent,
   ],
   templateUrl: './reserve-book.component.html',
   styleUrls: ['./reserve-book.component.scss'],
@@ -38,7 +40,6 @@ export class ReserveBookComponent implements OnInit {
   readonly generateFormBuilderService: GenerateFormBuilderService = inject(
     GenerateFormBuilderService
   );
-  readonly _injectGenerative = inject(GenerativeService);
   dynamicForm: FormGroup = {} as FormGroup;
   jsonData: DataFormBuilder = {
     values: [
@@ -79,7 +80,7 @@ export class ReserveBookComponent implements OnInit {
         validators: [{ type: TypeConstantEnum.REQUIRED }],
       },
       {
-        label: 'TEST AREA',
+        label: 'TEST_AREA',
         value: 'dasdasd',
         labelHint: 'Area Data',
         typeInput: 'area',
@@ -210,7 +211,7 @@ export class ReserveBookComponent implements OnInit {
               this._stepperStore.dispatch(formValueChangeReserve(values as any)) //eslint-disable-line
           ),
           tap((v) => {
-            this._stepperService.steppForm.controls.reserveBook.controls.check.setValue(
+            this._stepperService.steppForm.controls.reserveBook.controls.check.patchValue(
               this.dynamicForm.valid
             );
           }),

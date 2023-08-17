@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Dictionary } from '@ngrx/entity';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { InputComponent } from '../../../shared/input/input.component';
+import { FormControlLabelComponent } from 'ngx-ftx-forms';
 
 @Component({
   selector: 'info-user',
@@ -17,6 +18,7 @@ import { InputComponent } from '../../../shared/input/input.component';
     PatchFormGroupValueDirective,
     ButtonComponent,
     InputComponent,
+    FormControlLabelComponent,
   ],
   templateUrl: './info-user.component.html',
   styleUrls: ['./info-user.component.scss'],

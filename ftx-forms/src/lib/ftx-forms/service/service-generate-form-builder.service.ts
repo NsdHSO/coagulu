@@ -6,17 +6,14 @@ import {
   FormGroup,
   ValidatorFn,
 } from '@angular/forms';
+import { GenerativeService } from './generative.service';
 import {
   DataFormBuilder,
   NestedValue,
   Section,
   Validator,
-} from '../interfaces/data-form-builder';
-import {
-  ConstantsEnum,
-  TypeConstantEnum,
-} from '../../shared/utils/constants.enum';
-import { GenerativeService } from './generative.service';
+} from '../interfaces';
+import { ConstantsEnum, TypeConstantEnum } from '../utils';
 
 @Injectable({
   providedIn: 'root',
@@ -104,9 +101,6 @@ export class GenerateFormBuilderService {
     }
   }
 
-  public trackBy<T>(item: number, entity: T) {
-    return this._injectGenerative.trackBy(item, entity);
-  }
   //eslint-disable-next-line
   private buildGroup(data: any): FormGroup {
     const group: { [key: string]: unknown } = {};

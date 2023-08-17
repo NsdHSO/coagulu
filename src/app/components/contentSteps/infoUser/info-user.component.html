@@ -1,17 +1,24 @@
 <div *ngIf="vm$ | async as vm" class="p-4">
-  <form [formGroup]="form" [patchFormGroupValues]="vm">
+  <form
+    [formGroup]="form"
+    [patchFormGroupValues]="vm"
+    class="w-80 items-stretch flex-col flex"
+  >
     <div formGroupName="infoUser">
-      <input-component formControlName="check" typeInput="checkbox" />
+      <form-control-label
+        [label]="'Check value'"
+        formControlName="check"
+        class="col-span-4"
+        [placeholderInput]="'Check'"
+      />
       <div formGroupName="info">
-        <div class="sm:col-span-3">
-          <div>
-            <label class="block text-sm font-medium leading-6 text-gray-900"
-              >Family Number</label
-            >
-            <input-component formControlName="familyNumber" />
-          </div>
-        </div>
-        <div class="sm:col-span-3">
+        <form-control-label
+          [label]="'Family Number'"
+          formControlName="familyNumber"
+          class="col-span-4"
+          [placeholderInput]="'Check'"
+        />
+        <div>
           <label class="block text-sm font-medium leading-6 text-gray-900"
             >Role Of Member</label
           >
@@ -24,29 +31,25 @@
               "
               [formGroupName]="index"
             >
-              <ng-container>
-                <label class="block text-sm font-medium leading-6 text-gray"
-                  >Value:</label
-                >
-                <input-component formControlName="value" />
-              </ng-container>
-              <div
-                class="flex shadow-sm items-center gap-y-4 w-16 justify-between"
-              >
-                <label class="block text-sm font-medium leading-6 text-gray"
-                  >Check:</label
-                >
-                <input-component
-                  formControlName="check"
-                  [typeInput]="'checkbox'"
-                />
-              </div>
-              <ng-container>
-                <label class="block text-sm font-medium leading-6 text-gray"
-                  >ID:</label
-                >
-                <input-component formControlName="id" />
-              </ng-container>
+              <form-control-label
+                [label]="'Value:'"
+                formControlName="value"
+                class="col-span-1"
+                [placeholderInput]="'value'"
+              />
+              <form-control-label
+                [label]="'Check:'"
+                formControlName="check"
+                class="col-span-1"
+                [labelInput]="'TEST'"
+                typeInput="boolean"
+              />
+              <form-control-label
+                [label]="'ID:'"
+                formControlName="id"
+                class="col-span-1"
+                [placeholderInput]="'ID'"
+              />
             </ng-container>
           </ng-container>
         </div>
