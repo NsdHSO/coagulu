@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  AbstractControl,
   FormGroup,
   isFormArray,
   isFormControl,
@@ -43,8 +44,11 @@ export class FtxFormsComponent {
   submitEvent = new EventEmitter();
 
   generateFormBuilderService = inject(GenerativeService);
-  protected readonly Object = Object;
   protected readonly isFormGroup = isFormGroup;
   protected readonly isFormControl = isFormControl;
   protected readonly isFormArray = isFormArray;
+
+  formGroup(ds: any) {
+    return ds as FormGroup;
+  }
 }
