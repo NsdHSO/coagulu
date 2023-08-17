@@ -7,14 +7,16 @@ import { InputComponent } from '../../../shared/input/input.component';
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { GenerativeService } from '../../services/generative.service';
-import { formValueChange } from '../../../+state/stepper.actions';
-import { selectStepperEntities } from '../../../+state/stepper.selectors';
 import { Store } from '@ngrx/store';
 import { FormControlLabelComponent } from './formControlLabel/form-control-label.component';
 import {
   TypeConstantEnum,
   TypePattern,
 } from '../../../shared/utils/constants.enum';
+import { StepperService } from '../../services/stepper.service';
+import { PatchFormGroupValueDirective } from '../../../directive/patch-form-group-value.directive';
+import { formValueChangeReserve } from '../../../+state/reserve/reserve.actions';
+import { selectReserveEntities } from '../../../+state/reserve/reserve.selectors';
 
 @Component({
   selector: 'reserve-book',
@@ -25,12 +27,14 @@ import {
     InputComponent,
     ButtonComponent,
     FormControlLabelComponent,
+    PatchFormGroupValueDirective,
   ],
   templateUrl: './reserve-book.component.html',
   styleUrls: ['./reserve-book.component.scss'],
 })
 export class ReserveBookComponent implements OnInit {
   private readonly _stepperStore = inject(Store);
+  private _stepperService = inject(StepperService);
   readonly generateFormBuilderService: GenerateFormBuilderService = inject(
     GenerateFormBuilderService
   );
@@ -203,11 +207,19 @@ export class ReserveBookComponent implements OnInit {
           debounceTime(200),
           tap(
             (values) =>
-              this._stepperStore.dispatch(formValueChange(values as any)) //eslint-disable-line
-          )
+              this._stepperStore.dispatch(formValueChangeReserve(values as any)) //eslint-disable-line
+          ),
+          tap((v) => {
+            this._stepperService.steppForm.controls.reserveBook.controls.check.setValue(
+              this.dynamicForm.valid
+            );
+          }),
+          tap((v) => {
+            this._stepperService.flagUrl$.next('reserveBook');
+          })
         )
         .subscribe(),
-    () => this._stepperStore.select(selectStepperEntities)
+    () => this._stepperStore.select(selectReserveEntities)
   ).pipe(shareReplay());
 
   ngOnInit() {

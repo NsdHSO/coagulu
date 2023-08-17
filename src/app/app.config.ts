@@ -11,9 +11,13 @@ import { StepperEffects } from './+state/stepper.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { IconCoreModule } from 'ngx-liburg-icon';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import * as fromReserve from './+state/reserve/reserve.reducer';
+import { ReserveEffects } from './+state/reserve/reserve.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideEffects(ReserveEffects),
+    provideState(fromReserve.RESERVE_FEATURE_KEY, fromReserve.reserveReducer),
     provideEffects(StepperEffects),
     provideStore(),
     provideState(fromStepper.STEPPER_FEATURE_KEY, fromStepper.stepperReducer),

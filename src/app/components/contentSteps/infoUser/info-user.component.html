@@ -1,5 +1,4 @@
 <div *ngIf="vm$ | async as vm" class="p-4">
-  <pre>{{ form.getRawValue() | json }}</pre>
   <form [formGroup]="form" [patchFormGroupValues]="vm">
     <div formGroupName="infoUser">
       <input-component formControlName="check" typeInput="checkbox" />
