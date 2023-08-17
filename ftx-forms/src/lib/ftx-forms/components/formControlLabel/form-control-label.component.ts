@@ -13,8 +13,8 @@ import {
   NgModel,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { InputComponent } from '../../../../shared/input/input.component';
-import { PapControlDirective } from '../../../../shared/input/pap-control.directive';
+import { InputComponent } from '../../../../../../src/app/shared/input/input.component';
+import { PapControlDirective } from '../../../../../../src/app/shared/input/pap-control.directive';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
