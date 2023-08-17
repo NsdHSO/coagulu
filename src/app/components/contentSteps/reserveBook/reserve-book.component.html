@@ -1,6 +1,8 @@
-<ngx-ftx-forms
-  (submitEvent)="onSubmit()"
-  [dynamicForm]="dynamicForm"
-  [jsonData]="jsonData"
-  *ngIf="formValue$ | async"
-/>
+<div class="w-80">
+  <ngx-ftx-forms
+    (submitEvent)="onSubmit()"
+    [dynamicForm]="dynamicForm"
+    [jsonData]="jsonData"
+    *ngIf="formValue$ | async"
+  />
+</div>
