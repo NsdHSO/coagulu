@@ -10,9 +10,9 @@ export const Primary = {
   render: (args: ButtonComponent) => ({
     props: args,
     template: `
-      <button-component [disable]='disable' [roundedFull]='roundedFull' >
+      <ngx-button-component [disable]='disable' [roundedFull]='roundedFull' >
         TEST
-</button-component>
+</ngx-button-component>
     `,
   }),
   args: {
@@ -24,9 +24,9 @@ export const PrimaryEnable = {
   render: (args: ButtonComponent) => ({
     props: args,
     template: `
-      <button-component [disable]='disable' [roundedFull]='roundedFull' >
+      <ngx-button-component  [disable]='disable' [roundedFull]='roundedFull' >
         TEST
-</button-component>
+</ngx-button-component >
     `,
   }),
   args: {

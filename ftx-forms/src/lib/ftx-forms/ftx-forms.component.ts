@@ -47,6 +47,7 @@ export class FtxFormsComponent {
   protected readonly isFormControl = isFormControl;
   protected readonly isFormArray = isFormArray;
 
+  //eslint-disable-next-line
   formGroup(ds: any) {
     return ds as FormGroup;
   }

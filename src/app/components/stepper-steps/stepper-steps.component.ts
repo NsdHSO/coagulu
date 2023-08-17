@@ -10,13 +10,12 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { ButtonComponent } from '../../../../ftx-forms/src/lib/ftx-forms/shared/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 import { map, of, Subject, switchMap, takeUntil, tap } from 'rxjs';
-import { selectStepsEntities } from '../../+state/stepper.selectors';
 import { StepperService } from '../services/stepper.service';
-import { FormStepper, Step } from '../../+state/mock';
+import { ButtonComponent } from 'ngx-ftx-forms';
+import { FormStepper, selectStepsEntities, Step } from '../../+state';
 
 @Component({
   selector: 'stepper-steps',

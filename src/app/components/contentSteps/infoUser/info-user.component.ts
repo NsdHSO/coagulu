@@ -5,9 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PatchFormGroupValueDirective } from '../../../directive/patch-form-group-value.directive';
 import { Observable } from 'rxjs';
 import { Dictionary } from '@ngrx/entity';
-import { ButtonComponent } from '../../../../../ftx-forms/src/lib/ftx-forms/shared/button/button.component';
-import { InputComponent } from '../../../../../ftx-forms/src/lib/ftx-forms/shared/input/input.component';
-import { FormControlLabelComponent } from 'ngx-ftx-forms';
+import {
+  ButtonComponent,
+  FormControlLabelComponent,
+  InputComponent,
+} from 'ngx-ftx-forms';
 
 @Component({
   selector: 'info-user',

@@ -11,7 +11,7 @@
     "
   >
     <ng-container *ngIf="isFormControl(control.value)">
-      <form-control-label
+      <ngx-form-control-label
         [formControlName]="control.key"
         [label]="control.key"
         class="col-span-4"
@@ -25,7 +25,7 @@
             trackBy: generateFormBuilderService.trackBy
           "
         >
-          <form-control-label
+          <ngx-form-control-label
             [formControlName]="group.key"
             [label]="group.key"
             class="col-span-4"
@@ -53,7 +53,7 @@
               trackBy: generateFormBuilderService.trackBy
             "
           >
-            <form-control-label
+            <ngx-form-control-label
               [formControlName]="group.key"
               class="col-span-4"
             />
@@ -62,10 +62,10 @@
       </ng-container>
     </ng-container>
   </ng-container>
-  <button-component
+  <ngx-button-component
     [disable]="dynamicForm.pristine || dynamicForm.invalid"
     roundedFull="rounded-md"
     type="submit"
     >Submit
-  </button-component>
+  </ngx-button-component>
 </form>

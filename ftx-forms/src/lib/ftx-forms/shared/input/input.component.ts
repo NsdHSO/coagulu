@@ -7,7 +7,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 
 @Component({
-  selector: 'input-component',
+  selector: 'ngx-input-component',
   standalone: true,
   imports: [
     CommonModule,
