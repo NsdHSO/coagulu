@@ -1,12 +1,11 @@
 import { Action } from '@ngrx/store';
-
-import * as ReserveActions from './reserve/.actions';
-import { ReserveEntity } from './reserve/.models';
+import { ReserveEntity } from './reserve.models';
 import {
-  ReserveState,
   initialReserveState,
   reserveReducer,
-} from './reserve/.reducer';
+  ReserveState,
+} from './reserve.reducer';
+import * as ReserveActions from './reserve.actions';
 
 describe('Reserve Reducer', () => {
   const createReserveEntity = (id: string, name = ''): ReserveEntity => ({
