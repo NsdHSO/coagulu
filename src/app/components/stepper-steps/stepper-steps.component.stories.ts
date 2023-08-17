@@ -3,7 +3,6 @@ import { StepperStepsComponent } from './stepper-steps.component';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { ButtonComponent } from '../../../../ftx-forms/src/lib/ftx-forms/shared/button/button.component';
 import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 import { StepperService } from '../services/stepper.service';
@@ -18,6 +17,7 @@ import {
   BrowserAnimationsModule,
   provideAnimations,
 } from '@angular/platform-browser/animations';
+import { ButtonComponent } from 'ngx-ftx-forms';
 
 export default {
   title: 'StepperStepsComponent',

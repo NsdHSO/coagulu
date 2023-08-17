@@ -2,7 +2,7 @@ import { Directive } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: '[papControl]',
+  selector: '[ngxControl]',
   standalone: true,
   providers: [
     {

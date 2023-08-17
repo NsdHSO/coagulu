@@ -5,14 +5,14 @@
     class="w-80 items-stretch flex-col flex"
   >
     <div formGroupName="infoUser">
-      <form-control-label
+      <ngx-form-control-label
         [label]="'Check value'"
         formControlName="check"
         class="col-span-4"
         [placeholderInput]="'Check'"
       />
       <div formGroupName="info">
-        <form-control-label
+        <ngx-form-control-label
           [label]="'Family Number'"
           formControlName="familyNumber"
           class="col-span-4"
@@ -31,20 +31,20 @@
               "
               [formGroupName]="index"
             >
-              <form-control-label
+              <ngx-form-control-label
                 [label]="'Value:'"
                 formControlName="value"
                 class="col-span-1"
                 [placeholderInput]="'value'"
               />
-              <form-control-label
+              <ngx-form-control-label
                 [label]="'Check:'"
                 formControlName="check"
                 class="col-span-1"
                 [labelInput]="'TEST'"
                 typeInput="boolean"
               />
-              <form-control-label
+              <ngx-form-control-label
                 [label]="'ID:'"
                 formControlName="id"
                 class="col-span-1"
@@ -57,7 +57,7 @@
     </div>
   </form>
 
-  <button-component (marian)="addRole()" roundedFull="rounded-md mt-2">
+  <ngx-button-component (marian)="addRole()" roundedFull="rounded-md mt-2">
     Add new Role
-  </button-component>
+  </ngx-button-component>
 </div>

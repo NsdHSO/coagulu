@@ -2,22 +2,20 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
+  ButtonComponent,
   DataFormBuilder,
   FormControlLabelComponent,
+  FtxFormsComponent,
   GenerateFormBuilderService,
-  GenerativeService,
+  InputComponent,
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import { InputComponent } from '../../../../../ftx-forms/src/lib/ftx-forms/shared/input/input.component';
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
-import { ButtonComponent } from '../../../../../ftx-forms/src/lib/ftx-forms/shared/button/button.component';
 import { Store } from '@ngrx/store';
 import { StepperService } from '../../services/stepper.service';
 import { PatchFormGroupValueDirective } from '../../../directive/patch-form-group-value.directive';
-import { formValueChangeReserve } from '../../../+state/reserve/reserve.actions';
-import { selectReserveEntities } from '../../../+state/reserve/reserve.selectors';
-import { FtxFormsComponent } from 'ngx-ftx-forms';
+import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
 
 @Component({
   selector: 'reserve-book',
@@ -210,12 +208,12 @@ export class ReserveBookComponent implements OnInit {
             (values) =>
               this._stepperStore.dispatch(formValueChangeReserve(values as any)) //eslint-disable-line
           ),
-          tap((v) => {
+          tap(() => {
             this._stepperService.steppForm.controls.reserveBook.controls.check.patchValue(
               this.dynamicForm.valid
             );
           }),
-          tap((v) => {
+          tap(() => {
             this._stepperService.flagUrl$.next('reserveBook');
           })
         )

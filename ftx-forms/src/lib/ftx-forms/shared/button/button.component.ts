@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'button-component',
+  selector: 'ngx-button-component',
   standalone: true,
   imports: [CommonModule, MatButtonModule],
   templateUrl: './button.component.html',
