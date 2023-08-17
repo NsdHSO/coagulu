@@ -7,7 +7,13 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormGroup,
+  isFormArray,
+  isFormControl,
+  isFormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
 import { FormControlLabelComponent } from './components';
 import { ButtonComponent } from '../../../../src/app/shared/button/button.component';
@@ -37,4 +43,8 @@ export class FtxFormsComponent {
   submitEvent = new EventEmitter();
 
   generateFormBuilderService = inject(GenerativeService);
+  protected readonly Object = Object;
+  protected readonly isFormGroup = isFormGroup;
+  protected readonly isFormControl = isFormControl;
+  protected readonly isFormArray = isFormArray;
 }
