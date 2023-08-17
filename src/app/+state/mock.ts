@@ -85,7 +85,7 @@ export const mockStepper = () =>
     } as InfoUser,
     reserveBook: {
       id: generateRandomId(),
-      check: true,
+      check: false,
       values: {
         id: generateRandomId(),
         graph: {
