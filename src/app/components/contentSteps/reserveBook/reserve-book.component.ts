@@ -9,9 +9,9 @@ import {
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import { InputComponent } from '../../../shared/input/input.component';
+import { InputComponent } from '../../../../../ftx-forms/src/lib/ftx-forms/shared/input/input.component';
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
-import { ButtonComponent } from '../../../shared/button/button.component';
+import { ButtonComponent } from '../../../../../ftx-forms/src/lib/ftx-forms/shared/button/button.component';
 import { Store } from '@ngrx/store';
 import { StepperService } from '../../services/stepper.service';
 import { PatchFormGroupValueDirective } from '../../../directive/patch-form-group-value.directive';
