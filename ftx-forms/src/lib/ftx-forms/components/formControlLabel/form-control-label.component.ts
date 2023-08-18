@@ -40,7 +40,6 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 })
 export class FormControlLabelComponent {
   @Input() label: string | undefined = '';
-  @Input() formControlName: string | number | undefined = '';
   /**
    * Type of Input checkbox text
    */

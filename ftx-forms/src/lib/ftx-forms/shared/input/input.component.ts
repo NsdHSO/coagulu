@@ -20,7 +20,6 @@ import { MatRadioModule } from '@angular/material/radio';
   ],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent {
   /**
