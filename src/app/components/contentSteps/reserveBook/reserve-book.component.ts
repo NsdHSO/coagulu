@@ -83,6 +83,17 @@ export class ReserveBookComponent implements OnInit {
         typeInput: 'area',
       },
       {
+        label: 'toggle',
+        value: true,
+        labelHint: 'Toggle Type',
+        typeInput: 'toggle',
+        valueToggleShow: [
+          { value: true, description: 'TEst' },
+          { value: false, description: 'TEST1' },
+        ],
+        validators: [{ type: TypeConstantEnum.REQUIRED }],
+      },
+      {
         labelHint: 'Address street',
         label: 'address',
         values: [
