@@ -33,7 +33,6 @@
     "@ngrx/store": "~16.0.0",
     "@nx/angular": "16.5.5",
     "ngx-liburg-icon": "^0.0.26",
-    "ngx-ftx-forms": "0.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reset-css": "^5.0.2",

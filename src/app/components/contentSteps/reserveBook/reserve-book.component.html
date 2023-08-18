@@ -1,8 +1,7 @@
-<div class="w-80">
+<div class="w-80" *ngIf="formValue$ | async">
   <ngx-ftx-forms
     (submitEvent)="onSubmit()"
     [dynamicForm]="dynamicForm"
     [jsonData]="jsonData"
-    *ngIf="formValue$ | async"
   />
 </div>

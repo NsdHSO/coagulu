@@ -1,7 +1,7 @@
 <div *ngIf="vm$ | async as vm" class="p-4">
   <form
     [formGroup]="form"
-    [patchFormGroupValues]="vm"
+    [ngxFormGroupValues]="vm"
     class="w-80 items-stretch flex-col flex"
   >
     <div formGroupName="infoUser">

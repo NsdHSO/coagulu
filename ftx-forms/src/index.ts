@@ -4,3 +4,4 @@ export * from './lib/ftx-forms/interfaces';
 export * from './lib/ftx-forms/components';
 export * from './lib/ftx-forms/utils';
 export * from './lib/ftx-forms/shared/';
+export * from './lib/ftx-forms/directive';

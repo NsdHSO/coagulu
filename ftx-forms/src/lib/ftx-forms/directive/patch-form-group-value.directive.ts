@@ -2,13 +2,13 @@ import { Directive, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Directive({
-  selector: '[patchFormGroupValues]',
+  selector: '[ngxFormGroupValues]',
   standalone: true,
 })
 export class PatchFormGroupValueDirective {
   @Input() formGroup: FormGroup = {} as FormGroup;
 
-  @Input() set patchFormGroupValues(val: unknown) {
+  @Input() set ngxFormGroupValues(val: unknown) {
     if (!val) {
       return;
     }
