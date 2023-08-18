@@ -11,6 +11,7 @@ export enum TypeConstantEnum {
   REQUIRED = 'required',
   STRING = 'string',
   MIN_CHAR = 'minChar',
+  ONLY_CHAR = 'only_char',
 }
 
 export enum TypePattern {

@@ -1,3 +1,5 @@
+import { TypeConstantEnum } from '../utils';
+
 export interface Validator {
   type: string;
   option?: unknown;
@@ -37,7 +39,25 @@ export interface Section {
   typeInput?: string;
   valueToggleShow?: { value: boolean; description: string }[];
 }
+export interface ValidatorConfig {
+  type: TypeConstantEnum;
+  option?: any;
+  errorMsg?: string;
+}
+
+export interface ValueToggle {
+  value: boolean;
+  description: string;
+}
 
 export interface DataFormBuilder {
-  values: Section[];
+  label?: string;
+  labelHint?: string;
+  value?: any;
+  typeInput?: string;
+  values?: DataFormBuilder[];
+  bulkValues?: DataFormBuilder[];
+  valueToggleShow?: ValueToggle[];
+  validators?: ValidatorConfig[];
+  placeholder?: string;
 }

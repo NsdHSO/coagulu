@@ -6,24 +6,23 @@ import {
   FormGroup,
   ValidatorFn,
 } from '@angular/forms';
-import { GenerativeService } from './generative.service';
 import {
   DataFormBuilder,
   NestedValue,
   Section,
   Validator,
 } from '../interfaces';
-import { ConstantsEnum, TypeConstantEnum } from '../utils';
+import { TypeConstantEnum } from '../utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GenerateFormBuilderService {
   private readonly _fb = inject(FormBuilder);
-  private readonly _injectGenerative = inject(GenerativeService);
-  buildFormFromJson(jsonData: DataFormBuilder): FormGroup {
-    console.log(this.buildGroup(jsonData));
-    return this.buildGroup(jsonData);
+
+  buildFormFromJson(jsonData: DataFormBuilder): any {
+    console.log(this.buildFormGenerate(jsonData));
+    return this.buildFormGenerate(jsonData);
   }
 
   extractValidator(item: Section | NestedValue): ValidatorFn[] {
@@ -35,6 +34,7 @@ export class GenerateFormBuilderService {
     }
     return validators;
   }
+
   // eslint-disable-next-line
   getValidator(validatorConfig: Validator): ValidatorFn | any {
     const { type, option, errorMsg } = validatorConfig;
@@ -101,51 +101,35 @@ export class GenerateFormBuilderService {
     }
   }
 
-  //eslint-disable-next-line
-  private buildGroup(data: any): FormGroup {
-    const group: { [key: string]: unknown } = {};
-    data.values.forEach((item: Section) => {
-      if (item.value) {
-        group[item.label] = this.getFormControl(item);
-      }
-      if (
-        item.values &&
-        item.values.length > ConstantsEnum.ZERO &&
-        !(
-          item.values[ConstantsEnum.ZERO].values &&
-          item.values[ConstantsEnum.ZERO].values.length > ConstantsEnum.ZERO
-        )
-      ) {
-        group[item.label] = this.buildGroup(item);
-      }
-      if (item.bulkValues && item.bulkValues.length > ConstantsEnum.ZERO) {
-        const arrayBulks: FormArray = this._fb.array([]);
-        item.bulkValues.forEach((arrayBulk) => {
-          if (!arrayBulk.bulkValues) {
-            const bulkValues = this._fb.group({
-              value: [arrayBulk.value, this.extractValidator(arrayBulk)],
-            });
-            arrayBulks.push(bulkValues);
-          }
-          if (
-            arrayBulk &&
-            arrayBulk.bulkValues &&
-            arrayBulk.bulkValues.length > 0
-          ) {
-            const bulkValues: FormArray = this._fb.array([]);
-            arrayBulk.bulkValues.forEach((vmx) => {
-              bulkValues.push(this.getFormControl(vmx));
-            });
-            arrayBulks.push(bulkValues);
-          }
-        });
-        group[item.label] = arrayBulks;
-      }
-    });
-    return this._fb.group(group);
-  }
-
-  private getFormControl(item: Section | NestedValue) {
-    return this._fb.control(item.value, this.extractValidator(item));
+  buildFormGenerate(
+    data: DataFormBuilder
+  ): FormGroup | FormArray | FormControl {
+    if (data.values) {
+      //eslint-disable-next-line
+      const group: { [key: string]: any } = {};
+      data.values.forEach((item) => {
+        if (item.values) {
+          group[item.label ?? ''] = this.buildFormGenerate(item);
+        } else if (item.bulkValues) {
+          group[item.label ?? ''] = this._fb.array(
+            item.bulkValues.map((subItem) => this.buildFormGenerate(subItem))
+          );
+        } else {
+          const validators = this.extractValidator(item);
+          group[item.label ?? ''] = this._fb.control(
+            item.value || null,
+            validators
+          );
+        }
+      });
+      return this._fb.group(group);
+    } else if (data.bulkValues) {
+      return this._fb.array(
+        data.bulkValues.map((subItem) => this.buildFormGenerate(subItem))
+      );
+    } else {
+      const validators = this.extractValidator(data);
+      return this._fb.control(data.value || null, validators);
+    }
   }
 }

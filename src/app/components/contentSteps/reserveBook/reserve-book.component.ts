@@ -58,7 +58,7 @@ export class ReserveBookComponent implements OnInit {
         labelHint: 'Email Address',
       },
       {
-        label: 'Ageu',
+        label: 'TESTa',
         value: '201',
         validators: [
           { type: TypeConstantEnum.REQUIRED },
@@ -78,7 +78,7 @@ export class ReserveBookComponent implements OnInit {
         validators: [{ type: TypeConstantEnum.REQUIRED }],
       },
       {
-        label: 'TEST_AREA',
+        label: 'ARE',
         value: 'dasdasd',
         labelHint: 'Area Data',
         typeInput: 'area',
@@ -100,6 +100,16 @@ export class ReserveBookComponent implements OnInit {
           {
             label: 'street',
             value: 'Ivan',
+            validators: [
+              {
+                type: TypeConstantEnum.REQUIRED,
+                errorMsg: 'This field it is' + ' must',
+              },
+            ],
+          },
+          {
+            label: 'street2',
+            value: 'Ivan2',
             validators: [
               {
                 type: TypeConstantEnum.REQUIRED,
@@ -204,6 +214,7 @@ export class ReserveBookComponent implements OnInit {
       this.dynamicForm.valueChanges
         .pipe(
           debounceTime(200),
+          tap((v) => console.log(this.dynamicForm.controls)),
           tap(
             (values) =>
               this._stepperStore.dispatch(formValueChangeReserve(values as any)) //eslint-disable-line

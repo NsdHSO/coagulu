@@ -42,13 +42,20 @@ export class FtxFormsComponent {
   @Output()
   submitEvent = new EventEmitter();
 
+  controlMapping: any = [];
   generateFormBuilderService = inject(GenerativeService);
   protected readonly isFormGroup = isFormGroup;
   protected readonly isFormControl = isFormControl;
   protected readonly isFormArray = isFormArray;
 
-  //eslint-disable-next-line
-  formGroup(ds: any) {
-    return ds as FormGroup;
+  ngOnInit() {
+    if (this.jsonData.values)
+      for (const item of this.jsonData.values) {
+        if (item.label) {
+          this.controlMapping[item.label] = item;
+        }
+      }
   }
+
+  protected readonly FormGroup = FormGroup;
 }
