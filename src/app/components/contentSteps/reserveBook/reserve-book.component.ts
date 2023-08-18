@@ -85,7 +85,7 @@ export class ReserveBookComponent implements OnInit {
       },
       {
         label: 'toggle',
-        value: false,
+        value: true,
         labelHint: 'Toggle Type',
         typeInput: 'toggle',
         valueToggleShow: [
