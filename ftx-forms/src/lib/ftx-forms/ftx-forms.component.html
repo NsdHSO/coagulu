@@ -1,96 +1,73 @@
 <form
-  (ngSubmit)="submitEvent.emit(true)"
   [formGroup]="dynamicForm"
+  (ngSubmit)="submitEvent.emit(true)"
   class="p-3 flex flex-col"
 >
-  <!-- Use formGroup to create form fields dynamically -->
   <ng-container
-    *ngFor="
-      let control of dynamicForm.controls | keyvalue;
-      trackBy: generateFormBuilderService.trackBy;
-      let indexControl = index
+    *ngTemplateOutlet="
+      renderControlRecursive;
+      context: {
+        control: dynamicForm,
+        controlKey: null
+      }
     "
-  >
-    <ng-container
-      *ngIf="isFormControl(control.value) && control.key && jsonData.values"
-    >
-      <ngx-form-control-label
-        [formControlName]="control.key"
-        [labelInput]="controlMapping[control.key]?.labelHint"
-        [label]="control.key"
-        [placeholderInput]="controlMapping[control.key]?.placeholder"
-        [toggleData]="controlMapping[control.key]?.valueToggleShow"
-        [typeInput]="controlMapping[control.key]?.typeInput"
-      />
-    </ng-container>
-    <ng-container *ngIf="isFormGroup(control.value)">
-      <ng-container [formGroupName]="control.key">
-        <div class="flex items-center">
-          <div>{{ control.key }}</div>
-          <ng-container
-            *ngFor="
-              let group of control.value.controls | keyvalue;
-              trackBy: generateFormBuilderService.trackBy
-            "
-          >
-            <ngx-form-control-label
-              [formControlName]="group.key"
-              [labelInput]="controlMapping[group.key]?.labelHint"
-              [label]="group.key"
-              [placeholderInput]="controlMapping[group.key]?.placeholder"
-              [toggleData]="controlMapping[group.key]?.valueToggleShow"
-              [typeInput]="controlMapping[group.key]?.typeInput"
-            />
-          </ng-container>
-        </div>
-      </ng-container>
-    </ng-container>
-    <ng-container *ngIf="isFormArray(control.value)">
-      <ng-container [formArrayName]="control.key">
-        <div>{{ control.key }}</div>
+  ></ng-container>
+</form>
+
+<ng-template
+  #renderControlRecursive
+  let-control="control"
+  let-controlKey="controlKey"
+>
+  <ng-container [ngSwitch]="control.constructor.name">
+    <!-- Render FormArray -->
+    <ng-container *ngSwitchCase="'FormArray'">
+      <ng-container
+        *ngFor="
+          let arrayControl of control.controls;
+          trackBy: generateFormBuilderService.trackBy
+        "
+      >
         <ng-container
-          *ngFor="
-            let array of control.value.controls | keyvalue;
-            trackBy: generateFormBuilderService.trackBy
+          *ngTemplateOutlet="
+            renderControlRecursive;
+            context: { control: arrayControl, controlKey: controlKey }
           "
         >
-          <ng-container>
-            <ngx-form-control-label
-              [formControlName]="array.key"
-              [labelInput]="controlMapping[array.key]?.labelHint"
-              [placeholderInput]="controlMapping[array.key]?.placeholder"
-              [toggleData]="controlMapping[array.key]?.valueToggleShow"
-              [typeInput]="controlMapping[array.key]?.typeInput"
-            ></ngx-form-control-label>
-          </ng-container>
-          <ng-container
-            *ngIf="isFormArray(array.value)"
-            [formArrayName]="array.key"
-          >
-            <ng-container
-              *ngFor="
-                let arrays of control.value.controls | keyvalue;
-                trackBy: generateFormBuilderService.trackBy
-              "
-            >
-              <ng-container>
-                <ngx-form-control-label
-                  [formControlName]="arrays.key"
-                  [labelInput]="controlMapping[arrays.key]?.labelHint"
-                  [placeholderInput]="controlMapping[arrays.key]?.placeholder"
-                  [toggleData]="controlMapping[arrays.key]?.valueToggleShow"
-                  [typeInput]="controlMapping[arrays.key]?.typeInput"
-                ></ngx-form-control-label>
-              </ng-container>
-            </ng-container>
-          </ng-container>
         </ng-container>
       </ng-container>
     </ng-container>
+
+    <!-- Render FormGroup -->
+    <ng-container *ngSwitchCase="'FormGroup'">
+      <ng-container
+        *ngFor="
+          let groupControl of control.controls | keyvalue;
+          trackBy: generateFormBuilderService.trackBy
+        "
+      >
+        <ng-container
+          *ngTemplateOutlet="
+            renderControlRecursive;
+            context: {
+              control: groupControl.value,
+              controlKey: groupControl.key
+            }
+          "
+        ></ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- Render FormControl -->
+    <ng-container *ngSwitchDefault>
+      <ngx-form-control-label
+        [formControl]="control"
+        [labelInput]="controlMapping[controlKey]?.labelHint"
+        [label]="controlKey"
+        [placeholderInput]="controlMapping[controlKey]?.placeholder"
+        [toggleData]="controlMapping[controlKey]?.valueToggleShow"
+        [typeInput]="controlMapping[controlKey]?.typeInput"
+      ></ngx-form-control-label>
+    </ng-container>
   </ng-container>
-  <ngx-button-component
-    [disable]="dynamicForm.pristine || dynamicForm.invalid"
-    roundedFull="rounded-md"
-    >Submit
-  </ngx-button-component>
-</form>
+</ng-template>
