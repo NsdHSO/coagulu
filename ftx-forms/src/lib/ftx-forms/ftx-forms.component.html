@@ -27,7 +27,7 @@
 >
   <ng-container [ngSwitch]="control.constructor.name">
     <!-- Render FormArray -->
-    {{ ivan(control) }}
+    {{ ivan({ control: control, name: control.constructor.name }) }}
     <ng-container *ngSwitchCase="'FormArray'">
       <ng-container
         *ngFor="
