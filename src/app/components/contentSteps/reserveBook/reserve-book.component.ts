@@ -11,7 +11,7 @@ import {
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import { debounceTime, delay, shareReplay, tap, using } from 'rxjs';
+import { debounceTime, shareReplay, tap, using } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { StepperService } from '../../services/stepper.service';
 import { PatchFormGroupValueDirective } from '../../../../../ftx-forms/src/lib/ftx-forms/directive/patch-form-group-value.directive';
@@ -34,7 +34,6 @@ import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
 })
 export class ReserveBookComponent implements OnInit {
   private readonly _stepperStore = inject(Store);
-  private _stepperService = inject(StepperService);
   readonly generateFormBuilderService: GenerateFormBuilderService = inject(
     GenerateFormBuilderService
   );
@@ -210,6 +209,7 @@ export class ReserveBookComponent implements OnInit {
       },
     ],
   };
+  private _stepperService = inject(StepperService);
   formValue$ = using(
     () =>
       this.dynamicForm.valueChanges
@@ -231,7 +231,7 @@ export class ReserveBookComponent implements OnInit {
         )
         .subscribe(),
     () => this._stepperStore.select(selectReserveEntities)
-  ).pipe(delay(2000), shareReplay());
+  ).pipe(shareReplay());
 
   ngOnInit() {
     this.dynamicForm = this.generateFormBuilderService.buildFormFromJson(
