@@ -26,44 +26,6 @@
   let-controlKey="controlKey"
 >
   <ng-container [ngSwitch]="control.constructor.name">
-    <!-- Render FormArray -->
-    <ng-container *ngSwitchCase="'FormArray'">
-      <ng-container
-        *ngFor="
-          let arrayControl of control.controls;
-          trackBy: generateFormBuilderService.trackBy
-        "
-      >
-        <ng-container
-          *ngTemplateOutlet="
-            renderControlRecursive;
-            context: { control: arrayControl, controlKey: controlKey }
-          "
-        >
-        </ng-container>
-      </ng-container>
-    </ng-container>
-
-    <!-- Render FormGroup -->
-    <ng-container *ngSwitchCase="'FormGroup'">
-      <ng-container
-        *ngFor="
-          let groupControl of control.controls | keyvalue;
-          trackBy: generateFormBuilderService.trackBy
-        "
-      >
-        <ng-container
-          *ngTemplateOutlet="
-            renderControlRecursive;
-            context: {
-              control: groupControl.value,
-              controlKey: groupControl.key
-            }
-          "
-        ></ng-container>
-      </ng-container>
-    </ng-container>
-
     <!-- Render FormControl -->
     <ng-container *ngSwitchDefault>
       <ngx-form-control-label
