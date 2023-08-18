@@ -56,4 +56,8 @@ export class FtxFormsComponent {
         }
       }
   }
+
+  public ivan(controls: boolean | undefined) {
+    console.log(controls);
+  }
 }

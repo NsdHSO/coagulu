@@ -8,7 +8,7 @@
       renderControlRecursive;
       context: {
         control: dynamicForm,
-        controlKey: 5
+        controlKey: null
       }
     "
   ></ng-container>
@@ -27,7 +27,7 @@
 >
   <ng-container [ngSwitch]="control.constructor.name">
     <!-- Render FormArray -->
-    {{ controlKey }}
+    {{ ivan(control) }}
     <ng-container *ngSwitchCase="'FormArray'">
       <ng-container
         *ngFor="
@@ -64,17 +64,16 @@
         ></ng-container>
       </ng-container>
     </ng-container>
-
-    <!--    &lt;!&ndash; Render FormControl &ndash;&gt;-->
-    <!--    <ng-container *ngSwitchDefault>-->
-    <!--      <ngx-form-control-label-->
-    <!--        [formControl]="control"-->
-    <!--        [labelInput]="controlMapping[controlKey]?.labelHint"-->
-    <!--        [label]="controlKey"-->
-    <!--        [placeholderInput]="controlMapping[controlKey]?.placeholder"-->
-    <!--        [toggleData]="controlMapping[controlKey]?.valueToggleShow"-->
-    <!--        [typeInput]="controlMapping[controlKey]?.typeInput"-->
-    <!--      ></ngx-form-control-label>-->
-    <!--    </ng-container>-->
+    <!-- Render FormControl -->
+    <ng-container *ngSwitchDefault>
+      <ngx-form-control-label
+        [formControl]="control"
+        [labelInput]="controlMapping[controlKey]?.labelHint"
+        [label]="controlKey"
+        [placeholderInput]="controlMapping[controlKey]?.placeholder"
+        [toggleData]="controlMapping[controlKey]?.valueToggleShow"
+        [typeInput]="controlMapping[controlKey]?.typeInput"
+      ></ngx-form-control-label>
+    </ng-container>
   </ng-container>
 </ng-template>
