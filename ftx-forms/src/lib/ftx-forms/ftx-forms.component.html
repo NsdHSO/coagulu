@@ -12,6 +12,12 @@
       }
     "
   ></ng-container>
+
+  <ngx-button-component
+    [disable]="dynamicForm.pristine || dynamicForm.invalid"
+    roundedFull="rounded-md"
+    >Submit
+  </ngx-button-component>
 </form>
 
 <ng-template
