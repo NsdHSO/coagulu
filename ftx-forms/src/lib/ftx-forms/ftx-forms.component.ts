@@ -56,6 +56,4 @@ export class FtxFormsComponent {
         }
       }
   }
-
-  protected readonly FormGroup = FormGroup;
 }
