@@ -12,7 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "ngx-ftx-forms": [
+      "@ngx-ftx-forms": [
         "dist/ngx-ftx-forms"
       ]
     },

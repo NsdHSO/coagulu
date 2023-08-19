@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ReserveEntity } from './reserve.models';
-import { DataFormBuilder } from 'ngx-ftx-forms';
+import { DataFormBuilder } from '@ngx-ftx-forms';
 
 export const initReserve = createAction('[Reserve Page] Init');
 const prefixStepper = 'Reserve';

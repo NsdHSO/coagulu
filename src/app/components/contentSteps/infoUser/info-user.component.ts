@@ -9,7 +9,7 @@ import {
   FormControlLabelComponent,
   InputComponent,
   PatchFormGroupValueDirective,
-} from 'ngx-ftx-forms';
+} from '@ngx-ftx-forms';
 
 @Component({
   selector: 'info-user',

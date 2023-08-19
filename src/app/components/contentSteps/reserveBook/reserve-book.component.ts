@@ -10,7 +10,7 @@ import {
   InputComponent, PatchFormGroupValueDirective,
   TypeConstantEnum,
   TypePattern,
-} from 'ngx-ftx-forms';
+} from '@ngx-ftx-forms';
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { StepperService } from '../../services/stepper.service';

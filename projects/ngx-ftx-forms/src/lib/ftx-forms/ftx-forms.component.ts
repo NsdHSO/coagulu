@@ -16,8 +16,8 @@ import {
 } from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
 import { FormControlLabelComponent } from './components';
-import { ButtonComponent } from './shared/button/button.component';
 import { GenerativeService } from './service';
+import { ButtonComponent } from './shared';
 
 @Component({
   selector: 'ngx-ftx-forms',

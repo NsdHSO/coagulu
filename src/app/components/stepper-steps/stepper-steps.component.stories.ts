@@ -17,7 +17,7 @@ import {
   BrowserAnimationsModule,
   provideAnimations,
 } from '@angular/platform-browser/animations';
-import { ButtonComponent } from 'ngx-ftx-forms';
+import { ButtonComponent } from '@ngx-ftx-forms';
 
 export default {
   title: 'StepperStepsComponent',

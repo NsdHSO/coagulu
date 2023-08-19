@@ -14,7 +14,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 import { map, of, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { StepperService } from '../services/stepper.service';
-import { ButtonComponent } from 'ngx-ftx-forms';
+import { ButtonComponent } from '@ngx-ftx-forms';
 import { FormStepper, selectStepsEntities, Step } from '../../+state';
 
 @Component({
