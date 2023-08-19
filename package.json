@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build ngx-ftx-form",
+    "build": "ng build ngx-ftx-forms",
     "build:m": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

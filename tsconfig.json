@@ -29,6 +29,7 @@
       "dom"
     ]
   },
+  "plugins": [{ "name": "@angular/language-service" }],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
