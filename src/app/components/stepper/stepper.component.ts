@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { StepperStepsComponent } from '../stepper-steps/stepper-steps.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StepperService } from '../services/stepper.service';
-import { PatchFormGroupValueDirective } from 'ngx-ftx-forms';
+import { PatchFormGroupValueDirective } from '@ngx-ftx-forms';
 
 @Component({
   standalone: true,
