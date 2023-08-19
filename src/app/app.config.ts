@@ -7,12 +7,11 @@ import { appRoutes } from './app.routes';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import * as fromStepper from './+state/stepper.reducer';
-import { StepperEffects } from './+state/stepper.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { IconCoreModule } from 'ngx-liburg-icon';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import * as fromReserve from './+state/reserve/reserve.reducer';
-import { ReserveEffects } from './+state/reserve/reserve.effects';
+import { ReserveEffects, StepperEffects } from './+state';
 
 export const appConfig: ApplicationConfig = {
   providers: [

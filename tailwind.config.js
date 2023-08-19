@@ -1,16 +1,12 @@
-/* eslint-env es6 */
-/* eslint-disable */
-const { createGlobPatternsForDependencies } = require('@nx/angular/tailwind');
-const { join } = require('path');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'),
-    ...createGlobPatternsForDependencies(__dirname),
+    "./src/**/*.{html,ts}",
+    "./projects/**/*.{html,ts}",
   ],
   theme: {
     extend: {},
   },
-  plugins: [require('tailwindcss-animated')],
-};
+  plugins: [],
+}
+
