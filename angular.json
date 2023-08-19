@@ -19,7 +19,7 @@
           "options": {
             "outputPath": "dist/coagulu",
             "sourceMap": true,
-            "baseHref": "/ngx-ftx-forms/",
+            "baseHref": "/coagulu/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
