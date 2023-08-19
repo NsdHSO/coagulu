@@ -1,0 +1,23 @@
+name: Triage
+
+on:
+  issue_comment:
+    types:
+    - created
+    - edited
+  workflow_call:
+
+jobs:
+  take-issue:
+    name: Take issue
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    timeout-minutes: 10
+    steps:
+    - name: take an issue
+      uses: bdougie/take-action@main
+      with:
+        message: Thanks for taking this on! If you have not already, Join in [Discord](https://discord.gg/mjDJ3YDE)
+        trigger: .take
+        token: ${{ secrets.GH_TOKEN }}
