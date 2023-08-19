@@ -40,12 +40,12 @@ jobs:
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@v9.0.16
         env:
-          PACKAGEJSON_DIR: 'projects/ngx-liburg'
+          PACKAGEJSON_DIR: 'projects/ngx-ftx-forms'
         with:
           commit-message: '🤖: bumps version to {{version}} [skip ci] [CI]'
           version-type: 'patch'
       - run: npm run-script build
-      - run: cd dist/ngx-liburg && npm publish
+      - run: cd dist/ngx-ftx-forms && npm publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
