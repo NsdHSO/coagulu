@@ -43,5 +43,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: deploy_dist/ngx-ftx-forms
+          FOLDER: deploy_dist/coagulu
 
