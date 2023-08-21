@@ -25,7 +25,7 @@
   let-control="control"
   let-controlKey="controlKey"
 >
-  <ng-container [ngSwitch]="control.constructor.name">
+  <ng-container [ngSwitch]="getCustomFromControlType(control)">
     <!-- Render FormArray -->
     <ng-container *ngSwitchCase="'FormArray'" data-test="ftx-form-array">
       <div class="flex flex-wrap">
@@ -36,7 +36,6 @@
           "
           data-test="indexArray"
         >
-          {{ ivan(arrayControl) }}
           <ng-container
             *ngTemplateOutlet="
               renderControlRecursive;
@@ -48,15 +47,13 @@
       </div>
     </ng-container>
     <!-- Render FormGroup -->
-    <ng-container *ngSwitchCase="'Ne'" data-test="ftx-form-group">
+    <ng-container *ngSwitchCase="'FormGroup'" data-test="ftx-form-group">
       <ng-container
         *ngFor="
           let groupControl of control.controls | keyvalue;
           trackBy: generateFormBuilderService.trackBy
         "
       >
-        {{ ivan(groupControl) }}
-
         <ng-container
           *ngTemplateOutlet="
             renderControlRecursive;
@@ -70,8 +67,6 @@
     </ng-container>
     <!-- Render FormControl -->
     <ng-container *ngSwitchDefault>
-      {{ ivan({ control, name:control.constructor.name, controlKey }) }}
-
       <ngx-form-control-label
         data-test="controlKey"
         [formControl]="control"

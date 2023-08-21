@@ -7,7 +7,13 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  AbstractControl,
+  FormGroup,
+  isFormArray,
+  isFormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
 import { FormControlLabelComponent } from './components';
 import { ButtonComponent, PapControlDirective } from './shared';
@@ -32,9 +38,7 @@ export class FtxFormsComponent {
   @Output() submitEvent = new EventEmitter();
   controlMapping: any = []; // eslint-disable-line
   generateFormBuilderService = inject(GenerativeService);
-
   private _jsonData: DataFormBuilder = {} as DataFormBuilder;
-
   get jsonData(): DataFormBuilder {
     return this._jsonData;
   }
@@ -52,5 +56,15 @@ export class FtxFormsComponent {
 
   public ivan(controls: boolean | any) {
     console.log(controls);
+  }
+
+  getCustomFromControlType(control: AbstractControl<unknown>): string {
+    if (isFormArray(control)) {
+      return 'FormArray';
+    }
+    if (isFormGroup(control)) {
+      return 'FormGroup';
+    }
+    return 'FormControl';
   }
 }
