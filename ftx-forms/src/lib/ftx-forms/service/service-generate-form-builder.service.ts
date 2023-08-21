@@ -13,12 +13,14 @@ import {
   Validator,
 } from '../interfaces';
 import { TypeConstantEnum } from '../utils';
+import { ValidatorService } from './validator.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GenerateFormBuilderService {
   private readonly _fb = inject(FormBuilder);
+  private readonly _validatorService = inject(ValidatorService);
 
   buildFormFromJson(jsonData: DataFormBuilder): any {
     console.log(this.buildFormGenerate(jsonData));
@@ -40,16 +42,13 @@ export class GenerateFormBuilderService {
     const { type, option, errorMsg } = validatorConfig;
     switch (type) {
       case TypeConstantEnum.REQUIRED:
-        return (control: { value: unknown }) =>
-          control.value
-            ? null
-            : { error: errorMsg || 'This field Is must' || true };
+        return (control: FormControl) =>
+          this._validatorService.requiredValidator(control, errorMsg);
       case TypeConstantEnum.MIN:
         if (typeof option === TypeConstantEnum.NUMBER) {
-          // Check if option is a number
           const numOption = option as number;
-          return (control: { value: number }) =>
-            control.value >= numOption ? null : { error: errorMsg || true };
+          return (control: FormControl) =>
+            this._validatorService.minValidator(control, numOption, errorMsg);
         } else {
           throw new Error('Other Error extract validator'); // Handle other
           // cases or throw an error
@@ -58,11 +57,12 @@ export class GenerateFormBuilderService {
         if (typeof option === TypeConstantEnum.NUMBER) {
           // Check if option is a number
           const numOption = option as number;
-          return (control: { value: number }) =>
-            String(control.value).length >= numOption ||
-            String(control.value).length === 0
-              ? null
-              : { error: errorMsg || true };
+          return (control: FormControl) =>
+            this._validatorService.minCharValidator(
+              control,
+              numOption,
+              errorMsg
+            );
         } else {
           throw new Error('Other Error extract validator'); // Handle other
           // cases or throw an error
@@ -72,28 +72,14 @@ export class GenerateFormBuilderService {
           typeof option === TypeConstantEnum.STRING ||
           option instanceof RegExp
         ) {
-          const pattern =
-            typeof option === TypeConstantEnum.STRING
-              ? new RegExp(option as string)
-              : (option as RegExp);
           return (control: FormControl) =>
-            (pattern instanceof RegExp ? pattern.test(control.value) : false)
-              ? null
-              : { error: errorMsg || true };
+            this._validatorService.patternValidator(control, option, errorMsg);
         } else {
           throw new Error('Invalid option for pattern validator');
         }
       case TypeConstantEnum.EMAIL:
-        return (control: FormControl) => {
-          if (!control.value) {
-            return null; // Allow empty values for the email validator
-          }
-          const emailPattern =
-            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          return emailPattern.test(control.value)
-            ? null
-            : { error: errorMsg || true };
-        };
+        return (control: FormControl) =>
+          this._validatorService.emailValidator(control, errorMsg);
       // Add more cases for other validator types as needed
       default:
         // Return null for unknown validator types
