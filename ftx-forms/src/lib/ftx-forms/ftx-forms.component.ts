@@ -17,7 +17,7 @@ import {
 import { DataFormBuilder } from './interfaces';
 import { FormControlLabelComponent } from './components';
 import { ButtonComponent } from './shared';
-import { GenerativeService } from './service';
+import { GenerateFormBuilderService, GenerativeService } from './service';
 
 @Component({
   selector: 'ngx-ftx-forms',
@@ -36,7 +36,8 @@ export class FtxFormsComponent {
   @Input() dynamicForm: FormGroup = {} as FormGroup;
   @Output() submitEvent = new EventEmitter();
   controlMapping: any = []; // eslint-disable-line
-  generateFormBuilderService = inject(GenerativeService);
+  generativeService = inject(GenerativeService);
+  generateFormBuilderService = inject(GenerateFormBuilderService);
   private _jsonData: DataFormBuilder = {} as DataFormBuilder;
   get jsonData(): DataFormBuilder {
     return this._jsonData;
@@ -65,15 +66,5 @@ export class FtxFormsComponent {
         });
       }
     }
-  }
-
-  getCustomFromControlType(control: AbstractControl<unknown>): string {
-    if (isFormArray(control)) {
-      return 'FormArray';
-    }
-    if (isFormGroup(control)) {
-      return 'FormGroup';
-    }
-    return 'FormControl';
   }
 }

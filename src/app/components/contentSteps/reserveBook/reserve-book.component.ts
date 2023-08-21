@@ -256,7 +256,6 @@ export class ReserveBookComponent implements OnInit {
       this.dynamicForm.valueChanges
         .pipe(
           debounceTime(200),
-          tap((v) => console.log(this.dynamicForm.controls)),
           tap(
             (values) =>
               this._stepperStore.dispatch(formValueChangeReserve(values as any)) //eslint-disable-line

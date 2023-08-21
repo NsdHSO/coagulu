@@ -25,14 +25,16 @@
   let-control="control"
   let-controlKey="controlKey"
 >
-  <ng-container [ngSwitch]="getCustomFromControlType(control)">
+  <ng-container
+    [ngSwitch]="generateFormBuilderService.getCustomFromControlType(control)"
+  >
     <!-- Render FormArray -->
     <ng-container *ngSwitchCase="'FormArray'">
       <div class="flex flex-wrap">
         <ng-container
           *ngFor="
             let arrayControl of control.controls;
-            trackBy: generateFormBuilderService.trackBy
+            trackBy: generativeService.trackBy
           "
         >
           <ng-container
@@ -50,7 +52,7 @@
       <ng-container
         *ngFor="
           let groupControl of control.controls | keyvalue;
-          trackBy: generateFormBuilderService.trackBy
+          trackBy: generativeService.trackBy
         "
       >
         <ng-container

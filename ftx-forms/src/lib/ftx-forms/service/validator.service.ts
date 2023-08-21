@@ -60,7 +60,7 @@ export class ValidatorService {
   validatorGenerators(): { [key: string]: ValidatorGenerator } {
     return {
       [TypeConstantEnum.REQUIRED]: (control, _, errorMsg) =>
-        control.value ? null : { error: errorMsg || true },
+        this.requiredValidator(control, errorMsg),
       [TypeConstantEnum.MIN]: (control, option, errorMsg) => {
         if (typeof option === 'number') {
           return this.minValidator(control, option, errorMsg);
