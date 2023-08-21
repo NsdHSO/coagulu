@@ -14,7 +14,7 @@ import {
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { StepperService } from '../../services/stepper.service';
-import { PatchFormGroupValueDirective } from '../../../../../ftx-forms/src/lib/ftx-forms/directive/patch-form-group-value.directive';
+import { PatchFormGroupValueDirective } from 'ngx-ftx-forms';
 import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
 
 @Component({

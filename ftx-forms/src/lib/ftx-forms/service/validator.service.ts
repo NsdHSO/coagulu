@@ -4,14 +4,14 @@ import { TypeConstantEnum } from '../utils';
 
 type ValidatorGenerator = (
   control: FormControl | FormControl<unknown>,
-  option: any,
+  option: unknown,
   errorMsg: string
-) => any;
+) => any; //eslint-disable-line
 @Injectable({
   providedIn: 'root',
 })
 export class ValidatorService {
-  requiredValidator(control: AbstractControl, errorMsg?: string): any {
+  requiredValidator(control: AbstractControl, errorMsg?: string) {
     return control.value
       ? null
       : { error: errorMsg || 'This field Is must' || true };
@@ -48,7 +48,7 @@ export class ValidatorService {
       : null;
   }
 
-  emailValidator(control: FormControl, errorMsg?: string): any {
+  emailValidator(control: FormControl, errorMsg?: string) {
     if (!control.value) {
       return null;
     }
@@ -57,7 +57,10 @@ export class ValidatorService {
       ? null
       : { error: errorMsg || true };
   }
-  validatorGenerators(): { [key: string]: ValidatorGenerator } {
+
+  validatorGenerators(): {
+    [key: string]: ValidatorGenerator;
+  } {
     return {
       [TypeConstantEnum.REQUIRED]: (control, _, errorMsg) =>
         this.requiredValidator(control, errorMsg),
@@ -84,8 +87,7 @@ export class ValidatorService {
       },
       [TypeConstantEnum.EMAIL]: (control, _, errorMsg) => {
         return this.emailValidator(control, errorMsg);
-      },
-      // Add more cases for other validator types as needed
+      }, // Add more cases for other validator types as needed
     };
   }
 }
