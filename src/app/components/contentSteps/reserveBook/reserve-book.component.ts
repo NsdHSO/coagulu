@@ -82,17 +82,7 @@ export class ReserveBookComponent implements OnInit {
         labelHint: 'Area Data',
         typeInput: 'area',
       },
-      {
-        label: 'toggle',
-        value: true,
-        labelHint: 'Toggle Type',
-        typeInput: 'toggle',
-        valueToggleShow: [
-          { value: true, description: 'TEst' },
-          { value: false, description: 'TEST1' },
-        ],
-        validators: [{ type: TypeConstantEnum.REQUIRED }],
-      },
+
       {
         labelHint: 'Address street',
         label: 'address',
@@ -131,6 +121,32 @@ export class ReserveBookComponent implements OnInit {
           },
           {
             label: 'ds',
+            value: 'TEST',
+            labelHint: 'Personal TEst',
+            validators: [
+              { type: TypeConstantEnum.REQUIRED },
+              {
+                type: TypeConstantEnum.PATTERN,
+                option: TypePattern.ONLY_CHAR,
+                errorMsg: 'Only' + ' char',
+              },
+            ],
+          },
+          {
+            label: 'ds2',
+            value: 'TEST',
+            labelHint: 'Personal TEst',
+            validators: [
+              { type: TypeConstantEnum.REQUIRED },
+              {
+                type: TypeConstantEnum.PATTERN,
+                option: TypePattern.ONLY_CHAR,
+                errorMsg: 'Only' + ' char',
+              },
+            ],
+          },
+          {
+            label: 'ds3',
             value: 'TEST',
             labelHint: 'Personal TEst',
             validators: [
@@ -203,6 +219,8 @@ export class ReserveBookComponent implements OnInit {
                 labelHint: 'Childrens',
               },
               { value: 2, placeholder: 'NAMING', labelHint: 'Number' },
+              { value: 3, placeholder: 'NAMING™', labelHint: 'Number' },
+              { value: 5, placeholder: 'NAMING4', labelHint: 'Number' },
             ],
           },
         ],

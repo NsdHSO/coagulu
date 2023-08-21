@@ -7,16 +7,10 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  FormGroup,
-  isFormArray,
-  isFormControl,
-  isFormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
 import { FormControlLabelComponent } from './components';
-import { ButtonComponent } from './shared/button/button.component';
+import { ButtonComponent, PapControlDirective } from './shared';
 import { GenerativeService } from './service';
 
 @Component({
@@ -28,36 +22,35 @@ import { GenerativeService } from './service';
     FormControlLabelComponent,
     ButtonComponent,
   ],
+  hostDirectives: [PapControlDirective],
   templateUrl: './ftx-forms.component.html',
   styleUrls: ['./ftx-forms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FtxFormsComponent {
-  @Input()
-  dynamicForm: FormGroup = {} as FormGroup;
-
-  @Input()
-  jsonData: DataFormBuilder = {} as DataFormBuilder;
-
-  @Output()
-  submitEvent = new EventEmitter();
-
-  controlMapping: any = [];
+  @Input() dynamicForm: FormGroup = {} as FormGroup;
+  @Output() submitEvent = new EventEmitter();
+  controlMapping: any = []; // eslint-disable-line
   generateFormBuilderService = inject(GenerativeService);
-  protected readonly isFormGroup = isFormGroup;
-  protected readonly isFormControl = isFormControl;
-  protected readonly isFormArray = isFormArray;
 
-  ngOnInit() {
-    if (this.jsonData.values)
-      for (const item of this.jsonData.values) {
-        if (item.label) {
+  private _jsonData: DataFormBuilder = {} as DataFormBuilder;
+
+  get jsonData(): DataFormBuilder {
+    return this._jsonData;
+  }
+
+  @Input() set jsonData(jsonData) {
+    this._jsonData = jsonData;
+    if (jsonData.values) {
+      for (const item of jsonData.values) {
+        if (item && item.label) {
           this.controlMapping[item.label] = item;
         }
       }
+    }
   }
 
-  public ivan(controls: boolean | undefined) {
+  public ivan(controls: boolean | any) {
     console.log(controls);
   }
 }

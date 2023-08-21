@@ -14,7 +14,7 @@
       </mat-radio-group>
     </ng-container>
     <ng-container *ngSwitchCase="'area'">
-      <mat-form-field appearance="outline" class="rotate-180 -scale-[0.8]">
+      <mat-form-field appearance="outline">
         <mat-label>{{ labelInput }}</mat-label>
         <textarea
           matInput
@@ -24,11 +24,7 @@
         ></textarea>
       </mat-form-field>
     </ng-container>
-    <mat-form-field
-      appearance="outline"
-      *ngSwitchDefault
-      class="rotate-180 -scale-[0.8]"
-    >
+    <mat-form-field appearance="outline" *ngSwitchDefault>
       <mat-label>{{ labelInput }}</mat-label>
       <input
         matInput

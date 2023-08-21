@@ -1,15 +1,14 @@
-<div class="flex justify-between items-center">
+<div class="flex justify-between items-center py-2">
   <p
     [ngClass]="{ invisible: typeInput === 'boolean' }"
-    class="col-span-1 !m-0"
+    class="w-20 !m-0"
     *ngIf="label || labelInput"
   >
     {{ label }}
   </p>
   <div
-    class="flex"
     [ngClass]="
-      typeInput === 'boolean' ? 'col-span-1 gap-4 items-center' : 'col-span-4'
+      typeInput === 'boolean' ? 'col-span-1 gap-4 items-center' : 'flex-1'
     "
   >
     <ngx-input-component

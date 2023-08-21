@@ -27,32 +27,36 @@
 >
   <ng-container [ngSwitch]="control.constructor.name">
     <!-- Render FormArray -->
-    {{ ivan(control) }}
-    <ng-container *ngSwitchCase="'FormArray'">
-      <ng-container
-        *ngFor="
-          let arrayControl of control.controls;
-          trackBy: generateFormBuilderService.trackBy
-        "
-      >
+    <ng-container *ngSwitchCase="'FormArray'" data-test="ftx-form-array">
+      <div class="flex flex-wrap">
         <ng-container
-          *ngTemplateOutlet="
-            renderControlRecursive;
-            context: { control: arrayControl, controlKey: controlKey }
+          *ngFor="
+            let arrayControl of control.controls;
+            trackBy: generateFormBuilderService.trackBy
           "
+          data-test="indexArray"
         >
+          {{ ivan(arrayControl) }}
+          <ng-container
+            *ngTemplateOutlet="
+              renderControlRecursive;
+              context: { control: arrayControl, controlKey: controlKey }
+            "
+          >
+          </ng-container>
         </ng-container>
-      </ng-container>
+      </div>
     </ng-container>
-
     <!-- Render FormGroup -->
-    <ng-container *ngSwitchCase="'FormGroup'">
+    <ng-container *ngSwitchCase="'FormGroup'" data-test="ftx-form-group">
       <ng-container
         *ngFor="
           let groupControl of control.controls | keyvalue;
           trackBy: generateFormBuilderService.trackBy
         "
       >
+        {{ ivan(groupControl) }}
+
         <ng-container
           *ngTemplateOutlet="
             renderControlRecursive;
@@ -66,7 +70,10 @@
     </ng-container>
     <!-- Render FormControl -->
     <ng-container *ngSwitchDefault>
+      {{ ivan(control) }}
+
       <ngx-form-control-label
+        data-test="controlKey"
         [formControl]="control"
         [labelInput]="controlMapping[controlKey]?.labelHint"
         [label]="controlKey"
