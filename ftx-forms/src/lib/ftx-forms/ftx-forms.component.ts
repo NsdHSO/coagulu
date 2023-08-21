@@ -28,7 +28,6 @@ import { GenerativeService } from './service';
     FormControlLabelComponent,
     ButtonComponent,
   ],
-  hostDirectives: [PapControlDirective],
   templateUrl: './ftx-forms.component.html',
   styleUrls: ['./ftx-forms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,10 +51,6 @@ export class FtxFormsComponent {
         }
       }
     }
-  }
-
-  public ivan(controls: boolean | any) {
-    console.log(controls);
   }
 
   getCustomFromControlType(control: AbstractControl<unknown>): string {

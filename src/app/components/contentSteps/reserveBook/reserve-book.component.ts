@@ -77,6 +77,22 @@ export class ReserveBookComponent implements OnInit {
         validators: [{ type: TypeConstantEnum.REQUIRED }],
       },
       {
+        label: 'Adult',
+        value: true,
+        labelHint: 'Is Adult',
+        typeInput: 'toggle',
+        valueToggleShow: [
+          {
+            value: false,
+            description: 'No',
+          },
+          {
+            value: true,
+            description: 'Yes',
+          },
+        ],
+      },
+      {
         label: 'ARE',
         value: 'dasdasd',
         labelHint: 'Area Data',
