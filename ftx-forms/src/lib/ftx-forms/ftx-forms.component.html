@@ -27,7 +27,7 @@
 >
   <ng-container [ngSwitch]="getCustomFromControlType(control)">
     <!-- Render FormArray -->
-    <ng-container *ngSwitchCase="'FormArray'" data-test="ftx-form-array">
+    <ng-container *ngSwitchCase="'FormArray'">
       <div class="flex flex-wrap">
         <ng-container
           *ngFor="
@@ -47,7 +47,7 @@
       </div>
     </ng-container>
     <!-- Render FormGroup -->
-    <ng-container *ngSwitchCase="'FormGroup'" data-test="ftx-form-group">
+    <ng-container *ngSwitchCase="'FormGroup'">
       <ng-container
         *ngFor="
           let groupControl of control.controls | keyvalue;
