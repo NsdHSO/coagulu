@@ -46,8 +46,9 @@ export class FtxFormsComponent {
     this._jsonData = jsonData;
     if (jsonData.values) {
       for (const item of jsonData.values) {
+        const label = item.label?.toLowerCase();
         if (item && item.label) {
-          this.controlMapping[item.label] = item;
+          this.controlMapping[label ?? ''] = item;
         }
       }
     }

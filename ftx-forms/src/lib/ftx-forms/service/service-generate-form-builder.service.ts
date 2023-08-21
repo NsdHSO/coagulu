@@ -108,18 +108,16 @@ export class GenerateFormBuilderService {
       //eslint-disable-next-line
       const group: { [key: string]: any } = {};
       data.values.forEach((item) => {
+        const label = item.label?.toLowerCase();
         if (item.values) {
-          group[item.label ?? ''] = this.buildFormGenerate(item);
+          group[label ?? ''] = this.buildFormGenerate(item);
         } else if (item.bulkValues) {
-          group[item.label ?? ''] = this._fb.array(
+          group[label ?? ''] = this._fb.array(
             item.bulkValues.map((subItem) => this.buildFormGenerate(subItem))
           );
         } else {
           const validators = this.extractValidator(item);
-          group[item.label ?? ''] = this._fb.control(
-            item.value || null,
-            validators
-          );
+          group[label ?? ''] = this._fb.control(item.value || null, validators);
         }
       });
       return this._fb.group(group);
