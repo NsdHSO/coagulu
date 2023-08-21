@@ -12,7 +12,6 @@ import {
   Section,
   Validator,
 } from '../interfaces';
-import { TypeConstantEnum } from '../utils';
 import { ValidatorService } from './validator.service';
 
 @Injectable({
@@ -37,53 +36,21 @@ export class GenerateFormBuilderService {
     return validators;
   }
 
-  // eslint-disable-next-line
-  getValidator(validatorConfig: Validator): ValidatorFn | any {
+  getValidator(validatorConfig: Validator): ValidatorFn {
     const { type, option, errorMsg } = validatorConfig;
-    switch (type) {
-      case TypeConstantEnum.REQUIRED:
-        return (control: FormControl) =>
-          this._validatorService.requiredValidator(control, errorMsg);
-      case TypeConstantEnum.MIN:
-        if (typeof option === TypeConstantEnum.NUMBER) {
-          const numOption = option as number;
-          return (control: FormControl) =>
-            this._validatorService.minValidator(control, numOption, errorMsg);
-        } else {
-          throw new Error('Other Error extract validator'); // Handle other
-          // cases or throw an error
-        }
-      case TypeConstantEnum.MIN_CHAR:
-        if (typeof option === TypeConstantEnum.NUMBER) {
-          // Check if option is a number
-          const numOption = option as number;
-          return (control: FormControl) =>
-            this._validatorService.minCharValidator(
-              control,
-              numOption,
-              errorMsg
-            );
-        } else {
-          throw new Error('Other Error extract validator'); // Handle other
-          // cases or throw an error
-        }
-      case TypeConstantEnum.PATTERN:
-        if (
-          typeof option === TypeConstantEnum.STRING ||
-          option instanceof RegExp
-        ) {
-          return (control: FormControl) =>
-            this._validatorService.patternValidator(control, option, errorMsg);
-        } else {
-          throw new Error('Invalid option for pattern validator');
-        }
-      case TypeConstantEnum.EMAIL:
-        return (control: FormControl) =>
-          this._validatorService.emailValidator(control, errorMsg);
-      // Add more cases for other validator types as needed
-      default:
-        // Return null for unknown validator types
-        throw new Error('Please Implement this Validator');
+
+    // Use the validatorGenerators function to generate validators
+    const validatorGenerator = this._validatorService.validatorGenerators();
+
+    if (type in validatorGenerator) {
+      return (control: unknown) =>
+        validatorGenerator[type](
+          control as FormControl,
+          option,
+          errorMsg ?? ''
+        );
+    } else {
+      throw new Error('Please Implement this Validator');
     }
   }
 

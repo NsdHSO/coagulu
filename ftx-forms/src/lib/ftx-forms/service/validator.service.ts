@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
-import { TypeConstantEnum } from 'ngx-ftx-forms';
+import { TypeConstantEnum } from '../utils';
 
+type ValidatorGenerator = (
+  control: FormControl | FormControl<unknown>,
+  option: any,
+  errorMsg: string
+) => any;
 @Injectable({
   providedIn: 'root',
 })
@@ -51,5 +56,36 @@ export class ValidatorService {
     return emailPattern.test(control.value)
       ? null
       : { error: errorMsg || true };
+  }
+  validatorGenerators(): { [key: string]: ValidatorGenerator } {
+    return {
+      [TypeConstantEnum.REQUIRED]: (control, _, errorMsg) =>
+        control.value ? null : { error: errorMsg || true },
+      [TypeConstantEnum.MIN]: (control, option, errorMsg) => {
+        if (typeof option === 'number') {
+          return this.minValidator(control, option, errorMsg);
+        } else {
+          throw new Error('Other Error extract validator');
+        }
+      },
+      [TypeConstantEnum.MIN_CHAR]: (control, option, errorMsg) => {
+        if (typeof option === 'number') {
+          return this.minCharValidator(control, option, errorMsg);
+        } else {
+          throw new Error('Other Error extract validator');
+        }
+      },
+      [TypeConstantEnum.PATTERN]: (control, option, errorMsg) => {
+        if (typeof option === 'string' || option instanceof RegExp) {
+          return this.patternValidator(control, option, errorMsg);
+        } else {
+          throw new Error('Invalid option for pattern validator');
+        }
+      },
+      [TypeConstantEnum.EMAIL]: (control, _, errorMsg) => {
+        return this.emailValidator(control, errorMsg);
+      },
+      // Add more cases for other validator types as needed
+    };
   }
 }
