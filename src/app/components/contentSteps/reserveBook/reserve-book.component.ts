@@ -106,6 +106,8 @@ export class ReserveBookComponent implements OnInit {
           {
             label: 'street',
             value: 'Ivan',
+            labelHint: 'Street Number 1',
+            placeholder: 'Street Number 1',
             validators: [
               {
                 type: TypeConstantEnum.REQUIRED,
@@ -234,7 +236,12 @@ export class ReserveBookComponent implements OnInit {
                 validators: [{ type: TypeConstantEnum.REQUIRED }],
                 labelHint: 'Childrens',
               },
-              { value: 2, placeholder: 'NAMING', labelHint: 'Number' },
+              {
+                label: 'train',
+                value: 2,
+                placeholder: 'NAMING',
+                labelHint: 'Number',
+              },
               { value: 3, placeholder: 'NAMING™', labelHint: 'Number' },
               { value: 5, placeholder: 'NAMING4', labelHint: 'Number' },
             ],

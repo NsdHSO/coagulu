@@ -16,7 +16,7 @@ import {
 } from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
 import { FormControlLabelComponent } from './components';
-import { ButtonComponent, PapControlDirective } from './shared';
+import { ButtonComponent } from './shared';
 import { GenerativeService } from './service';
 
 @Component({
@@ -47,9 +47,22 @@ export class FtxFormsComponent {
     if (jsonData.values) {
       for (const item of jsonData.values) {
         const label = item.label?.toLowerCase();
+
         if (item && item.label) {
           this.controlMapping[label ?? ''] = item;
         }
+
+        // Check for values or bulkValues and iterate over them
+        const itemsToMap = [...(item.values ?? []), ...(item.bulkValues ?? [])];
+        itemsToMap.forEach((values) => {
+          if (values.bulkValues) {
+            values.bulkValues.forEach((c) => {
+              this.controlMapping[c.label ?? ''] = c;
+            });
+          }
+          const label = values.label?.toLowerCase();
+          this.controlMapping[label ?? ''] = values;
+        });
       }
     }
   }
