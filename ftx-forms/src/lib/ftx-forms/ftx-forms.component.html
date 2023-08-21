@@ -70,7 +70,7 @@
     </ng-container>
     <!-- Render FormControl -->
     <ng-container *ngSwitchDefault>
-      {{ ivan(control) }}
+      {{ ivan({ control, name:control.constructor.name, controlKey }) }}
 
       <ngx-form-control-label
         data-test="controlKey"
