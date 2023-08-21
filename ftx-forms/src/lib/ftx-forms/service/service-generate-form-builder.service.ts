@@ -1,9 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import {
+  AbstractControl,
   FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
+  isFormArray,
+  isFormGroup,
   ValidatorFn,
 } from '@angular/forms';
 import {
@@ -82,5 +85,15 @@ export class GenerateFormBuilderService {
       const validators = this.extractValidator(data);
       return this._fb.control(data.value || null, validators);
     }
+  }
+
+  getCustomFromControlType(control: AbstractControl<unknown>): string {
+    if (isFormArray(control)) {
+      return 'FormArray';
+    }
+    if (isFormGroup(control)) {
+      return 'FormGroup';
+    }
+    return 'FormControl';
   }
 }
