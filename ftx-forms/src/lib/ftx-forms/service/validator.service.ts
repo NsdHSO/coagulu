@@ -11,21 +11,17 @@ type ValidatorGenerator = (
   providedIn: 'root',
 })
 export class ValidatorService {
-  requiredValidator(control: AbstractControl, errorMsg?: string) {
+  requiredValidator(control: FormControl, errorMsg?: string) {
     return control.value
       ? null
       : { error: errorMsg || 'This field Is must' || true };
   }
 
-  minValidator(control: AbstractControl, option: number, errorMsg?: string) {
+  minValidator(control: FormControl, option: number, errorMsg?: string) {
     return control.value >= option ? null : { error: errorMsg || true };
   }
 
-  minCharValidator(
-    control: AbstractControl,
-    option: number,
-    errorMsg?: string
-  ) {
+  minCharValidator(control: FormControl, option: number, errorMsg?: string) {
     return String(control.value).length >= option ||
       String(control.value).length === 0
       ? null
@@ -34,13 +30,13 @@ export class ValidatorService {
 
   patternValidator(
     control: FormControl,
-    option: unknown,
+    optionRegex: unknown,
     errorMsg?: string | undefined
   ) {
     const pattern =
-      typeof option === 'string'
-        ? new RegExp(option as string)
-        : (option as RegExp);
+      typeof optionRegex === 'string'
+        ? new RegExp(optionRegex as string)
+        : (optionRegex as RegExp);
     return pattern instanceof RegExp
       ? pattern.test(control.value)
         ? null
