@@ -9,12 +9,7 @@ import {
   isFormGroup,
   ValidatorFn,
 } from '@angular/forms';
-import {
-  DataFormBuilder,
-  NestedValue,
-  Section,
-  Validator,
-} from '../interfaces';
+import { DataFormBuilder, ValidatorConfig } from '../interfaces';
 import { ValidatorService } from './validator.service';
 
 @Injectable({
@@ -29,7 +24,7 @@ export class GenerateFormBuilderService {
     return this.buildFormGenerate(jsonData);
   }
 
-  extractValidator(item: Section | NestedValue): ValidatorFn[] {
+  extractValidator(item: DataFormBuilder): ValidatorFn[] {
     let validators: ValidatorFn[] = [];
     if (item.validators && item.validators.length > 0) {
       validators = item.validators.map((validatorConfig) =>
@@ -39,7 +34,7 @@ export class GenerateFormBuilderService {
     return validators;
   }
 
-  getValidator(validatorConfig: Validator): ValidatorFn {
+  getValidator(validatorConfig: ValidatorConfig): ValidatorFn {
     const { type, option, errorMsg } = validatorConfig;
 
     // Use the validatorGenerators function to generate validators
