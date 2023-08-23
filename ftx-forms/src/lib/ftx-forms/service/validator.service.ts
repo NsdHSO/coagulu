@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { TypeConstantEnum } from '../utils';
 
 type ValidatorGenerator = (
@@ -64,21 +64,21 @@ export class ValidatorService {
         if (typeof option === 'number') {
           return this.minValidator(control, option, errorMsg);
         } else {
-          throw new Error('Other Error extract validator');
+          throw new Error('Invalid option for this validator');
         }
       },
       [TypeConstantEnum.MIN_CHAR]: (control, option, errorMsg) => {
         if (typeof option === 'number') {
           return this.minCharValidator(control, option, errorMsg);
         } else {
-          throw new Error('Other Error extract validator');
+          throw new Error('Invalid option for this validator');
         }
       },
       [TypeConstantEnum.PATTERN]: (control, option, errorMsg) => {
         if (typeof option === 'string' || option instanceof RegExp) {
           return this.patternValidator(control, option, errorMsg);
         } else {
-          throw new Error('Invalid option for pattern validator');
+          throw new Error('Invalid option for this validator');
         }
       },
       [TypeConstantEnum.EMAIL]: (control, _, errorMsg) => {

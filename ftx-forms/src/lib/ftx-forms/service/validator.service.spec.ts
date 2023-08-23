@@ -42,29 +42,66 @@ describe('ValidatorService', () => {
         expect(spyMethod).toHaveBeenCalled();
       });
     });
+    [
+      { type: 'min', method: 'minValidator', option: 'tesst' },
+      { type: 'minChar', method: 'minCharValidator', option: 'TEST' },
+      {
+        type: 'pattern',
+        method: 'patternValidator',
+        option: true,
+      },
+    ].forEach((vmx: { type: string; method: any; option?: unknown }) => {
+      it(`validator must be return a error for ${vmx.type}`, () => {
+        const generator = service.validatorGenerators();
+
+        expect(generator[vmx.type]).toBeInstanceOf(Function);
+        const validatorFunction = generator[vmx.type];
+        const fakeControl = { value: 'some value' } as FormControl;
+        expect(typeof validatorFunction).toBe('function');
+        expect(() =>
+          validatorFunction(fakeControl, vmx.option, 'TEST')
+        ).toThrowError();
+      });
+    });
   });
 
   describe('Check Validator msg', () => {
-    it('email Validator have error', () => {
+    it('should email Validator have error', () => {
       const emailFrom = {
         value: 'Ivan',
       } as FormControl;
 
       expect(service.emailValidator(emailFrom)).toEqual({ error: true });
     });
-    it('email Validator have error', () => {
+    it('should email Validator have error', () => {
       const emailFrom = {} as FormControl;
 
       expect(service.emailValidator(emailFrom)).toBeFalsy();
     });
-    it('email Validator', () => {
+    it('should email Validator', () => {
       const emailFrom = {
         value: 'ivan@gmail.com',
       } as FormControl;
 
       expect(service.emailValidator(emailFrom)).toBeFalsy();
     });
-    it('patter Validator have error', () => {
+    it('should return null for valid email', () => {
+      const control = new FormControl('test@example.com');
+      const errorMsg = 'Test Error';
+
+      const result = service.emailValidator(control, errorMsg);
+
+      expect(result).toBeNull();
+    });
+    it('should return null for empty value', () => {
+      const control = new FormControl('');
+      const errorMsg = 'Test Error';
+
+      const result = service.emailValidator(control, errorMsg);
+
+      expect(result).toBeNull();
+    });
+    it('should patter Validator have error', () => {
       const emailFrom = {
         value: 'Ivan1',
       } as FormControl;
@@ -73,7 +110,7 @@ describe('ValidatorService', () => {
         service.patternValidator(emailFrom, TypePattern.ONLY_CHAR)
       ).toEqual({ error: true });
     });
-    it('patter Validator', () => {
+    it('should patter Validator', () => {
       const emailFrom = {
         value: 'ivan@gmail.com',
       } as FormControl;
@@ -82,28 +119,28 @@ describe('ValidatorService', () => {
         service.patternValidator(emailFrom, TypePattern.ONLY_CHAR)
       ).not.toBeFalsy();
     });
-    it('min char validator have error', () => {
+    it('should min char validator have error', () => {
       const emailFrom = {
         value: 222,
       } as FormControl;
 
       expect(service.minCharValidator(emailFrom, 2)).toEqual(null);
     });
-    it('min char validator', () => {
+    it('should min char validator', () => {
       const emailFrom = {
         value: 'ivan@gmail.com',
       } as FormControl;
 
       expect(service.minCharValidator(emailFrom, 15)).not.toBeFalsy();
     });
-    it('min char validator', () => {
+    it('should min char validator', () => {
       const emailFrom = {
         value: 'ivanssssss@gmail.com',
       } as FormControl;
 
       expect(service.minCharValidator(emailFrom, 15)).toBeFalsy();
     });
-    it('min validator have error', () => {
+    it('should min validator have error', () => {
       const emailFrom = {
         value: 20,
       } as FormControl;
@@ -117,14 +154,14 @@ describe('ValidatorService', () => {
 
       expect(service.minValidator(emailFrom, 1)).not.toBeFalsy();
     });
-    it('required validator have error', () => {
+    it('should required validator have error', () => {
       const emailFrom = {
         value: 20,
       } as FormControl;
 
       expect(service.requiredValidator(emailFrom)).toEqual(null);
     });
-    it('required validator', () => {
+    it('should required validator', () => {
       const emailFrom = {
         value: '',
       } as FormControl;
