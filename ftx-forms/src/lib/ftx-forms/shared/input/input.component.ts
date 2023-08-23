@@ -5,6 +5,7 @@ import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @Component({
   selector: 'ngx-input-component',
@@ -21,6 +22,12 @@ import { MatRadioModule } from '@angular/material/radio';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline', subscriptSizing: 'dynamic' },
+    },
+  ],
 })
 export class InputComponent {
   /**

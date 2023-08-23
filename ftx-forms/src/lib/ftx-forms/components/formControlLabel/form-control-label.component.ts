@@ -56,8 +56,12 @@ export class FormControlLabelComponent {
    * When input is radio button
    */
   @Input() toggleData? = [{ value: false, description: 'default' }];
-  ngControl: FormControlDirective | FormControlName | NgModel =
-    injectNgControl();
+  ngControl:
+    | FormControlDirective
+    | FormControlName
+    | NgModel
+    | NgControl
+    | any = injectNgControl(); //eslint-disable-line
 }
 
 function injectNgControl() {

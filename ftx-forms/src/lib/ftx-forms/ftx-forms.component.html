@@ -68,15 +68,17 @@
     </ng-container>
     <!-- Render FormControl -->
     <ng-container *ngSwitchDefault>
-      <ngx-form-control-label
-        data-test="controlKey"
-        [formControl]="control"
-        [labelInput]="controlMapping[controlKey]?.labelHint"
-        [label]="controlKey"
-        [placeholderInput]="controlMapping[controlKey]?.placeholder"
-        [toggleData]="controlMapping[controlKey]?.valueToggleShow"
-        [typeInput]="controlMapping[controlKey]?.typeInput"
-      ></ngx-form-control-label>
+      <div class="w-full border-t border-b border-slate-200/60 border-solid">
+        <ngx-form-control-label
+          data-test="controlKey"
+          [formControl]="control"
+          [labelInput]="controlMapping[controlKey]?.labelHint"
+          [label]="controlKey"
+          [placeholderInput]="controlMapping[controlKey]?.placeholder"
+          [toggleData]="controlMapping[controlKey]?.valueToggleShow"
+          [typeInput]="controlMapping[controlKey]?.typeInput"
+        />
+      </div>
     </ng-container>
   </ng-container>
 </ng-template>

@@ -1,11 +1,12 @@
 <div class="flex justify-between items-center py-2">
   <p
     [ngClass]="{ invisible: typeInput === 'boolean' }"
-    class="w-20 !m-0"
+    class="w-20 !m-0 text prose prose-zinc prose-xl"
     *ngIf="label || labelInput"
   >
     {{ label }}
   </p>
+
   <div
     [ngClass]="
       typeInput === 'boolean' ? 'col-span-1 gap-4 items-center' : 'flex-1'
@@ -22,4 +23,10 @@
       {{ labelInput }}
     </p>
   </div>
+</div>
+<div
+  *ngIf="ngControl?.control?.errors?.error"
+  class="py-2 text-red-500 text prose prose-zinc prose-lg pl-20"
+>
+  {{ ngControl.control?.errors?.error }}
 </div>

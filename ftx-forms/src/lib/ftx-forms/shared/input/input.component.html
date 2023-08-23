@@ -3,7 +3,7 @@
     <mat-checkbox
       *ngSwitchCase="'boolean'"
       [formControl]="control.control"
-      class="border-0 flex ng-dirty ng-touched ng-valid placeholder:text-gray-400 py-1.5 ring-inset rounded-md shadow-sm sm:leading-6 sm:text-sm text-gray-900"
+      class="border-0 flex placeholder:text-gray-400 py-1.5 ring-inset rounded-md shadow-sm sm:leading-6 sm:text-sm text-gray-900"
     />
     <ng-container *ngSwitchCase="'toggle'">
       <mat-radio-group [formControl]="control.control" class="flex gap-5">
@@ -14,8 +14,8 @@
       </mat-radio-group>
     </ng-container>
     <ng-container *ngSwitchCase="'area'">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ labelInput }}</mat-label>
+      <mat-form-field>
+        <mat-label class="text prose prose-zinc">{{ labelInput }}</mat-label>
         <textarea
           matInput
           [placeholder]="placeholderInput ?? ''"
@@ -24,8 +24,11 @@
         ></textarea>
       </mat-form-field>
     </ng-container>
-    <mat-form-field appearance="outline" *ngSwitchDefault>
-      <mat-label>{{ labelInput }}</mat-label>
+    <mat-form-field
+      *ngSwitchDefault
+      [color]="control.control?.errors?.error ? 'warn' : 'primary'"
+    >
+      <mat-label class="text prose prose-zinc">{{ labelInput }}</mat-label>
       <input
         matInput
         [placeholder]="placeholderInput ?? ''"
@@ -34,7 +37,4 @@
       />
     </mat-form-field>
   </ng-container>
-  <div *ngIf="control?.control?.errors?.error" class="pl-3 py-2 text-red-500">
-    {{ control.control?.errors?.error }}
-  </div>
 </div>
