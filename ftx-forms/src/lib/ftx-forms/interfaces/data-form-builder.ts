@@ -22,4 +22,10 @@ export interface DataFormBuilder {
   placeholder?: string;
 }
 
-export type TypeInput = 'boolean' | 'toggle' | 'area' | 'currency' | 'dropdown';
+export type TypeInput =
+  | 'boolean'
+  | 'toggle'
+  | 'area'
+  | 'currency'
+  | 'dropdown'
+  | 'date';

@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  FormArray,
   FormControlDirective,
   FormControlName,
   FormsModule,
@@ -30,12 +31,6 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
   templateUrl: './form-control-label.component.html',
   styleUrls: ['./form-control-label.component.scss'],
   hostDirectives: [PapControlDirective],
-  providers: [
-    {
-      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { subscriptSizing: 'dynamic' },
-    },
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormControlLabelComponent {
