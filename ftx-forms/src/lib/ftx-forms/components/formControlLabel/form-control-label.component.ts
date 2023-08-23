@@ -17,6 +17,13 @@ import {
 import { PapControlDirective, InputComponent } from '../../shared';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'ngx-form-control-label',
@@ -32,6 +39,12 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
   styleUrls: ['./form-control-label.component.scss'],
   hostDirectives: [PapControlDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ width: 0, opacity: 0 })),
+      transition('void <=> *', animate('300ms ease-in-out')),
+    ]),
+  ],
 })
 export class FormControlLabelComponent {
   @Input() label: string | undefined = '';
