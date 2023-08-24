@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { ValidatorService } from './validator.service';
 import { FormControl } from '@angular/forms';
 import { TypePattern } from '../utils';
-import * as vm from 'vm';
 
 describe('ValidatorService', () => {
   let service: ValidatorService;
