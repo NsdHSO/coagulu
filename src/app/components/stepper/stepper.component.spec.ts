@@ -11,7 +11,7 @@ describe('StepperComponent', () => {
       if (providerToken === StepperService) {
         return stepperSerivce;
       }
-      return;
+      return null;
     });
 
     return new StepperComponent();

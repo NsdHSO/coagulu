@@ -22,7 +22,7 @@ describe('StepperStepsComponent', () => {
       if (providerToken === Store) {
         return store;
       }
-      return;
+      return null;
     });
 
     return new StepperStepsComponent();
