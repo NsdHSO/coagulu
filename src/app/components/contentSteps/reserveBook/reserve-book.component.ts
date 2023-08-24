@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonComponent,
   DataFormBuilder,
   FormControlLabelComponent,
   FtxFormsComponent,
   GenerateFormBuilderService,
-  PatchFormGroupValueDirective,
   InputComponent,
+  PatchFormGroupValueDirective,
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
@@ -37,7 +37,7 @@ export class ReserveBookComponent implements OnInit {
   readonly generateFormBuilderService: GenerateFormBuilderService = inject(
     GenerateFormBuilderService
   );
-  dynamicForm: FormGroup = {} as FormGroup;
+  dynamicForm: any; // eslint-disable-line
   jsonData: DataFormBuilder = {
     values: [
       {
@@ -256,7 +256,7 @@ export class ReserveBookComponent implements OnInit {
       this.dynamicForm.valueChanges
         .pipe(
           debounceTime(200),
-          tap((values) =>
+          tap((values: DataFormBuilder) =>
             this._stepperStore.dispatch(formValueChangeReserve(values))
           ),
           tap(() => {

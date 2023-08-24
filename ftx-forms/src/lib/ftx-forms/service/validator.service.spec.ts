@@ -26,6 +26,7 @@ describe('ValidatorService', () => {
       },
       { type: 'required', method: 'requiredValidator' },
     ].forEach((vmx: { type: string; method: any; option?: unknown }) => {
+      // eslint-disable-line
       it(`validator must be return a function ${vmx.type}`, () => {
         const generator = service.validatorGenerators();
         const spyMethod = jest.spyOn(service, vmx.method); // Typecast here
@@ -50,6 +51,7 @@ describe('ValidatorService', () => {
         option: true,
       },
     ].forEach((vmx: { type: string; method: any; option?: unknown }) => {
+      // eslint-disable-line
       it(`validator must be return a error for ${vmx.type}`, () => {
         const generator = service.validatorGenerators();
 

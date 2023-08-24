@@ -12,9 +12,7 @@ import {
   tap,
   using,
 } from 'rxjs';
-import { formValueChange } from '../../+state/stepper.actions';
-import { selectStepperEntities } from '../../+state/stepper.selectors';
-import { StepperEntity } from '../../+state/stepper.models';
+import { selectStepperEntities, formValueChange } from '../../+state';
 
 @Injectable({ providedIn: 'root' })
 export class StepperService {
@@ -138,8 +136,8 @@ export class StepperService {
    * @type {Observable}
    */
   private formValue$ = using(
-    () => {
-      return this.stepperForm.valueChanges
+    () =>
+      this.stepperForm.valueChanges
         .pipe(
           debounceTime(200),
           tap(
@@ -148,8 +146,7 @@ export class StepperService {
             ) => this._stepperStore.dispatch(formValueChange(values))
           )
         )
-        .subscribe();
-    },
+        .subscribe(),
     () => this._stepperStore.select(selectStepperEntities)
   ).pipe(shareReplay());
   public buttonDisable$ = combineLatest([this.formValue$, this.flagUrl$]).pipe(

@@ -39,7 +39,7 @@ export class StepperStepsComponent implements OnDestroy {
   readonly stepperService = inject(StepperService);
   steps$ = this._store.select(selectStepsEntities);
   @Output() ivan? = new EventEmitter();
-  @Input() vm: FormStepper | any;
+  @Input() vm: FormStepper | any; //eslint-disable-line
 
   trackBy(index: number) {
     return index;
