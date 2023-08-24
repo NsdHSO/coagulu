@@ -11,7 +11,7 @@ describe('InfoUserComponent', () => {
       if (providerToken === StepperService) {
         return stepperService;
       }
-      return;
+      return null;
     });
 
     return new StepperComponent();

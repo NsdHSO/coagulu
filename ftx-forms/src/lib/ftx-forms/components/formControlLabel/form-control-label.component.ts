@@ -71,7 +71,7 @@ export class FormControlLabelComponent {
    */
   @Input() toggleData? = [{ value: false, description: 'default' }];
   ngControl: FormControlDirective | FormControlName | NgModel | NgControl =
-    injectNgControl(); //eslint-disable-line
+    injectNgControl();
 }
 
 function injectNgControl() {
