@@ -33,10 +33,7 @@ export class ValidatorService {
     optionRegex: unknown,
     errorMsg?: string | undefined
   ) {
-    const pattern =
-      typeof optionRegex === 'string'
-        ? new RegExp(optionRegex as string)
-        : (optionRegex as RegExp);
+    const pattern = new RegExp(optionRegex as string);
     return pattern instanceof RegExp
       ? pattern.test(control.value)
         ? null
