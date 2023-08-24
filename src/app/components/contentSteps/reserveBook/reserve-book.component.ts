@@ -256,9 +256,8 @@ export class ReserveBookComponent implements OnInit {
       this.dynamicForm.valueChanges
         .pipe(
           debounceTime(200),
-          tap(
-            (values) =>
-              this._stepperStore.dispatch(formValueChangeReserve(values as any)) //eslint-disable-line
+          tap((values) =>
+            this._stepperStore.dispatch(formValueChangeReserve(values))
           ),
           tap(() => {
             this._stepperService.steppForm.controls.reserveBook.controls.check.patchValue(

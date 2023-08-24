@@ -1,7 +1,7 @@
 <div
   class="flex justify-between w-full animate-fade animate-once animate-duration-1000 animate-ease-in-out"
 >
-  <div class="relative flex gap-5">
+  <div class="relative flex gap-5" *ngIf="vm">
     <button
       *ngFor="let elm of vm?.steps; trackBy: trackBy"
       class="bg-white"
