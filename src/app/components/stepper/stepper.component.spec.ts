@@ -6,10 +6,10 @@ import { of } from 'rxjs';
 describe('StepperComponent', () => {
   const spyInject = jest.spyOn(angularCore, 'inject');
 
-  const setup = (stepperSerivce: unknown) => {
+  const setup = (stepperService: unknown) => {
     spyInject.mockImplementation((providerToken: unknown) => {
       if (providerToken === StepperService) {
-        return stepperSerivce;
+        return stepperService;
       }
       return null;
     });
@@ -23,7 +23,6 @@ describe('StepperComponent', () => {
     };
 
     const stepperComponent = setup(mockService);
-
     expect(stepperComponent.form).toEqual({});
   });
 });
