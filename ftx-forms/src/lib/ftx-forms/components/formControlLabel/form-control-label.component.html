@@ -28,8 +28,8 @@
 <div
   [ngxFadeInOut]="ngControl.statusChanges | async"
   @widthOpacityAnimation
-  *ngIf="ngControl?.control?.errors?.error"
+  *ngIf="ngControl?.errors"
   class="py-2 text-red-500 text prose prose-zinc prose-lg ml-72"
 >
-  {{ ngControl.control?.errors?.error }}
+  {{ ngControl.errors?.['error']  }}
 </div>
