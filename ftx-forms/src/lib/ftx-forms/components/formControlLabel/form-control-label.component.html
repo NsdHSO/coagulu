@@ -26,7 +26,8 @@
   </div>
 </div>
 <div
-  [@fadeInOut]
+  [ngxFadeInOut]="ngControl.statusChanges | async"
+  @widthOpacityAnimation
   *ngIf="ngControl?.control?.errors?.error"
   class="py-2 text-red-500 text prose prose-zinc prose-lg ml-72"
 >

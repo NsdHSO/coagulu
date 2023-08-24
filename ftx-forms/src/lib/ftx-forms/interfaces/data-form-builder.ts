@@ -1,4 +1,5 @@
 import { TypeConstantEnum } from '../utils';
+
 export interface ValidatorConfig {
   type: TypeConstantEnum;
   option?: any;
@@ -28,4 +29,5 @@ export type TypeInput =
   | 'area'
   | 'currency'
   | 'dropdown'
-  | 'date';
+  | 'date'
+  | 'date-interval';

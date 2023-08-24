@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  FormArray,
   FormControlDirective,
   FormControlName,
   FormsModule,
@@ -14,11 +13,12 @@ import {
   NgModel,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { PapControlDirective, InputComponent } from '../../shared';
+import { InputComponent, PapControlDirective } from '../../shared';
 import { MatInputModule } from '@angular/material/input';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
 import {
   animate,
+  keyframes,
   state,
   style,
   transition,
@@ -34,15 +34,21 @@ import {
     InputComponent,
     ReactiveFormsModule,
     MatInputModule,
+    FadeInOutDirective,
   ],
   templateUrl: './form-control-label.component.html',
   styleUrls: ['./form-control-label.component.scss'],
   hostDirectives: [PapControlDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
-    trigger('fadeInOut', [
-      state('void', style({ width: 0, opacity: 0 })),
-      transition('void <=> *', animate('300ms ease-in-out')),
+    trigger('widthOpacityAnimation', [
+      state('void', style({ opacity: '0' })),
+      transition('void => *', [
+        animate('300ms ease-in-out', keyframes([style({ opacity: '1' })])),
+      ]),
+      transition('* => void', [
+        animate('300ms ease-in-out', keyframes([style({ opacity: '0' })])),
+      ]),
     ]),
   ],
 })

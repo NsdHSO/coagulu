@@ -12,7 +12,7 @@ import {
 @Directive({
   selector: '[ngxFadeInOut]',
   standalone: true,
-  exportAs: 'ngxFadeInOut', // Expose the directive instance
+  exportAs: 'ngxFadeInOut', // Expose the directive instance,
 })
 export class FadeInOutDirective<T> {
   /**

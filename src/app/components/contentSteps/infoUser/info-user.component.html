@@ -10,6 +10,7 @@
         formControlName="check"
         class="col-span-4"
         [placeholderInput]="'Check'"
+        typeInput="boolean"
       />
       <div formGroupName="info">
         <ngx-form-control-label
@@ -26,29 +27,15 @@
             <ng-container
               *ngFor="
                 let role of form.controls.infoUser.controls.info.controls
-                  .roleOfMember.controls;
+                  .roleOfMember.controls | keyvalue;
                 let index = index
               "
               [formGroupName]="index"
             >
               <ngx-form-control-label
-                [label]="'Value:'"
+                [label]="role.key.toUpperCase()"
                 formControlName="value"
                 class="col-span-1"
-                [placeholderInput]="'value'"
-              />
-              <ngx-form-control-label
-                [label]="'Check:'"
-                formControlName="check"
-                class="col-span-1"
-                [labelInput]="'TEST'"
-                typeInput="boolean"
-              />
-              <ngx-form-control-label
-                [label]="'ID:'"
-                formControlName="id"
-                class="col-span-1"
-                [placeholderInput]="'ID'"
               />
             </ng-container>
           </ng-container>
