@@ -19,8 +19,9 @@ export class GenerateFormBuilderService {
   private readonly _fb = inject(FormBuilder);
   private readonly _validatorService = inject(ValidatorService);
 
-  buildFormFromJson(jsonData: DataFormBuilder): any {
-    console.log(this.buildFormGenerate(jsonData));
+  buildFormFromJson(
+    jsonData: DataFormBuilder
+  ): FormGroup | FormArray | FormControl {
     return this.buildFormGenerate(jsonData);
   }
 

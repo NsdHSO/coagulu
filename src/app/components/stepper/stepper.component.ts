@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { StepperStepsComponent } from '../stepper-steps/stepper-steps.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PatchFormGroupValueDirective } from '../../../../ftx-forms/src/lib/ftx-forms/directive/patch-form-group-value.directive';
+import { PatchFormGroupValueDirective } from 'ngx-ftx-forms';
 import { StepperService } from '../services/stepper.service';
 
 @Component({
