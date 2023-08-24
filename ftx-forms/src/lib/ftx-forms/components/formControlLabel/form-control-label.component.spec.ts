@@ -13,7 +13,9 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-class MockNgControl {}
+class MockNgControl {
+  // Only mock
+}
 
 describe('FormControlLabelComponent', () => {
   let component: FormControlLabelComponent;
