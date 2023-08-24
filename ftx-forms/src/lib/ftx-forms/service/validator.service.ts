@@ -18,14 +18,14 @@ export class ValidatorService {
   }
 
   minValidator(control: FormControl, option: number, errorMsg?: string) {
-    return control.value >= option ? null : { error: errorMsg || true };
+    return control.value >= option ? null : { error: errorMsg ?? true };
   }
 
   minCharValidator(control: FormControl, option: number, errorMsg?: string) {
     return String(control.value).length >= option ||
       String(control.value).length === 0
       ? null
-      : { error: errorMsg || true };
+      : { error: errorMsg ?? true };
   }
 
   patternValidator(
@@ -37,7 +37,7 @@ export class ValidatorService {
     return pattern instanceof RegExp
       ? pattern.test(control.value)
         ? null
-        : { error: errorMsg || true }
+        : { error: errorMsg ?? true }
       : null;
   }
 
@@ -48,7 +48,7 @@ export class ValidatorService {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(control.value)
       ? null
-      : { error: errorMsg || true };
+      : { error: errorMsg ?? true };
   }
 
   validatorGenerators(): {
