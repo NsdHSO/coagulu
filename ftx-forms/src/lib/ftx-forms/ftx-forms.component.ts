@@ -7,13 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  AbstractControl,
-  FormGroup,
-  isFormArray,
-  isFormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
 import { FormControlLabelComponent } from './components';
 import { ButtonComponent } from './shared';
@@ -49,7 +43,7 @@ export class FtxFormsComponent {
       for (const item of jsonData.values) {
         const label = item.label?.toLowerCase();
 
-        if (item && item.label) {
+        if (item?.label) {
           this.controlMapping[label ?? ''] = item;
         }
 
