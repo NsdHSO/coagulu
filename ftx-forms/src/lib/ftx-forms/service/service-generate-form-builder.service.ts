@@ -22,6 +22,7 @@ export class GenerateFormBuilderService {
   buildFormFromJson(
     jsonData: DataFormBuilder
   ): FormGroup | FormArray | FormControl {
+    console.log(this.buildFormGenerate(jsonData));
     return this.buildFormGenerate(jsonData);
   }
 

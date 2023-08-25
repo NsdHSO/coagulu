@@ -222,7 +222,7 @@ export class ReserveBookComponent implements OnInit {
       },
       {
         label: 'home',
-        labelHint: 'Name for User',
+        labelHint: 'Name for Home',
         bulkValues: [
           {
             value: '444',

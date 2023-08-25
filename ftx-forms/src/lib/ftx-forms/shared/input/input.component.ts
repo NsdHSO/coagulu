@@ -6,6 +6,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
+import {
+  animate,
+  keyframes,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'ngx-input-component',
@@ -18,6 +27,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     MatInputModule,
     MatCheckboxModule,
     MatRadioModule,
+    FadeInOutDirective,
   ],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
@@ -27,6 +37,17 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline', subscriptSizing: 'dynamic' },
     },
+  ],
+  animations: [
+    trigger('widthOpacityAnimation', [
+      state('void', style({ opacity: '0' })),
+      transition('void => *', [
+        animate('300ms ease-in-out', keyframes([style({ opacity: '1' })])),
+      ]),
+      transition('* => void', [
+        animate('300ms ease-in-out', keyframes([style({ opacity: '0' })])),
+      ]),
+    ]),
   ],
 })
 export class InputComponent {

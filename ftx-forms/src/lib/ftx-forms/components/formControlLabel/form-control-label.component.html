@@ -2,16 +2,17 @@
   <p
     [ngClass]="{ invisible: typeInput === 'boolean' }"
     class="w-60 text prose prose-zinc prose-xl px-5 !mx-4 !my-0"
-    *ngIf="label || labelInput"
+    *ngIf="(label || labelInput) && !isFormArray"
   >
     {{ label }}
   </p>
 
   <div
-    class="border-slate-200/60 border-solid border-l"
-    [ngClass]="
-      typeInput === 'boolean' ? 'col-span-1 gap-4 items-center' : 'flex-1'
-    "
+    [ngClass]="{
+      'col-span-1 gap-4 items-center': typeInput === 'boolean',
+      'flex-1 pr-2': typeInput !== 'boolean' && !isFormArray,
+      'w-full px-2': isFormArray
+    }"
   >
     <ngx-input-component
       [control]="ngControl"
@@ -24,12 +25,4 @@
       {{ labelInput }}
     </p>
   </div>
-</div>
-<div
-  [ngxFadeInOut]="ngControl.statusChanges | async"
-  @widthOpacityAnimation
-  *ngIf="ngControl?.errors"
-  class="py-2 text-red-500 text prose prose-zinc prose-lg ml-72"
->
-  {{ ngControl.errors?.['error']  }}
 </div>

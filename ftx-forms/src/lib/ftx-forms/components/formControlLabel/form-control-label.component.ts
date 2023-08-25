@@ -16,14 +16,6 @@ import {
 import { InputComponent, PapControlDirective } from '../../shared';
 import { MatInputModule } from '@angular/material/input';
 import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
-import {
-  animate,
-  keyframes,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 @Component({
   selector: 'ngx-form-control-label',
@@ -40,17 +32,6 @@ import {
   styleUrls: ['./form-control-label.component.scss'],
   hostDirectives: [PapControlDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    trigger('widthOpacityAnimation', [
-      state('void', style({ opacity: '0' })),
-      transition('void => *', [
-        animate('300ms ease-in-out', keyframes([style({ opacity: '1' })])),
-      ]),
-      transition('* => void', [
-        animate('300ms ease-in-out', keyframes([style({ opacity: '0' })])),
-      ]),
-    ]),
-  ],
 })
 export class FormControlLabelComponent {
   @Input() label: string | undefined = '';
@@ -66,6 +47,11 @@ export class FormControlLabelComponent {
    * Label for input
    */
   @Input() labelInput? = 'Complete label';
+
+  /**
+   * Label for input
+   */
+  @Input() isFormArray? = false;
   /**
    * When input is radio button
    */

@@ -1,0 +1,9 @@
+form.ngx-forms-form-wrapper {
+  > div:first-child {
+    @apply rounded-tl-lg rounded-tr-lg;
+  }
+
+  > :last-child {
+    @apply rounded-bl-lg rounded-br-lg;
+  }
+}
