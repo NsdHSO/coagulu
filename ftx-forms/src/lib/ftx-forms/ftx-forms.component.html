@@ -1,14 +1,15 @@
 <form
   [formGroup]="dynamicForm"
   (ngSubmit)="submitEvent.emit(true)"
-  class="p-3 flex flex-col"
+  class="p-3 flex flex-col gap-0.5 bg-slate-200 ngx-forms-form-wrapper"
 >
   <ng-container
     *ngTemplateOutlet="
       renderControlRecursive;
       context: {
         control: dynamicForm,
-        controlKey: null
+        controlKey: null,
+        is: false
       }
     "
   />
@@ -24,23 +25,32 @@
   #renderControlRecursive
   let-control="control"
   let-controlKey="controlKey"
+  let-isArray="isArray"
 >
   <ng-container
     [ngSwitch]="generateFormBuilderService.getCustomFromControlType(control)"
   >
     <!-- Render FormArray -->
     <ng-container *ngSwitchCase="'FormArray'">
-      <div class="flex flex-wrap">
+      <div
+        class="flex"
+        [ngClass]="{ 'flex-col gap-0.5': control.controls[1].length }"
+      >
         <ng-container
           *ngFor="
             let arrayControl of control.controls;
-            trackBy: generativeService.trackBy
+            trackBy: generativeService.trackBy;
+            let index = index
           "
         >
           <ng-container
             *ngTemplateOutlet="
               renderControlRecursive;
-              context: { control: arrayControl, controlKey: controlKey }
+              context: {
+                control: arrayControl,
+                controlKey: controlKey,
+                isArray: index
+              }
             "
           />
         </ng-container>
@@ -59,7 +69,7 @@
             renderControlRecursive;
             context: {
               control: groupControl.value,
-              controlKey: groupControl.key
+              controlKey: groupControl.key,
             }
           "
         />
@@ -67,9 +77,10 @@
     </ng-container>
     <!-- Render FormControl -->
     <ng-container *ngSwitchDefault>
-      <div class="w-full border-t border-b border-slate-200/60 border-solid">
+      <div class="w-full bg-white">
         <ngx-form-control-label
           data-test="controlKey"
+          [isFormArray]="isArray"
           [formControl]="control"
           [labelInput]="controlMapping[controlKey]?.labelHint"
           [label]="controlKey"

@@ -36,5 +36,13 @@
         class="font-semibold !text-xl"
       />
     </mat-form-field>
+    <div
+      [ngxFadeInOut]="control.statusChanges | async"
+      @widthOpacityAnimation
+      *ngIf="control?.errors"
+      class="py-2 text-red-500 text prose prose-zinc prose-lg"
+    >
+      {{ control.errors?.['error']  }}
+    </div>
   </ng-container>
 </div>
