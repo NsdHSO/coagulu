@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
+    "build:lib": "nx build ftx-forms",
     "build:parallel": "nx build --parallel",
     "test": "nx test",
     "prepare": "husky install",

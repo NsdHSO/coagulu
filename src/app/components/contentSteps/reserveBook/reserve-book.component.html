@@ -1,7 +1,7 @@
-<div *ngIf="formValue$ | async">
+<ng-container *ngIf="formValue$ | async">
   <ngx-ftx-forms
     (submitEvent)="onSubmit()"
     [dynamicForm]="dynamicForm"
     [jsonData]="jsonData"
   />
-</div>
+</ng-container>

@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "ngx-fts-tooltip": ["ftx-tooltip/src/index.ts"],
       "ngx-ftx-forms": ["ftx-forms/src/index.ts"]
     }
   },
