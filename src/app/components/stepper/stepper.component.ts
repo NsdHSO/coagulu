@@ -23,7 +23,5 @@ import { StepperService } from '../services/stepper.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepperComponent {
-  private readonly _stepperService = inject(StepperService);
-  vm$ = this._stepperService.formValues$;
-  form = this._stepperService.stepperForm;
+  public readonly _stepperService = inject(StepperService);
 }

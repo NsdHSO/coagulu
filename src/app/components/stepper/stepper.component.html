@@ -2,13 +2,18 @@
   class="stepper-container-wrapper animate-fade transition-all animate-once animate-duration-1000 animate-ease-in-out"
 >
   <div
-    class="stepper-container-wrapper-outlet h-[calc(100vh-73px-0.65rem)] overflow-x-auto"
+    class="stepper-container-wrapper-outlet h-[calc(100vh-65px-0.65rem)] overflow-x-auto"
   >
     <router-outlet></router-outlet>
   </div>
   <div
-    class="stepper-container-wrapper__content flex py-4 px-3 bottom-0 w-full my-2 border-t-2 border-solid border-gray-200"
+    class="stepper-container-wrapper__content flex py-4 px-3 bottom-0 w-full mb-2 border-t-2 border-solid border-gray-200 bg-white rounded-tl-lg rounded-tr-lg"
   >
-    <stepper-steps *ngIf="vm$ | async as vm" [vm]="vm"></stepper-steps>
+    <stepper-steps
+      *ngIf="_stepperService.formValues$ | async as vm"
+      [vm]="vm"
+      [flagUrl$]="_stepperService.flagUrl$"
+      [buttonDisabled$]="_stepperService.buttonDisable$"
+    ></stepper-steps>
   </div>
 </div>

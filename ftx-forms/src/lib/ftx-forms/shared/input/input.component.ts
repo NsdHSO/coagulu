@@ -40,13 +40,9 @@ import {
   ],
   animations: [
     trigger('widthOpacityAnimation', [
-      state('void', style({ opacity: '0' })),
-      transition('void => *', [
-        animate('300ms ease-in-out', keyframes([style({ opacity: '1' })])),
-      ]),
-      transition('* => void', [
-        animate('300ms ease-in-out', keyframes([style({ opacity: '0' })])),
-      ]),
+      state('void', style({ transform: 'scaleY(0)', height: 0, opacity: 0 })),
+      state('*', style({ transform: 'scaleY(1)', opacity: 1 })),
+      transition('void <=> *', animate('300ms ease-in')),
     ]),
   ],
 })

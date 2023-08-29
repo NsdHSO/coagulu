@@ -12,9 +12,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatRippleModule } from '@angular/material/core';
 import { Store } from '@ngrx/store';
-import { map, of, Subject, switchMap, takeUntil, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  map,
+  Observable,
+  of,
+  Subject,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs';
 import { StepperService } from '../services/stepper.service';
-import { ButtonComponent } from 'ngx-ftx-forms';
+import { ButtonComponent, GenerativeService } from 'ngx-ftx-forms';
 import { FormStepper, selectStepsEntities, Step } from '../../+state';
 
 @Component({
@@ -37,22 +46,18 @@ export class StepperStepsComponent implements OnDestroy {
   private readonly _destroyed$ = new Subject();
   private readonly _store = inject(Store);
   readonly stepperService = inject(StepperService);
+  readonly generativeService = inject(GenerativeService);
   steps$ = this._store.select(selectStepsEntities);
   @Output() ivan? = new EventEmitter();
   @Input() vm: FormStepper | any; //eslint-disable-line
-
-  trackBy(index: number) {
-    return index;
-  }
-
+  @Input() flagUrl$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  @Input() buttonDisabled$: Observable<boolean> = new Observable<boolean>();
   nextTab() {
     return this.steps$
       .pipe(
         switchMap((step: Step[]) =>
           of({
-            index: step.findIndex(
-              (v) => v.value === this.stepperService.flagUrl$.value
-            ),
+            index: step.findIndex((v) => v.value === this.flagUrl$.value),
             step,
           })
         ),

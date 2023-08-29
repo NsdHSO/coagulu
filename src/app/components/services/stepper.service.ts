@@ -13,6 +13,8 @@ import {
   using,
 } from 'rxjs';
 import { selectStepperEntities, formValueChange } from '../../+state';
+import { Dictionary } from '@ngrx/entity';
+import { StepperEntity } from '../../+state/stepper.models';
 
 @Injectable({ providedIn: 'root' })
 export class StepperService {
@@ -135,7 +137,7 @@ export class StepperService {
    * Observable that emits the value of form changes.
    * @type {Observable}
    */
-  private formValue$ = using(
+  private formValue$: Observable<Dictionary<StepperEntity>> = using(
     () =>
       this.stepperForm.valueChanges
         .pipe(
@@ -154,14 +156,15 @@ export class StepperService {
       (
         valuesCombined: any //eslint-disable-line
       ): Observable<boolean> => of(!valuesCombined[0][valuesCombined[1]].check)
-    )
+    ),
+    shareReplay()
   );
 
   /**
    * Retrieves the observable for form values.
    * @type {Observable}
    */
-  get formValues$() {
+  get formValues$(): Observable<Dictionary<StepperEntity>> {
     return this.formValue$;
   }
 

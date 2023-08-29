@@ -3,9 +3,10 @@
 >
   <div class="relative flex gap-5" *ngIf="vm">
     <button
-      *ngFor="let elm of vm?.steps; trackBy: trackBy"
+      *ngFor="let elm of vm?.steps; trackBy: generativeService.trackBy"
       class="bg-white"
       [routerLink]="elm.value"
+      [disabled]="buttonDisabled$ | async"
     >
       <div *ngIf="vm[elm.value] as element">
         <mat-icon
@@ -24,7 +25,7 @@
   </div>
   <div>
     <ngx-button-component
-      [disable]="stepperService.buttonDisable$ | async"
+      [disable]="buttonDisabled$ | async"
       roundedFull="rounded-md"
       (marian)="nextTab()"
       >Continue

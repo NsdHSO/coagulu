@@ -246,6 +246,84 @@ export class ReserveBookComponent implements OnInit {
               { value: 542, placeholder: 'NAMING4', labelHint: 'Number' },
             ],
           },
+          {
+            label: 'Barto',
+            bulkValues: [
+              {
+                value: null,
+                labelHint: 'barot Childrens',
+              },
+              {
+                label: 'barot Childrens train',
+                value: 23222,
+                placeholder: ' barot NAMING',
+                labelHint: 'Number',
+              },
+              {
+                value: 3322,
+                placeholder: ' barot NAMING™',
+                validators: [{ type: TypeConstantEnum.REQUIRED }],
+                labelHint: 'Number',
+              },
+              {
+                value: 22542,
+                placeholder: 'barot NAMING4',
+                labelHint: 'Number',
+              },
+            ],
+          },
+          {
+            label: 'Barto2',
+            bulkValues: [
+              {
+                value: null,
+                labelHint: 'barot Childrens',
+              },
+              {
+                label: 'barot Childrens train',
+                value: 23222,
+                placeholder: ' barot NAMING',
+                labelHint: 'Number',
+              },
+              {
+                value: 3322,
+                placeholder: ' barot NAMING™',
+                labelHint: 'Number',
+              },
+              {
+                value: 22542,
+                placeholder: 'barot NAMING4',
+                validators: [{ type: TypeConstantEnum.REQUIRED }],
+                labelHint: 'Number',
+              },
+            ],
+          },
+          {
+            label: 'Bartos',
+            bulkValues: [
+              {
+                value: null,
+                labelHint: 'barot Childrens',
+              },
+              {
+                label: 'barot Childrens train',
+                value: 23222,
+                placeholder: ' barot NAMING',
+                labelHint: 'Number',
+                validators: [{ type: TypeConstantEnum.REQUIRED }],
+              },
+              {
+                value: 3322,
+                placeholder: ' barot NAMING™',
+                labelHint: 'Number',
+              },
+              {
+                value: 22542,
+                placeholder: 'barot NAMING4',
+                labelHint: 'Number',
+              },
+            ],
+          },
         ],
       },
     ],
