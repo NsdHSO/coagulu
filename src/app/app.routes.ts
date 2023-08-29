@@ -58,7 +58,7 @@ export const appRoutes: Route[] = [
       },
       {
         path: '**',
-        redirectTo: 'intro',
+        redirectTo: 'reserveBook',
       },
     ],
   },
