@@ -242,8 +242,6 @@ export class ReserveBookComponent implements OnInit {
                 placeholder: 'NAMING',
                 labelHint: 'Number',
               },
-              { value: 332, placeholder: 'NAMING™', labelHint: 'Number' },
-              { value: 542, placeholder: 'NAMING4', labelHint: 'Number' },
             ],
           },
           {
@@ -257,17 +255,6 @@ export class ReserveBookComponent implements OnInit {
                 label: 'barot Childrens train',
                 value: 23222,
                 placeholder: ' barot NAMING',
-                labelHint: 'Number',
-              },
-              {
-                value: 3322,
-                placeholder: ' barot NAMING™',
-                validators: [{ type: TypeConstantEnum.REQUIRED }],
-                labelHint: 'Number',
-              },
-              {
-                value: 22542,
-                placeholder: 'barot NAMING4',
                 labelHint: 'Number',
               },
             ],
@@ -285,17 +272,6 @@ export class ReserveBookComponent implements OnInit {
                 placeholder: ' barot NAMING',
                 labelHint: 'Number',
               },
-              {
-                value: 3322,
-                placeholder: ' barot NAMING™',
-                labelHint: 'Number',
-              },
-              {
-                value: 22542,
-                placeholder: 'barot NAMING4',
-                validators: [{ type: TypeConstantEnum.REQUIRED }],
-                labelHint: 'Number',
-              },
             ],
           },
           {
@@ -311,16 +287,6 @@ export class ReserveBookComponent implements OnInit {
                 placeholder: ' barot NAMING',
                 labelHint: 'Number',
                 validators: [{ type: TypeConstantEnum.REQUIRED }],
-              },
-              {
-                value: 3322,
-                placeholder: ' barot NAMING™',
-                labelHint: 'Number',
-              },
-              {
-                value: 22542,
-                placeholder: 'barot NAMING4',
-                labelHint: 'Number',
               },
             ],
           },

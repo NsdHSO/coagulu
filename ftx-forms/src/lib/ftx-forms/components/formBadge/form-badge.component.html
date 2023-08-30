@@ -1,0 +1,27 @@
+<div
+  class="wrapper-badge rounded-xl border-solid border-1 drop-shadow-md text prose prose-zinc prose-lg"
+  [ngClass]="{
+    'bg-green-500 border-green-700 text-green-700': typeBadge === 'success',
+    'bg-blue-300 border-blue-700 text-blue-700 ': typeBadge === 'done',
+    'bg-red-300 border-red-700 text-red-700 ': typeBadge === 'error',
+    'bg-yellow-400 border-yellow-700 text-yellow-700 ': typeBadge === 'warning',
+    'bg-blue-100 border-blue-700 text-blue-700 ': typeBadge === 'open',
+    'bg-white border-gray-300 ': typeBadge === 'pfm'
+  }"
+>
+  <ng-container
+    *ngFor="let badge of actionBadge; trackBy: _generativeService.trackBy"
+  >
+    <ng-container *ngIf="badge.side === 'left' && badge.icon">
+      <mat-icon [svgIcon]="badge.icon" (click)="badge.action()" />
+    </ng-container>
+    <ng-container *ngIf="badge.side === 'middle' && !badge.icon">
+      <div (click)="badge.action()">
+        {{ badge.text }}
+      </div>
+    </ng-container>
+    <ng-container *ngIf="badge.side === 'right' && badge.icon">
+      <mat-icon [svgIcon]="badge.icon" (click)="badge.action()" />
+    </ng-container>
+  </ng-container>
+</div>

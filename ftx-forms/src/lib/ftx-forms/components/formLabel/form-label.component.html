@@ -1,7 +1,13 @@
-<p
-  [ngClass]="{ invisible: typeInput === 'boolean' }"
-  class="w-60 text prose prose-zinc prose-xl px-5 !mx-4 !my-0"
-  *ngIf="(label || labelInput) && !isFormArray"
->
-  {{ label }}
-</p>
+<div class="flex w-60 px-5" *ngIf="(label || labelInput) && !isFormArray">
+  <p
+    [ngClass]="{ invisible: typeInput === 'boolean' }"
+    class="flex-1 text prose prose-zinc prose-xl !mx-4 !my-0"
+    *ngIf="(label || labelInput) && !isFormArray"
+  >
+    {{ label }}
+  </p>
+
+  <div *ngIf="(label || labelInput) && !isFormArray" class="flex h-8">
+    <ngx-form-badge [actionBadge]="actionBadge" />
+  </div>
+</div>

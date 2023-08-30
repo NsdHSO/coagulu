@@ -1,0 +1,14 @@
+@mixin animation() {
+  @apply hover:opacity-90 hover:scale-110 transition-all duration-200 ease-in-out;
+}
+:host {
+  .wrapper-badge {
+    @apply flex gap-2 w-full h-full items-center px-4;
+    @include animation();
+  }
+  ::ng-deep {
+    mat-icon {
+      @include animation();
+    }
+  }
+}
