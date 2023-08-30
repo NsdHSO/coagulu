@@ -16,13 +16,13 @@ import { ZoneAxeService } from '../service/zone-axe.service';
   standalone: true,
 })
 export class RenderYouDirective {
-  @Input() element: any;
+  @Input() element: any; //eslint-disable-line
 
   private readonly elementRef = inject(ElementRef);
   private readonly componentFactoryResolver = inject(ComponentFactoryResolver);
   private readonly viewContainerRef = inject(ViewContainerRef);
   private componentRef: ComponentRef<any> | any; // eslint-disable-line
-  private zoneAxes: ZoneAxeService | any;
+  private zoneAxes: ZoneAxeService | any; // eslint-disable-line
 
   @HostListener('mouseenter', ['$event']) onMouseEnter(event: MouseEvent) {
     const element = this.elementRef.nativeElement;
@@ -38,7 +38,9 @@ export class RenderYouDirective {
       this.componentRef.instance.rendererTemplate = this.element;
 
       // find the app-root element
-      const appRoot = document.getElementsByTagName('app-root')[0] as any;
+      const appRoot = document.getElementsByTagName(
+        'app-root'
+      )[0] as HTMLElement as any; //eslint-disable-line
 
       // add the tooltip component as a sibling of the app-root
       appRoot.parentElement.insertBefore(
@@ -55,10 +57,13 @@ export class RenderYouDirective {
         this.componentRef.location.nativeElement,
         element
       ).axes();
-      this.componentRef.location.nativeElement.style.top = position.top;
-      this.componentRef.location.nativeElement.style.left = position.left;
+      this.componentRef.location.nativeElement.style.top = `${
+        +position.top / 16
+      }rem`;
+      this.componentRef.location.nativeElement.style.left = `${
+        +position.left / 16
+      }rem`;
       this.componentRef.location.nativeElement.style.zIndex = '98';
-      this.componentRef.changeDetectorRef.detectChanges();
     }
   }
   @HostListener('mouseleave') onMouseLeave() {
