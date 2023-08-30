@@ -18,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
 
 @Component({
-  selector: 'ngx-form-control-label',
+  selector: 'ngx-form-control-entity',
   standalone: true,
   imports: [
     CommonModule,
@@ -28,12 +28,12 @@ import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
     MatInputModule,
     FadeInOutDirective,
   ],
-  templateUrl: './form-control-label.component.html',
-  styleUrls: ['./form-control-label.component.scss'],
+  templateUrl: './form-control-entity.component.html',
+  styleUrls: ['./form-control-entity.component.scss'],
   hostDirectives: [PapControlDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormControlLabelComponent {
+export class FormControlEntityComponent {
   @Input() label: string | undefined = '';
   /**
    * Type of Input checkbox text

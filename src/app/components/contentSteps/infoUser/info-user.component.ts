@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Dictionary } from '@ngrx/entity';
 import {
   ButtonComponent,
-  FormControlLabelComponent,
+  FormControlEntityComponent,
   InputComponent,
   PatchFormGroupValueDirective,
 } from 'ngx-ftx-forms';
@@ -20,7 +20,7 @@ import {
     PatchFormGroupValueDirective,
     ButtonComponent,
     InputComponent,
-    FormControlLabelComponent,
+    FormControlEntityComponent,
   ],
   templateUrl: './info-user.component.html',
   styleUrls: ['./info-user.component.scss'],

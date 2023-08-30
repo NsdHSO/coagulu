@@ -5,7 +5,7 @@
     class="w-80 items-stretch flex-col flex"
   >
     <div formGroupName="infoUser">
-      <ngx-form-control-label
+      <ngx-form-control-entity
         [label]="'Check value'"
         formControlName="check"
         class="col-span-4"
@@ -13,7 +13,7 @@
         typeInput="boolean"
       />
       <div formGroupName="info">
-        <ngx-form-control-label
+        <ngx-form-control-entity
           [label]="'Family Number'"
           formControlName="familyNumber"
           class="col-span-4"
@@ -32,7 +32,7 @@
               "
               [formGroupName]="index"
             >
-              <ngx-form-control-label
+              <ngx-form-control-entity
                 [label]="role.key.toUpperCase()"
                 formControlName="value"
                 class="col-span-1"

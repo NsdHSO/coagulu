@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonComponent,
   DataFormBuilder,
-  FormControlLabelComponent,
+  FormControlEntityComponent,
   FtxFormsComponent,
   GenerateFormBuilderService,
   InputComponent,
@@ -25,7 +25,7 @@ import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
     ReactiveFormsModule,
     InputComponent,
     ButtonComponent,
-    FormControlLabelComponent,
+    FormControlEntityComponent,
     PatchFormGroupValueDirective,
     FtxFormsComponent,
   ],

@@ -1,1 +1,1 @@
-export * from './formControlLabel/form-control-label.component';
+export * from './formControlLabel/form-control-entity.component';

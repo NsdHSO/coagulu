@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControlLabelComponent } from './form-control-label.component';
+import { FormControlEntityComponent } from './form-control-entity.component';
 import {
   FormControl,
   FormControlDirective,
@@ -17,9 +17,9 @@ class MockNgControl {
   // Only mock
 }
 
-describe('FormControlLabelComponent', () => {
-  let component: FormControlLabelComponent;
-  let fixture: ComponentFixture<FormControlLabelComponent>;
+describe('FormControlEntityComponent', () => {
+  let component: FormControlEntityComponent;
+  let fixture: ComponentFixture<FormControlEntityComponent>;
   beforeEach(async () => {
     const NG_CONTROL_PROVIDER = {
       provide: NgControl,
@@ -31,7 +31,7 @@ describe('FormControlLabelComponent', () => {
       imports: [
         BrowserAnimationsModule,
         CommonModule,
-        FormControlLabelComponent,
+        FormControlEntityComponent,
         FormsModule,
         ReactiveFormsModule,
         MatInputModule,
@@ -44,11 +44,11 @@ describe('FormControlLabelComponent', () => {
         { provide: NgControl, useClass: MockNgControl }, // Provide the mock NgControl
       ], // Provide necessary dependencies
     })
-      .overrideComponent(FormControlLabelComponent, {
+      .overrideComponent(FormControlEntityComponent, {
         add: { providers: [NG_CONTROL_PROVIDER] },
       })
       .compileComponents();
-    fixture = TestBed.createComponent(FormControlLabelComponent);
+    fixture = TestBed.createComponent(FormControlEntityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

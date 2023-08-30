@@ -9,7 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
-import { FormControlLabelComponent } from './components';
+import { FormControlEntityComponent } from './components';
 import { ButtonComponent } from './shared';
 import { GenerateFormBuilderService, GenerativeService } from './service';
 
@@ -19,7 +19,7 @@ import { GenerateFormBuilderService, GenerativeService } from './service';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormControlLabelComponent,
+    FormControlEntityComponent,
     ButtonComponent,
   ],
   templateUrl: './ftx-forms.component.html',
