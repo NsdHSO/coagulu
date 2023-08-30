@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './ftx-tooltip.component.html',
-  styleUrls: ['./ftx-tooltip.component.css'],
+  styleUrls: ['./ftx-tooltip.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FtxTooltipComponent {}
