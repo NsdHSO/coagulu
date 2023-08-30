@@ -23,8 +23,13 @@ import {
   tap,
 } from 'rxjs';
 import { StepperService } from '../services/stepper.service';
-import { ButtonComponent, GenerativeService } from 'ngx-ftx-forms';
+import {
+  ButtonComponent,
+  FormBadgeComponent,
+  GenerativeService,
+} from 'ngx-ftx-forms';
 import { FormStepper, selectStepsEntities, Step } from '../../+state';
+import { RenderYouDirective } from 'ngx-fts-tooltip';
 
 @Component({
   selector: 'stepper-steps',
@@ -36,6 +41,8 @@ import { FormStepper, selectStepsEntities, Step } from '../../+state';
     ButtonComponent,
     RouterLinkActive,
     MatRippleModule,
+    FormBadgeComponent,
+    RenderYouDirective,
   ],
   templateUrl: './stepper-steps.component.html',
   styleUrls: ['./stepper-steps.component.scss'],
