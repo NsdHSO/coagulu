@@ -25,6 +25,8 @@
   </div>
   <div>
     <ngx-button-component
+      renderYou
+      [element]="test"
       [disable]="buttonDisabled$ | async"
       roundedFull="rounded-md"
       (marian)="nextTab()"
@@ -32,3 +34,13 @@
     </ngx-button-component>
   </div>
 </div>
+
+<ng-template #test>
+  <div>
+    sdasdasd
+    <div>dadasdssssssssssssssssasd</div>
+    <div>dasdasdasd</div>
+    <p>sdasdasd</p>
+    <p>sdasdasd</p>
+  </div>
+</ng-template>

@@ -5,11 +5,17 @@ import {
   ActionBadge,
   FormBadgeComponent,
 } from '../formBadge/form-badge.component';
+import { RenderYouDirective } from 'ngx-fts-tooltip';
 
 @Component({
   selector: 'ngx-form-label',
   standalone: true,
-  imports: [CommonModule, MatIconModule, FormBadgeComponent],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    FormBadgeComponent,
+    RenderYouDirective,
+  ],
   templateUrl: './form-label.component.html',
   styleUrls: ['./form-label.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
