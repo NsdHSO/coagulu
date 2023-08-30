@@ -16,6 +16,7 @@ import {
 import { InputComponent, PapControlDirective } from '../../shared';
 import { MatInputModule } from '@angular/material/input';
 import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
+import { FormLabelComponent } from '../formLabel/form-label.component';
 
 @Component({
   selector: 'ngx-form-control-entity',
@@ -27,6 +28,7 @@ import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
     ReactiveFormsModule,
     MatInputModule,
     FadeInOutDirective,
+    FormLabelComponent,
   ],
   templateUrl: './form-control-entity.component.html',
   styleUrls: ['./form-control-entity.component.scss'],

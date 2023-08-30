@@ -1,12 +1,10 @@
 <div class="flex justify-between items-center py-2 gap-1">
-  <p
-    [ngClass]="{ invisible: typeInput === 'boolean' }"
-    class="w-60 text prose prose-zinc prose-xl px-5 !mx-4 !my-0"
-    *ngIf="(label || labelInput) && !isFormArray"
-  >
-    {{ label }}
-  </p>
-
+  <ngx-form-label
+    [isFormArray]="isFormArray"
+    [label]="label"
+    [typeInput]="typeInput"
+    [labelInput]="labelInput"
+  />
   <div
     [ngClass]="{
       'col-span-1 gap-4 items-center': typeInput === 'boolean',
