@@ -16,11 +16,6 @@ ftx-tooltip {
     margin: 0.4rem;
     width: max-content;
   }
-  &.right {
-    &::before {
-      background: red;
-    }
-  }
 
   .tooltip-container {
     box-shadow: rgba(0, 0, 0, 0.12) 0rem 0.0625rem 0.1875rem,
@@ -31,5 +26,32 @@ ftx-tooltip {
     width: max-content;
     display: flex;
     flex-direction: column;
+    .right {
+      &::before {
+        background: red;
+      }
+    }
+    .top {
+      &::before {
+        @include arrowPosition(-2%, 230deg, 39%, 50%);
+      }
+    }
+
+    .bottom {
+      &::before {
+        @include arrowPosition(89%, 45deg, 45%, 50%);
+      }
+    }
+
+    .right {
+      &::before {
+        @include arrowPosition(41%, 315deg, -0.2rem, 0%);
+      }
+    }
+    .left {
+      &::before {
+        @include arrowPosition(41%, 135deg, 96%, 0%);
+      }
+    }
   }
 }
