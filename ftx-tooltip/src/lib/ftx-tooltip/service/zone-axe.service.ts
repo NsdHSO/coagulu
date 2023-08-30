@@ -43,41 +43,33 @@ export class ZoneAxeService {
       top: '',
       left: '',
     };
-    // Top
     if (
       buttonRect.right + tooltipRect.width + padding < window.innerWidth &&
       centerY + tooltipRect.height < window.innerHeight
     ) {
       position.top =
-        centerY >= 0
-          ? `${centerY}px`
-          : `${buttonRect.top + 10 - paddingTooltip}px`;
-      position.left = `${centerX + buttonRect.width / 2}px`;
+        centerY >= 0 ? `${centerY}` : `${buttonRect.top + 10 - paddingTooltip}`;
+      position.left = `${centerX + buttonRect.width / 2}`;
     } else if (
       buttonRect.left - tooltipRect.width > 0 &&
       centerY + tooltipRect.height < window.innerHeight
     ) {
-      console.log('left');
       position.top =
-        centerY >= 0
-          ? `${centerY}px`
-          : `${buttonRect.top + 10 - paddingTooltip}px`;
-      position.left = `${buttonRect.left - tooltipRect.width}px`;
+        centerY >= 0 ? `${centerY}` : `${buttonRect.top + 10 - paddingTooltip}`;
+      position.left = `${buttonRect.left - tooltipRect.width}`;
     } else if (
       buttonRect.bottom + tooltipRect.height + padding <
       window.innerHeight
     ) {
-      position.top = `${buttonRect.bottom + padding}px`;
-      position.left = `${centerX - tooltipRect.width / 2}px`;
+      position.top = `${buttonRect.bottom + padding}`;
+      position.left = `${centerX - tooltipRect.width / 2}`;
     } else if (buttonRect.top - tooltipRect.height - paddingTooltip > 0) {
-      position.top = `${
-        buttonRect.top - paddingTooltip - tooltipRect.height
-      }px`;
-      position.left = `${centerX - tooltipRect.width / 2}px`;
+      position.top = `${buttonRect.top - paddingTooltip - tooltipRect.height}`;
+      position.left = `${centerX - tooltipRect.width / 2}`;
       if (centerX + tooltipRect.width / 2 > window.innerWidth) {
         position.left = `${
           centerX - tooltipRect.width + buttonRect.width / 2 + paddingTooltip
-        }px`;
+        }`;
       }
     } else {
       // Default position
