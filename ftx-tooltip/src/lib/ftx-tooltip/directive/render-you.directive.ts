@@ -6,6 +6,7 @@ import {
   HostListener,
   inject,
   Input,
+  Renderer2,
   ViewContainerRef,
 } from '@angular/core';
 import { FtxTooltipComponent } from '../ftx-tooltip.component';
@@ -18,11 +19,14 @@ import { ZoneAxeService } from '../service/zone-axe.service';
 export class RenderYouDirective {
   @Input() element: any; //eslint-disable-line
 
+  @Input() elementText?: string;
+
   private readonly elementRef = inject(ElementRef);
+  private readonly renderer2 = inject(Renderer2);
+
   private readonly componentFactoryResolver = inject(ComponentFactoryResolver);
   private readonly viewContainerRef = inject(ViewContainerRef);
   private componentRef: ComponentRef<any> | any; // eslint-disable-line
-  private zoneAxes: ZoneAxeService | any; // eslint-disable-line
 
   @HostListener('mouseenter', ['$event']) onMouseEnter(event: MouseEvent) {
     const element = this.elementRef.nativeElement;
@@ -36,6 +40,7 @@ export class RenderYouDirective {
       this.componentRef =
         this.viewContainerRef.createComponent(componentFactory);
       this.componentRef.instance.rendererTemplate = this.element;
+      this.componentRef.instance.text = this.elementText;
 
       // find the app-root element
       const appRoot = document.getElementsByTagName(
@@ -55,7 +60,8 @@ export class RenderYouDirective {
       // set the top and left positions of the tooltip component
       const position = new ZoneAxeService(
         this.componentRef.location.nativeElement,
-        element
+        element,
+        this.renderer2
       ).axes();
       this.componentRef.location.nativeElement.style.top = `${
         +position.top / 16
@@ -63,13 +69,10 @@ export class RenderYouDirective {
       this.componentRef.location.nativeElement.style.left = `${
         +position.left / 16
       }rem`;
+      console.log(position);
       this.componentRef.location.nativeElement.style.zIndex = '98';
+      this.componentRef.changeDetectorRef.detectChanges();
     }
   }
-  @HostListener('mouseleave') onMouseLeave() {
-    if (this.componentRef) {
-      this.componentRef.destroy();
-      this.componentRef = null;
-    }
-  }
+  @HostListener('mouseleave') onMouseLeave() {}
 }
