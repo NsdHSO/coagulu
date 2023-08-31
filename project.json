@@ -100,7 +100,7 @@
         "port": 4400,
         "configDir": "./.storybook",
         "browserTarget": "coagulu:build",
-        "compodoc": true
+        "compodoc": false
       },
       "configurations": {
         "ci": {

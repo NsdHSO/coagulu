@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/angular';
 import { FtxFormsComponent } from './ftx-forms.component';
+import { FormGroup } from '@angular/forms';
 
 export default {
   title: 'FtxFormsComponent',

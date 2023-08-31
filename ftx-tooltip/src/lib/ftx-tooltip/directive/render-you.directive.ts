@@ -20,7 +20,6 @@ export class RenderYouDirective {
   @Input() element: any; //eslint-disable-line
 
   @Input() elementText?: string;
-
   private readonly elementRef = inject(ElementRef);
   private readonly renderer2 = inject(Renderer2);
 
@@ -46,13 +45,22 @@ export class RenderYouDirective {
       const appRoot = document.getElementsByTagName(
         'app-root'
       )[0] as HTMLElement as any; //eslint-disable-line
+      const storybook = document.getElementsByTagName(
+        'storybook-root'
+      )[0] as HTMLElement as any;
 
-      // add the tooltip component as a sibling of the app-root
-      appRoot.parentElement.insertBefore(
-        this.componentRef.location.nativeElement,
-        appRoot.nextSibling
-      );
-
+      if (appRoot) {
+        // add the tooltip component as a sibling of the app-root
+        appRoot.parentElement.insertBefore(
+          this.componentRef.location.nativeElement,
+          appRoot.nextSibling
+        );
+      } else {
+        storybook.parentElement.insertBefore(
+          this.componentRef.location.nativeElement,
+          storybook.nextSibling
+        );
+      }
       // set the tooltip component's position to absolute
       this.componentRef.location.nativeElement.style.position = 'absolute';
       this.componentRef.changeDetectorRef.detectChanges();
