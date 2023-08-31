@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FtxFormsComponent } from './ftx-forms.component';
-import { GenerateFormBuilderService, GenerativeService } from 'ngx-ftx-forms';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { GenerateFormBuilderService, GenerativeService } from './../ftx-forms';
+import { FormControl, Validators } from '@angular/forms';
 import { AnimationBuilder } from '@angular/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,7 +21,7 @@ describe('FtxFormsComponent', () => {
     animationBuilder = {
       create: '',
       build: () => ({
-        create: (e: unknown) => ({
+        create: () => ({
           play: () => {
             //
           },
