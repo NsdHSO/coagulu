@@ -74,5 +74,10 @@ export class RenderYouDirective {
       this.componentRef.changeDetectorRef.detectChanges();
     }
   }
-  @HostListener('mouseleave') onMouseLeave() {}
+  @HostListener('mouseleave') onMouseLeave() {
+    if (this.componentRef) {
+      this.componentRef.destroy();
+      this.componentRef = null;
+    }
+  }
 }
