@@ -43,7 +43,7 @@ export class FormLabelComponent {
   /**
    * Message for tooltip
    */
-  @Input() haveTooltip?: string | undefined;
+  @Input() haveTooltip?: string;
 
   actionBadge = [
     {
