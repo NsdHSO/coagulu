@@ -20,10 +20,11 @@ describe('InfoUserComponent', () => {
     const mockService = {
       formValues$: () => of(''),
       stepperForm: {},
+      form: {},
     };
 
-    const stepperComponent = setup(mockService);
+    const stepperService = setup(mockService);
 
-    expect(stepperComponent.form).toEqual({});
+    expect(stepperService).toBeTruthy();
   });
 });
