@@ -1,9 +1,4 @@
-import {
-  ComponentFactoryResolver,
-  Inject,
-  Injectable,
-  Renderer2,
-} from '@angular/core';
+import { Injectable, Renderer2 } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +8,9 @@ export class ZoneAxeService {
   private readonly buttonRect: DOMRect;
 
   constructor(
-    @Inject(ComponentFactoryResolver) private tooltip: HTMLElement,
-    @Inject(HTMLElement) private readonly target: HTMLElement,
-    @Inject(Renderer2) private readonly renderer2: Renderer2
+    private tooltip: HTMLDivElement,
+    private readonly target: HTMLElement,
+    private readonly renderer2: Renderer2
   ) {
     this.tooltipRect = tooltip.getBoundingClientRect();
     this.buttonRect = target.getBoundingClientRect();
