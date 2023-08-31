@@ -20,6 +20,10 @@ export default {
     'jest-preset-angular/build/serializers/html-comment',
   ],
   testMatch: [
+    '<rootDir>/ftx-forms/**/*(*.)@(spec|test).[jt]s?(x)',
+    '<rootDir>/ftx-tooltip/**/*(*.)@(spec|test).[jt]s?(x)',
+    '<rootDir>/ftx-forms/**/__tests__/**/*.[jt]s?(x)',
+    '<rootDir>/ftx-tooltip/**/__tests__/**/*.[jt]s?(x)',
     '<rootDir>/src/**/__tests__/**/*.[jt]s?(x)',
     '<rootDir>/src/**/*(*.)@(spec|test).[jt]s?(x)',
   ],
