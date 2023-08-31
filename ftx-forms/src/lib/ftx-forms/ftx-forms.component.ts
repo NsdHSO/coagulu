@@ -31,8 +31,9 @@ import { GenerateFormBuilderService, GenerativeService } from './service';
   styleUrls: ['./ftx-forms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FtxFormsComponent {
-  @Input() dynamicForm: FormGroup | FormControl | FormArray = {} as FormGroup;
+export class FtxFormsComponent<T> {
+  //eslint-disable-next-line
+  @Input() dynamicForm: FormGroup | FormControl | FormArray | any = {} as any;
   @Output() submitEvent = new EventEmitter();
 
   generativeService = inject(GenerativeService);
