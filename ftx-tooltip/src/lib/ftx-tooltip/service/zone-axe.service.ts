@@ -1,12 +1,9 @@
 import {
   ComponentFactoryResolver,
-  inject,
   Inject,
   Injectable,
-  Optional,
   Renderer2,
 } from '@angular/core';
-import { TypeSide } from 'ngx-ftx-forms';
 
 @Injectable({
   providedIn: 'root',
@@ -34,8 +31,6 @@ export class ZoneAxeService {
       paddingTooltip,
       padding
     );
-    const arrowFct = this.tooltip.children[0].children[0];
-    this.rendere2.addClass(arrowFct, position.sideTooltip.side);
     return position;
   }
 
@@ -47,8 +42,9 @@ export class ZoneAxeService {
   ): {
     top: string;
     left: string;
-    sideTooltip: { value: string; side: string };
   } {
+    const arrowFct = this.tooltip.children[0].children[0];
+
     const centerX = buttonRect.left + buttonRect.width / 2;
     const centerY =
       buttonRect.bottom - buttonRect.height / 2 - tooltipRect.height / 2;
@@ -56,22 +52,24 @@ export class ZoneAxeService {
     const position = {
       top: '',
       left: '',
-      sideTooltip: {
-        value: '',
-        side: '',
-      },
     };
     if (
       buttonRect.right + tooltipRect.width + padding < window.innerWidth &&
-      centerY + tooltipRect.height < window.innerHeight
+      centerY + tooltipRect.height < window.innerHeight &&
+      centerY >= -40
     ) {
       position.top =
         centerY >= 0 ? `${centerY}` : `${buttonRect.top + 10 - paddingTooltip}`;
       position.left = `${centerX + paddingTooltip + buttonRect.width / 2}`;
-      position.sideTooltip = {
-        value: `${buttonRect.bottom - buttonRect.height / 2}`,
-        side: 'right',
-      };
+      this.rendere2.addClass(arrowFct, 'right');
+
+      if (centerY <= 0) {
+        this.rendere2.setStyle(
+          arrowFct,
+          'top',
+          `${(buttonRect.top - buttonRect.height / 2) / 16}rem`
+        );
+      }
     } else if (
       buttonRect.left - tooltipRect.width > 0 &&
       centerY + tooltipRect.height < window.innerHeight
@@ -79,31 +77,28 @@ export class ZoneAxeService {
       position.top =
         centerY >= 0 ? `${centerY}` : `${buttonRect.top + 10 - paddingTooltip}`;
       position.left = `${buttonRect.left + paddingTooltip - tooltipRect.width}`;
-      position.sideTooltip = {
-        value: `${buttonRect.bottom - buttonRect.height / 2}`,
-        side: 'left',
-      };
+      this.rendere2.addClass(arrowFct, 'left');
     } else if (
       buttonRect.bottom + tooltipRect.height + padding <
       window.innerHeight
     ) {
-      position.top = `${buttonRect.bottom + padding}`;
+      position.top = `${buttonRect.bottom + paddingTooltip}`;
       position.left = `${centerX - tooltipRect.width / 2}`;
-      position.sideTooltip = {
-        value: `${buttonRect.right - buttonRect.width / 2}`,
-        side: 'bottom',
-      };
+      this.rendere2.addClass(arrowFct, 'bottom');
     } else if (buttonRect.top - tooltipRect.height - paddingTooltip > 0) {
       position.top = `${buttonRect.top - paddingTooltip - tooltipRect.height}`;
       position.left = `${centerX - tooltipRect.width / 2}`;
-      position.sideTooltip = {
-        value: `${buttonRect.right - buttonRect.width / 2}`,
-        side: 'top',
-      };
+      this.rendere2.addClass(arrowFct, 'top');
+
       if (centerX + tooltipRect.width / 2 > window.innerWidth) {
         position.left = `${
           centerX - tooltipRect.width + buttonRect.width / 2 + paddingTooltip
         }`;
+        this.rendere2.setStyle(
+          arrowFct,
+          'left',
+          `${(tooltipRect.width - tooltipRect.width / 4) / 16}rem`
+        );
       }
     } else {
       // Default position
