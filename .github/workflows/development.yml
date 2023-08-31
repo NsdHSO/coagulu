@@ -49,8 +49,3 @@ jobs:
 
       - name: '🔍 lint code'
         run: npm run lint --if-present
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          SONAR_TOKEN: ${{ secrets. SONAR_TOKEN }}
