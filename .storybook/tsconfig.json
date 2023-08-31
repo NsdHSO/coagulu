@@ -5,6 +5,8 @@
   },
   "exclude": ["../**/*.spec.ts"],
   "include": [
+    "../ftx-forms/**/*.stories.ts",
+    "../ftx-tooltip/**/*.stories.ts",
     "../src/**/*.stories.ts",
     "../src/**/*.stories.js",
     "../src/**/*.stories.jsx",
