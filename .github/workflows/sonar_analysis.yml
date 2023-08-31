@@ -1,0 +1,32 @@
+name: 📡 Sonar quality
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  sonar:
+    name: Code standards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: '☁️ checkout repository'
+        uses: actions/checkout@v3
+
+      - name: '🔧 setup node'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: '🔧 install npm@latest'
+        run: npm i -g npm@latest
+
+      - name: '📦 install dependencies'
+        uses: bahmutov/npm-install@v1
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          SONAR_TOKEN: ${{ secrets. SONAR_TOKEN }}
