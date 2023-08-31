@@ -23,7 +23,7 @@ class MockDOMRect implements DOMRect {
     return this.x;
   }
 
-  public toJSON(): any {
+  public toJSON(): void {
     console.log('to json');
   }
 }

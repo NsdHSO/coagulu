@@ -7,7 +7,12 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { DataFormBuilder } from './interfaces';
 import { FormControlEntityComponent } from './components';
 import { ButtonComponent } from './shared';
@@ -27,12 +32,16 @@ import { GenerateFormBuilderService, GenerativeService } from './service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FtxFormsComponent {
-  @Input() dynamicForm: FormGroup = {} as FormGroup;
+  @Input() dynamicForm: FormGroup | FormControl | FormArray = {} as FormGroup;
   @Output() submitEvent = new EventEmitter();
-  controlMapping: any = []; // eslint-disable-line
+
   generativeService = inject(GenerativeService);
   generateFormBuilderService = inject(GenerateFormBuilderService);
+
+  controlMapping: any = []; // eslint-disable-line
+
   private _jsonData: DataFormBuilder = {} as DataFormBuilder;
+
   get jsonData(): DataFormBuilder {
     return this._jsonData;
   }
