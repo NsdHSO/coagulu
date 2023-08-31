@@ -1,7 +1,17 @@
 # ftx-tooltip
 
-This library was generated with [Nx](https://nx.dev).
+```
+renderYou
 
-## Running unit tests
+```
 
-Run `nx test ftx-tooltip` to execute the unit tests.
+# Structure of how you use this directive
+
+```html
+<div renderYou [element]="render">
+  //what element you want
+  <div>...</div>
+</div>
+
+<ng-template #render> I want to be on the display </ng-template>
+```
