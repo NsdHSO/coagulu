@@ -9,13 +9,13 @@ import {
   providedIn: 'root',
 })
 export class ZoneAxeService {
-  private tooltipRect: ClientRect;
-  private buttonRect: ClientRect;
+  private readonly tooltipRect: DOMRect;
+  private readonly buttonRect: DOMRect;
 
   constructor(
     @Inject(ComponentFactoryResolver) private tooltip: HTMLElement,
     @Inject(HTMLElement) private readonly target: HTMLElement,
-    @Inject(Renderer2) private readonly rendere2: Renderer2
+    @Inject(Renderer2) private readonly renderer2: Renderer2
   ) {
     this.tooltipRect = tooltip.getBoundingClientRect();
     this.buttonRect = target.getBoundingClientRect();
@@ -35,8 +35,8 @@ export class ZoneAxeService {
   }
 
   calculatePositionRecursively(
-    buttonRect: ClientRect,
-    tooltipRect: ClientRect,
+    buttonRect: DOMRect,
+    tooltipRect: DOMRect,
     paddingTooltip: number,
     padding: number
   ): {
@@ -61,10 +61,10 @@ export class ZoneAxeService {
       position.top =
         centerY >= 0 ? `${centerY}` : `${buttonRect.top + 10 - paddingTooltip}`;
       position.left = `${centerX + paddingTooltip + buttonRect.width / 2}`;
-      this.rendere2.addClass(arrowFct, 'right');
+      this.renderer2.addClass(arrowFct, 'right');
 
       if (centerY <= 0) {
-        this.rendere2.setStyle(
+        this.renderer2.setStyle(
           arrowFct,
           'top',
           `${(buttonRect.top - buttonRect.height / 2) / 16}rem`
@@ -77,24 +77,24 @@ export class ZoneAxeService {
       position.top =
         centerY >= 0 ? `${centerY}` : `${buttonRect.top + 10 - paddingTooltip}`;
       position.left = `${buttonRect.left + paddingTooltip - tooltipRect.width}`;
-      this.rendere2.addClass(arrowFct, 'left');
+      this.renderer2.addClass(arrowFct, 'left');
     } else if (
       buttonRect.bottom + tooltipRect.height + padding <
       window.innerHeight
     ) {
       position.top = `${buttonRect.bottom + paddingTooltip}`;
       position.left = `${centerX - tooltipRect.width / 2}`;
-      this.rendere2.addClass(arrowFct, 'bottom');
+      this.renderer2.addClass(arrowFct, 'bottom');
     } else if (buttonRect.top - tooltipRect.height - paddingTooltip > 0) {
       position.top = `${buttonRect.top - paddingTooltip - tooltipRect.height}`;
       position.left = `${centerX - tooltipRect.width / 2}`;
-      this.rendere2.addClass(arrowFct, 'top');
+      this.renderer2.addClass(arrowFct, 'top');
 
       if (centerX + tooltipRect.width / 2 > window.innerWidth) {
         position.left = `${
           centerX - tooltipRect.width + buttonRect.width / 2 + paddingTooltip
         }`;
-        this.rendere2.setStyle(
+        this.renderer2.setStyle(
           arrowFct,
           'left',
           `${(tooltipRect.width - tooltipRect.width / 4) / 16}rem`
