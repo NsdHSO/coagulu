@@ -11,6 +11,7 @@
     "test": "nx test",
     "prepare": "husky install",
     "test:w": "nx test --watch",
+    "cov": "nx test  --coverage",
     "coverage": "nx test  --coverage --watch",
     "lint": "eslint . --ext .js,ts",
     "lint:fix": "eslint . --ext .js,ts --fix",
