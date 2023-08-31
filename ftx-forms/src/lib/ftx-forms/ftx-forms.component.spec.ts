@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FtxFormsComponent } from './ftx-forms.component';
-import { GenerateFormBuilderService, GenerativeService } from './../ftx-forms';
+import { GenerateFormBuilderService, GenerativeService } from './service';
 import { FormControl, Validators } from '@angular/forms';
 import { AnimationBuilder } from '@angular/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +13,7 @@ describe('FtxFormsComponent', () => {
   let animationBuilder: any; //eslint-disable-line
   beforeEach(async () => {
     generativeService = {
-      trackBy: (i: number) => i++,
+      trackBy: () => null,
     };
     generateFormBuilder = {
       getCustomFromControlType: () => ({}),
