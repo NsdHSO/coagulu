@@ -69,7 +69,6 @@ export class RenderYouDirective {
       this.componentRef.location.nativeElement.style.left = `${
         +position.left / 16
       }rem`;
-      console.log(position);
       this.componentRef.location.nativeElement.style.zIndex = '98';
       this.componentRef.changeDetectorRef.detectChanges();
     }
