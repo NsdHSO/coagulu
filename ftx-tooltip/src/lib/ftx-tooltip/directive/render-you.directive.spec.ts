@@ -1,5 +1,4 @@
 import { RenderYouDirective } from './render-you.directive';
-import * as angularCore from '@angular/core';
 import {
   ComponentFactoryResolver,
   ElementRef,
@@ -10,10 +9,10 @@ import { TestBed } from '@angular/core/testing';
 
 describe('RenderYouDirective', () => {
   const setupSpy = (
-    elementRef: any,
-    renderer2: any,
-    componentFactoryResolver: any,
-    viewContainerRef: any
+    elementRef: unknown,
+    renderer2: unknown,
+    componentFactoryResolver: unknown,
+    viewContainerRef: unknown
   ) => {
     return TestBed.configureTestingModule({
       providers: [
