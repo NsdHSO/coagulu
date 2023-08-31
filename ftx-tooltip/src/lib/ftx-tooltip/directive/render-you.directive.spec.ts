@@ -1,29 +1,41 @@
 import { RenderYouDirective } from './render-you.directive';
 import * as angularCore from '@angular/core';
-import { ComponentFactoryResolver, ElementRef, Renderer2 } from '@angular/core';
+import {
+  ComponentFactoryResolver,
+  ElementRef,
+  Renderer2,
+  ViewContainerRef,
+} from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
 describe('RenderYouDirective', () => {
-  const spyInject = jest.spyOn(angularCore, 'inject');
-
   const setupSpy = (
-    elementRef: unknown,
-    renderer2: unknown,
-    componentFactoryResolver: unknown,
-    viewContainerRef: unknown
+    elementRef: any,
+    renderer2: any,
+    componentFactoryResolver: any,
+    viewContainerRef: any
   ) => {
-    spyInject.mockImplementation((providerToken) => {
-      if (providerToken === ElementRef) {
-        return elementRef;
-      } else if (providerToken === Renderer2) {
-        return renderer2;
-      } else if (providerToken === ComponentFactoryResolver) {
-        return componentFactoryResolver;
-      } else {
-        return viewContainerRef;
-      }
-    });
-
-    return new RenderYouDirective();
+    return TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: ElementRef,
+          useValue: elementRef,
+        },
+        {
+          provide: Renderer2,
+          useValue: renderer2,
+        },
+        {
+          provide: ComponentFactoryResolver,
+          useValue: componentFactoryResolver,
+        },
+        {
+          provide: ViewContainerRef,
+          useValue: viewContainerRef,
+        },
+        RenderYouDirective,
+      ],
+    }).inject(RenderYouDirective);
   };
   it('should create an instance', () => {
     const elementRef = {};
