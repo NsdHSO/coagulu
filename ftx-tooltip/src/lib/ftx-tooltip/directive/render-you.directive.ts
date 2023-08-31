@@ -42,25 +42,23 @@ export class RenderYouDirective {
       this.componentRef.instance.text = this.elementText;
 
       // find the app-root element
-      const appRoot = document.getElementsByTagName(
-        'app-root'
-      )[0] as HTMLElement as any; //eslint-disable-line
-      const storybook = document.getElementsByTagName(
-        'storybook-root'
-      )[0] as HTMLElement as any;
+      const appRoot = document.querySelector('app-root');
+      const storybook = document.querySelector('storybook-root');
+      const elementToAdd = this.componentRef.location.nativeElement;
+      const insertAfter = (newNode: HTMLElement, referenceNode: Element) => {
+        if (referenceNode?.parentNode)
+          referenceNode.parentNode.insertBefore(
+            newNode,
+            referenceNode.nextSibling
+          );
+      };
 
       if (appRoot) {
-        // add the tooltip component as a sibling of the app-root
-        appRoot.parentElement.insertBefore(
-          this.componentRef.location.nativeElement,
-          appRoot.nextSibling
-        );
-      } else {
-        storybook.parentElement.insertBefore(
-          this.componentRef.location.nativeElement,
-          storybook.nextSibling
-        );
+        insertAfter(elementToAdd, appRoot);
+      } else if (storybook) {
+        insertAfter(elementToAdd, storybook);
       }
+
       // set the tooltip component's position to absolute
       this.componentRef.location.nativeElement.style.position = 'absolute';
       this.componentRef.changeDetectorRef.detectChanges();
