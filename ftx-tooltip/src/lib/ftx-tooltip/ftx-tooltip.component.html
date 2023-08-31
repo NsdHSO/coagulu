@@ -1,7 +1,8 @@
 <div class="tooltip-container mat-elevation-z8 shadow-2xl">
+  <!--  arrow -->
   <div></div>
   <ng-container *ngIf="text">
-    <div class="tooltip-text">{{ text }}</div>
+    <div data-test="text-tooltip" class="tooltip-text">{{ text }}</div>
   </ng-container>
   <ng-container *ngTemplateOutlet="rendererTemplate || default"></ng-container>
 </div>
