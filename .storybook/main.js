@@ -4,12 +4,35 @@ const config = {
     '../ftx-tooltip/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../ftx-forms/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
-  addons: ['@storybook/addon-essentials'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-docs',
+    {
+      name: '@storybook/addon-styling',
+      options: {
+        // Check out https://github.com/storybookjs/addon-styling/blob/main/docs/api.md
+        // For more details on this addon's options.
+        postCss: {
+          implementation: require.resolve('postcss'),
+        },
+      },
+    },
+    {
+      name: '@storybook/addon-styling',
+      options: {},
+    },
+  ],
   framework: {
     name: '@storybook/angular',
     options: {},
   },
   staticDirs: [{ from: './../src/assets', to: '/assets' }],
+  docs: {
+    autodocs: 'tag',
+    defaultName: 'Documentation',
+  },
 };
 
 export default config;

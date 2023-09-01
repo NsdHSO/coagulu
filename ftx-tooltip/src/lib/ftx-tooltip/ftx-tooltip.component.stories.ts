@@ -15,7 +15,7 @@ export default {
     }),
     componentWrapperDecorator(
       () => `
-    <div class="mt-52">
+    <div class="mt-52 bg-blue-500">
       <div  renderYou [element]="render">
       <div>
       Lorem 

@@ -37,6 +37,6 @@ export class FormBadgeComponent {
    */
   @Input()
   actionBadge: ActionBadge[] = [
-    { side: 'middle', action: () => console.log('TEST'), text: '' },
+    { side: 'middle', action: () => console.log('TEST'), text: 'Nothig' },
   ];
 }
