@@ -1,4 +1,4 @@
-name: workflow name
+name: Publish In github page
 
 on:
   pull_request:
