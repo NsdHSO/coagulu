@@ -15,7 +15,8 @@
     "coverage": "nx test  --coverage --watch",
     "lint": "eslint . --ext .js,ts",
     "lint:fix": "eslint . --ext .js,ts --fix",
-    "storybook:project": "nx run coagulu:storybook"
+    "storybook:project": "nx run coagulu:storybook",
+    "build-storybook": "nx build-storybook"
   },
   "private": true,
   "dependencies": {
