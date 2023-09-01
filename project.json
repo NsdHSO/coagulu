@@ -115,7 +115,7 @@
         "outputDir": "dist/storybook/coagulu",
         "configDir": "./.storybook",
         "browserTarget": "coagulu:build",
-        "compodoc": true
+        "compodoc": false
       },
       "configurations": {
         "ci": {
