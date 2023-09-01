@@ -7,7 +7,10 @@
     {{ label }}
   </p>
 
-  <div *ngIf="(label || labelInput) && !isFormArray" class="flex h-8">
+  <div
+    *ngIf="(label || labelInput) && !isFormArray"
+    class="flex h-8 items-center"
+  >
     <ngx-form-badge [actionBadge]="actionBadge" renderYou [element]="test" />
   </div>
 </div>
