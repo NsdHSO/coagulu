@@ -5,13 +5,13 @@ import {
   Story,
 } from '@storybook/angular';
 import { FormBadgeComponent } from './form-badge.component';
-import { GenerativeService } from 'ngx-ftx-forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { IconCoreModule } from 'ngx-liburg-icon';
+import { GenerativeService } from '../../ftx-forms.component';
 
 export default {
   title: 'FormBadgeComponent',
