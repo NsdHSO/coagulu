@@ -113,7 +113,6 @@
       "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/coagulu",
-        "index": "./index.html",
         "configDir": "./.storybook",
         "browserTarget": "coagulu:build",
         "compodoc": false
