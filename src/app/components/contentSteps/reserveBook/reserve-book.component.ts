@@ -97,6 +97,11 @@ export class ReserveBookComponent implements OnInit {
         value: 'dasdasd',
         labelHint: 'Area Data',
         typeInput: 'area',
+        description: {
+          text:
+            'Lorem Ipsum Text description you are in the best form' +
+            ' builder create evere',
+        },
       },
 
       {
@@ -116,7 +121,7 @@ export class ReserveBookComponent implements OnInit {
             ],
           },
           {
-            label: 'street2',
+            label: 'streetIvan',
             value: 'Ivan2',
             validators: [
               {
@@ -124,6 +129,11 @@ export class ReserveBookComponent implements OnInit {
                 errorMsg: 'This field it is' + ' must',
               },
             ],
+            description: {
+              text:
+                'Lorem Ipsum Text description you are in the best form' +
+                ' builder create evere',
+            },
           },
         ],
       },

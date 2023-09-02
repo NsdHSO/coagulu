@@ -6,6 +6,7 @@ import {
   FormBadgeComponent,
 } from '../formBadge/form-badge.component';
 import { RenderYouDirective } from 'ngx-fts-tooltip';
+import { DescriptionEntity } from '../../interfaces';
 
 @Component({
   selector: 'ngx-form-label',
@@ -43,8 +44,11 @@ export class FormLabelComponent {
   /**
    * Message for tooltip
    */
-  @Input() haveTooltip?: string;
-
+  @Input() haveTooltip?: boolean;
+  /**
+   * Description for input
+   */
+  @Input() descriptionEntity?: DescriptionEntity;
   actionBadge = [
     {
       icon: 'fa_solid:RO',
