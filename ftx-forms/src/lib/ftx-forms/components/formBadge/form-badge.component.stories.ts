@@ -11,7 +11,7 @@ import { importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { IconCoreModule } from 'ngx-liburg-icon';
-import { GenerativeService } from '../../ftx-forms.component';
+import { GenerativeService } from '../../service';
 
 export default {
   title: 'FormBadgeComponent',

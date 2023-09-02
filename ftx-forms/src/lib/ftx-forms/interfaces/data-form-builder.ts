@@ -21,8 +21,13 @@ export interface DataFormBuilder {
   valueToggleShow?: ValueToggle[];
   validators?: ValidatorConfig[];
   placeholder?: string;
+  description?: DescriptionEntity;
 }
 
+export interface DescriptionEntity {
+  text: string;
+  icon?: string;
+}
 export type TypeInput =
   | 'boolean'
   | 'toggle'

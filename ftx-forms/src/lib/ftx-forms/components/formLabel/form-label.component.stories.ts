@@ -12,8 +12,9 @@ export const Primary = {
   }),
   args: {
     isFormArray: false,
-    label: '',
-    typeInput: 'text',
-    labelInput: 'Complete label',
+    typeInput: 'boolean',
+    actionBadge: [
+      { side: 'middle', action: () => console.log('TEST'), text: 'sss' },
+    ],
   },
 };
