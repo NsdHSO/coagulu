@@ -2,6 +2,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { ReserveEntity } from './reserve.models';
 import * as ReserveActions from './reserve.actions';
+
 export const RESERVE_FEATURE_KEY = 'reserve';
 
 export interface ReserveState extends EntityState<ReserveEntity> {

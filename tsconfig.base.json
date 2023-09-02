@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "ngx-fts-tooltip": ["ftx-tooltip/src/index.ts"],
-      "ngx-ftx-forms": ["ftx-forms/src/index.ts"]
+      "ngx-ftx-forms": ["ftx-forms/src/index.ts"],
+      "ngx-ftx-shared": ["ftx-sivan-shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

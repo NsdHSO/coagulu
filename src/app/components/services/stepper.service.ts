@@ -12,7 +12,7 @@ import {
   tap,
   using,
 } from 'rxjs';
-import { selectStepperEntities, formValueChange } from '../../+state';
+import { formValueChange, selectStepperEntities } from '../../+state';
 import { Dictionary } from '@ngrx/entity';
 import { StepperEntity } from '../../+state/stepper.models';
 

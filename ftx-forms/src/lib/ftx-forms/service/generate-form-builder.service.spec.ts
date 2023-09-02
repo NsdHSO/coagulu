@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { GenerateFormBuilderService } from './service-generate-form-builder.service';
 
 describe('ServiceGenerateFormBuilderService', () => {

@@ -4,7 +4,6 @@ import {
   reserveAdapter,
   ReserveState,
 } from './reserve.reducer';
-
 // Lookup the 'Reserve' feature state managed by NgRx
 export const selectReserveState =
   createFeatureSelector<ReserveState>(RESERVE_FEATURE_KEY);

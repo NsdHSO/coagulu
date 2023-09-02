@@ -6,7 +6,6 @@ import {
 } from './stepper.reducer';
 import { getSteps } from './stepper.actions';
 import { StepperEntity } from './stepper.models';
-
 // Lookup the 'Stepper' feature state managed by NgRx
 export const selectStepperState =
   createFeatureSelector<StepperState>(STEPPER_FEATURE_KEY);

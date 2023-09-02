@@ -1,7 +1,8 @@
-import { Injectable, inject } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, catchError, of } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, of, switchMap } from 'rxjs';
 import * as ReserveActions from './reserve.actions';
+
 @Injectable()
 export class ReserveEffects {
   private actions$ = inject(Actions);
