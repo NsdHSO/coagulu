@@ -1,1 +1,1 @@
-export * from './scoll-hint.directive';
+export * from './scroll-hint.directive';

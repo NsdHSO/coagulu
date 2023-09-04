@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './ftx-sivan-shared.component.html',
-  styleUrls: ['./ftx-sivan-shared.component.css'],
+  styleUrls: ['./ftx-sivan-shared.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FtxSivanSharedComponent {}

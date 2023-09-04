@@ -13,7 +13,7 @@ import { FtxTooltipComponent } from '../ftx-tooltip.component';
 import { ZoneAxeService } from '../service/zone-axe.service';
 
 @Directive({
-  selector: '[renderYou]',
+  selector: '[renderYou] ',
   standalone: true,
 })
 export class RenderYouDirective {

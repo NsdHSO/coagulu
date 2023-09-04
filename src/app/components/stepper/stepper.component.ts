@@ -6,6 +6,7 @@ import { StepperStepsComponent } from '../stepper-steps/stepper-steps.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatchFormGroupValueDirective } from 'ngx-ftx-forms';
 import { StepperService } from '../services/stepper.service';
+import { ScrollHintDirective } from 'ngx-ftx-shared';
 
 @Component({
   standalone: true,
@@ -17,6 +18,7 @@ import { StepperService } from '../services/stepper.service';
     PatchFormGroupValueDirective,
     ReactiveFormsModule,
     FormsModule,
+    ScrollHintDirective,
   ],
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss'],
