@@ -38,20 +38,20 @@ export class FormControlEntityComponent {
    */
   @Input() typeInput? = 'text';
   /**
-   * Placeholder for input
+   * Placeholder for input-dropdown
    */
   @Input() placeholderInput? = '';
   /**
-   * Label for input
+   * Label for input-dropdown
    */
   @Input() labelInput? = 'Complete label';
 
   /**
-   * Label for input
+   * Label for input-dropdown
    */
   @Input() isFormArray? = false;
   /**
-   * When input is radio button
+   * When input-dropdown is radio button
    */
   @Input() toggleData? = [{ value: false, description: 'default' }];
   ngControl: FormControlDirective | FormControlName | NgModel | NgControl =
