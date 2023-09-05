@@ -63,16 +63,15 @@ export class ScrollHintDirective implements OnDestroy {
         tap((contentElement) => {
           const contentScrollHeight =
             contentElement.scrollHeight - contentElement.offsetHeight;
-          const currentScroll = contentElement.scrollTop / contentScrollHeight;
           // Calculate the opacity value for the bottom 40px
-          let opacity = currentScroll;
+          let opacity = contentElement.scrollTop / contentScrollHeight;
           opacity = +Math.min(1, Math.max(0, opacity)).toFixed(2);
           // Calculate the height of the scrollable content
-          const contentHeight = contentElement.scrollHeight;
+          //          const contentHeight = contentElement.scrollHeight;
           // Calculate the height of the bottom 40px
           const bottomHeight = 40;
           // Calculate the top position for the pseudo-element
-          const topPosition = contentHeight - bottomHeight;
+          //          const topPosition = contentHeight - bottomHeight;
           // Apply styles to the pseudo-element
           this.renderer2.setStyle(this.pseudoElement, 'position', 'absolute');
           this.renderer2.setStyle(this.pseudoElement, 'z-index', '101');
