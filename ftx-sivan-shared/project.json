@@ -2,7 +2,7 @@
   "name": "ftx-sivan-shared",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "ftx-sivan-shared/src",
-  "prefix": "coagulu",
+  "prefix": "sivan",
   "tags": [],
   "projectType": "library",
   "targets": {

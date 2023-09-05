@@ -40,7 +40,6 @@ const config = {
   staticDirs: [{ from: './../src/assets', to: '/assets' }],
   docs: {
     autodocs: 'tag',
-    defaultName: 'DOC',
   },
 };
 
