@@ -5177,21 +5177,21 @@
         "name": "Primary",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "src/app/components/stepper/stepper.component.stories.ts",
-        "deprecated": false,
-        "deprecationMessage": "",
-        "type": "object",
-        "defaultValue": "{\n  render: (args: StepperComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
-      },
-      {
-        "name": "Primary",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
         "file": "src/app/components/stepper-steps/stepper-steps.component.stories.ts",
         "deprecated": false,
         "deprecationMessage": "",
         "type": "object",
         "defaultValue": "{\n  render: (args: StepperStepsComponent) => ({\n    props: args,\n  }),\n  args: {\n    vm: {\n      intro: {\n        icon: 'fa_brands:sitrox',\n      },\n      retrieve: {\n        icon: 'fa_brands:sitrox',\n      },\n      steps: [\n        {\n          value: 'intro',\n          id: 1,\n          label: 'intro',\n        },\n        {\n          value: 'retrieve',\n          id: 2,\n          label: 'intro',\n        },\n      ],\n    },\n  },\n}"
+      },
+      {
+        "name": "Primary",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/app/components/stepper/stepper.component.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "object",
+        "defaultValue": "{\n  render: (args: StepperComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
       },
       {
         "name": "Primary",
@@ -5212,6 +5212,16 @@
         "deprecationMessage": "",
         "type": "object",
         "defaultValue": "{\n  render: (args: FtxTooltipComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
+      },
+      {
+        "name": "Primary",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/app/components/contentSteps/intro/intro.component.stories.ts",
+        "deprecated": false,
+        "deprecationMessage": "",
+        "type": "object",
+        "defaultValue": "{\n  render: (args: IntroComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
       },
       {
         "name": "Primary",
@@ -5242,16 +5252,6 @@
         "deprecationMessage": "",
         "type": "object",
         "defaultValue": "{\n  render: (args: SpendMoneyComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
-      },
-      {
-        "name": "Primary",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/app/components/contentSteps/intro/intro.component.stories.ts",
-        "deprecated": false,
-        "deprecationMessage": "",
-        "type": "object",
-        "defaultValue": "{\n  render: (args: IntroComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
       },
       {
         "name": "Primary",
@@ -6090,18 +6090,6 @@
           "defaultValue": "{\n  render: (args: AppComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
         }
       ],
-      "src/app/components/stepper/stepper.component.stories.ts": [
-        {
-          "name": "Primary",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/app/components/stepper/stepper.component.stories.ts",
-          "deprecated": false,
-          "deprecationMessage": "",
-          "type": "object",
-          "defaultValue": "{\n  render: (args: StepperComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
-        }
-      ],
       "src/app/components/stepper-steps/stepper-steps.component.stories.ts": [
         {
           "name": "Primary",
@@ -6112,6 +6100,18 @@
           "deprecationMessage": "",
           "type": "object",
           "defaultValue": "{\n  render: (args: StepperStepsComponent) => ({\n    props: args,\n  }),\n  args: {\n    vm: {\n      intro: {\n        icon: 'fa_brands:sitrox',\n      },\n      retrieve: {\n        icon: 'fa_brands:sitrox',\n      },\n      steps: [\n        {\n          value: 'intro',\n          id: 1,\n          label: 'intro',\n        },\n        {\n          value: 'retrieve',\n          id: 2,\n          label: 'intro',\n        },\n      ],\n    },\n  },\n}"
+        }
+      ],
+      "src/app/components/stepper/stepper.component.stories.ts": [
+        {
+          "name": "Primary",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/app/components/stepper/stepper.component.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "object",
+          "defaultValue": "{\n  render: (args: StepperComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
         }
       ],
       "ftx-forms/src/lib/ftx-forms/ftx-forms.component.stories.ts": [
@@ -6136,6 +6136,18 @@
           "deprecationMessage": "",
           "type": "object",
           "defaultValue": "{\n  render: (args: FtxTooltipComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
+        }
+      ],
+      "src/app/components/contentSteps/intro/intro.component.stories.ts": [
+        {
+          "name": "Primary",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/app/components/contentSteps/intro/intro.component.stories.ts",
+          "deprecated": false,
+          "deprecationMessage": "",
+          "type": "object",
+          "defaultValue": "{\n  render: (args: IntroComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
         }
       ],
       "src/app/components/contentSteps/infoUser/info-user.component.stories.ts": [
@@ -6172,18 +6184,6 @@
           "deprecationMessage": "",
           "type": "object",
           "defaultValue": "{\n  render: (args: SpendMoneyComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
-        }
-      ],
-      "src/app/components/contentSteps/intro/intro.component.stories.ts": [
-        {
-          "name": "Primary",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/app/components/contentSteps/intro/intro.component.stories.ts",
-          "deprecated": false,
-          "deprecationMessage": "",
-          "type": "object",
-          "defaultValue": "{\n  render: (args: IntroComponent) => ({\n    props: args,\n  }),\n  args: {},\n}"
         }
       ],
       "ftx-forms/src/lib/ftx-forms/components/formControlEntity/form-control-entity.component.stories.ts": [
