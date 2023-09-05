@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControlDirective,
@@ -17,6 +12,7 @@ import { InputComponent, PapControlDirective } from '../../shared';
 import { MatInputModule } from '@angular/material/input';
 import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
 import { FormLabelComponent } from '../formLabel/form-label.component';
+import { injectNgControl } from 'ngx-ftx-shared';
 
 @Component({
   selector: 'ngx-form-control-entity',
@@ -60,19 +56,4 @@ export class FormControlEntityComponent {
   @Input() toggleData? = [{ value: false, description: 'default' }];
   ngControl: FormControlDirective | FormControlName | NgModel | NgControl =
     injectNgControl();
-}
-
-function injectNgControl() {
-  const ngControl = inject(NgControl, { self: true, optional: true });
-  if (!ngControl) {
-    throw new Error('Not ng Controll');
-  }
-  if (
-    ngControl instanceof FormControlDirective ||
-    ngControl instanceof FormControlName ||
-    ngControl instanceof NgModel
-  ) {
-    return ngControl;
-  }
-  throw new Error(`Not of instance of Form Directive Name Model`);
 }
