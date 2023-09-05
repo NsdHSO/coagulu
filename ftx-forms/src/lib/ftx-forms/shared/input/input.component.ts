@@ -49,15 +49,15 @@ export class InputComponent {
    */
   @Input() typeInput? = 'text';
   /**
-   * Placeholder for input
+   * Placeholder for input-dropdown
    */
   @Input() placeholderInput? = '';
   /**
-   * Label for input
+   * Label for input-dropdown
    */
   @Input() labelInput? = 'Complete label';
   /**
-   * When input is radio button
+   * When input-dropdown is radio button
    */
   @Input() toggleData? = [{ value: false, description: 'default' }];
   @Input()
