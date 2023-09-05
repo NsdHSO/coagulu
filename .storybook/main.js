@@ -1,3 +1,5 @@
+import path from 'path';
+
 const config = {
   stories: [
     '../src/app/**/*.stories.@(js|jsx|ts|tsx|mdx)',
@@ -6,7 +8,14 @@ const config = {
   ],
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    {
+      name: path.dirname(require.resolve('@storybook/addon-docs/package.json')),
+      options: { transcludeMarkdown: true },
+    },
+    {
+      name: '@storybook/addon-essentials',
+      options: { docs: false },
+    },
     '@storybook/addon-interactions',
     '@storybook/addon-docs',
     {
@@ -31,7 +40,7 @@ const config = {
   staticDirs: [{ from: './../src/assets', to: '/assets' }],
   docs: {
     autodocs: 'tag',
-    defaultName: 'Documentation',
+    defaultName: 'DOC',
   },
 };
 

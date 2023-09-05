@@ -193,7 +193,7 @@ export class ReserveBookComponent implements OnInit {
         label: 'course',
         bulkValues: [
           {
-            value: 's',
+            value: 'ss',
             label: 'angularPatterns',
             labelHint: 'Summary TEST',
             validators: [
@@ -242,7 +242,7 @@ export class ReserveBookComponent implements OnInit {
             label: 'Ivan',
             bulkValues: [
               {
-                value: null,
+                value: 1231,
                 validators: [{ type: TypeConstantEnum.REQUIRED }],
                 labelHint: 'Childrens',
               },

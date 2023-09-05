@@ -42,6 +42,37 @@
       "options": {
         "lintFilePatterns": ["ftx-forms/**/*.ts", "ftx-forms/**/*.html"]
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "ftx-forms/.storybook",
+        "browserTarget": "ftx-forms:build-storybook",
+        "compodoc": true,
+        "compodocArgs": ["-e", "json", "-d", "apps/web"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/ftx-forms",
+        "configDir": "ftx-forms/.storybook",
+        "browserTarget": "ftx-forms:build-storybook",
+        "compodoc": true,
+        "compodocArgs": ["-e", "json", "-d", "apps/web"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   }
 }

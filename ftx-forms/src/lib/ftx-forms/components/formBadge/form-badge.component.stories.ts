@@ -28,6 +28,7 @@ export default {
       providers: [importProvidersFrom(HttpClientModule)],
     }),
   ],
+  tags: ['autodocs'],
 } as Meta<FormBadgeComponent>;
 
 const Template: Story<FormBadgeComponent> = (args: FormBadgeComponent) => ({

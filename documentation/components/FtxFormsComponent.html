@@ -1,0 +1,796 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@coagulu/source documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">@coagulu/source documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FtxFormsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ngx-ftx-forms</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>ReactiveFormsModule</code>
+                                <code><a href="../components/FormControlEntityComponent.html" target="_self" >FormControlEntityComponent</a></code>
+                                <code><a href="../components/ButtonComponent.html" target="_self" >ButtonComponent</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./ftx-forms.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ftx-forms.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_jsonData" >_jsonData</a>
+                            </li>
+                            <li>
+                                <a href="#controlMapping" >controlMapping</a>
+                            </li>
+                            <li>
+                                <a href="#generateFormBuilderService" >generateFormBuilderService</a>
+                            </li>
+                            <li>
+                                <a href="#generativeService" >generativeService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dynamicForm" >dynamicForm</a>
+                            </li>
+                            <li>
+                                <a href="#jsonData" >jsonData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#submitEvent" >submitEvent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#jsonData" >jsonData</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dynamicForm"></a>
+                        <b>dynamicForm</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup | FormControl | FormArray | any</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{} as any</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:36</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="jsonData"></a>
+                        <b>jsonData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DataFormBuilder.html" target="_self" >DataFormBuilder</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:50</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="submitEvent"></a>
+                        <b>submitEvent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:37</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_jsonData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_jsonData</b></span>
+                        <a href="#_jsonData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DataFormBuilder.html" target="_self" >DataFormBuilder</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{} as DataFormBuilder</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="controlMapping"></a>
+                    <span class="name">
+                        <span ><b>controlMapping</b></span>
+                        <a href="#controlMapping"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateFormBuilderService"></a>
+                    <span class="name">
+                        <span ><b>generateFormBuilderService</b></span>
+                        <a href="#generateFormBuilderService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(GenerateFormBuilderService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generativeService"></a>
+                    <span class="name">
+                        <span ><b>generativeService</b></span>
+                        <a href="#generativeService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(GenerativeService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="jsonData"></a>
+                        <span class="name"><b>jsonData</b><a href="#jsonData"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>jsonData()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:46</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>jsonData(jsonData)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">ftx-forms/src/lib/ftx-forms/ftx-forms.component.ts:50</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>jsonData</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from &#x27;@angular/forms&#x27;;
+import { DataFormBuilder } from &#x27;./interfaces&#x27;;
+import { FormControlEntityComponent } from &#x27;./components&#x27;;
+import { ButtonComponent } from &#x27;./shared&#x27;;
+import { GenerateFormBuilderService, GenerativeService } from &#x27;./service&#x27;;
+
+@Component({
+  selector: &#x27;ngx-ftx-forms&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormControlEntityComponent,
+    ButtonComponent,
+  ],
+  templateUrl: &#x27;./ftx-forms.component.html&#x27;,
+  styleUrls: [&#x27;./ftx-forms.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class FtxFormsComponent {
+  //eslint-disable-next-line
+  @Input() dynamicForm: FormGroup | FormControl | FormArray | any &#x3D; {} as any;
+  @Output() submitEvent &#x3D; new EventEmitter();
+
+  generativeService &#x3D; inject(GenerativeService);
+  generateFormBuilderService &#x3D; inject(GenerateFormBuilderService);
+
+  controlMapping: any &#x3D; []; // eslint-disable-line
+
+  private _jsonData: DataFormBuilder &#x3D; {} as DataFormBuilder;
+
+  get jsonData(): DataFormBuilder {
+    return this._jsonData;
+  }
+
+  @Input() set jsonData(jsonData) {
+    this._jsonData &#x3D; jsonData;
+    if (jsonData.values) {
+      for (const item of jsonData.values) {
+        const label &#x3D; item.label?.toLowerCase();
+
+        if (item?.label) {
+          this.controlMapping[label ?? &#x27;&#x27;] &#x3D; item;
+        }
+
+        // Check for values or bulkValues and iterate over them
+        const itemsToMap &#x3D; [...(item.values ?? []), ...(item.bulkValues ?? [])];
+        itemsToMap.forEach((values) &#x3D;&gt; {
+          if (values.bulkValues) {
+            values.bulkValues.forEach((c) &#x3D;&gt; {
+              this.controlMapping[c.label ?? &#x27;&#x27;] &#x3D; c;
+            });
+          }
+          const label &#x3D; values.label?.toLowerCase();
+          this.controlMapping[label ?? &#x27;&#x27;] &#x3D; values;
+        });
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;form
+  [formGroup]&#x3D;&quot;dynamicForm&quot;
+  (ngSubmit)&#x3D;&quot;submitEvent.emit(true)&quot;
+  class&#x3D;&quot;p-3 flex flex-col gap-0.5 bg-slate-200 ngx-forms-form-wrapper rounded-br-lg rounded-bl-lg&quot;
+&gt;
+  &lt;ng-container
+    *ngTemplateOutlet&#x3D;&quot;
+      renderControlRecursive;
+      context: {
+        control: dynamicForm,
+        controlKey: null,
+        is: false
+      }
+    &quot;
+  /&gt;
+
+  &lt;ngx-button-component
+    class&#x3D;&quot;bg-white p-2&quot;
+    [disable]&#x3D;&quot;dynamicForm.pristine || dynamicForm.invalid&quot;
+    roundedFull&#x3D;&quot;rounded-md&quot;
+    &gt;Submit
+  &lt;/ngx-button-component&gt;
+&lt;/form&gt;
+
+&lt;ng-template
+  #renderControlRecursive
+  let-control&#x3D;&quot;control&quot;
+  let-controlKey&#x3D;&quot;controlKey&quot;
+  let-isArray&#x3D;&quot;isArray&quot;
+&gt;
+  &lt;ng-container
+    [ngSwitch]&#x3D;&quot;generateFormBuilderService.getCustomFromControlType(control)&quot;
+  &gt;
+    &lt;!-- Render FormArray --&gt;
+    &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;FormArray&#x27;&quot;&gt;
+      &lt;div
+        class&#x3D;&quot;flex&quot;
+        [ngClass]&#x3D;&quot;{ &#x27;flex-col gap-0.5&#x27;: control.controls[1].length }&quot;
+      &gt;
+        &lt;ng-container
+          *ngFor&#x3D;&quot;
+            let arrayControl of control.controls;
+            trackBy: generativeService.trackBy;
+            let index &#x3D; index
+          &quot;
+        &gt;
+          &lt;ng-container
+            *ngTemplateOutlet&#x3D;&quot;
+              renderControlRecursive;
+              context: {
+                control: arrayControl,
+                controlKey: controlKey,
+                isArray: index
+              }
+            &quot;
+          /&gt;
+        &lt;/ng-container&gt;
+      &lt;/div&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Render FormGroup --&gt;
+    &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;FormGroup&#x27;&quot;&gt;
+      &lt;ng-container
+        *ngFor&#x3D;&quot;
+          let groupControl of control.controls | keyvalue;
+          trackBy: generativeService.trackBy
+        &quot;
+      &gt;
+        &lt;ng-container
+          *ngTemplateOutlet&#x3D;&quot;
+            renderControlRecursive;
+            context: {
+              control: groupControl.value,
+              controlKey: groupControl.key,
+            }
+          &quot;
+        /&gt;
+      &lt;/ng-container&gt;
+    &lt;/ng-container&gt;
+    &lt;!-- Render FormControl --&gt;
+    &lt;ng-container *ngSwitchDefault&gt;
+      &lt;div class&#x3D;&quot;w-full bg-white&quot;&gt;
+        &lt;ngx-form-control-entity
+          [isFormArray]&#x3D;&quot;isArray&quot;
+          [formControl]&#x3D;&quot;control&quot;
+          [labelInput]&#x3D;&quot;controlMapping[controlKey]?.labelHint&quot;
+          [label]&#x3D;&quot;controlKey&quot;
+          [placeholderInput]&#x3D;&quot;controlMapping[controlKey]?.placeholder&quot;
+          [toggleData]&#x3D;&quot;controlMapping[controlKey]?.valueToggleShow&quot;
+          [typeInput]&#x3D;&quot;controlMapping[controlKey]?.typeInput&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/ng-container&gt;
+  &lt;/ng-container&gt;
+&lt;/ng-template&gt;
+&lt;ng-template #element&gt;tete&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./ftx-forms.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">form.ngx-forms-form-wrapper {
+  &gt; div:first-child {
+    @apply rounded-tl-lg rounded-tr-lg;
+  }
+
+  &gt; :last-child {
+    @apply rounded-bl-lg rounded-br-lg;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><form  [formGroup]="dynamicForm"  (ngSubmit)="submitEvent.emit(true)"  class="p-3 flex flex-col gap-0.5 bg-slate-200 ngx-forms-form-wrapper rounded-br-lg rounded-bl-lg">  <ng-container    *ngTemplateOutlet="      renderControlRecursive;      context: {        control: dynamicForm,        controlKey: null,        is: false      }    "  />  <ngx-button-component    class="bg-white p-2"    [disable]="dynamicForm.pristine || dynamicForm.invalid"    roundedFull="rounded-md"    >Submit  </ngx-button-component></form><ng-template  #renderControlRecursive  let-control="control"  let-controlKey="controlKey"  let-isArray="isArray">  <ng-container    [ngSwitch]="generateFormBuilderService.getCustomFromControlType(control)"  >    <!-- Render FormArray -->    <ng-container *ngSwitchCase="\'FormArray\'">      <div        class="flex"        [ngClass]="{ \'flex-col gap-0.5\': control.controls[1].length }"      >        <ng-container          *ngFor="            let arrayControl of control.controls;            trackBy: generativeService.trackBy;            let index = index          "        >          <ng-container            *ngTemplateOutlet="              renderControlRecursive;              context: {                control: arrayControl,                controlKey: controlKey,                isArray: index              }            "          />        </ng-container>      </div>    </ng-container>    <!-- Render FormGroup -->    <ng-container *ngSwitchCase="\'FormGroup\'">      <ng-container        *ngFor="          let groupControl of control.controls | keyvalue;          trackBy: generativeService.trackBy        "      >        <ng-container          *ngTemplateOutlet="            renderControlRecursive;            context: {              control: groupControl.value,              controlKey: groupControl.key,            }          "        />      </ng-container>    </ng-container>    <!-- Render FormControl -->    <ng-container *ngSwitchDefault>      <div class="w-full bg-white">        <ngx-form-control-entity          [isFormArray]="isArray"          [formControl]="control"          [labelInput]="controlMapping[controlKey]?.labelHint"          [label]="controlKey"          [placeholderInput]="controlMapping[controlKey]?.placeholder"          [toggleData]="controlMapping[controlKey]?.valueToggleShow"          [typeInput]="controlMapping[controlKey]?.typeInput"        />      </div>    </ng-container>  </ng-container></ng-template><ng-template #element>tete</ng-template></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'ngx-button-component'},{'name': 'FormBadgeComponent', 'selector': 'ngx-form-badge'},{'name': 'FormControlEntityComponent', 'selector': 'ngx-form-control-entity'},{'name': 'FormLabelComponent', 'selector': 'ngx-form-label'},{'name': 'FtxFormsComponent', 'selector': 'ngx-ftx-forms'},{'name': 'FtxSivanSharedComponent', 'selector': 'coagulu-ftx-sivan-shared'},{'name': 'FtxTooltipComponent', 'selector': 'ftx-tooltip'},{'name': 'InfoUserComponent', 'selector': 'info-user'},{'name': 'InputComponent', 'selector': 'ngx-input-component'},{'name': 'IntroComponent', 'selector': 'intro'},{'name': 'ReserveBookComponent', 'selector': 'reserve-book'},{'name': 'SpendMoneyComponent', 'selector': 'spend-money'},{'name': 'StepperComponent', 'selector': ''},{'name': 'StepperStepsComponent', 'selector': 'stepper-steps'}];
+    var DIRECTIVES = [{'name': 'FadeInOutDirective', 'selector': '[ngxFadeInOut]'},{'name': 'PapControlDirective', 'selector': '[ngxControl]'},{'name': 'PatchFormGroupValueDirective', 'selector': '[ngxFormGroupValues]'},{'name': 'RenderYouDirective', 'selector': '[renderYou] '},{'name': 'ScrollHintDirective', 'selector': '[sivanScrollHint]'}];
+    var ACTUAL_COMPONENT = {'name': 'FtxFormsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FtxFormsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
