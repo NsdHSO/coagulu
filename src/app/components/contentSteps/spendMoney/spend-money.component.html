@@ -1,1 +1,13 @@
-<p>spend-money works!</p>
+<div class="p-2 m-2 text-lg">
+  <sivan-input-dropdown
+    [control]="form"
+    [rendererTemplate]="listSelected"
+    placeholder="TEST"
+  />
+</div>
+
+<ng-template #listSelected>
+  <mat-select>
+    <mat-option disabled>Not implemented</mat-option>
+  </mat-select>
+</ng-template>
