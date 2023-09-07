@@ -4,23 +4,34 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { OutlineDirective } from '../../directive/outline.directive';
-import { NgControl } from '@angular/forms';
+import { NgControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'sivan-input-dropdown',
   standalone: true,
-  imports: [CommonModule, MatInputModule, MatSelectModule, MatIconModule],
+  imports: [
+    CommonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './input-dropdown.component.html',
   styleUrls: ['./input-dropdown.component.scss'],
   hostDirectives: [
-    { directive: OutlineDirective, inputs: ['placeholder', 'control'] },
+    {
+      directive: OutlineDirective,
+      inputs: ['hintTop', 'control', 'placeholder'],
+    },
   ],
 })
 export class InputDropdownComponent {
   @Input({ required: true })
-  placeholder!: string;
+  hintTop!: string;
   @Input({ required: true })
   rendererTemplate!: TemplateRef<unknown>;
   @Input()
   control?: NgControl | any | unknown; //eslint-disable-line
+  @Input({ required: true })
+  placeholder!: string;
 }

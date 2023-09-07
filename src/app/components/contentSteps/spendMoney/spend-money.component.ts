@@ -1,9 +1,9 @@
 import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InputDropdownComponent } from '../../../../../ftx-sivan-shared/src/lib/components';
 import { MatSelectModule } from '@angular/material/select';
 import { GenerateFormBuilderService, TypeConstantEnum } from 'ngx-ftx-forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputDropdownComponent } from '../../../../../ftx-sivan-shared/src/lib/components';
 
 @Component({
   selector: 'spend-money',

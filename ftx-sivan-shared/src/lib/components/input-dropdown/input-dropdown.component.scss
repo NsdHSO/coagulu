@@ -2,4 +2,8 @@
   ::ng-deep .mat-mdc-select-arrow {
     @apply hidden;
   }
+
+  .input-dropdown {
+    @apply rounded pl-3 pr-6 pt-2 border block py-2.5 px-0 w-full text-sm prose-zinc bg-transparent border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:border-blue-600 prose-xl dark:bg-gray-800 focus:dark:border-cyan-400;
+  }
 }
