@@ -3,20 +3,25 @@ import {
   ElementRef,
   inject,
   Input,
+  OnDestroy,
   OnInit,
   Renderer2,
 } from '@angular/core';
-import { fromEvent, map, of, tap } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  startWith,
+  Subject,
+  takeUntil,
+  tap,
+} from 'rxjs';
+import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[sivanOutline]',
   standalone: true,
 })
-export class OutlineDirective implements OnInit {
-  @Input({ required: true })
-  placeholder!: string;
-  @Input({ required: true })
-  control!: string;
+export class OutlineDirective implements OnInit, OnDestroy {
   /**
    * {ElementRef} elementRef - Reference to the host element.
    * @private
@@ -27,46 +32,74 @@ export class OutlineDirective implements OnInit {
    * @private
    */
   private readonly renderer2 = inject(Renderer2);
+  @Input({ required: true }) hintTop!: string;
+  @Input({ required: true }) control!: NgControl;
+  @Input({ required: true }) placeholder!: string;
+  /**
+   * {Subject} The destroy Subject
+   * @private
+   */
+  private destroy$ = new Subject();
 
   ngOnInit(): void {
-    const div = this.renderer2.createElement('span');
-    let isDivCreated = false; // Flag to track if the div is already created
-
+    const element = this.renderer2.createElement('span');
     this.renderer2.addClass(this.elementRef.nativeElement, 'relative');
-
-    fromEvent(this.elementRef.nativeElement.childNodes[0], 'input')
-      .pipe(
-        map((event: any) => (event.target as HTMLInputElement).value),
+    this.control.valueChanges
+      ?.pipe(
+        distinctUntilChanged(),
+        debounceTime(200),
+        startWith('sda'),
         tap((inputValue) => {
-          if (inputValue === '0' && isDivCreated) {
-            // If the value is '0' and the div is already created, remove the div
-            this.renderer2.removeChild(this.elementRef.nativeElement, div);
-            isDivCreated = false; // Set the flag to false to indicate the div is removed
-          } else if (inputValue !== '0' && !isDivCreated) {
-            // If the value is not '0' and the div is not created, create the div
-            div.innerHTML = 'ivan';
-            this.renderer2.appendChild(this.elementRef.nativeElement, div);
-            this.renderer2.addClass(div, 'prose');
-            this.renderer2.addClass(div, 'absolute');
-            this.renderer2.addClass(div, 'left-3');
-            this.renderer2.addClass(div, '-top-3.5');
-            this.renderer2.addClass(div, 'bg-white');
-            this.renderer2.addClass(div, 'leading-none');
-            this.renderer2.addClass(div, 'px-2');
-            this.renderer2.addClass(div, 'mx-2');
-            this.renderer2.addClass(div, 'border');
-            this.renderer2.addClass(div, 'rounded-tl');
-            this.renderer2.addClass(div, 'rounded-tr');
-            this.renderer2.addClass(div, 'animate-ease-in');
-            this.renderer2.addClass(div, 'animate-flip-down');
-            this.renderer2.addClass(div, 'animate-once');
-            this.renderer2.addClass(div, 'animate-ease-in-out');
-            isDivCreated = true; // Set the flag to true to indicate the div is created
+          if (inputValue.length > 1) {
+            this.renderer2.appendChild(this.elementRef.nativeElement, element);
           }
-          console.log('test');
-        })
+          this.addClassForHint(element);
+          if (element.innerText !== this.placeholder) {
+            element.innerText = this.placeholder;
+          }
+        }),
+        takeUntil(this.destroy$)
       )
-      .subscribe();
-    this.renderer2.addClass(this.elementRef.nativeElement, 'prose-2xl');
+      .subscribe(console.log);
+  }
+
+  private addClassForHint(element: HTMLElement) {
+    // Define an array of class names you want to add
+    const classesToAdd = [
+      'absolute',
+      'text-sm',
+      'text-gray-500',
+      'dark:text-gray-400',
+      'duration-300',
+      'transform',
+      '-translate-y-6',
+      'scale-75',
+      'top-3.5',
+      'left-2',
+      'px-2',
+      'mx-2',
+      'rounded-tl',
+      'rounded-tr',
+      'bg-slate-200',
+      'peer-focus:text-blue-600',
+      'peer-focus:dark:text-blue-500',
+      'peer-focus:dark:text-cyan-400',
+      'peer-focus:scale-75',
+      'peer-focus:-translate-y-6',
+      'peer-placeholder-shown:scale-100',
+      'peer-placeholder-shown:translate-y-0',
+      'peer-placeholder-shown:dark:text-gray-400',
+      'dark:focus:top-3.5',
+      'dark:bg-gray-800',
+      'dark:text-white',
+    ];
+    classesToAdd.forEach((className) => {
+      this.renderer2.addClass(element, className);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }
