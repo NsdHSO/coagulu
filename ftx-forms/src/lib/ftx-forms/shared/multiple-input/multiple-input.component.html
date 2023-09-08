@@ -24,18 +24,12 @@
         ></textarea>
       </mat-form-field>
     </ng-container>
-    <mat-form-field
+    <sivan-input-dropdown
       *ngSwitchDefault
-      [color]="control.control?.errors?.error ? 'warn' : 'primary'"
-    >
-      <mat-label class="text prose prose-zinc">{{ labelInput }}</mat-label>
-      <input
-        matInput
-        [placeholder]="placeholderInput ?? ''"
-        [formControl]="control.control"
-        class="font-semibold !text-xl"
-      />
-    </mat-form-field>
+      [control]="control.control"
+      hintTop="TEST"
+      [placeholder]="labelInput"
+    />
     <div
       [ngxFadeInOut]="control.statusChanges | async"
       @widthOpacityAnimation

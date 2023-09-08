@@ -13,9 +13,10 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { InputDropdownComponent } from '../../../../../../ftx-sivan-shared/src/lib/components';
 
 @Component({
-  selector: 'ngx-input-component',
+  selector: 'ngx-multiple-input-component',
   standalone: true,
   imports: [
     CommonModule,
@@ -25,9 +26,10 @@ import {
     MatCheckboxModule,
     MatRadioModule,
     FadeInOutDirective,
+    InputDropdownComponent,
   ],
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  templateUrl: './multiple-input.component.html',
+  styleUrls: ['./multiple-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
@@ -49,15 +51,15 @@ export class InputComponent {
    */
   @Input() typeInput? = 'text';
   /**
-   * Placeholder for input-dropdown
+   * Placeholder for multiple-input-dropdown
    */
   @Input() placeholderInput? = '';
   /**
-   * Label for input-dropdown
+   * Label for multiple-input-dropdown
    */
-  @Input() labelInput? = 'Complete label';
+  @Input() labelInput = 'Complete label';
   /**
-   * When input-dropdown is radio button
+   * When multiple-input-dropdown is radio button
    */
   @Input() toggleData? = [{ value: false, description: 'default' }];
   @Input()

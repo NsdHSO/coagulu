@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -28,8 +28,6 @@ import { NgControl, ReactiveFormsModule } from '@angular/forms';
 export class InputDropdownComponent {
   @Input({ required: true })
   hintTop!: string;
-  @Input({ required: true })
-  rendererTemplate!: TemplateRef<unknown>;
   @Input()
   control?: NgControl | any | unknown; //eslint-disable-line
   @Input({ required: true })
