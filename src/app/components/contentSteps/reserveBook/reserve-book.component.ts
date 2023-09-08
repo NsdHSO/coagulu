@@ -7,7 +7,7 @@ import {
   FormControlEntityComponent,
   FtxFormsComponent,
   GenerateFormBuilderService,
-  InputComponent,
+  MultipleInputComponent,
   PatchFormGroupValueDirective,
   TypeConstantEnum,
   TypePattern,
@@ -23,7 +23,7 @@ import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    InputComponent,
+    MultipleInputComponent,
     ButtonComponent,
     FormControlEntityComponent,
     PatchFormGroupValueDirective,

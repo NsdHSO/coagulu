@@ -1,0 +1,38 @@
+<input
+  [formControl]="control"
+  placeholder=" "
+  class="input-dropdown peer"
+  (click)="showOption()"
+  #input
+/>
+<mat-icon
+  [ngClass]="colorMatIcon"
+  (click)="showOption(input)"
+  *ngIf="options && options.length > 0"
+  class="absolute right-5 top-3"
+  [svgIcon]="'fa_solid:angle-up'"
+  [@rotateIcon]="isInputClick ? 'up' : 'down'"
+></mat-icon>
+<div [@fadeInOut] *ngIf="options && options.length > 0 && isInputClick">
+  <!-- Content to display when options.length > 0 -->
+  <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
+</div>
+<!-- Template for when options.length > 0 -->
+<ng-template #optionsTemplate>
+  <ftx-tooltip [rendererTemplate]="optionTemplate" />
+</ng-template>
+
+<!-- Template for when options.length is <= 0 -->
+<ng-template #optionTemplate>
+  <div class="overflow-auto">
+    <p>Options are available:</p>
+    <ul>
+      <li
+        (click)="onBlur(option)"
+        *ngFor="let option of options; trackBy: generative.trackBy"
+      >
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+</ng-template>

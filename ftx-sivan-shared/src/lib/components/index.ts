@@ -1,1 +1,1 @@
-export * from './input-dropdown/input-dropdown.component';
+export * from './input/sivan-input.component';

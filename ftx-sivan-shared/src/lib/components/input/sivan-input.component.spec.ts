@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InputDropdownComponent } from './input-dropdown.component';
+import { SivanInputComponent } from './sivan-input.component';
 
 describe('InputComponent', () => {
-  let component: InputDropdownComponent;
-  let fixture: ComponentFixture<InputDropdownComponent>;
+  let component: SivanInputComponent;
+  let fixture: ComponentFixture<SivanInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InputDropdownComponent],
+      imports: [SivanInputComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(InputDropdownComponent);
+    fixture = TestBed.createComponent(SivanInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
