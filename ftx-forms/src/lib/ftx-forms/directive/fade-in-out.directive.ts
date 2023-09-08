@@ -7,7 +7,7 @@ import {
 } from '@angular/animations';
 
 /**
- * A directive that applies a fade-in/out animation based on the provided multiple-input-dropdown control's state.
+ * A directive that applies a fade-in/out animation based on the provided multiple-input control's state.
  */
 @Directive({
   selector: '[ngxFadeInOut]',
@@ -32,8 +32,8 @@ export class FadeInOutDirective<T> {
   private animationPlayer: AnimationPlayer | undefined;
 
   /**
-   * Binds the multiple-input-dropdown control's value to trigger the fade-in/out animation.
-   * @param control The multiple-input-dropdown control (form control or boolean value) to monitor for animation triggering.
+   * Binds the multiple-input control's value to trigger the fade-in/out animation.
+   * @param control The multiple-input control (form control or boolean value) to monitor for animation triggering.
    */
   @Input('ngxFadeInOut') set errorControl(control: T) {
     if (control !== 'VALID' || !control) {

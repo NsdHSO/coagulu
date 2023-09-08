@@ -28,7 +28,7 @@ export class FormLabelComponent {
   @Input() isFormArray? = false;
 
   /**
-   * Label for multiple-input-dropdown
+   * Label for multiple-input
    */
   @Input() label: string | undefined = '';
 
@@ -38,7 +38,7 @@ export class FormLabelComponent {
   @Input() typeInput? = 'text';
 
   /**
-   * Label for multiple-input-dropdown
+   * Label for multiple-input
    */
   @Input() labelInput? = 'Complete label';
   /**
@@ -46,7 +46,7 @@ export class FormLabelComponent {
    */
   @Input() haveTooltip?: boolean;
   /**
-   * Description for multiple-input-dropdown
+   * Description for multiple-input
    */
   @Input() descriptionEntity?: DescriptionEntity;
   actionBadge = [

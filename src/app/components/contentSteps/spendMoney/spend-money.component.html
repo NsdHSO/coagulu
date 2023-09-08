@@ -1,8 +1,13 @@
 <div class="p-2 m-2 text-lg">
-  <sivan-input-dropdown
+  <sivan-input [control]="form" hintTop="TEST" placeholder="Javan Iuvan" />
+</div>
+<div class="p-2 m-2 text-lg">
+  <sivan-input
     [control]="form"
     hintTop="TEST"
     placeholder="Javan Iuvan"
+    [options]="['dasd', 'dasda', 'dasd', 'asdasd', 'dasds', 'dasd']"
+    colorMatIcon="text-blue-500"
   />
 </div>
 <ng-template #listSelected>

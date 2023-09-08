@@ -1,13 +1,13 @@
 import { Meta } from '@storybook/angular';
-import { InputComponent } from './input.component';
+import { MultipleInputComponent } from './multiple-input.component';
 
 export default {
   title: 'InputComponent',
-  component: InputComponent,
-} as Meta<InputComponent>;
+  component: MultipleInputComponent,
+} as Meta<MultipleInputComponent>;
 
 export const Primary = {
-  render: (args: InputComponent) => ({
+  render: (args: MultipleInputComponent) => ({
     props: args,
   }),
   args: {

@@ -7,7 +7,7 @@ import { Dictionary } from '@ngrx/entity';
 import {
   ButtonComponent,
   FormControlEntityComponent,
-  InputComponent,
+  MultipleInputComponent,
   PatchFormGroupValueDirective,
 } from 'ngx-ftx-forms';
 
@@ -19,7 +19,7 @@ import {
     ReactiveFormsModule,
     PatchFormGroupValueDirective,
     ButtonComponent,
-    InputComponent,
+    MultipleInputComponent,
     FormControlEntityComponent,
   ],
   templateUrl: './info-user.component.html',
