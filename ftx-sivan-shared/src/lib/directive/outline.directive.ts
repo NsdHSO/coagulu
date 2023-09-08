@@ -10,6 +10,7 @@ import {
 import {
   debounceTime,
   distinctUntilChanged,
+  fromEvent,
   startWith,
   Subject,
   takeUntil,
@@ -60,7 +61,13 @@ export class OutlineDirective implements OnInit, OnDestroy {
         }),
         takeUntil(this.destroy$)
       )
-      .subscribe(console.log);
+      .subscribe();
+    fromEvent(element, 'click')
+      .pipe(
+        tap((c) => this.elementRef.nativeElement.childNodes[0].focus()),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 
   private addClassForHint(element: HTMLElement) {
@@ -75,12 +82,12 @@ export class OutlineDirective implements OnInit, OnDestroy {
       '-translate-y-6',
       'scale-75',
       'top-3.5',
-      'left-2',
+      'left-1',
       'px-2',
       'mx-2',
       'rounded-tl',
       'rounded-tr',
-      'bg-slate-200',
+      'bg-white',
       'peer-focus:text-blue-600',
       'peer-focus:dark:text-blue-500',
       'peer-focus:dark:text-cyan-400',

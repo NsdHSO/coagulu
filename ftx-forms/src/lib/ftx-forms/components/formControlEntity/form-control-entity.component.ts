@@ -8,11 +8,11 @@ import {
   NgModel,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { InputComponent, PapControlDirective } from '../../shared';
+import { InputComponent } from '../../shared';
 import { MatInputModule } from '@angular/material/input';
 import { FadeInOutDirective } from '../../directive/fade-in-out.directive';
 import { FormLabelComponent } from '../formLabel/form-label.component';
-import { injectNgControl } from 'ngx-ftx-shared';
+import { PapControlDirective, injectNgControl } from 'ngx-ftx-shared';
 
 @Component({
   selector: 'ngx-form-control-entity',
@@ -38,20 +38,20 @@ export class FormControlEntityComponent {
    */
   @Input() typeInput? = 'text';
   /**
-   * Placeholder for input-dropdown
+   * Placeholder for multiple-input-dropdown
    */
   @Input() placeholderInput? = '';
   /**
-   * Label for input-dropdown
+   * Label for multiple-input-dropdown
    */
   @Input() labelInput? = 'Complete label';
 
   /**
-   * Label for input-dropdown
+   * Label for multiple-input-dropdown
    */
   @Input() isFormArray? = false;
   /**
-   * When input-dropdown is radio button
+   * When multiple-input-dropdown is radio button
    */
   @Input() toggleData? = [{ value: false, description: 'default' }];
   ngControl: FormControlDirective | FormControlName | NgModel | NgControl =
