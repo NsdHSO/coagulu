@@ -26,7 +26,7 @@
     </ng-container>
     <sivan-input
       *ngSwitchDefault
-      [control]="control.control"
+      [mainControl]="control.control"
       hintTop="TEST"
       [placeholder]="labelInput"
     />
@@ -34,7 +34,7 @@
       [ngxFadeInOut]="control.statusChanges | async"
       @widthOpacityAnimation
       *ngIf="control?.errors"
-      class="py-2 text-red-500 text prose prose-zinc prose-lg"
+      class="py-2 text-red-500 text"
     >
       {{ control.errors?.['error']  }}
     </div>

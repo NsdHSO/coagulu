@@ -13,7 +13,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { GenerativeService } from 'ngx-ftx-forms';
+import { GenerativeService } from './../../../../../ftx-forms/src';
 import { ScrollHintDirective } from '../../directive';
 
 @Component({
@@ -33,7 +33,7 @@ import { ScrollHintDirective } from '../../directive';
   hostDirectives: [
     {
       directive: OutlineDirective,
-      inputs: ['hintTop', 'control', 'placeholder'],
+      inputs: ['hintTop', 'control:mainControl', 'placeholder'],
     },
   ],
   animations: [
@@ -43,18 +43,21 @@ import { ScrollHintDirective } from '../../directive';
         style({
           height: '0',
           opacity: 0,
+          zIndex: 105, // Set the initial z-index value
         })
       ),
       transition(':enter', [
         style({
           height: '0',
           opacity: 0,
+          zIndex: 105, // Set the initial z-index value
         }),
         animate(
           '200ms ease-out',
           style({
             height: '*',
             opacity: 1,
+            zIndex: 105, // Ensure the z-index remains the same
           })
         ),
       ]),
@@ -81,12 +84,18 @@ import { ScrollHintDirective } from '../../directive';
 })
 export class SivanInputComponent<T> {
   @Input({ required: true }) hintTop!: string;
-  @Input() control?: NgControl | any | unknown; //eslint-disable-line
+  @Input() mainControl?: NgControl | any | unknown; //eslint-disable-line
+  @Input() currencyControl?: NgControl | any | unknown; //eslint-disable-line
   @Input({ required: true }) placeholder!: string;
-  @Input({ required: false }) options: Array<T> | undefined;
+  optionis: any = [];
   @Input() colorMatIcon!: string;
   isInputClick = false;
+  isInputCurrencyClick = false;
   generative = inject(GenerativeService);
+
+  @Input() set choices(options: string[]) {
+    this.optionis = options;
+  }
 
   showOption(inputElement?: HTMLInputElement) {
     this.isInputClick = true;
@@ -97,6 +106,15 @@ export class SivanInputComponent<T> {
 
   onBlur<T>(choice: T) {
     this.isInputClick = false;
-    this.control.setValue(choice);
+    this.mainControl.setValue(choice);
+  }
+
+  selectCountry(option: T) {
+    this.isInputCurrencyClick = false;
+    this.currencyControl.setValue(option);
+  }
+
+  currencyForm() {
+    this.isInputCurrencyClick = true;
   }
 }
