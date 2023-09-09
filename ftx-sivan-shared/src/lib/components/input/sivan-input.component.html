@@ -13,9 +13,11 @@
 <div
   class="absolute w-fit !h-full top-0 min-w-[8rem] right-0"
   *ngIf="currencyControl"
-  (click)="currencyForm()"
 >
-  <div class="relative !h-full flex justify-center items-center">
+  <div
+    class="relative !h-full flex justify-center items-center"
+    (click)="currencyForm()"
+  >
     <mat-icon
       class="right-5 absolute"
       [ngClass]="colorMatIcon"
