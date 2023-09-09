@@ -1,9 +1,11 @@
 <input
   [formControl]="mainControl"
   placeholder=" "
-  class="input-dropdown peer"
-  [ngClass]="{ '!pr-32': currencyControl }"
-  (click)="showOption()"
+  class="input-dropdown peer text"
+  [ngClass]="{
+    '!pr-48': currencyControl,
+    'text-red-500 !border-red-500': mainControl?.errors
+  }"
   #input
 />
 <div
@@ -27,8 +29,11 @@
     <mat-icon
       class="right-[5.5rem] absolute"
       [ngClass]="colorMatIcon"
-      [svgIcon]="currencyControl.value"
+      [svgIcon]="currencyControl.controls.icon.value"
     ></mat-icon>
+    <span class="absolute right-36 font-bold font-serif text-gray-400">{{
+      currencyControl.controls.placeholder.value
+    }}</span>
   </div>
   <div *ngIf="isInputCurrencyClick">
     <ng-container *ngTemplateOutlet="optionsCurrencyTemplate"></ng-container>
@@ -77,14 +82,14 @@
       *ngFor="let option of optionis; trackBy: generative.trackBy"
       (click)="selectCountry(option)"
     >
-      <mat-icon class="!w-full" [svgIcon]="option" />
+      <mat-icon class="!w-full rounded-2xl" [svgIcon]="option.icon" />
     </div>
   </div>
 </ng-template>
 <div
   @widthOpacityAnimation
   *ngIf="mainControl?.errors"
-  class="py-2 text-red-500 text"
+  class="py-2 text-red-500 text absolute"
 >
   {{ mainControl.errors?.['error']  }}
 </div>
