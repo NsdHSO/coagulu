@@ -54,7 +54,17 @@ export class SpendMoneyComponent {
         },
         {
           label: 'currency',
-          value: 'fa_solid:RO',
+          values: [
+            {
+              label: 'placeholder',
+              value: 'RON',
+            },
+            {
+              label: 'Icon',
+              value: 'fa_solid:RO',
+              labelHint: 'Personal TEst',
+            },
+          ],
           labelHint: 'Personal TEst',
         },
       ],

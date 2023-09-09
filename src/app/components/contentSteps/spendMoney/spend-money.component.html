@@ -20,7 +20,10 @@
     [currencyControl]="currency.controls.currency"
     hintTop="TEST"
     placeholder="Javan Iuvan"
-    [choices]="['fa_solid:RO', 'fa_solid:CR']"
+    [choices]="[
+      { icon: 'fa_solid:RO', placeholder: 'RON' },
+      { icon: 'fa_solid:CR', placeholder: 'KN' }
+    ]"
     colorMatIcon="text-blue-500"
   />
 </div>

@@ -93,13 +93,13 @@ export class SivanInputComponent<T> {
   isInputCurrencyClick = false;
   generative = inject(GenerativeService);
 
-  @Input() set choices(options: string[]) {
+  @Input() set choices(options: unknown[]) {
     this.optionis = options;
   }
 
   showOption(inputElement?: HTMLInputElement) {
-    this.isInputClick = true;
-    if (inputElement) {
+    this.isInputClick = !this.isInputClick;
+    if (inputElement && this.isInputClick) {
       inputElement.focus();
     }
   }
@@ -109,12 +109,12 @@ export class SivanInputComponent<T> {
     this.mainControl.setValue(choice);
   }
 
-  selectCountry(option: T) {
+  selectCountry<T extends { icon: string; placeholder: string }>(option: T) {
     this.isInputCurrencyClick = false;
     this.currencyControl.setValue(option);
   }
 
   currencyForm() {
-    this.isInputCurrencyClick = true;
+    this.isInputCurrencyClick = !this.isInputCurrencyClick;
   }
 }
