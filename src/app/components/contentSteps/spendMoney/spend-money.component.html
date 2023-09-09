@@ -1,12 +1,26 @@
 <div class="p-2 m-2 text-lg">
-  <sivan-input [control]="form" hintTop="TEST" placeholder="Javan Iuvan" />
+  <sivan-input
+    [mainControl]="simple"
+    hintTop="TEST"
+    placeholder="Javan Iuvan"
+  />
 </div>
 <div class="p-2 m-2 text-lg">
   <sivan-input
-    [control]="form"
+    [mainControl]="simple"
     hintTop="TEST"
     placeholder="Javan Iuvan"
-    [options]="['dasd', 'dasda', 'dasd', 'asdasd', 'dasds', 'dasd']"
+    [choices]="['dasd', 'dasda', 'dasd', 'asdasd', 'dasds', 'dasd']"
+    colorMatIcon="text-blue-500"
+  />
+</div>
+<div class="p-2 m-2 text-lg">
+  <sivan-input
+    [mainControl]="currency.controls.valuecurrency"
+    [currencyControl]="currency.controls.currency"
+    hintTop="TEST"
+    placeholder="Javan Iuvan"
+    [choices]="['fa_solid:RO', 'fa_solid:CR']"
     colorMatIcon="text-blue-500"
   />
 </div>

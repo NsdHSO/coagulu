@@ -10,12 +10,21 @@
       width: 100%;
       height: 100%;
       .tooltip-container {
-        @apply absolute w-full ml-0 max-h-40;
+        @apply absolute w-full ml-0 max-h-40 z-50;
       }
     }
   }
 
   .input-dropdown {
-    @apply rounded pl-5 pr-16 pt-2 border block py-2.5 px-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:border-blue-600 dark:bg-gray-800 focus:dark:border-cyan-400 w-full;
+    @apply rounded pl-5 pr-16 pt-2 border block py-2.5 px-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:border-blue-600 dark:bg-gray-800 focus:dark:border-cyan-400 w-full z-0;
+  }
+}
+.currency-flag {
+  max-height: 4rem;
+  @apply flex justify-center items-center;
+  ::ng-deep {
+    mat-icon {
+      height: 4rem;
+    }
   }
 }

@@ -1,19 +1,46 @@
 <input
-  [formControl]="control"
+  [formControl]="mainControl"
   placeholder=" "
   class="input-dropdown peer"
+  [ngClass]="{ '!pr-32': currencyControl }"
   (click)="showOption()"
   #input
 />
+<div
+  *ngIf="currencyControl"
+  class="absolute w-[0.5px] bg-gray-300 right-32 h-full top-0"
+></div>
+<div
+  class="absolute w-fit !h-full top-0 min-w-[8rem] right-0"
+  *ngIf="currencyControl"
+  (click)="currencyForm()"
+>
+  <div class="relative !h-full flex justify-center items-center">
+    <mat-icon
+      class="right-5 absolute"
+      [ngClass]="colorMatIcon"
+      [svgIcon]="'fa_solid:angle-up'"
+      [@rotateIcon]="isInputCurrencyClick ? 'up' : 'down'"
+    ></mat-icon>
+    <mat-icon
+      class="right-[5.5rem] absolute"
+      [ngClass]="colorMatIcon"
+      [svgIcon]="currencyControl.value"
+    ></mat-icon>
+  </div>
+  <div *ngIf="isInputCurrencyClick">
+    <ng-container *ngTemplateOutlet="optionsCurrencyTemplate"></ng-container>
+  </div>
+</div>
 <mat-icon
   [ngClass]="colorMatIcon"
   (click)="showOption(input)"
-  *ngIf="options && options.length > 0"
+  *ngIf="optionis && optionis.length > 0 && !currencyControl"
   class="absolute right-5 top-3"
   [svgIcon]="'fa_solid:angle-up'"
   [@rotateIcon]="isInputClick ? 'up' : 'down'"
 ></mat-icon>
-<div [@fadeInOut] *ngIf="options && options.length > 0 && isInputClick">
+<div [@fadeInOut] *ngIf="optionis && optionis.length > 0 && isInputClick">
   <!-- Content to display when options.length > 0 -->
   <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
 </div>
@@ -29,10 +56,33 @@
     <ul>
       <li
         (click)="onBlur(option)"
-        *ngFor="let option of options; trackBy: generative.trackBy"
+        *ngFor="let option of optionis; trackBy: generative.trackBy"
       >
         {{ option }}
       </li>
     </ul>
   </div>
 </ng-template>
+<ng-template #optionsCurrencyTemplate>
+  <ftx-tooltip [rendererTemplate]="optionCurrencyTemplate" />
+</ng-template>
+
+<!-- Template for when options.length is <= 0 -->
+<ng-template #optionCurrencyTemplate>
+  <div class="overflow-auto">
+    <div
+      class="currency-flag"
+      *ngFor="let option of optionis; trackBy: generative.trackBy"
+      (click)="selectCountry(option)"
+    >
+      <mat-icon class="!w-full" [svgIcon]="option" />
+    </div>
+  </div>
+</ng-template>
+<div
+  @widthOpacityAnimation
+  *ngIf="mainControl?.errors"
+  class="py-2 text-red-500 text"
+>
+  {{ mainControl.errors?.['error']  }}
+</div>
