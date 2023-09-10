@@ -1,49 +1,50 @@
 <input
   [formControl]="mainControl"
   placeholder=" "
-  class="input-dropdown peer text"
+  class="input-dropdown peer text !pt-[0.7rem]"
   [ngClass]="{
-    '!pr-48': currencyControl,
+    '!pr-[9.5rem]': currencyControl,
     'text-red-500 !border-red-500': mainControl?.errors
   }"
-  #input
+  #inputSivan
 />
 <div
   *ngIf="currencyControl"
-  class="absolute w-[0.5px] bg-gray-300 right-32 h-full top-0"
+  class="absolute w-[0.5px] bg-gray-300 right-[5.5rem] h-full top-0"
 ></div>
 <div
-  class="absolute w-fit !h-full top-0 min-w-[8rem] right-0"
+  class="absolute w-fit !h-full top-0 min-w-[6rem] right-0"
   *ngIf="currencyControl"
 >
   <div
     class="relative !h-full flex justify-center items-center"
-    (click)="currencyForm()"
+    (click)="currencyControll()"
   >
     <mat-icon
-      class="right-5 absolute"
+      class="right-4 absolute"
       [ngClass]="colorMatIcon"
       [svgIcon]="'fa_solid:angle-up'"
       [@rotateIcon]="isInputCurrencyClick ? 'up' : 'down'"
     ></mat-icon>
     <mat-icon
-      class="right-[5.5rem] absolute"
+      class="right-[3rem] absolute"
       [ngClass]="colorMatIcon"
       [svgIcon]="currencyControl.controls.icon.value"
     ></mat-icon>
-    <span class="absolute right-36 font-bold font-serif text-gray-400">{{
-      currencyControl.controls.placeholder.value
-    }}</span>
+    <span
+      class="absolute right-24 font-bold font-serif text-gray-400 dark:text-white"
+      >{{ currencyControl.controls.placeholder.value }}</span
+    >
   </div>
   <div *ngIf="isInputCurrencyClick">
-    <ng-container *ngTemplateOutlet="optionsCurrencyTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
   </div>
 </div>
 <mat-icon
   [ngClass]="colorMatIcon"
-  (click)="showOption(input)"
+  (click)="showOption(inputSivan)"
   *ngIf="optionis && optionis.length > 0 && !currencyControl"
-  class="absolute right-5 top-3"
+  class="absolute right-4 top-3"
   [svgIcon]="'fa_solid:angle-up'"
   [@rotateIcon]="isInputClick ? 'up' : 'down'"
 ></mat-icon>
@@ -53,7 +54,11 @@
 </div>
 <!-- Template for when options.length > 0 -->
 <ng-template #optionsTemplate>
-  <ftx-tooltip [rendererTemplate]="optionTemplate" />
+  <ftx-tooltip
+    [rendererTemplate]="
+      currencyControl ? optionCurrencyTemplate : optionTemplate
+    "
+  />
 </ng-template>
 
 <!-- Template for when options.length is <= 0 -->
@@ -69,9 +74,6 @@
       </li>
     </ul>
   </div>
-</ng-template>
-<ng-template #optionsCurrencyTemplate>
-  <ftx-tooltip [rendererTemplate]="optionCurrencyTemplate" />
 </ng-template>
 
 <!-- Template for when options.length is <= 0 -->

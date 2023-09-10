@@ -35,14 +35,10 @@ export class FtxFormsComponent {
   //eslint-disable-next-line
   @Input() dynamicForm: FormGroup | FormControl | FormArray | any = {} as any;
   @Output() submitEvent = new EventEmitter();
-
   generativeService = inject(GenerativeService);
   generateFormBuilderService = inject(GenerateFormBuilderService);
-
   controlMapping: any = []; // eslint-disable-line
-
   private _jsonData: DataFormBuilder = {} as DataFormBuilder;
-
   get jsonData(): DataFormBuilder {
     return this._jsonData;
   }
@@ -52,11 +48,9 @@ export class FtxFormsComponent {
     if (jsonData.values) {
       for (const item of jsonData.values) {
         const label = item.label?.toLowerCase();
-
         if (item?.label) {
           this.controlMapping[label ?? ''] = item;
         }
-
         // Check for values or bulkValues and iterate over them
         const itemsToMap = [...(item.values ?? []), ...(item.bulkValues ?? [])];
         itemsToMap.forEach((values) => {
