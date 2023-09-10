@@ -1,1 +1,1 @@
-export * from './input/sivan-input.component';
+export { SivanInputComponent } from './input/sivan-input.component';
