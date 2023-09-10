@@ -2,6 +2,7 @@ import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import {
+  ButtonComponent,
   GenerateFormBuilderService,
   TypeConstantEnum,
   TypePattern,
@@ -18,6 +19,7 @@ import { SivanInputComponent } from 'ngx-ftx-shared';
     FormsModule,
     ReactiveFormsModule,
     SivanInputComponent,
+    ButtonComponent,
   ],
   templateUrl: './spend-money.component.html',
   styleUrls: ['./spend-money.component.scss'],
@@ -69,6 +71,9 @@ export class SpendMoneyComponent {
         },
       ],
     });
+  }
+
+  public logFrom() {
     console.log(this.currency);
   }
 }

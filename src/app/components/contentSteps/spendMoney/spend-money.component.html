@@ -14,7 +14,51 @@
     colorMatIcon="text-blue-500"
   />
 </div>
-<div class="p-2 m-2 text-lg">
+<div class="p-2 m-2 text-lg flex gap-[1rem] flex-wrap">
+  <sivan-input
+    [mainControl]="currency.controls.valuecurrency"
+    [currencyControl]="currency.controls.currency"
+    hintTop="TEST"
+    placeholder="Javan Iuvan"
+    [choices]="[
+      { icon: 'fa_solid:RO', placeholder: 'RON' },
+      { icon: 'fa_solid:CR', placeholder: 'KN' }
+    ]"
+    colorMatIcon="text-blue-500"
+  />
+  <sivan-input
+    [mainControl]="currency.controls.valuecurrency"
+    [currencyControl]="currency.controls.currency"
+    hintTop="TEST"
+    placeholder="Javan Iuvan"
+    [choices]="[
+      { icon: 'fa_solid:RO', placeholder: 'RON' },
+      { icon: 'fa_solid:CR', placeholder: 'KN' }
+    ]"
+    colorMatIcon="text-blue-500"
+  />
+  <sivan-input
+    [mainControl]="currency.controls.valuecurrency"
+    [currencyControl]="currency.controls.currency"
+    hintTop="TEST"
+    placeholder="Javan Iuvan"
+    [choices]="[
+      { icon: 'fa_solid:RO', placeholder: 'RON' },
+      { icon: 'fa_solid:CR', placeholder: 'KN' }
+    ]"
+    colorMatIcon="text-blue-500"
+  />
+  <sivan-input
+    [mainControl]="currency.controls.valuecurrency"
+    [currencyControl]="currency.controls.currency"
+    hintTop="TEST"
+    placeholder="Javan Iuvan"
+    [choices]="[
+      { icon: 'fa_solid:RO', placeholder: 'RON' },
+      { icon: 'fa_solid:CR', placeholder: 'KN' }
+    ]"
+    colorMatIcon="text-blue-500"
+  />
   <sivan-input
     [mainControl]="currency.controls.valuecurrency"
     [currencyControl]="currency.controls.currency"
@@ -27,8 +71,4 @@
     colorMatIcon="text-blue-500"
   />
 </div>
-<ng-template #listSelected>
-  <mat-select>
-    <mat-option disabled>Not implemented</mat-option>
-  </mat-select>
-</ng-template>
+<ngx-button-component (marian)="logFrom()">TEST</ngx-button-component>

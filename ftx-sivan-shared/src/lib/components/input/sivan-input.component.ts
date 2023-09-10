@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -87,11 +87,12 @@ export class SivanInputComponent<T> {
   @Input() mainControl?: NgControl | any | unknown; //eslint-disable-line
   @Input() currencyControl?: NgControl | any | unknown; //eslint-disable-line
   @Input({ required: true }) placeholder!: string;
-  optionis: any = [];
   @Input() colorMatIcon!: string;
+  optionis: any = [];
   isInputClick = false;
   isInputCurrencyClick = false;
   generative = inject(GenerativeService);
+  changeDetectorRef = inject(ChangeDetectorRef);
 
   @Input() set choices(options: unknown[]) {
     this.optionis = options;
@@ -99,8 +100,9 @@ export class SivanInputComponent<T> {
 
   showOption(inputElement?: HTMLInputElement) {
     this.isInputClick = !this.isInputClick;
-    if (inputElement && this.isInputClick) {
+    if (inputElement) {
       inputElement.focus();
+      this.changeDetectorRef.detectChanges();
     }
   }
 
@@ -109,12 +111,17 @@ export class SivanInputComponent<T> {
     this.mainControl.setValue(choice);
   }
 
-  selectCountry<T extends { icon: string; placeholder: string }>(option: T) {
+  selectCountry<
+    T extends {
+      icon: string;
+      placeholder: string;
+    }
+  >(option: T) {
     this.isInputCurrencyClick = false;
     this.currencyControl.setValue(option);
   }
 
-  currencyForm() {
+  currencyControll() {
     this.isInputCurrencyClick = !this.isInputCurrencyClick;
   }
 }
