@@ -7,7 +7,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { TypeBadge, TypeSide } from '../../utils';
 import { MatIconModule } from '@angular/material/icon';
-import { GenerativeService } from '../../service';
+import { GenerativeService } from 'ngx-ftx-shared';
 
 export interface ActionBadge {
   side: TypeSide;
