@@ -11,7 +11,7 @@ import { importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { IconCoreModule } from 'ngx-liburg-icon';
-import { GenerativeService } from '../../service';
+import { GenerativeService } from 'ngx-ftx-shared';
 
 export default {
   title: 'FormBadgeComponent',
@@ -20,7 +20,10 @@ export default {
     moduleMetadata({
       imports: [MatIconModule, CommonModule, IconCoreModule],
       providers: [
-        { provide: GenerativeService, useValue: { trackBy: () => 2 } },
+        {
+          provide: GenerativeService,
+          useValue: { trackBy: () => 2 },
+        },
         provideAnimations(),
       ],
     }),
@@ -30,7 +33,6 @@ export default {
   ],
   tags: ['autodocs'],
 } as Meta<FormBadgeComponent>;
-
 const Template: Story<FormBadgeComponent> = (args: FormBadgeComponent) => ({
   props: args,
 });
@@ -38,7 +40,11 @@ export const WorkBack = Template.bind({});
 WorkBack.args = {
   typeBadge: 'success', // Set the default value to 'success'
   actionBadge: [
-    { side: 'middle', action: () => console.log('TEST'), text: 'sss' },
+    {
+      side: 'middle',
+      action: () => console.log('TEST'),
+      text: 'sss',
+    },
   ],
 };
 WorkBack.argTypes = {
@@ -48,19 +54,25 @@ WorkBack.argTypes = {
     defaultValue: 'success',
   },
 };
-
 export const Success = Template.bind({});
 Success.args = {
   typeBadge: 'success',
   actionBadge: [
-    { side: 'middle', action: () => console.log('TEST'), text: 'sss' },
+    {
+      side: 'middle',
+      action: () => console.log('TEST'),
+      text: 'sss',
+    },
   ],
 };
-
 export const Open = Template.bind({});
 Open.args = {
   typeBadge: 'open',
   actionBadge: [
-    { side: 'middle', action: () => console.log('TEST'), text: 'sss' },
+    {
+      side: 'middle',
+      action: () => console.log('TEST'),
+      text: 'sss',
+    },
   ],
 };
