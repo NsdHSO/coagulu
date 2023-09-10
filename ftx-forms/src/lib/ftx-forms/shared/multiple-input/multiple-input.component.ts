@@ -14,6 +14,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { SivanInputComponent } from 'ngx-ftx-shared';
+
 @Component({
   selector: 'ngx-multiple-input-component',
   standalone: true,
@@ -33,13 +34,29 @@ import { SivanInputComponent } from 'ngx-ftx-shared';
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'outline', subscriptSizing: 'dynamic' },
+      useValue: {
+        appearance: 'outline',
+        subscriptSizing: 'dynamic',
+      },
     },
   ],
   animations: [
     trigger('widthOpacityAnimation', [
-      state('void', style({ transform: 'scaleY(0)', height: 0, opacity: 0 })),
-      state('*', style({ transform: 'scaleY(1)', opacity: 1 })),
+      state(
+        'void',
+        style({
+          transform: 'scaleY(0)',
+          height: 0,
+          opacity: 0,
+        })
+      ),
+      state(
+        '*',
+        style({
+          transform: 'scaleY(1)',
+          opacity: 1,
+        })
+      ),
       transition('void <=> *', animate('300ms ease-in')),
     ]),
   ],
@@ -60,7 +77,11 @@ export class MultipleInputComponent {
   /**
    * When multiple-input is radio button
    */
-  @Input() toggleData? = [{ value: false, description: 'default' }];
-  @Input()
-  control?: NgControl | any | unknown; //eslint-disable-line
+  @Input() toggleData? = [
+    {
+      value: false,
+      description: 'default',
+    },
+  ];
+  @Input() control?: NgControl | any | unknown; //eslint-disable-line
 }

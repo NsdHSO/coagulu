@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
-import { OutlineDirective } from '../../directive/outline.directive';
+import { OutlineDirective } from '../../directive';
 import { NgControl, ReactiveFormsModule } from '@angular/forms';
 import { FtxTooltipComponent } from 'ngx-fts-tooltip';
 import {
@@ -13,8 +13,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { GenerativeService } from './../../../../../ftx-forms/src';
 import { ScrollHintDirective } from '../../directive';
+import { GenerativeService } from '../../service';
 
 @Component({
   selector: 'sivan-input',
@@ -82,13 +82,13 @@ import { ScrollHintDirective } from '../../directive';
     ]),
   ],
 })
-export class SivanInputComponent<T> {
+export class SivanInputComponent {
   @Input({ required: true }) hintTop!: string;
   @Input() mainControl?: NgControl | any | unknown; //eslint-disable-line
   @Input() currencyControl?: NgControl | any | unknown; //eslint-disable-line
   @Input({ required: true }) placeholder!: string;
   @Input() colorMatIcon!: string;
-  optionis: any = [];
+  optionis: any = []; //eslint-disable-line
   isInputClick = false;
   isInputCurrencyClick = false;
   generative = inject(GenerativeService);

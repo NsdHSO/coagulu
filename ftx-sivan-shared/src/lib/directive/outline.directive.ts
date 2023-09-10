@@ -64,7 +64,7 @@ export class OutlineDirective implements OnInit, OnDestroy {
       .subscribe();
     fromEvent(element, 'click')
       .pipe(
-        tap((c) => this.elementRef.nativeElement.childNodes[0].focus()),
+        tap(() => this.elementRef.nativeElement.childNodes[0].focus()),
         takeUntil(this.destroy$)
       )
       .subscribe();
