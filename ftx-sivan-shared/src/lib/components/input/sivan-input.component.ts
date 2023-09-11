@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
-import { OutlineDirective } from '../../directive';
+import { OutlineDirective, ScrollHintDirective } from '../../directive';
 import { NgControl, ReactiveFormsModule } from '@angular/forms';
 import { FtxTooltipComponent } from 'ngx-fts-tooltip';
 import {
@@ -13,7 +13,6 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { ScrollHintDirective } from '../../directive';
 import { GenerativeService } from '../../service';
 
 @Component({
