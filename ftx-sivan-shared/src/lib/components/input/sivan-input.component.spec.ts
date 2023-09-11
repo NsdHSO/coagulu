@@ -1,21 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SivanInputComponent } from './sivan-input.component';
+import { FormControl, FormsModule } from '@angular/forms';
+import { of } from 'rxjs'; // Mock NgControl
 
-describe('InputComponent', () => {
+describe('SivanInputComponent', () => {
   let component: SivanInputComponent;
   let fixture: ComponentFixture<SivanInputComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SivanInputComponent],
-    }).compileComponents();
-
+  let formControl: FormControl;
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [SivanInputComponent, FormsModule],
+      providers: [FormControl],
+    });
     fixture = TestBed.createComponent(SivanInputComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    formControl = new FormControl('');
+    fixture.componentInstance.mainControl = new FormControl();
   });
-
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 });
