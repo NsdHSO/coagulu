@@ -5,6 +5,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
   ANIMATION_MODULE_TYPE,
   BrowserAnimationsModule,
+  provideAnimations,
 } from '@angular/platform-browser/animations';
 
 describe('SivanInputComponent', () => {
@@ -13,14 +14,7 @@ describe('SivanInputComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [SivanInputComponent, FormsModule, BrowserAnimationsModule],
-      providers: [
-        FormControl,
-        {
-          provide: ANIMATION_MODULE_TYPE,
-          useValue: 'BrowserAnimations',
-        },
-      ],
-      schemas: [NO_ERRORS_SCHEMA],
+      providers: [FormControl, provideAnimations()],
     });
     fixture = TestBed.createComponent(SivanInputComponent);
     component = fixture.componentInstance;
