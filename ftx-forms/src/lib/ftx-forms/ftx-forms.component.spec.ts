@@ -3,11 +3,8 @@ import { FtxFormsComponent } from './ftx-forms.component';
 import { GenerateFormBuilderService } from './service';
 import { FormControl, Validators } from '@angular/forms';
 import { AnimationBuilder } from '@angular/animations';
-import {
-  ANIMATION_MODULE_TYPE,
-  BrowserAnimationsModule,
-} from '@angular/platform-browser/animations';
 import { GenerativeService } from 'ngx-ftx-shared';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FtxFormsComponent', () => {
   let component: FtxFormsComponent;
@@ -36,7 +33,7 @@ describe('FtxFormsComponent', () => {
       },
     };
     await TestBed.configureTestingModule({
-      imports: [FtxFormsComponent, BrowserAnimationsModule],
+      imports: [FtxFormsComponent, NoopAnimationsModule],
       providers: [
         {
           provide: GenerativeService,
@@ -49,10 +46,6 @@ describe('FtxFormsComponent', () => {
         {
           provide: AnimationBuilder,
           useValue: animationBuilder,
-        },
-        {
-          provide: ANIMATION_MODULE_TYPE,
-          useValue: 'BrowserAnimations',
         },
       ],
     }).compileComponents();
