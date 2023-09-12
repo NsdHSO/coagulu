@@ -88,10 +88,6 @@
     </div>
   </div>
 </ng-template>
-<div
-  @widthOpacityAnimation
-  *ngIf="mainControl?.errors"
-  class="py-2 text-red-500 text absolute"
->
+<div *ngIf="mainControl?.errors" class="text-red-500 absolute text-sm">
   {{ mainControl.errors?.['error']  }}
 </div>
