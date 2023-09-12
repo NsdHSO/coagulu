@@ -1,9 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FtxFormsComponent } from './ftx-forms.component';
-import { GenerateFormBuilderService, GenerativeService } from './service';
+import { GenerateFormBuilderService } from './service';
 import { FormControl, Validators } from '@angular/forms';
 import { AnimationBuilder } from '@angular/animations';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  ANIMATION_MODULE_TYPE,
+  BrowserAnimationsModule,
+} from '@angular/platform-browser/animations';
+import { GenerativeService } from 'ngx-ftx-shared';
 
 describe('FtxFormsComponent', () => {
   let component: FtxFormsComponent;
@@ -27,7 +31,6 @@ describe('FtxFormsComponent', () => {
           },
         }),
       }),
-
       destroy: () => {
         //
       },
@@ -47,15 +50,17 @@ describe('FtxFormsComponent', () => {
           provide: AnimationBuilder,
           useValue: animationBuilder,
         },
+        {
+          provide: ANIMATION_MODULE_TYPE,
+          useValue: 'BrowserAnimations',
+        },
       ],
     }).compileComponents();
-
     fixture = TestBed.createComponent(FtxFormsComponent);
     component = fixture.componentInstance;
     component.dynamicForm = new FormControl('', Validators.required);
     fixture.detectChanges();
   });
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
