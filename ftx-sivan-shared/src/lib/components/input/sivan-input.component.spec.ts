@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SivanInputComponent } from './sivan-input.component';
 import { FormControl, FormsModule } from '@angular/forms';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
-  ANIMATION_MODULE_TYPE,
   BrowserAnimationsModule,
   provideAnimations,
 } from '@angular/platform-browser/animations';
