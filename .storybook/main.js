@@ -5,6 +5,7 @@ const config = {
     '../src/app/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../ftx-tooltip/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../ftx-forms/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../ftx-sivan-shared/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
   addons: [
     '@storybook/addon-links',
