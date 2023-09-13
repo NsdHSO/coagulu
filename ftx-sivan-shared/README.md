@@ -1,7 +1,37 @@
 # ftx-sivan-shared
 
-This library was generated with [Nx](https://nx.dev).
+```html
+<sivan-input
+  [choices]="choices"
+  [mainControl]="mainControl"
+  [currencyControl]="currencyControl"
+  [hintTop]="hintTop"
+  [placeholder]="Your Placeholder"
+  colorMatIcon="text-blue-500"
+></sivan-input>
+```
 
-## Running unit tests
+### Type input
 
-Run `nx test ftx-sivan-shared` to execute the unit tests.
+```JSON
+{
+  "choices": [
+    {
+      "icon": "fa_solid:RO",
+      "placeholder": "RON"
+    },
+    {
+      "icon": "fa_solid:CR",
+      "placeholder": "KN"
+    }
+  ]
+}
+```
+
+```typescript
+import { FormControl } from '@angular/forms';
+
+mainControl = new FormControl('TEST');
+hintTop = 'hintTop';
+currencyControl = new FormControl('RO');
+```
