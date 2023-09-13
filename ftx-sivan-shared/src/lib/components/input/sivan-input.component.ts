@@ -20,8 +20,6 @@ import { GenerativeService } from '../../service';
   standalone: true,
   imports: [
     CommonModule,
-    MatInputModule,
-    MatSelectModule,
     MatIconModule,
     ReactiveFormsModule,
     FtxTooltipComponent,
