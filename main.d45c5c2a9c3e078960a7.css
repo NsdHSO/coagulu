@@ -1286,6 +1286,9 @@ video {
 .invisible {
   visibility: hidden;
 }
+.static {
+  position: static;
+}
 .absolute {
   position: absolute;
 }
@@ -1301,23 +1304,14 @@ video {
 .left-1 {
   left: 0.25rem;
 }
-.right-0 {
-  right: 0px;
-}
-.right-24 {
-  right: 6rem;
-}
 .right-4 {
   right: 1rem;
 }
 .right-\[3rem\] {
   right: 3rem;
 }
-.right-\[5\.5rem\] {
-  right: 5.5rem;
-}
-.top-0 {
-  top: 0px;
+.top-12 {
+  top: 3rem;
 }
 .top-3 {
   top: 0.75rem;
@@ -1383,9 +1377,6 @@ video {
 .h-\[calc\(100vh-65px-0\.65rem\)\] {
   height: calc(100vh - 65px - 0.65rem);
 }
-.h-full {
-  height: 100%;
-}
 .\!w-9 {
   width: 2.25rem !important;
 }
@@ -1398,18 +1389,8 @@ video {
 .w-80 {
   width: 20rem;
 }
-.w-\[0\.5px\] {
-  width: 0.5px;
-}
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
-}
 .w-full {
   width: 100%;
-}
-.min-w-\[6rem\] {
-  min-width: 6rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1514,6 +1495,9 @@ video {
 .rounded-tl-lg {
   border-top-left-radius: 0.5rem;
 }
+.rounded-tl-none {
+  border-top-left-radius: 0px;
+}
 .rounded-tr {
   border-top-right-radius: 0.25rem;
 }
@@ -1525,6 +1509,9 @@ video {
 }
 .border-2 {
   border-width: 2px;
+}
+.border-l {
+  border-left-width: 1px;
 }
 .border-s {
   border-inline-start-width: 1px;
@@ -1571,6 +1558,10 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(253 224 71 / var(--tw-border-opacity));
 }
+.border-l-white {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
 .\!bg-blue-500 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity)) !important;
@@ -1594,10 +1585,6 @@ video {
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-.bg-gray-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 .bg-green-300 {
   --tw-bg-opacity: 1;
@@ -1656,11 +1643,8 @@ video {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.\!pr-\[9\.5rem\] {
-  padding-right: 9.5rem !important;
-}
-.\!pt-\[0\.7rem\] {
-  padding-top: 0.7rem !important;
+.pl-5 {
+  padding-left: 1.25rem;
 }
 .pr-2 {
   padding-right: 0.5rem;
