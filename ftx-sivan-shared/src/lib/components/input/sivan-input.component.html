@@ -80,11 +80,7 @@
     </div>
   </div>
 </ng-template>
-<div
-  @fadeInOut
-  *ngIf="mainControl?.errors"
-  class="text-red-500 absolute text-sm"
->
+<div @fadeInOut *ngIf="mainControl?.errors" class="text-red-500 text-sm">
   {{ mainControl.errors?.['error']  }}
 </div>
 <mat-icon

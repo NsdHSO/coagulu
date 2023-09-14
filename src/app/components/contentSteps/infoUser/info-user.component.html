@@ -3,46 +3,7 @@
     [formGroup]="form"
     [ngxFormGroupValues]="vm"
     class="w-80 items-stretch flex-col flex"
-  >
-    <div formGroupName="infoUser">
-      <ngx-form-control-entity
-        [label]="'Check value'"
-        formControlName="check"
-        class="col-span-4"
-        [placeholderInput]="'Check'"
-        typeInput="boolean"
-      />
-      <div formGroupName="info">
-        <ngx-form-control-entity
-          [label]="'Family Number'"
-          formControlName="familyNumber"
-          class="col-span-4"
-          [placeholderInput]="'Check'"
-        />
-        <div>
-          <label class="block text-sm font-medium leading-6 text-gray-900"
-            >Role Of Member</label
-          >
-          <ng-container formArrayName="roleOfMember">
-            <ng-container
-              *ngFor="
-                let role of form.controls.infoUser.controls.info.controls
-                  .roleOfMember.controls | keyvalue;
-                let index = index
-              "
-              [formGroupName]="index"
-            >
-              <ngx-form-control-entity
-                [label]="role.key.toUpperCase()"
-                formControlName="value"
-                class="col-span-1"
-              />
-            </ng-container>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-  </form>
+  ></form>
 
   <ngx-button-component (marian)="addRole()" roundedFull="rounded-md mt-2">
     Add new Role
