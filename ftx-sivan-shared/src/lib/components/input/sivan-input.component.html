@@ -1,19 +1,18 @@
 <div
-  class="sivan-input-container"
+  class="sivan-input-container relative"
   [ngClass]="{
-    'text-red-500 !border-red-500': mainControl?.errors
+    'text-red-500 !border-red-500': mainControl?.errors,
+    '!rounded-br-none': isInputCurrencyClick,
+    '!rounded-b-none': isInputClick
   }"
 >
-  <div class="peer-container rounded-tl-none relative">
+  <div class="peer-container relative">
     <input
       [formControl]="mainControl"
       placeholder=" "
       class="input-dropdown peer text"
+      #inputSivan
     />
-    <div [@fadeInOut] *ngIf="optionis && optionis.length > 0 && isInputClick">
-      <!-- Content to display when options.length > 0 -->
-      <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
-    </div>
   </div>
   <div
     *ngIf="optionis.length >= 1 && currencyControl"
@@ -39,7 +38,7 @@
         [svgIcon]="currencyControl.controls.icon.value"
       ></mat-icon>
     </div>
-    <div class="absolute w-full top-12" *ngIf="isInputCurrencyClick">
+    <div class="absolute w-full top-11" *ngIf="isInputCurrencyClick">
       <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
     </div>
   </div>
@@ -77,10 +76,23 @@
       *ngFor="let option of optionis; trackBy: generative.trackBy"
       (click)="selectCountry(option)"
     >
-      <mat-icon class="!w-full rounded-2xl" [svgIcon]="option.icon" />
+      <mat-icon class="!w-full" [svgIcon]="option.icon" />
     </div>
   </div>
 </ng-template>
 <div *ngIf="mainControl?.errors" class="text-red-500 absolute text-sm">
   {{ mainControl.errors?.['error']  }}
 </div>
+<mat-icon
+  [ngClass]="colorMatIcon"
+  (click)="showOption(inputSivan)"
+  *ngIf="optionis && optionis.length > 0 && !currencyControl"
+  class="absolute right-4 top-3"
+  [svgIcon]="'fa_solid:angle-up'"
+  [@rotateIcon]="isInputClick ? 'up' : 'down'"
+></mat-icon>
+
+<ng-container *ngIf="optionis && optionis.length > 0 && isInputClick">
+  <!-- Content to display when options.length > 0 -->
+  <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
+</ng-container>
