@@ -1325,9 +1325,6 @@ video {
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
-.col-span-4 {
-  grid-column: span 4 / span 4;
-}
 .\!m-0 {
   margin: 0px !important;
 }
@@ -1355,9 +1352,6 @@ video {
 }
 .mt-2 {
   margin-top: 0.5rem;
-}
-.block {
-  display: block;
 }
 .flex {
   display: flex;
@@ -1671,14 +1665,8 @@ video {
 .font-bold {
   font-weight: 700;
 }
-.font-medium {
-  font-weight: 500;
-}
 .font-semibold {
   font-weight: 600;
-}
-.leading-6 {
-  line-height: 1.5rem;
 }
 .\!text-white {
   --tw-text-opacity: 1 !important;
