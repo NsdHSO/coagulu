@@ -1,57 +1,50 @@
-<input
-  [formControl]="mainControl"
-  placeholder=" "
-  class="input-dropdown peer text !pt-[0.7rem]"
+<div
+  class="sivan-input-container"
   [ngClass]="{
-    '!pr-[9.5rem]': currencyControl,
     'text-red-500 !border-red-500': mainControl?.errors
   }"
-  #inputSivan
-/>
-<div
-  *ngIf="currencyControl"
-  class="absolute w-[0.5px] bg-gray-300 right-[5.5rem] h-full top-0"
-></div>
-<div
-  class="absolute w-fit !h-full top-0 min-w-[6rem] right-0"
-  *ngIf="currencyControl"
 >
+  <div class="peer-container rounded-tl-none relative">
+    <input
+      [formControl]="mainControl"
+      placeholder=" "
+      class="input-dropdown peer text"
+    />
+    <div [@fadeInOut] *ngIf="optionis && optionis.length > 0 && isInputClick">
+      <!-- Content to display when options.length > 0 -->
+      <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
+    </div>
+  </div>
   <div
-    class="relative !h-full flex justify-center items-center"
-    (click)="currencyControll()"
+    *ngIf="optionis.length >= 1 && currencyControl"
+    class="border-l border-l-white border-solid flex justify-center items-center relative"
   >
-    <mat-icon
-      class="right-4 absolute"
-      [ngClass]="colorMatIcon"
-      [svgIcon]="'fa_solid:angle-up'"
-      [@rotateIcon]="isInputCurrencyClick ? 'up' : 'down'"
-    ></mat-icon>
-    <mat-icon
-      class="right-[3rem] absolute"
-      [ngClass]="colorMatIcon"
-      [svgIcon]="currencyControl.controls.icon.value"
-    ></mat-icon>
-    <span
-      class="absolute right-24 font-bold font-serif text-gray-400 dark:text-white"
-      >{{ currencyControl.controls.placeholder.value }}</span
+    <span class="font-bold font-serif text-gray-400 dark:text-white pl-5">{{
+      currencyControl.controls.placeholder.value
+    }}</span>
+
+    <div
+      class="!h-full flex justify-center items-center px-5 gap-4"
+      (click)="currencyControll()"
     >
-  </div>
-  <div *ngIf="isInputCurrencyClick">
-    <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
+      <mat-icon
+        class="right-4"
+        [ngClass]="colorMatIcon"
+        [svgIcon]="'fa_solid:angle-up'"
+        [@rotateIcon]="isInputCurrencyClick ? 'up' : 'down'"
+      ></mat-icon>
+      <mat-icon
+        class="right-[3rem]"
+        [ngClass]="colorMatIcon"
+        [svgIcon]="currencyControl.controls.icon.value"
+      ></mat-icon>
+    </div>
+    <div class="absolute w-full top-12" *ngIf="isInputCurrencyClick">
+      <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
+    </div>
   </div>
 </div>
-<mat-icon
-  [ngClass]="colorMatIcon"
-  (click)="showOption(inputSivan)"
-  *ngIf="optionis && optionis.length > 0 && !currencyControl"
-  class="absolute right-4 top-3"
-  [svgIcon]="'fa_solid:angle-up'"
-  [@rotateIcon]="isInputClick ? 'up' : 'down'"
-></mat-icon>
-<div [@fadeInOut] *ngIf="optionis && optionis.length > 0 && isInputClick">
-  <!-- Content to display when options.length > 0 -->
-  <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
-</div>
+
 <!-- Template for when options.length > 0 -->
 <ng-template #optionsTemplate>
   <ftx-tooltip

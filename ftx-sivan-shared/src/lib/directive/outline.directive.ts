@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Directive,
   ElementRef,
   inject,
@@ -6,6 +7,7 @@ import {
   OnDestroy,
   OnInit,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
 import {
   debounceTime,
@@ -22,7 +24,7 @@ import { NgControl } from '@angular/forms';
   selector: '[sivanOutline]',
   standalone: true,
 })
-export class OutlineDirective implements OnInit, OnDestroy {
+export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
   /**
    * {ElementRef} elementRef - Reference to the host element.
    * @private
@@ -33,6 +35,7 @@ export class OutlineDirective implements OnInit, OnDestroy {
    * @private
    */
   private readonly renderer2 = inject(Renderer2);
+  @ViewChild('peerDiv', { static: false }) inputContainer: ElementRef | any;
   @Input({ required: true }) hintTop!: string;
   @Input({ required: true }) control!: NgControl;
   @Input({ required: true }) placeholder!: string;
@@ -41,10 +44,24 @@ export class OutlineDirective implements OnInit, OnDestroy {
    * @private
    */
   private destroy$ = new Subject();
+  private element: any;
 
   ngOnInit(): void {
-    const element = this.renderer2.createElement('span');
-    this.renderer2.addClass(this.elementRef.nativeElement, 'relative');
+    const peerDiv =
+      this.elementRef.nativeElement.querySelector('.peer-container');
+    this.element = this.renderer2.createElement('span');
+    fromEvent(this.element, 'click')
+      .pipe(
+        tap(() => peerDiv.childNodes[0].focus()),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  ngAfterViewInit() {
+    const peerDiv =
+      this.elementRef.nativeElement.querySelector('.peer-container');
+    this.renderer2.addClass(peerDiv, 'relative');
     this.control.valueChanges
       ?.pipe(
         distinctUntilChanged(),
@@ -52,19 +69,13 @@ export class OutlineDirective implements OnInit, OnDestroy {
         startWith('sda'),
         tap((inputValue) => {
           if (inputValue.length > 1) {
-            this.renderer2.appendChild(this.elementRef.nativeElement, element);
+            this.renderer2.appendChild(peerDiv, this.element);
           }
-          this.addClassForHint(element);
-          if (element.innerText !== this.placeholder) {
-            element.innerText = this.placeholder;
+          this.addClassForHint(this.element);
+          if (this.element.innerText !== this.placeholder) {
+            this.element.innerText = this.placeholder;
           }
         }),
-        takeUntil(this.destroy$)
-      )
-      .subscribe();
-    fromEvent(element, 'click')
-      .pipe(
-        tap(() => this.elementRef.nativeElement.childNodes[0].focus()),
         takeUntil(this.destroy$)
       )
       .subscribe();

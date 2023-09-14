@@ -1,5 +1,6 @@
 :host {
   position: relative;
+
   ::ng-deep {
     .mat-mdc-select-arrow {
       @apply hidden;
@@ -8,6 +9,7 @@
     ftx-tooltip {
       width: 100%;
       height: 100%;
+
       .tooltip-container {
         @apply absolute w-full mx-0 max-h-40 z-50 dark:bg-gray-800;
       }
@@ -15,9 +17,10 @@
   }
 
   .input-dropdown {
-    @apply rounded pl-5 pr-16 pt-2 border block py-2.5 px-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:border-blue-600 dark:bg-gray-800 focus:dark:border-cyan-400 w-full z-0;
+    @apply px-5 pt-2 py-2.5 appearance-none focus:outline-none z-0 dark:bg-gray-800 w-full dark:focus:text-cyan-300;
   }
 }
+
 .currency-flag {
   max-height: 4rem;
   @apply flex justify-center items-center;
@@ -26,4 +29,8 @@
       height: 4rem;
     }
   }
+}
+
+.sivan-input-container {
+  @apply flex border-b-2 border-gray-300 dark:text-white dark:border-gray-600 focus:border-blue-600 dark:bg-gray-800 focus:dark:border-cyan-400 w-full rounded-xl;
 }
