@@ -85,6 +85,7 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
     // Define an array of class names you want to add
     const classesToAdd = [
       'absolute',
+      'w-max',
       'text-sm',
       'text-gray-500',
       'dark:text-gray-400',

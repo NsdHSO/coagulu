@@ -6,7 +6,7 @@
     '!rounded-b-none': isInputClick
   }"
 >
-  <div class="peer-container relative">
+  <div class="peer-container relative w-full">
     <input
       [formControl]="mainControl"
       placeholder=" "
@@ -38,7 +38,7 @@
         [svgIcon]="currencyControl.controls.icon.value"
       ></mat-icon>
     </div>
-    <div class="absolute w-full top-11" *ngIf="isInputCurrencyClick">
+    <div @fadeInOut class="absolute w-full top-11" *ngIf="isInputCurrencyClick">
       <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
     </div>
   </div>
@@ -80,7 +80,11 @@
     </div>
   </div>
 </ng-template>
-<div *ngIf="mainControl?.errors" class="text-red-500 absolute text-sm">
+<div
+  @fadeInOut
+  *ngIf="mainControl?.errors"
+  class="text-red-500 absolute text-sm"
+>
   {{ mainControl.errors?.['error']  }}
 </div>
 <mat-icon
@@ -92,7 +96,7 @@
   [@rotateIcon]="isInputClick ? 'up' : 'down'"
 ></mat-icon>
 
-<ng-container *ngIf="optionis && optionis.length > 0 && isInputClick">
+<div @fadeInOut *ngIf="optionis && optionis.length > 0 && isInputClick">
   <!-- Content to display when options.length > 0 -->
   <ng-container *ngTemplateOutlet="optionsTemplate"></ng-container>
-</ng-container>
+</div>
