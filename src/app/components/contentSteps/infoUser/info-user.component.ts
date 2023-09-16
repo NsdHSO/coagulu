@@ -10,6 +10,7 @@ import {
   MultipleInputComponent,
   PatchFormGroupValueDirective,
 } from 'ngx-ftx-forms';
+import { FtxFtmComponent } from 'ngx-ftm';
 
 @Component({
   selector: 'info-user',
@@ -21,6 +22,7 @@ import {
     ButtonComponent,
     MultipleInputComponent,
     FormControlEntityComponent,
+    FtxFtmComponent,
   ],
   templateUrl: './info-user.component.html',
   styleUrls: ['./info-user.component.scss'],

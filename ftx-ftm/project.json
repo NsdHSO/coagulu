@@ -1,0 +1,88 @@
+{
+  "name": "ftx-ftm",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "ftx-ftm/src",
+  "prefix": "coagulu",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "ftx-ftm/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "ftx-ftm/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "ftx-ftm/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "ftx-ftm/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["ftx-ftm/**/*.ts", "ftx-ftm/**/*.html"]
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "ftx-ftm/.storybook",
+        "browserTarget": "ftx-ftm:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/ftx-ftm",
+        "configDir": "ftx-ftm/.storybook",
+        "browserTarget": "ftx-ftm:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "ftx-ftm:build-storybook",
+        "staticFilePath": "dist/storybook/ftx-ftm"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "ftx-ftm:build-storybook:ci"
+        }
+      }
+    }
+  }
+}

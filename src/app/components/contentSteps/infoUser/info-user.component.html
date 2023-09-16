@@ -1,11 +1,3 @@
-<div *ngIf="vm$ | async as vm" class="p-4">
-  <form
-    [formGroup]="form"
-    [ngxFormGroupValues]="vm"
-    class="w-80 items-stretch flex-col flex"
-  ></form>
-
-  <ngx-button-component (marian)="addRole()" roundedFull="rounded-md mt-2">
-    Add new Role
-  </ngx-button-component>
+<div class="p-4">
+  <coagulu-ftx-ftm />
 </div>

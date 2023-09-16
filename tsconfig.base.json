@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "ngx-ftm": ["ftx-ftm/src/index.ts"],
       "ngx-fts-tooltip": ["ftx-tooltip/src/index.ts"],
       "ngx-ftx-forms": ["ftx-forms/src/index.ts"],
       "ngx-ftx-shared": ["ftx-sivan-shared/src/index.ts"]
