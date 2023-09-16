@@ -1,5 +1,5 @@
 <div
-  class="sivan-input-container relative dark:bg-gray-800 bg-white shadow-sm border-solid border px-0.5"
+  class="sivan-input-container relative bg-white shadow-sm border-solid border px-0.5"
   [ngClass]="{
     'text-red-500 !border-red-500': mainControl?.errors,
     '!rounded-br-none': isInputCurrencyClick,
@@ -88,7 +88,11 @@
     </div>
   </div>
 </ng-template>
-<div @fadeInOut *ngIf="mainControl?.errors" class="text-red-500 text-sm">
+<div
+  @fadeInOut
+  *ngIf="mainControl?.errors"
+  class="text-red-500 text-sm bg-slate-200 dark:bg-white"
+>
   {{ mainControl.errors?.['error']  }}
 </div>
 <mat-icon

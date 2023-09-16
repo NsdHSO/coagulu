@@ -1,1 +1,63 @@
-<p>ftx-ftm works!</p>
+<form
+  *ngIf="generateFormTrigger | async"
+  [formGroup]="formData"
+  (ngSubmit)="submit()"
+  class="p-3 flex flex-col gap-5 bg-slate-200 ngx-forms-form-wrapper rounded-br-lg rounded-bl-lg"
+>
+  <ng-container
+    *ngFor="let control of formData.controls | keyvalue; let i = index"
+  >
+    <ng-container
+      *ngIf="
+        generateFormBuilderService.getCustomFromControlType(
+          formData.get(control.key)
+        ) === 'FormControl'
+      "
+    >
+      <div class="grid grid-cols-8">
+        <div class="col-span-1">{{ control.key }}</div>
+        <div class="col-span-7">
+          <sivan-input
+            [mainControl]="formData?.get(control.key)"
+            [hintTop]="'TEST'"
+            [placeholder]="'Placeholder'"
+          />
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container
+      *ngIf="
+        generateFormBuilderService.getCustomFromControlType(
+          formData.get(control.key)
+        ) === 'FormGroup'
+      "
+    >
+      <ng-container
+        *ngFor="let group of formData.get(control.key).controls | keyvalue"
+      >
+        <div class="grid grid-cols-8">
+          <div class="col-span-1">{{ group.key }}</div>
+          <div class="col-span-7">
+            <sivan-input
+              [mainControl]="formData.get(control.key).get(group.key)"
+              [hintTop]="'TEST'"
+              [placeholder]="'Placeholder'"
+            />
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+    <!--		<sivan-input-->
+    <!--			[mainControl]="formData?.get(control.key)"-->
+    <!--			[hintTop]="'TEST'"-->
+    <!--			[placeholder]="'Placeholder'"-->
+    <!--		></sivan-input>-->
+  </ng-container>
+  <ngx-button-component
+    class="bg-white p-2"
+    [disable]="formData.pristine || formData.invalid"
+    roundedFull="rounded-md"
+    >Submit
+  </ngx-button-component>
+</form>

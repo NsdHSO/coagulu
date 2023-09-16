@@ -9,6 +9,7 @@ module.exports = {
     join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'),
     join(__dirname, 'ftx-tooltip/**/!(*.stories|*.spec).{ts,html}'),
     join(__dirname, 'ftx-forms/**/!(*.stories|*.spec).{ts,html}'),
+    join(__dirname, 'ftx-ftm/**/!(*.stories|*.spec).{ts,html}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {

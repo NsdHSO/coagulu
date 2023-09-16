@@ -137,6 +137,8 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
       'rounded-tl',
       'rounded-tr',
       'prose-zinc',
+      'dark:bg-gray-800',
+      'dark:text-white',
     ];
     classesToAdd.forEach((className) => {
       this.renderer2.addClass(element, className);
