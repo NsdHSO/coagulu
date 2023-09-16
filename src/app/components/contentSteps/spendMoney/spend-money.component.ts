@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import {
   ButtonComponent,
+  DataFormBuilder,
   GenerateFormBuilderService,
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { SivanInputComponent } from 'ngx-ftx-shared';
 
 @Component({
@@ -30,14 +36,16 @@ export class SpendMoneyComponent {
   private readonly _fb = inject(GenerateFormBuilderService);
   simple: any; //eslint-disable-line
   currency: any; //eslint-disable-line
+  simpleData = {
+    label: 'name',
+    value: 'IVan',
+    validators: [{ type: TypeConstantEnum.REQUIRED }],
+    placeholder: 'Isvan Avramescu',
+    labelHint: 'Name for User',
+    updateOn: 'blur',
+  } as DataFormBuilder;
   constructor() {
-    this.simple = this._fb.buildFormFromJson({
-      label: 'name',
-      value: 'IVan',
-      validators: [{ type: TypeConstantEnum.REQUIRED }],
-      placeholder: 'Isvan Avramescu',
-      labelHint: 'Name for User',
-    });
+    this.simple = this._fb.buildFormFromJson(this.simpleData);
     this.currency = this._fb.buildFormFromJson({
       label: 'personalData',
       labelHint: 'Personal Data',
@@ -53,6 +61,7 @@ export class SpendMoneyComponent {
               errorMsg: 'Only Integer Number',
             },
           ],
+          updateOn: 'blur',
         },
         {
           label: 'currency',

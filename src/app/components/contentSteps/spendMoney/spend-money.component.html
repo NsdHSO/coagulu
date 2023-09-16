@@ -1,8 +1,8 @@
 <div class="p-2 m-2 text-lg">
   <sivan-input
     [mainControl]="simple"
-    hintTop="TEST"
-    placeholder="Javan Iuvan"
+    [hintTop]="simpleData.labelHint || ''"
+    [placeholder]="simpleData.placeholder || ''"
   />
 </div>
 <div class="p-2 m-2 text-lg">

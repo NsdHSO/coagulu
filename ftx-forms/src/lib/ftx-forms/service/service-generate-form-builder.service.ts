@@ -38,10 +38,8 @@ export class GenerateFormBuilderService {
 
   getValidator(validatorConfig: ValidatorConfig): ValidatorFn {
     const { type, option, errorMsg } = validatorConfig;
-
     // Use the validatorGenerators function to generate validators
     const validatorGenerator = this._validatorService.validatorGenerators();
-
     if (type in validatorGenerator) {
       return (control: unknown) =>
         validatorGenerator[type](
@@ -70,7 +68,7 @@ export class GenerateFormBuilderService {
           );
         } else {
           const validators = this.extractValidator(item);
-          group[label ?? ''] = this._fb.control(item.value || null, validators);
+          group[label ?? ''] = this.setFormControl(item, validators);
         }
       });
       return this._fb.group(group);
@@ -80,8 +78,15 @@ export class GenerateFormBuilderService {
       );
     } else {
       const validators = this.extractValidator(data);
-      return this._fb.control(data.value || null, validators);
+      return this.setFormControl(data, validators);
     }
+  }
+
+  setFormControl(data: DataFormBuilder, validators: ValidatorFn[]) {
+    return this._fb.control(data.value || null, {
+      validators: validators,
+      updateOn: data.updateOn,
+    });
   }
 
   getCustomFromControlType(control: AbstractControl<unknown>): string {

@@ -1,26 +1,34 @@
 <div
-  class="sivan-input-container relative dark:bg-gray-800 bg-white shadow-sm border-solid border pr-0.5"
+  class="sivan-input-container relative dark:bg-gray-800 bg-white shadow-sm border-solid border px-0.5"
   [ngClass]="{
     'text-red-500 !border-red-500': mainControl?.errors,
     '!rounded-br-none': isInputCurrencyClick,
     '!rounded-b-none': isInputClick
   }"
 >
-  <div class="peer-container relative w-full">
-    <input
-      [formControl]="mainControl"
-      placeholder=" "
-      class="input-dropdown peer text"
-      #inputSivan
-    />
+  <div class="w-full flex">
+    <div class="w-4"></div>
+    <div class="w-full">
+      <div class="sivan-input-container__center-label"></div>
+      <div class="sivan-input-container__field">
+        <input
+          [formControl]="mainControl"
+          [placeholder]="hintTop"
+          class="input-dropdown text"
+          #inputSivan
+        />
+      </div>
+    </div>
   </div>
   <div
     *ngIf="optionis.length >= 1 && currencyControl"
     class="border-l border-l-gray-200 border-solid flex justify-center items-center relative dark:border-l-white"
   >
-    <span class="font-bold font-serif text-gray-400 dark:text-white pl-5">{{
-      currencyControl.controls.placeholder.value
-    }}</span>
+    <span
+      class="font-bold font-serif text-gray-400 dark:text-white pl-5"
+      [ngClass]="{ 'text-red-500 !border-red-500': mainControl?.errors }"
+      >{{ currencyControl.controls.placeholder.value }}</span
+    >
 
     <div
       class="!h-full flex justify-center items-center px-5 gap-4"

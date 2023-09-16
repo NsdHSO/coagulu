@@ -47,8 +47,9 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
   private element: any;
 
   ngOnInit(): void {
-    const peerDiv =
-      this.elementRef.nativeElement.querySelector('.peer-container');
+    const peerDiv = this.elementRef.nativeElement.querySelector(
+      '.sivan-input-container__field'
+    );
     this.element = this.renderer2.createElement('span');
     fromEvent(this.element, 'click')
       .pipe(
@@ -56,11 +57,50 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
         takeUntil(this.destroy$)
       )
       .subscribe();
+    fromEvent(peerDiv.childNodes[0], 'blur')
+      .pipe(
+        tap((inputValue: any) => {
+          if (inputValue.target.value < 1) {
+            const classToRemove = ['-top-2.5', 'h-5', 'text-xs'];
+            classToRemove.forEach((className) => {
+              this.renderer2.removeClass(this.element, className);
+            });
+            const classesToAdd = [
+              'absolute',
+              'bg-white',
+              'px-2',
+              '-left-2',
+              'h-9',
+              'flex',
+              'justify-center',
+              'items-center',
+              'text',
+              'text-gray-500',
+            ];
+            classesToAdd.forEach((className) => {
+              this.renderer2.addClass(this.element, className);
+            });
+          }
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+    fromEvent(peerDiv.childNodes[0], 'focus')
+      .pipe(
+        tap((inputValue: any) => {
+          if (inputValue.target.value < 1) {
+            this.addClassForHint(this.element);
+          }
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 
   ngAfterViewInit() {
-    const peerDiv =
-      this.elementRef.nativeElement.querySelector('.peer-container');
+    const peerDiv = this.elementRef.nativeElement.querySelector(
+      '.sivan-input-container__center-label'
+    );
     this.renderer2.addClass(peerDiv, 'relative');
     this.control.valueChanges
       ?.pipe(
@@ -83,34 +123,20 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
 
   private addClassForHint(element: HTMLElement) {
     // Define an array of class names you want to add
+    this.renderer2.removeClass(element, 'h-9');
     const classesToAdd = [
+      'h-5',
       'absolute',
-      'w-max',
-      'text-sm',
-      'text-gray-500',
-      'dark:text-gray-400',
+      '-top-2.5',
+      'bg-white',
+      'px-2',
+      '-left-2',
       'duration-300',
       'transform',
-      '-translate-y-6',
-      'scale-75',
-      'top-3.5',
-      'left-1',
-      'px-2',
-      'mx-2',
+      'text-xs',
       'rounded-tl',
       'rounded-tr',
-      'bg-white',
-      'peer-focus:text-blue-600',
-      'peer-focus:dark:text-blue-500',
-      'peer-focus:dark:text-cyan-400',
-      'peer-focus:scale-75',
-      'peer-focus:-translate-y-6',
-      'peer-placeholder-shown:scale-100',
-      'peer-placeholder-shown:translate-y-0',
-      'peer-placeholder-shown:dark:text-gray-400',
-      'dark:focus:top-3.5',
-      'dark:bg-gray-800',
-      'dark:text-white',
+      'prose-zinc',
     ];
     classesToAdd.forEach((className) => {
       this.renderer2.addClass(element, className);

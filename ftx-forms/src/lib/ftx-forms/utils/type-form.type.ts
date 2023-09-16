@@ -6,3 +6,4 @@ export type TypeBadge =
   | 'warning'
   | 'success'
   | 'pfm';
+export type TypeUpdate = 'change' | 'blur' | 'submit';

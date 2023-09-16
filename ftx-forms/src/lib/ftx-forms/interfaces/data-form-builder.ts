@@ -1,4 +1,4 @@
-import { TypeConstantEnum, TypePattern } from '../utils';
+import { TypeConstantEnum, TypePattern, TypeUpdate } from '../utils';
 
 export interface ValidatorConfig {
   type: TypeConstantEnum;
@@ -22,6 +22,7 @@ export interface DataFormBuilder {
   validators?: ValidatorConfig[];
   placeholder?: string;
   description?: DescriptionEntity;
+  updateOn?: TypeUpdate;
 }
 
 export interface DescriptionEntity {

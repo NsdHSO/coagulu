@@ -17,7 +17,7 @@
   }
 
   .input-dropdown {
-    @apply pl-2 pr-5 pt-2 py-2.5 appearance-none focus:outline-none z-0 dark:bg-gray-800 w-full dark:focus:text-cyan-300;
+    @apply pr-5 pt-2 py-2.5 appearance-none focus:outline-none z-0 dark:bg-gray-800 w-full dark:focus:text-cyan-300;
   }
 }
 
@@ -32,5 +32,5 @@
 }
 
 .sivan-input-container {
-  @apply flex pl-2 rounded border-gray-300 dark:text-white dark:border-gray-600 focus:border-blue-600 dark:bg-gray-800 focus:dark:border-cyan-400 w-full;
+  @apply flex rounded border-gray-300 dark:text-white dark:border-gray-600 focus:border-blue-600 dark:bg-gray-800 focus:dark:border-cyan-400 w-full;
 }
