@@ -36,8 +36,20 @@
       <div
         class="grid align-items-center"
         [ngClass]="
-          'grid-cols-' +
-          ((formData.get(control.key).controls | keyvalue).length + 1)
+         {
+         'grid-cols-2':((formData.get(control.key).controls | keyvalue).length ) === 1,
+         'grid-cols-3':((formData.get(control.key).controls | keyvalue).length ) === 2,
+         'grid-cols-4':((formData.get(control.key).controls | keyvalue).length ) === 3,
+         'grid-cols-5':((formData.get(control.key).controls | keyvalue).length ) === 4,
+         'grid-cols-6':((formData.get(control.key).controls | keyvalue).length ) === 5,
+         'grid-cols-7':((formData.get(control.key).controls | keyvalue).length ) === 6,
+         'grid-cols-8':((formData.get(control.key).controls | keyvalue).length ) === 7,
+         'grid-cols-9':((formData.get(control.key).controls | keyvalue).length ) === 8,
+         'grid-cols-10':((formData.get(control.key).controls | keyvalue).length ) === 9,
+         'grid-cols-11':((formData.get(control.key).controls | keyvalue).length ) === 10,
+         'grid-cols-12':((formData.get(control.key).controls | keyvalue).length ) === 11,
+         }
+
         "
       >
         <div>{{ control.key }}</div>
