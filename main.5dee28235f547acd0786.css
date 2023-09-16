@@ -1349,9 +1349,6 @@ video {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
-.mt-2 {
-  margin-top: 0.5rem;
-}
 .flex {
   display: flex;
 }
@@ -1388,9 +1385,6 @@ video {
 .w-60 {
   width: 15rem;
 }
-.w-80 {
-  width: 20rem;
-}
 .w-full {
   width: 100%;
 }
@@ -1421,9 +1415,6 @@ video {
 }
 .items-center {
   align-items: center;
-}
-.items-stretch {
-  align-items: stretch;
 }
 .justify-center {
   justify-content: center;
