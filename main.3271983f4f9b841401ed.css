@@ -1502,6 +1502,9 @@ video {
 .rounded-tr-lg {
   border-top-right-radius: 0.5rem;
 }
+.border {
+  border-width: 1px;
+}
 .border-0 {
   border-width: 0px;
 }
@@ -1643,6 +1646,12 @@ video {
 }
 .pl-5 {
   padding-left: 1.25rem;
+}
+.pr-0 {
+  padding-right: 0px;
+}
+.pr-0\.5 {
+  padding-right: 0.125rem;
 }
 .pr-2 {
   padding-right: 0.5rem;
