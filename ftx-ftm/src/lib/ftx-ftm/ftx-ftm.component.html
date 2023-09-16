@@ -33,20 +33,27 @@
         ) === 'FormGroup'
       "
     >
-      <ng-container
-        *ngFor="let group of formData.get(control.key).controls | keyvalue"
+      <div
+        class="grid align-items-center"
+        [ngClass]="
+          'grid-cols-' +
+          ((formData.get(control.key).controls | keyvalue).length + 1)
+        "
       >
-        <div class="grid grid-cols-8">
-          <div class="col-span-1">{{ group.key }}</div>
-          <div class="col-span-7">
+        <div>{{ control.key }}</div>
+
+        <ng-container
+          *ngFor="let group of formData.get(control.key).controls | keyvalue"
+        >
+          <div class="ml-2 col-span-1">
             <sivan-input
               [mainControl]="formData.get(control.key).get(group.key)"
               [hintTop]="'TEST'"
               [placeholder]="'Placeholder'"
             />
           </div>
-        </div>
-      </ng-container>
+        </ng-container>
+      </div>
     </ng-container>
     <!--		<sivan-input-->
     <!--			[mainControl]="formData?.get(control.key)"-->

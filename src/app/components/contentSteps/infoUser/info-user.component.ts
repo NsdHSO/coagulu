@@ -176,6 +176,45 @@ export class InfoUserComponent {
               },
             ],
           },
+          {
+            label: 'ds3',
+            value: 'sdasd',
+            labelHint: 'Personal TEst',
+            validators: [
+              { type: TypeConstantEnum.REQUIRED },
+              {
+                type: TypeConstantEnum.PATTERN,
+                option: TypePattern.ONLY_CHAR,
+                errorMsg: 'Only' + ' char',
+              },
+            ],
+          },
+          {
+            label: 'ds3',
+            value: 'gasd',
+            labelHint: 'Personal TEst',
+            validators: [
+              { type: TypeConstantEnum.REQUIRED },
+              {
+                type: TypeConstantEnum.PATTERN,
+                option: TypePattern.ONLY_CHAR,
+                errorMsg: 'Only' + ' char',
+              },
+            ],
+          },
+          {
+            label: 'ds25',
+            value: 'TssEST',
+            labelHint: 'Personal TEst',
+            validators: [
+              { type: TypeConstantEnum.REQUIRED },
+              {
+                type: TypeConstantEnum.PATTERN,
+                option: TypePattern.ONLY_CHAR,
+                errorMsg: 'Only' + ' char',
+              },
+            ],
+          },
         ],
       },
       {
