@@ -36,6 +36,10 @@ export class InfoUserComponent {
         validators: [{ type: TypeConstantEnum.REQUIRED }],
         placeholder: 'Isvan Avramescu',
         labelHint: 'Name for User',
+        validator: {
+          field: 'email',
+        },
+        updateOn: 'blur',
       },
       {
         label: 'email',
