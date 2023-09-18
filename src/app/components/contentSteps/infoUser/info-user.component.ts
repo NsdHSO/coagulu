@@ -44,7 +44,8 @@ export class InfoUserComponent {
           { type: TypeConstantEnum.REQUIRED },
           { type: TypeConstantEnum.EMAIL },
         ],
-        labelHint: 'Email Address',
+        placeholder: 'Email Address',
+        labelHint: 'ivan@entrt.country',
         updateOn: 'blur',
       },
       {
@@ -87,6 +88,7 @@ export class InfoUserComponent {
         label: 'ARE',
         value: 'dasdasd',
         labelHint: 'Area Data',
+        placeholder: 'Are Text Lore ipsum',
         typeInput: 'area',
         description: {
           text:
@@ -130,6 +132,7 @@ export class InfoUserComponent {
       {
         label: 'personalData',
         labelHint: 'Personal Data',
+        placeholder: 'Hey you',
         values: [
           {
             label: 'cnp',

@@ -36,7 +36,6 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
    */
   private readonly renderer2 = inject(Renderer2);
   @ViewChild('peerDiv', { static: false }) inputContainer: ElementRef | any;
-  @Input({ required: true }) hintTop!: string;
   @Input({ required: true }) control!: NgControl;
   @Input({ required: true }) placeholder!: string;
   /**
@@ -72,10 +71,12 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
               '-left-2',
               'h-9',
               'flex',
-              'justify-center',
               'items-center',
               'text',
               'text-gray-500',
+              'w-full',
+              'flex',
+              'content-start',
             ];
             classesToAdd.forEach((className) => {
               this.renderer2.addClass(this.element, className);
@@ -124,6 +125,8 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
   private addClassForHint(element: HTMLElement) {
     // Define an array of class names you want to add
     this.renderer2.removeClass(element, 'h-9');
+    this.renderer2.removeClass(this.element, 'w-full');
+
     const classesToAdd = [
       'h-5',
       'absolute',

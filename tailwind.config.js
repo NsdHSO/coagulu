@@ -13,7 +13,11 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        42: '10.5rem',
+      },
+    },
   },
   plugins: [
     require('tailwindcss-animated'),

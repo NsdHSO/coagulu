@@ -17,7 +17,12 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { GenerativeService, SivanInputComponent } from 'ngx-ftx-shared';
+import {
+  FirstUpperCasePipe,
+  GenerativeService,
+  SivanInputComponent,
+} from 'ngx-ftx-shared';
+import { RetrievePlaceholderPipe } from './util/pipes/retrieve-placeholder.pipe';
 
 @Component({
   selector: 'coagulu-ftx-ftm',
@@ -27,6 +32,8 @@ import { GenerativeService, SivanInputComponent } from 'ngx-ftx-shared';
     ReactiveFormsModule,
     ButtonComponent,
     SivanInputComponent,
+    FirstUpperCasePipe,
+    RetrievePlaceholderPipe,
   ],
   templateUrl: './ftx-ftm.component.html',
   styleUrls: ['./ftx-ftm.component.scss'],

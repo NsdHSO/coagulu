@@ -14,13 +14,18 @@
         ) === 'FormControl'
       "
     >
-      <div class="grid grid-cols-8">
-        <div class="col-span-1">{{ control.key }}</div>
-        <div class="col-span-7">
+      <div class="flex items-center">
+        <div class="max-w-42 w-32">{{ control.key | firstUpperCase }}</div>
+        <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
           <sivan-input
+            class="w-full"
             [mainControl]="formData?.get(control.key)"
-            [hintTop]="'TEST'"
-            [placeholder]="'Placeholder'"
+            [placeholder]="
+              dataSource | retrievePlaceholder : 'placeholder' : control.key
+            "
+            [hintTop]="
+              dataSource | retrievePlaceholder : 'labelHint' : control.key
+            "
           />
         </div>
       </div>
@@ -33,38 +38,33 @@
         ) === 'FormGroup'
       "
     >
-      <div
-        class="grid align-items-center"
-        [ngClass]="
-         {
-         'grid-cols-2':((formData.get(control.key).controls | keyvalue).length ) === 1,
-         'grid-cols-3':((formData.get(control.key).controls | keyvalue).length ) === 2,
-         'grid-cols-4':((formData.get(control.key).controls | keyvalue).length ) === 3,
-         'grid-cols-5':((formData.get(control.key).controls | keyvalue).length ) === 4,
-         'grid-cols-6':((formData.get(control.key).controls | keyvalue).length ) === 5,
-         'grid-cols-7':((formData.get(control.key).controls | keyvalue).length ) === 6,
-         'grid-cols-8':((formData.get(control.key).controls | keyvalue).length ) === 7,
-         'grid-cols-9':((formData.get(control.key).controls | keyvalue).length ) === 8,
-         'grid-cols-10':((formData.get(control.key).controls | keyvalue).length ) === 9,
-         'grid-cols-11':((formData.get(control.key).controls | keyvalue).length ) === 10,
-         'grid-cols-12':((formData.get(control.key).controls | keyvalue).length ) === 11,
-         }
-
-        "
-      >
-        <div>{{ control.key }}</div>
-
-        <ng-container
-          *ngFor="let group of formData.get(control.key).controls | keyvalue"
-        >
-          <div class="ml-2 col-span-1">
-            <sivan-input
-              [mainControl]="formData.get(control.key).get(group.key)"
-              [hintTop]="'TEST'"
-              [placeholder]="'Placeholder'"
-            />
-          </div>
-        </ng-container>
+      <div class="flex items-center">
+        <div class="max-w-42 w-32">{{ control.key }}</div>
+        <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
+          <ng-container
+            *ngFor="let group of formData.get(control.key).controls | keyvalue"
+          >
+            <div class="w-full">
+              <sivan-input
+                [mainControl]="formData.get(control.key).get(group.key)"
+                [placeholder]="
+                  dataSource
+                    | retrievePlaceholder
+                      : 'placeholder'
+                      : group.key
+                      : control.key
+                "
+                [hintTop]="
+                  dataSource
+                    | retrievePlaceholder
+                      : 'labelHint'
+                      : group.key
+                      : control.key
+                "
+              />
+            </div>
+          </ng-container>
+        </div>
       </div>
     </ng-container>
     <!--		<sivan-input-->

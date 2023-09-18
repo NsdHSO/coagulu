@@ -1,7 +1,5 @@
 import { ChangeDetectorRef, Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { OutlineDirective, ScrollHintDirective } from '../../directive';
 import { NgControl, ReactiveFormsModule } from '@angular/forms';
@@ -30,7 +28,7 @@ import { GenerativeService } from '../../service';
   hostDirectives: [
     {
       directive: OutlineDirective,
-      inputs: ['hintTop', 'control:mainControl', 'placeholder'],
+      inputs: ['control:mainControl', 'placeholder'],
     },
   ],
   animations: [

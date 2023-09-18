@@ -23,8 +23,11 @@ export interface DataFormBuilder {
   placeholder?: string;
   description?: DescriptionEntity;
   updateOn?: TypeUpdate;
+  validator?: ValidatorChecker;
 }
-
+export interface ValidatorChecker {
+  field: string;
+}
 export interface DescriptionEntity {
   text: string;
   icon?: string;
