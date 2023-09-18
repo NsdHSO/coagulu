@@ -24,6 +24,13 @@ import {
 } from 'ngx-ftx-shared';
 import { RetrievePlaceholderPipe } from './util/pipes/retrieve-placeholder.pipe';
 import { ValidatorConfigPipe } from './util/pipes/validator-config.pipe';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'coagulu-ftx-ftm',
@@ -40,6 +47,46 @@ import { ValidatorConfigPipe } from './util/pipes/validator-config.pipe';
   templateUrl: './ftx-ftm.component.html',
   styleUrls: ['./ftx-ftm.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fadeInOut', [
+      state(
+        'void',
+        style({
+          height: '0',
+          opacity: 0,
+          zIndex: 105, // Set the initial z-index value
+        })
+      ),
+      transition(':enter', [
+        style({
+          height: '0',
+          opacity: 0,
+          zIndex: 105, // Set the initial z-index value
+        }),
+        animate(
+          '200ms ease-out',
+          style({
+            height: '*',
+            opacity: 1,
+            zIndex: 105, // Ensure the z-index remains the same
+          })
+        ),
+      ]),
+      transition(':leave', [
+        style({
+          height: '*',
+          opacity: 1,
+        }),
+        animate(
+          '200ms ease-in',
+          style({
+            height: '0',
+            opacity: 0,
+          })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class FtxFtmComponent {
   @Input({ required: true }) dataSource!: DataFormBuilder;

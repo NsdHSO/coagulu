@@ -48,6 +48,7 @@
             *ngFor="let group of formData.get(control.key).controls | keyvalue"
           >
             <div
+              @fadeInOut
               class="w-full"
               *ngIf="
                 dataSource

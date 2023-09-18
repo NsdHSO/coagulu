@@ -159,6 +159,9 @@ export class InfoUserComponent {
                 errorMsg: 'Only' + ' char',
               },
             ],
+            validator: {
+              field: 'email',
+            },
           },
           {
             label: 'ds2',
