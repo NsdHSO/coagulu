@@ -23,6 +23,7 @@ import {
   SivanInputComponent,
 } from 'ngx-ftx-shared';
 import { RetrievePlaceholderPipe } from './util/pipes/retrieve-placeholder.pipe';
+import { ValidatorConfigPipe } from './util/pipes/validator-config.pipe';
 
 @Component({
   selector: 'coagulu-ftx-ftm',
@@ -34,6 +35,7 @@ import { RetrievePlaceholderPipe } from './util/pipes/retrieve-placeholder.pipe'
     SivanInputComponent,
     FirstUpperCasePipe,
     RetrievePlaceholderPipe,
+    ValidatorConfigPipe,
   ],
   templateUrl: './ftx-ftm.component.html',
   styleUrls: ['./ftx-ftm.component.scss'],
@@ -55,5 +57,7 @@ export class FtxFtmComponent {
 
   public submit() {
     console.log(this.formData?.getRawValue());
+
+    this.formData;
   }
 }

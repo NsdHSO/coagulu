@@ -37,20 +37,19 @@ export class InfoUserComponent {
         placeholder: 'Isvan Avramescu',
         labelHint: 'Name for User',
         validator: {
-          field: 'email',
+          field: 'address',
         },
         updateOn: 'blur',
       },
       {
         label: 'email',
-        value: 's@gm.co',
+        value: '',
         validators: [
           { type: TypeConstantEnum.REQUIRED },
           { type: TypeConstantEnum.EMAIL },
         ],
         placeholder: 'Email Address',
         labelHint: 'ivan@entrt.country',
-        updateOn: 'blur',
       },
       {
         label: 'TESTa',
@@ -142,6 +141,7 @@ export class InfoUserComponent {
             label: 'cnp',
             labelHint: 'Personal Nested',
             value: '123141232311',
+            placeholder: 'Your CNP',
             validators: [{ type: TypeConstantEnum.MIN, option: 20 }],
           },
           {

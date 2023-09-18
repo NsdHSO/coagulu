@@ -14,16 +14,12 @@
         ) === 'FormControl'
       "
     >
-      <div class="flex items-center">
+      <div
+        class="flex items-center"
+        *ngIf="dataSource | validatorConfig : formData : control.key | async"
+      >
         <div class="max-w-42 w-32 h-10">{{ control.key | firstUpperCase }}</div>
-        <div
-          class="grid grid-flow-col gap-4 ftm-group-container-entity"
-          *ngIf="
-            control.key === 'name' ||
-            control.key === 'email' ||
-            !formData.controls.name.errors
-          "
-        >
+        <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
           <sivan-input
             class="w-full"
             [mainControl]="formData?.get(control.key)"
