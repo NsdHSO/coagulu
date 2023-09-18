@@ -1391,9 +1391,6 @@ video {
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
-.col-span-7 {
-  grid-column: span 7 / span 7;
-}
 .\!m-0 {
   margin: 0px !important;
 }
@@ -1414,9 +1411,6 @@ video {
 }
 .mb-2 {
   margin-bottom: 0.5rem;
-}
-.ml-2 {
-  margin-left: 0.5rem;
 }
 .flex {
   display: flex;
@@ -1451,6 +1445,9 @@ video {
 .\!w-full {
   width: 100% !important;
 }
+.w-32 {
+  width: 8rem;
+}
 .w-4 {
   width: 1rem;
 }
@@ -1477,14 +1474,17 @@ video {
 .animate-fade {
   animation: fade 1s both;
 }
-.grid-cols-8 {
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+.grid-flow-col {
+  grid-auto-flow: column;
 }
 .flex-col {
   flex-direction: column;
 }
 .flex-wrap {
   flex-wrap: wrap;
+}
+.content-start {
+  align-content: flex-start;
 }
 .items-center {
   align-items: center;
