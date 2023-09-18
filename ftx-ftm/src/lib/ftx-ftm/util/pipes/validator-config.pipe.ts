@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, inject, Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { DataFormBuilder } from 'ngx-ftx-forms';
 import { FormGroup } from '@angular/forms';
 import {
@@ -38,6 +38,29 @@ export class ValidatorConfigPipe implements PipeTransform {
           }),
           switchMap((v) => of(valid))
         );
+      }
+      //Form Group extract validator from group
+      if (entity?.values) {
+        let valid = true;
+        const entityFromGroup = entity.values.find((v: DataFormBuilder) => {
+          return v.label?.toLowerCase() === (args[2] as string).toLowerCase();
+        });
+        if (entityFromGroup?.validator?.field) {
+          return (args[0] as FormGroup).controls[
+            entityFromGroup?.validator?.field
+          ].statusChanges.pipe(
+            startWith(
+              (args[0] as FormGroup).controls[entityFromGroup?.validator?.field]
+                .status
+            ),
+            distinctUntilChanged(),
+            debounceTime(500),
+            tap((v) => {
+              valid = v === 'Valid'.toUpperCase();
+            }),
+            switchMap((v) => of(valid))
+          );
+        }
       }
     }
     return of(true);

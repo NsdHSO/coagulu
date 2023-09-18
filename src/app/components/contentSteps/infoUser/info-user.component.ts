@@ -43,7 +43,7 @@ export class InfoUserComponent {
       },
       {
         label: 'email',
-        value: '',
+        value: 'sa@dsa.com',
         validators: [
           { type: TypeConstantEnum.REQUIRED },
           { type: TypeConstantEnum.EMAIL },
@@ -143,6 +143,9 @@ export class InfoUserComponent {
             value: '123141232311',
             placeholder: 'Your CNP',
             validators: [{ type: TypeConstantEnum.MIN, option: 20 }],
+            validator: {
+              field: 'email',
+            },
           },
           {
             label: 'ds',
