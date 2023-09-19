@@ -201,11 +201,15 @@ export class InfoUserComponent {
                 errorMsg: 'Only' + ' char',
               },
             ],
+            // TODO: inner validator
+            //            validator: {
+            //              field: 'ds6',
+            //            },
           },
           {
-            label: 'ds3',
+            label: 'ds6',
             value: 'gasd',
-            labelHint: 'Personal TEst',
+            placeholder: 'Personal TEst',
             validators: [
               { type: TypeConstantEnum.REQUIRED },
               {
@@ -218,6 +222,7 @@ export class InfoUserComponent {
           {
             label: 'ds25',
             value: 'TssEST',
+            placeholder: 'Personal TEst25',
             labelHint: 'Personal TEst',
             validators: [
               { type: TypeConstantEnum.REQUIRED },
@@ -310,6 +315,7 @@ export class InfoUserComponent {
                 value: 1231,
                 validators: [{ type: TypeConstantEnum.REQUIRED }],
                 labelHint: 'Childrens',
+                placeholder: 'Avram Avramescu',
               },
               {
                 label: 'train',
@@ -319,49 +325,20 @@ export class InfoUserComponent {
               },
             ],
           },
+
           {
-            label: 'Barto',
+            label: 'Ivan2',
             bulkValues: [
               {
                 value: null,
-                labelHint: 'barot Childrens',
-              },
-              {
-                label: 'barot Childrens train',
-                value: 23222,
-                placeholder: ' barot NAMING',
-                labelHint: 'Number',
-              },
-            ],
-          },
-          {
-            label: 'Barto2',
-            bulkValues: [
-              {
-                value: null,
-                labelHint: 'barot Childrens',
-              },
-              {
-                label: 'barot Childrens train',
-                value: 23222,
-                placeholder: ' barot NAMING',
-                labelHint: 'Number',
-              },
-            ],
-          },
-          {
-            label: 'Bartos',
-            bulkValues: [
-              {
-                value: null,
-                labelHint: 'barot Childrens',
-              },
-              {
-                label: 'barot Childrens train',
-                value: 23222,
-                placeholder: ' barot NAMING',
-                labelHint: 'Number',
                 validators: [{ type: TypeConstantEnum.REQUIRED }],
+                labelHint: 'Childrens',
+              },
+              {
+                label: 'train',
+                value: 232,
+                placeholder: 'NAMING',
+                labelHint: 'Number',
               },
             ],
           },

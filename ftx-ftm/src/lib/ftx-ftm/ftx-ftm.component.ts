@@ -107,4 +107,8 @@ export class FtxFtmComponent {
 
     this.formData;
   }
+
+  public name(param: any) {
+    console.log(param);
+  }
 }

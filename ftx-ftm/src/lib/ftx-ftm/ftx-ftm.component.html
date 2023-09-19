@@ -7,6 +7,7 @@
   <ng-container
     *ngFor="let control of formData.controls | keyvalue; let i = index"
   >
+    <!--FormControl-->
     <ng-container
       *ngIf="
         generateFormBuilderService.getCustomFromControlType(
@@ -33,7 +34,7 @@
         </div>
       </div>
     </ng-container>
-
+    <!--FormGroup-->
     <ng-container
       *ngIf="
         generateFormBuilderService.getCustomFromControlType(
@@ -78,11 +79,78 @@
         </div>
       </div>
     </ng-container>
-    <!--		<sivan-input-->
-    <!--			[mainControl]="formData?.get(control.key)"-->
-    <!--			[hintTop]="'TEST'"-->
-    <!--			[placeholder]="'Placeholder'"-->
-    <!--		></sivan-input>-->
+
+    <ng-container
+      *ngIf="
+        generateFormBuilderService.getCustomFromControlType(
+          formData.get(control.key)
+        ) === 'FormArray'
+      "
+    >
+      <div class="flex items-center">
+        <div class="max-w-42 w-32">{{ control.key }}</div>
+        <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
+          <ng-container
+            *ngFor="let array of formData.get(control.key).controls | keyvalue"
+          >
+            <ng-container
+              *ngIf="
+                generateFormBuilderService.getCustomFromControlType(
+                  formData.get(control.key).get(array.key)
+                ) === 'FormControl'
+              "
+            >
+              <div @fadeInOut class="w-full">
+                <sivan-input
+                  [mainControl]="formData.get(control.key).get(array.key)"
+                  [placeholder]="'d'"
+                  [hintTop]="'s'"
+                />
+              </div>
+            </ng-container>
+            <ng-container
+              *ngIf="
+                generateFormBuilderService.getCustomFromControlType(
+                  formData.get(control.key).get(array.key)
+                ) === 'FormArray'
+              "
+            >
+              <ng-container
+                *ngFor="
+                  let nestedArray of formData.get(control.key).get(array.key)
+                    .controls | keyvalue
+                "
+              >
+                <sivan-input
+                  [mainControl]="
+                    formData
+                      .get(control.key)
+                      .get(array.key)
+                      .get(nestedArray.key)
+                  "
+                  [placeholder]="
+                    dataSource
+                      | retrievePlaceholder
+                        : 'placeholder'
+                        : array.key
+                        : control.key
+                        : nestedArray.key
+                  "
+                  [hintTop]="
+                    dataSource
+                      | retrievePlaceholder
+                        : 'labelHint'
+                        : array.key
+                        : control.key
+                        : nestedArray.key
+                  "
+                />
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
   </ng-container>
   <ngx-button-component
     class="bg-white p-2"

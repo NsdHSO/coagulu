@@ -15,17 +15,25 @@ export class RetrievePlaceholderPipe implements PipeTransform {
           }
           return v;
         });
-
-        return (
-          group.values.find((v: DataFormBuilder) => {
-            if (v.label !== undefined) {
-              return v.label.toLowerCase() === args[1];
-            }
-            return v;
-          })[args[0] as string] || group[args[0] as string]
-        );
+        if (group.values) {
+          return (
+            group.values.find((v: DataFormBuilder) => {
+              if (v.label !== undefined) {
+                return v.label.toLowerCase() === args[1];
+              }
+              return v;
+            })[args[0] as string] || group[args[0] as string]
+          );
+        }
+        if (group.bulkValues) {
+          return (
+            group.bulkValues[args[1] as string].bulkValues[args[3] as string][
+              args[0] as string
+            ] || 'Nothing'
+          );
+        }
       }
-      const key = value.values.find((v: DataFormBuilder) => {
+      const key = value.values?.find((v: DataFormBuilder) => {
         if (v.label) {
           return v.label.toLowerCase() === (args[1] as string).toLowerCase();
         }
