@@ -1873,9 +1873,8 @@ body {
     --tw-bg-opacity: 1;
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
   }
-  .dark\:bg-white {
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  .dark\:bg-inherit {
+    background-color: inherit;
   }
   .dark\:text-white {
     --tw-text-opacity: 1;
