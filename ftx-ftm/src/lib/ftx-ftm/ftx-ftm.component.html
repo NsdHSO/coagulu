@@ -43,7 +43,7 @@
       "
     >
       <div class="flex items-center">
-        <div class="max-w-42 w-32">{{ control.key }}</div>
+        <div class="max-w-42 w-32">{{ control.key | firstUpperCase }}</div>
         <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
           <ng-container
             *ngFor="let group of formData.get(control.key).controls | keyvalue"
@@ -88,7 +88,7 @@
       "
     >
       <div class="flex items-center">
-        <div class="max-w-42 w-32">{{ control.key }}</div>
+        <div class="max-w-42 w-32">{{ control.key | firstUpperCase }}</div>
         <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
           <ng-container
             *ngFor="let array of formData.get(control.key).controls | keyvalue"

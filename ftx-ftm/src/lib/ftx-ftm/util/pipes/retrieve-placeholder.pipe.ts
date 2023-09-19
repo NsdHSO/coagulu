@@ -26,6 +26,13 @@ export class RetrievePlaceholderPipe implements PipeTransform {
           );
         }
         if (group.bulkValues) {
+          if (
+            !group.bulkValues[args[1] as string].bulkValues[args[3] as string][
+              args[0] as string
+            ]
+          ) {
+            console.error('Provide some ', args[0]);
+          }
           return (
             group.bulkValues[args[1] as string].bulkValues[args[3] as string][
               args[0] as string
