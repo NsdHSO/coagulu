@@ -41,7 +41,10 @@ export class RetrievePlaceholderPipe implements PipeTransform {
             );
           }
           if (!args[3]) {
-            return group.bulkValues[args[1] as number].placeholder || 'Nothing';
+            return (
+              group.bulkValues[args[1] as number][args[0] as string] ||
+              'Nothing'
+            );
           }
         }
       }

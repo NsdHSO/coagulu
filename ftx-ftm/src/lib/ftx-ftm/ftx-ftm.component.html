@@ -110,7 +110,13 @@
                         : array.key
                         : control.key
                   "
-                  [hintTop]="'d'"
+                  [hintTop]="
+                    dataSource
+                      | retrievePlaceholder
+                        : 'labelHint'
+                        : array.key
+                        : control.key
+                  "
                 />
               </div>
             </ng-container>
