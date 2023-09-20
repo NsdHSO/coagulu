@@ -293,6 +293,7 @@ export class InfoUserComponent {
           {
             value: '2312',
             label: 'angularPatterns',
+            placeholder: 'Angular Pattern',
           },
           {
             value: '321',

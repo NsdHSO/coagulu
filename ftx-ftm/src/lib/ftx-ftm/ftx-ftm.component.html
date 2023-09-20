@@ -103,8 +103,14 @@
               <div @fadeInOut class="w-full">
                 <sivan-input
                   [mainControl]="formData.get(control.key).get(array.key)"
-                  [placeholder]="'d'"
-                  [hintTop]="'s'"
+                  [placeholder]="
+                    dataSource
+                      | retrievePlaceholder
+                        : 'placeholder'
+                        : array.key
+                        : control.key
+                  "
+                  [hintTop]="'d'"
                 />
               </div>
             </ng-container>
