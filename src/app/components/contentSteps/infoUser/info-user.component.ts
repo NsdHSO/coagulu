@@ -43,6 +43,9 @@ export class InfoUserComponent {
       },
       {
         label: 'email',
+        validator: {
+          field: 'name',
+        },
         value: 'sa@dsa.com',
         validators: [
           { type: TypeConstantEnum.REQUIRED },
