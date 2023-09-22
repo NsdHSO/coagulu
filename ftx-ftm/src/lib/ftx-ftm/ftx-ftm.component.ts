@@ -1,16 +1,17 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  Input,
-} from '@angular/core';
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import {
-  ButtonComponent,
-  DataFormBuilder,
-  GenerateFormBuilderService,
-} from 'ngx-ftx-forms';
-import { of, tap } from 'rxjs';
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  inject,
+} from '@angular/core';
 import {
   FormArray,
   FormControl,
@@ -18,32 +19,22 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import {
+  ButtonComponent,
+  DataFormBuilder,
+  GenerateFormBuilderService,
+} from 'ngx-ftx-forms';
+import {
   FirstUpperCasePipe,
   GenerativeService,
   SivanInputComponent,
 } from 'ngx-ftx-shared';
+import { of, tap } from 'rxjs';
 import { RetrievePlaceholderPipe } from './util/pipes/retrieve-placeholder.pipe';
 import { ValidatorConfigPipe } from './util/pipes/validator-config.pipe';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 @Component({
   selector: 'coagulu-ftx-ftm',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    ButtonComponent,
-    SivanInputComponent,
-    FirstUpperCasePipe,
-    RetrievePlaceholderPipe,
-    ValidatorConfigPipe,
-  ],
   templateUrl: './ftx-ftm.component.html',
   styleUrls: ['./ftx-ftm.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -86,6 +77,15 @@ import {
         ),
       ]),
     ]),
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ButtonComponent,
+    FirstUpperCasePipe,
+    RetrievePlaceholderPipe,
+    ValidatorConfigPipe,
+    SivanInputComponent,
   ],
 })
 export class FtxFtmComponent {
