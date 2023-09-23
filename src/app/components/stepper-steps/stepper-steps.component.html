@@ -6,6 +6,7 @@
       *ngFor="let elm of vm?.steps; trackBy: generativeService.trackBy"
       class="bg-white"
       [routerLink]="elm.value"
+      [attr.aria-label]="vm[elm.value]"
       [disabled]="buttonDisabled$ | async"
     >
       <div *ngIf="vm[elm.value] as element">

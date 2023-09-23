@@ -2,6 +2,7 @@
   [type]="typeButton"
   [disabled]="disable"
   [ngClass]="{ '!bg-blue-700': disable }"
+  [attr.aria-label]="roundedFull"
   mat-button
   (click)="marian.emit()"
   class="mat-primary mat-raised-button !bg-blue-500 !text-white p-2"
