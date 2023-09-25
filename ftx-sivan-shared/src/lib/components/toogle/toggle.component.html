@@ -1,19 +1,44 @@
 <div
-  class="cursor-pointer w-16 bg-slate-100 rounded-full"
-  [ngClass]="{ 'border-solid border border-green-300': control.value }"
+  class="cursor-pointer w-16 bg-slate-100 rounded-full border-solid border"
+  [ngClass]="{
+    'border-green-300': control.value,
+    'border-red-300': !control.value
+  }"
   (click)="mutateToggle()"
 >
   <input type="checkbox" [formControl]="controls" class="sr-only" />
-  <div
-    class="w-11 h-6 transition-all duration-300"
-    [ngClass]="{
-      'translate-x-3/4': control.value,
-      '-translate-x-4': !control.value
+  <div class="w-11 h-6">
+    <div
+      class="h-full transition-all duration-300 -translate-y-[0.05rem]"
+      [ngClass]="{
+      'translate-x-3/4 ': control.value,
+      '-translate-x-4': !control.value,
     }"
-  >
-    <mat-icon
-      class="rounded-full transition-all duration-300 !w-fit"
-      [svgIcon]="control.value ? 'fa_solid:RO' : 'fa_solid:CR'"
-    ></mat-icon>
+    >
+      <div
+        class="border border-solid border-s bg-slate-100 dark:bg-slate-500 flex justify-center items-center rounded-full"
+        [ngClass]="{
+          'border-red-300': !control.value,
+          'border-green-300': control.value,
+          'h-[1.60rem]': !valuesToggled
+        }"
+      >
+        <mat-icon
+          *ngIf="valuesToggled; else noData"
+          class="rounded-full transition-all duration-300 !w-fit text-gray-500 dark:text-blue-50"
+          [svgIcon]="
+            control.value
+              ? valuesToggled[0].icon || ''
+              : valuesToggled[1].icon || ''
+          "
+        ></mat-icon>
+        <ng-template #noData>
+          <div
+            [innerText]="control.value ? 'Yes' : 'No'"
+            class="rounded-full transition-all duration-300 !w-fit text-gray-500 dark:text-blue-50"
+          ></div>
+        </ng-template>
+      </div>
+    </div>
   </div>
 </div>

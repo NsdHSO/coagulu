@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SivanInputComponent, ToggleComponent } from 'ngx-ftx-shared';
 import { BaseComponent } from '../base/base.component';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ValueToggle } from 'ngx-ftx-forms';
 
 @Component({
   selector: 'sivan-shared-input',
@@ -11,4 +11,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   templateUrl: './shared-input.component.html',
   styleUrls: ['./shared-input.component.scss'],
 })
-export class SharedInputComponent extends BaseComponent {}
+export class SharedInputComponent extends BaseComponent {
+  @Input({ required: false })
+  valuesToggled?: ValueToggle[] | null;
+}
