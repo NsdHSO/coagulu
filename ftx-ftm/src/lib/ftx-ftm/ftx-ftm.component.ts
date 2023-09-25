@@ -33,6 +33,7 @@ import { of, tap } from 'rxjs';
 import { RetrievePlaceholderPipe } from './util/pipes/retrieve-placeholder.pipe';
 import { ValidatorConfigPipe } from './util/pipes/validator-config.pipe';
 import { GetTypePipe } from './util/pipes/get-type.pipe';
+import { GetValueToShowPipe } from './util/pipes';
 
 @Component({
   selector: 'coagulu-ftx-ftm',
@@ -90,6 +91,7 @@ import { GetTypePipe } from './util/pipes/get-type.pipe';
     SivanInputComponent,
     SharedInputComponent,
     GetTypePipe,
+    GetValueToShowPipe,
   ],
 })
 export class FtxFtmComponent {

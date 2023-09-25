@@ -16,6 +16,7 @@
       "
     >
       <div
+        @fadeInOut
         class="flex items-center"
         *ngIf="dataSource | validatorConfig : formData : control.key | async"
       >
@@ -32,6 +33,7 @@
               dataSource | retrievePlaceholder : 'labelHint' : control.key
             "
             [typeInput]="dataSource | getType : control.key"
+            [valuesToggled]="dataSource | getValueToShow : control.key"
           />
         </div>
       </div>

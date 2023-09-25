@@ -78,17 +78,19 @@ export class ReserveBookComponent implements OnInit {
       },
       {
         label: 'Adult',
-        value: true,
+        value: false,
         labelHint: 'Is Adult',
         typeInput: 'toggle',
         valueToggleShow: [
           {
             value: false,
             description: 'No',
+            icon: 'fa_solid:"RO"',
           },
           {
             value: true,
             description: 'Yes',
+            icon: 'fa_solid:"CR"',
           },
         ],
       },
