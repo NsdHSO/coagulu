@@ -2,7 +2,10 @@
   class="cursor-pointer w-16 bg-slate-100 rounded-full border-solid border"
   [ngClass]="{
     'border-green-300': control.value,
-    'border-red-300': !control.value
+    'border-red-300': !control.value,
+    'border-red-500': !control.value && control.disabled,
+    'border-green-500': control.value && control.disabled,
+    'bg-slate-300 ': control.disabled
   }"
   (click)="mutateToggle()"
 >
@@ -20,7 +23,9 @@
         [ngClass]="{
           'border-red-300': !control.value,
           'border-green-300': control.value,
-          'h-[1.60rem]': !valuesToggled
+          'h-[1.60rem]': !valuesToggled,
+          'opacity-80': control.disabled,
+          'bg-emerald-900':  control.disabled && control.value,
         }"
       >
         <mat-icon
@@ -34,6 +39,10 @@
         ></mat-icon>
         <ng-template #noData>
           <div
+            [ngClass]="{
+						          'text-white':  control.disabled,
+
+						}"
             [innerText]="control.value ? 'Yes' : 'No'"
             class="rounded-full transition-all duration-300 !w-fit text-gray-500 dark:text-blue-50"
           ></div>
