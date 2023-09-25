@@ -23,15 +23,15 @@
           {{ control.key | firstUpperCase }}
         </div>
         <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
-          <sivan-input
-            class="w-full"
-            [mainControl]="formData?.get(control.key)"
+          <sivan-shared-input
+            [control]="formData?.get(control.key)"
             [placeholder]="
               dataSource | retrievePlaceholder : 'placeholder' : control.key
             "
             [hintTop]="
               dataSource | retrievePlaceholder : 'labelHint' : control.key
             "
+            [typeInput]="dataSource | getType : control.key"
           />
         </div>
       </div>

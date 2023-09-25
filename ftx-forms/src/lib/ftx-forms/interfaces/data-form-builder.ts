@@ -39,4 +39,5 @@ export type TypeInput =
   | 'currency'
   | 'dropdown'
   | 'date'
-  | 'date-interval';
+  | 'date-interval'
+  | 'text';

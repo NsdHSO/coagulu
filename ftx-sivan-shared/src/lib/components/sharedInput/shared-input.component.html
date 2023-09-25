@@ -1,0 +1,11 @@
+<ng-container [ngSwitch]="typeInput">
+  <ng-container *ngSwitchCase="'toggle'"> toggle component </ng-container>
+  <ng-container *ngSwitchDefault>
+    <sivan-input
+      class="w-full"
+      [mainControl]="control"
+      [placeholder]="placeholder"
+      [hintTop]="hintTop"
+    />
+  </ng-container>
+</ng-container>

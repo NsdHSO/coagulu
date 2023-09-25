@@ -26,11 +26,13 @@ import {
 import {
   FirstUpperCasePipe,
   GenerativeService,
+  SharedInputComponent,
   SivanInputComponent,
 } from 'ngx-ftx-shared';
 import { of, tap } from 'rxjs';
 import { RetrievePlaceholderPipe } from './util/pipes/retrieve-placeholder.pipe';
 import { ValidatorConfigPipe } from './util/pipes/validator-config.pipe';
+import { GetTypePipe } from './util/pipes/get-type.pipe';
 
 @Component({
   selector: 'coagulu-ftx-ftm',
@@ -86,6 +88,8 @@ import { ValidatorConfigPipe } from './util/pipes/validator-config.pipe';
     RetrievePlaceholderPipe,
     ValidatorConfigPipe,
     SivanInputComponent,
+    SharedInputComponent,
+    GetTypePipe,
   ],
 })
 export class FtxFtmComponent {
