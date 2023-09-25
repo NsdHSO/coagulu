@@ -1,0 +1,19 @@
+<div
+  class="cursor-pointer w-16 bg-slate-100 rounded-full"
+  [ngClass]="{ 'border-solid border border-green-300': control.value }"
+  (click)="mutateToggle()"
+>
+  <input type="checkbox" [formControl]="controls" class="sr-only" />
+  <div
+    class="w-11 h-6 transition-all duration-300"
+    [ngClass]="{
+      'translate-x-3/4': control.value,
+      '-translate-x-4': !control.value
+    }"
+  >
+    <mat-icon
+      class="rounded-full transition-all duration-300 !w-fit"
+      [svgIcon]="control.value ? 'fa_solid:RO' : 'fa_solid:CR'"
+    ></mat-icon>
+  </div>
+</div>

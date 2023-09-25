@@ -1,19 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgControl } from '@angular/forms';
-import { TypeInput } from 'ngx-ftx-forms';
-import { SivanInputComponent } from 'ngx-ftx-shared';
+import { SivanInputComponent, ToggleComponent } from 'ngx-ftx-shared';
+import { BaseComponent } from '../base/base.component';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'sivan-shared-input',
   standalone: true,
-  imports: [CommonModule, SivanInputComponent],
+  imports: [CommonModule, SivanInputComponent, ToggleComponent],
   templateUrl: './shared-input.component.html',
   styleUrls: ['./shared-input.component.scss'],
 })
-export class SharedInputComponent {
-  @Input({ required: true }) public control!: NgControl;
-  @Input({ required: true }) placeholder!: string;
-  @Input({ required: true }) hintTop!: string;
-  @Input() typeInput: TypeInput = 'text';
-}
+export class SharedInputComponent extends BaseComponent {}

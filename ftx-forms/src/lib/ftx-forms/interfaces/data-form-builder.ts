@@ -8,7 +8,8 @@ export interface ValidatorConfig {
 
 export interface ValueToggle {
   value: boolean;
-  description: string;
+  description?: string;
+  icon?: string;
 }
 
 export interface DataFormBuilder {
