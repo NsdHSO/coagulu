@@ -59,8 +59,8 @@
                   | async
               "
             >
-              <sivan-input
-                [mainControl]="formData.get(control.key).get(group.key)"
+              <sivan-shared-input
+                [control]="formData.get(control.key).get(group.key)"
                 [placeholder]="
                   dataSource
                     | retrievePlaceholder
@@ -103,8 +103,8 @@
               "
             >
               <div @fadeInOut class="w-full">
-                <sivan-input
-                  [mainControl]="formData.get(control.key).get(array.key)"
+                <sivan-shared-input
+                  [control]="formData.get(control.key).get(array.key)"
                   [placeholder]="
                     dataSource
                       | retrievePlaceholder
@@ -135,8 +135,8 @@
                     .controls | keyvalue
                 "
               >
-                <sivan-input
-                  [mainControl]="
+                <sivan-shared-input
+                  [control]="
                     formData
                       .get(control.key)
                       .get(array.key)
