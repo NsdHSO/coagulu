@@ -17,7 +17,7 @@
   />
   <div class="w-11 h-6">
     <div
-      data-test="shared-toggle-type-input"
+      data-test="shared-toggle-type-input-label"
       class="h-full transition-all duration-300 -translate-y-[0.05rem]"
       [ngClass]="{
       'translate-x-3/4 ': control.value,
@@ -36,15 +36,18 @@
       >
         <mat-icon
           *ngIf="valuesToggled; else noData"
+          data-test="shared-toggle-type-input-label-another"
           class="rounded-full transition-all duration-300 !w-fit text-gray-500 dark:text-blue-50"
           [svgIcon]="
             control.value
               ? valuesToggled[0].icon || ''
               : valuesToggled[1].icon || ''
           "
-        ></mat-icon>
+        >
+        </mat-icon>
         <ng-template #noData>
           <div
+            data-test="shared-toggle-type-input-label-implicit"
             [ngClass]="{
 						          'text-white':  control.disabled,
 
