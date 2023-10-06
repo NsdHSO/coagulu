@@ -57,6 +57,16 @@ describe('ToogleComponent', () => {
         wrapperElement.click();
         expect(spy).toHaveBeenCalled();
       });
+      it('should change value', () => {
+        component.control = new FormControl(true);
+        const wrapperElement = fixture.nativeElement.querySelector(
+          '[data-test="shared-toggle-wrapper"]'
+        );
+        const spy = jest.spyOn(component, 'mutateToggle');
+        wrapperElement.click();
+        expect(spy).toHaveBeenCalled();
+        expect(component.control.value).toBeFalsy();
+      });
     });
     it('should check if the correct class is applied when is not disabled', () => {
       component.control = new FormControl('Iban');
