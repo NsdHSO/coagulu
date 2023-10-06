@@ -1,5 +1,6 @@
-import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import {
   ButtonComponent,
@@ -8,12 +9,6 @@ import {
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
 import { SivanInputComponent } from 'ngx-ftx-shared';
 
 @Component({
@@ -34,6 +29,7 @@ export class SpendMoneyComponent {
   @ViewChild('default') defaultTemplate!: TemplateRef<unknown>;
 
   private readonly _fb = inject(GenerateFormBuilderService);
+
   simple: any; //eslint-disable-line
   currency: any; //eslint-disable-line
   simpleData = {
@@ -44,6 +40,7 @@ export class SpendMoneyComponent {
     labelHint: 'Name for User',
     updateOn: 'blur',
   } as DataFormBuilder;
+
   constructor() {
     this.simple = this._fb.buildFormFromJson(this.simpleData);
     this.currency = this._fb.buildFormFromJson({
