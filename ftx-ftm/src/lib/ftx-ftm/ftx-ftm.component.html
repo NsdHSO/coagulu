@@ -2,7 +2,7 @@
   *ngIf="generateFormTrigger | async"
   [formGroup]="formData"
   (ngSubmit)="submit()"
-  class="p-3 flex flex-col gap-5 bg-slate-200 ngx-forms-form-wrapper rounded-br-lg rounded-bl-lg"
+  class="p-3 flex flex-col gap-5 bg-slate-200 ngx-forms-form-wrapper rounded-br-lg rounded-bl-lg shadow-lg"
 >
   <ng-container
     *ngFor="let control of formData.controls | keyvalue; let i = index"
