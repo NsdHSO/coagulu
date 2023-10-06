@@ -1,4 +1,4 @@
-import { TypeConstantEnum, TypePattern, TypeUpdate } from '../utils';
+import { TypeConstantEnum, TypePattern, TypeUpdate } from '../util';
 
 export interface ValidatorConfig {
   type: TypeConstantEnum;
@@ -8,7 +8,8 @@ export interface ValidatorConfig {
 
 export interface ValueToggle {
   value: boolean;
-  description: string;
+  description?: string;
+  icon?: string;
 }
 
 export interface DataFormBuilder {

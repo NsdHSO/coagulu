@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonComponent,
-  DataFormBuilder,
   FormControlEntityComponent,
   FtxFormsComponent,
   GenerateFormBuilderService,
@@ -16,6 +15,7 @@ import { debounceTime, shareReplay, tap, using } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { StepperService } from '../../services/stepper.service';
 import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
+import { DataFormBuilder } from 'ngx-ftx-shared';
 
 @Component({
   selector: 'reserve-book',
@@ -78,17 +78,19 @@ export class ReserveBookComponent implements OnInit {
       },
       {
         label: 'Adult',
-        value: true,
+        value: false,
         labelHint: 'Is Adult',
         typeInput: 'toggle',
         valueToggleShow: [
           {
             value: false,
             description: 'No',
+            icon: 'fa_solid:"RO"',
           },
           {
             value: true,
             description: 'Yes',
+            icon: 'fa_solid:"CR"',
           },
         ],
       },

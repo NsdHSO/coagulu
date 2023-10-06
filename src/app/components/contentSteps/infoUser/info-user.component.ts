@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonComponent,
-  DataFormBuilder,
   FormControlEntityComponent,
   MultipleInputComponent,
   PatchFormGroupValueDirective,
@@ -11,6 +10,7 @@ import {
   TypePattern,
 } from 'ngx-ftx-forms';
 import { FtxFtmComponent } from 'ngx-ftm';
+import { DataFormBuilder } from 'ngx-ftx-shared';
 
 @Component({
   selector: 'info-user',
@@ -76,17 +76,30 @@ export class InfoUserComponent {
       },
       {
         label: 'Adult',
-        value: true,
+        value: false,
         labelHint: 'Is Adult',
         typeInput: 'toggle',
         valueToggleShow: [
           {
             value: false,
             description: 'No',
+            icon: 'fa_solid:RO',
           },
           {
             value: true,
             description: 'Yes',
+            icon: 'fa_solid:CR',
+          },
+        ],
+      },
+      {
+        label: 'explosion',
+        value: false,
+        labelHint: 'Is Adult',
+        typeInput: 'toggle',
+        validators: [
+          {
+            type: TypeConstantEnum.REQUIRED,
           },
         ],
       },
@@ -100,6 +113,9 @@ export class InfoUserComponent {
           text:
             'Lorem Ipsum Text description you are in the best form' +
             ' builder create evere',
+        },
+        validator: {
+          field: 'explosion',
         },
       },
       {

@@ -1,13 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DataFormBuilder, TypeInput } from 'ngx-ftx-shared';
+import { DataFormBuilder, ValueToggle } from 'ngx-ftx-shared';
 
 @Pipe({
-  name: 'getType',
+  name: 'getValueToShow',
   standalone: true,
 })
-export class GetTypePipe implements PipeTransform {
-  //eslint-disable-next-line
-  transform(value: any | DataFormBuilder, ...args: unknown[]): TypeInput {
+export class GetValueToShowPipe implements PipeTransform {
+  transform(value: DataFormBuilder, ...args: unknown[]): ValueToggle[] | null {
     if (value.values) {
       const key = value.values?.find((v: DataFormBuilder) => {
         if (v.label) {
@@ -17,10 +16,10 @@ export class GetTypePipe implements PipeTransform {
       });
 
       if (key) {
-        return key.typeInput || 'text';
+        return key?.valueToggleShow || null;
       }
-      return 'text';
+      return null;
     }
-    return 'text';
+    return null;
   }
 }

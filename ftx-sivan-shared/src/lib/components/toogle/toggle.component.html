@@ -1,0 +1,62 @@
+<div
+  class="cursor-pointer w-16 bg-slate-100 rounded-full border-solid border"
+  [ngClass]="{
+    'border-green-300': control.value,
+    'border-red-500': !control.value && control.disabled,
+    'border-green-500': control.value && control.disabled,
+    'bg-slate-300 ': control.disabled
+  }"
+  (click)="mutateToggle()"
+  data-test="shared-toggle-wrapper"
+>
+  <input
+    type="checkbox"
+    [formControl]="controls"
+    class="sr-only"
+    data-test="shared-toggle-type-input"
+  />
+  <div class="w-11 h-6">
+    <div
+      data-test="shared-toggle-type-input-label"
+      class="h-full transition-all duration-300 -translate-y-[0.05rem]"
+      [ngClass]="{
+      'translate-x-3/4 ': control.value,
+      '-translate-x-4': !control.value,
+    }"
+    >
+      <div
+        class="border border-solid border-s bg-slate-100 dark:bg-slate-500 flex justify-center items-center rounded-full"
+        [ngClass]="{
+          'border-red-300': !control.value,
+          'border-green-300': control.value,
+          'h-[1.60rem]': !valuesToggled,
+          'opacity-80': control.disabled,
+          'bg-emerald-900':  control.disabled && control.value,
+        }"
+      >
+        <mat-icon
+          *ngIf="valuesToggled; else noData"
+          data-test="shared-toggle-type-input-label-another"
+          class="rounded-full transition-all duration-300 !w-fit text-gray-500 dark:text-blue-50"
+          [svgIcon]="
+            control.value
+              ? valuesToggled[0].icon || ''
+              : valuesToggled[1].icon || ''
+          "
+        >
+        </mat-icon>
+        <ng-template #noData>
+          <div
+            data-test="shared-toggle-type-input-label-implicit"
+            [ngClass]="{
+						          'text-white':  control.disabled,
+
+						}"
+            [innerHTML]="control.value ? 'Yes' : 'No'"
+            class="rounded-full transition-all duration-300 !w-fit text-gray-500 dark:text-blue-50"
+          ></div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
