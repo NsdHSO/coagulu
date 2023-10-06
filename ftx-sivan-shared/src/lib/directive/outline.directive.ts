@@ -35,6 +35,7 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
    * @private
    */
   private readonly renderer2 = inject(Renderer2);
+  //eslint-disable-next-line
   @ViewChild('peerDiv', { static: false }) inputContainer: ElementRef | any;
   @Input({ required: true }) control!: NgControl;
   @Input({ required: true }) placeholder!: string;
@@ -43,6 +44,7 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
    * @private
    */
   private destroy$ = new Subject();
+  //eslint-disable-next-line
   private element: any;
 
   ngOnInit(): void {
@@ -58,6 +60,7 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
       .subscribe();
     fromEvent(peerDiv.childNodes[0], 'blur')
       .pipe(
+        //eslint-disable-next-line
         tap((inputValue: any) => {
           if (inputValue.target.value < 1) {
             const classToRemove = ['-top-2.5', 'h-5', 'text-xs'];
@@ -88,6 +91,7 @@ export class OutlineDirective implements OnInit, OnDestroy, AfterViewInit {
       .subscribe();
     fromEvent(peerDiv.childNodes[0], 'focus')
       .pipe(
+        //eslint-disable-next-line
         tap((inputValue: any) => {
           if (inputValue.target.value < 1) {
             this.addClassForHint(this.element);
