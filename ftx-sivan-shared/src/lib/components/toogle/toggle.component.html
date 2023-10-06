@@ -2,14 +2,19 @@
   class="cursor-pointer w-16 bg-slate-100 rounded-full border-solid border"
   [ngClass]="{
     'border-green-300': control.value,
-    'border-red-300': !control.value,
     'border-red-500': !control.value && control.disabled,
     'border-green-500': control.value && control.disabled,
     'bg-slate-300 ': control.disabled
   }"
   (click)="mutateToggle()"
+  data-test="shared-toggle-wrapper"
 >
-  <input type="checkbox" [formControl]="controls" class="sr-only" />
+  <input
+    type="checkbox"
+    [formControl]="controls"
+    class="sr-only"
+    data-test="shared-toggle-type-input"
+  />
   <div class="w-11 h-6">
     <div
       class="h-full transition-all duration-300 -translate-y-[0.05rem]"
@@ -43,7 +48,7 @@
 						          'text-white':  control.disabled,
 
 						}"
-            [innerText]="control.value ? 'Yes' : 'No'"
+            [innerHTML]="control.value ? 'Yes' : 'No'"
             class="rounded-full transition-all duration-300 !w-fit text-gray-500 dark:text-blue-50"
           ></div>
         </ng-template>
