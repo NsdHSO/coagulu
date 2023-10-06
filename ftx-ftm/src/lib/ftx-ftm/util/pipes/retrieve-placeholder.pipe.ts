@@ -17,29 +17,12 @@ export class RetrievePlaceholderPipe implements PipeTransform {
           return v;
         });
         if (group.values) {
-          return (
-            group.values.find((v: DataFormBuilder) => {
-              if (v.label !== undefined) {
-                return v.label.toLowerCase() === args[1];
-              }
-              return v;
-            })[args[0] as string] || group[args[0] as string]
-          );
+          return this.groupEntity(group, args);
         }
+        //nested array
         if (group.bulkValues) {
           if (args[3]) {
-            if (
-              !group.bulkValues[args[1] as string].bulkValues[
-                args[3] as string
-              ][args[0] as string]
-            ) {
-              console.error('Provide some ', args[0]);
-            }
-            return (
-              group.bulkValues[args[1] as string].bulkValues[args[3] as string][
-                args[0] as string
-              ] || 'Nothing'
-            );
+            return this.bulkEntity(group, args);
           }
           if (!args[3]) {
             return (
@@ -67,5 +50,33 @@ export class RetrievePlaceholderPipe implements PipeTransform {
       return '';
     }
     return '';
+  }
+
+  //eslint-disable-next-line
+  private bulkEntity(group: any, args: unknown[]): any {
+    if (
+      !group.bulkValues[args[1] as string].bulkValues[args[3] as string][
+        args[0] as string
+      ]
+    ) {
+      console.error('Provide some ', args[0]);
+    }
+    return (
+      group.bulkValues[args[1] as string].bulkValues[args[3] as string][
+        args[0] as string
+      ] || 'Nothing'
+    );
+  }
+
+  //eslint-disable-next-line
+  private groupEntity(group: any, args: unknown[]): any {
+    return (
+      group.values.find((v: DataFormBuilder) => {
+        if (v.label !== undefined) {
+          return v.label.toLowerCase() === args[1];
+        }
+        return v;
+      })[args[0] as string] || group[args[0] as string]
+    );
   }
 }
