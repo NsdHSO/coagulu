@@ -9,7 +9,7 @@ import {
   isFormGroup,
   ValidatorFn,
 } from '@angular/forms';
-import { DataFormBuilder, ValidatorConfig } from '../interfaces';
+import { DataFormBuilder, ValidatorConfig } from 'ngx-ftx-shared';
 import { ValidatorService } from './validator.service';
 
 @Injectable({

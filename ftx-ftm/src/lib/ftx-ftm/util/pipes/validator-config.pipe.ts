@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DataFormBuilder } from 'ngx-ftx-forms';
 import { FormGroup } from '@angular/forms';
+import { DataFormBuilder } from 'ngx-ftx-shared';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -15,6 +15,7 @@ import {
   standalone: true,
 })
 export class ValidatorConfigPipe implements PipeTransform {
+  //eslint-disable-next-line
   transform(value: DataFormBuilder, ...args: unknown[]): any {
     if (value.values) {
       const entity = value.values.find((v: DataFormBuilder) => {
@@ -36,7 +37,7 @@ export class ValidatorConfigPipe implements PipeTransform {
           tap((v) => {
             valid = v === 'Valid'.toUpperCase();
           }),
-          switchMap((v) => of(valid))
+          switchMap(() => of(valid))
         );
       }
       //Form Group extract validator from group
@@ -58,7 +59,7 @@ export class ValidatorConfigPipe implements PipeTransform {
             tap((v) => {
               valid = v === 'Valid'.toUpperCase();
             }),
-            switchMap((v) => of(valid))
+            switchMap(() => of(valid))
           );
         }
       }

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DataFormBuilder, TypeInput } from 'ngx-ftx-forms';
+import { DataFormBuilder, TypeInput } from 'ngx-ftx-shared';
 
 @Pipe({
   name: 'getType',

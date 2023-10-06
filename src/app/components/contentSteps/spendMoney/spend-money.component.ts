@@ -4,12 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import {
   ButtonComponent,
-  DataFormBuilder,
   GenerateFormBuilderService,
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import { SivanInputComponent } from 'ngx-ftx-shared';
+import { DataFormBuilder, SivanInputComponent } from 'ngx-ftx-shared';
 
 @Component({
   selector: 'spend-money',

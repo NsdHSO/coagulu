@@ -1,24 +1,24 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { importProvidersFrom } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import {
+  BrowserAnimationsModule,
+  provideAnimations,
+} from '@angular/platform-browser/animations';
 import {
   applicationConfig,
   Meta,
   moduleMetadata,
   Story,
 } from '@storybook/angular';
-import { SivanInputComponent } from './sivan-input.component';
-import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
-import { IconCoreModule } from 'ngx-liburg-icon';
-import { GenerativeService } from '../../service';
-import {
-  BrowserAnimationsModule,
-  provideAnimations,
-} from '@angular/platform-browser/animations';
-import { importProvidersFrom } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { FtxTooltipComponent } from 'ngx-fts-tooltip';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OutlineDirective } from '../../directive';
+import { IconCoreModule } from 'ngx-liburg-icon';
 import { of } from 'rxjs';
+import { OutlineDirective } from '../../directive';
+import { GenerativeService } from '../../service';
+import { SivanInputComponent } from './sivan-input.component';
 
 export default {
   title: 'SivanInputComponent',

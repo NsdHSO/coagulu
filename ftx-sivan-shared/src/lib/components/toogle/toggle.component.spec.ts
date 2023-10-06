@@ -1,4 +1,3 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,7 +7,7 @@ import { ToggleComponent } from './toggle.component';
 describe('ToogleComponent', () => {
   let component: ToggleComponent;
   let fixture: ComponentFixture<ToggleComponent>;
-  let formControl = new FormControl('TESTr');
+  const formControl = new FormControl('TESTr');
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ToggleComponent, MatIconModule, IconCoreModule],
