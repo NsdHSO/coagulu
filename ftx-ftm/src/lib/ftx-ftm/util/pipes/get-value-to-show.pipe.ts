@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DataFormBuilder, ValueToggle } from 'ngx-ftx-forms';
+import { DataFormBuilder, ValueToggle } from 'ngx-ftx-shared';
 
 @Pipe({
   name: 'getValueToShow',

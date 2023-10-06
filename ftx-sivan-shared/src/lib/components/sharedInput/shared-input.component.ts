@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SivanInputComponent, ToggleComponent } from 'ngx-ftx-shared';
 import { BaseComponent } from '../base/base.component';
-import { ValueToggle } from 'ngx-ftx-forms';
+import { SivanInputComponent } from '../input/sivan-input.component';
+import { ToggleComponent } from '../toogle/toggle.component';
+import { ValueToggle } from '../../interfaces';
 
 @Component({
   selector: 'sivan-shared-input',

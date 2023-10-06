@@ -18,22 +18,21 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { ButtonComponent, GenerateFormBuilderService } from 'ngx-ftx-forms';
 import {
-  ButtonComponent,
   DataFormBuilder,
-  GenerateFormBuilderService,
-} from 'ngx-ftx-forms';
-import {
   FirstUpperCasePipe,
   GenerativeService,
   SharedInputComponent,
   SivanInputComponent,
 } from 'ngx-ftx-shared';
 import { of, tap } from 'rxjs';
-import { RetrievePlaceholderPipe } from './util/pipes/retrieve-placeholder.pipe';
-import { ValidatorConfigPipe } from './util/pipes/validator-config.pipe';
-import { GetTypePipe } from './util/pipes/get-type.pipe';
-import { GetValueToShowPipe } from './util/pipes';
+import {
+  GetTypePipe,
+  GetValueToShowPipe,
+  RetrievePlaceholderPipe,
+  ValidatorConfigPipe,
+} from './util';
 
 @Component({
   selector: 'coagulu-ftx-ftm',
@@ -101,7 +100,7 @@ export class FtxFtmComponent {
   formData: FormGroup | FormControl | FormArray | any; //eslint-disable-line
   generateFormTrigger = of('t').pipe(
     tap(
-      (v) =>
+      () =>
         (this.formData = this.generateFormBuilderService.buildFormFromJson(
           this.dataSource
         ))
@@ -114,7 +113,7 @@ export class FtxFtmComponent {
     this.formData;
   }
 
-  public name(param: any) {
+  public name(param: unknown) {
     console.log(param);
   }
 }

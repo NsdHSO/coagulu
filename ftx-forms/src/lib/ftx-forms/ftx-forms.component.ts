@@ -13,11 +13,10 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { DataFormBuilder } from './interfaces';
 import { FormControlEntityComponent } from './components';
 import { ButtonComponent } from './shared';
 import { GenerateFormBuilderService } from './service';
-import { GenerativeService } from 'ngx-ftx-shared';
+import { DataFormBuilder, GenerativeService } from 'ngx-ftx-shared';
 
 @Component({
   selector: 'ngx-ftx-forms',

@@ -6,7 +6,7 @@ import {
   FormBadgeComponent,
 } from '../formBadge/form-badge.component';
 import { RenderYouDirective } from 'ngx-fts-tooltip';
-import { DescriptionEntity } from '../../interfaces';
+import { DescriptionEntity } from 'ngx-ftx-shared';
 
 @Component({
   selector: 'ngx-form-label',

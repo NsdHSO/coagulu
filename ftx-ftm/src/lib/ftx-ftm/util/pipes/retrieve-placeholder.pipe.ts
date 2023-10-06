@@ -1,11 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DataFormBuilder } from 'ngx-ftx-forms';
+import { DataFormBuilder } from 'ngx-ftx-shared';
 
 @Pipe({
   name: 'retrievePlaceholder',
   standalone: true,
 })
 export class RetrievePlaceholderPipe implements PipeTransform {
+  //eslint-disable-next-line
   transform(value: any | DataFormBuilder, ...args: unknown[]): string {
     if (value) {
       if (args[2] !== undefined) {

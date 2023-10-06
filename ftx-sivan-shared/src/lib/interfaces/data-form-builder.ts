@@ -1,4 +1,4 @@
-import { TypeConstantEnum, TypePattern, TypeUpdate } from '../utils';
+import { TypeConstantEnum, TypePattern, TypeUpdate } from '../util';
 
 export interface ValidatorConfig {
   type: TypeConstantEnum;

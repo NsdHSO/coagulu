@@ -1,11 +1,6 @@
 import { Component, Input } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormControlName,
-  NgControl,
-} from '@angular/forms';
-import { TypeInput } from 'ngx-ftx-forms';
+import { FormControl, FormControlName, NgControl } from '@angular/forms';
+import { TypeInput } from '../../interfaces';
 
 @Component({ template: '' })
 export abstract class BaseComponent {
@@ -13,6 +8,7 @@ export abstract class BaseComponent {
     | NgControl
     | FormControl
     | FormControlName
+    // eslint-disable-next-line
     | any;
   @Input({ required: true }) placeholder!: string;
   @Input({ required: true }) hintTop!: string;
