@@ -7,26 +7,21 @@ import {
 import { provideEffects } from '@ngrx/effects';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import * as fromStepper from './../../ftx-sivan-shared/src';
-import * as fromReserve from './../../ftx-sivan-shared/src';
-import * as fromInfoUser from './../../ftx-sivan-shared/src';
-import {
-  InfoUserEffects,
-  ReserveEffects,
-  StepperEffects,
-} from 'ngx-ftx-shared';
+import * as fromShared from 'ngx-ftx-shared';
 import { IconCoreModule } from 'ngx-liburg-icon';
 import { appRoutes } from './app.routes';
 
+const { InfoUserEffects, ReserveEffects, StepperEffects, ...storeExports } =
+  fromShared;
 export const appConfig: ApplicationConfig = {
   providers: [
     provideEffects(InfoUserEffects),
-    provideState(fromInfoUser.INFO_USER_FEATURE_KEY, fromInfoUser.infoReducer),
+    provideState(storeExports.INFO_USER_FEATURE_KEY, storeExports.infoReducer),
     provideEffects(ReserveEffects),
-    provideState(fromReserve.RESERVE_FEATURE_KEY, fromReserve.reserveReducer),
+    provideState(storeExports.RESERVE_FEATURE_KEY, storeExports.reserveReducer),
     provideEffects(StepperEffects),
     provideStore(),
-    provideState(fromStepper.STEPPER_FEATURE_KEY, fromStepper.stepperReducer),
+    provideState(storeExports.STEPPER_FEATURE_KEY, storeExports.stepperReducer),
     provideStoreDevtools({ maxAge: 25 }),
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
     importProvidersFrom(IconCoreModule),
