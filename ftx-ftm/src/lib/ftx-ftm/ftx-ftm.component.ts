@@ -9,8 +9,8 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
   inject,
+  Input,
 } from '@angular/core';
 import {
   FormArray,
@@ -18,6 +18,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { ButtonComponent, GenerateFormBuilderService } from 'ngx-ftx-forms';
 import {
   DataFormBuilder,
@@ -26,7 +27,9 @@ import {
   SharedInputComponent,
   SivanInputComponent,
 } from 'ngx-ftx-shared';
-import { of, tap } from 'rxjs';
+import { debounceTime, of, shareReplay, tap, using } from 'rxjs';
+import { infoUserValueChange } from '../../../../src/app/+state/info-user/info-user.actions';
+import { selectInfoUserEntities } from '../../../../src/app/+state/info-user/info-user.selectors';
 import {
   GetTypePipe,
   GetValueToShowPipe,
@@ -95,8 +98,13 @@ import {
 })
 export class FtxFtmComponent {
   @Input({ required: true }) dataSource!: DataFormBuilder;
+
   generateFormBuilderService = inject(GenerateFormBuilderService);
+
   generativeService = inject(GenerativeService);
+
+  private readonly _store = inject(Store);
+
   formData: FormGroup | FormControl | FormArray | any; //eslint-disable-line
   generateFormTrigger = of('t').pipe(
     tap(
@@ -107,9 +115,21 @@ export class FtxFtmComponent {
     )
   );
 
+  formValueChanges$ = using(
+    () =>
+      this.formData.valueChanges
+        .pipe(
+          debounceTime(200),
+          tap((value: any) => {
+            this._store.dispatch(infoUserValueChange(value));
+          })
+        )
+        .subscribe(),
+    () => this._store.select(selectInfoUserEntities)
+  ).pipe(shareReplay());
+
   public submit() {
     console.log(this.formData?.getRawValue());
-
     this.formData;
   }
 

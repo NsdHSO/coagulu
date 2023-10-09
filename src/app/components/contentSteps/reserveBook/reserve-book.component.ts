@@ -1,21 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import {
   ButtonComponent,
   FormControlEntityComponent,
   FtxFormsComponent,
   GenerateFormBuilderService,
   MultipleInputComponent,
-  PatchFormGroupValueDirective,
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import { debounceTime, shareReplay, tap, using } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { StepperService } from '../../services/stepper.service';
-import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
 import { DataFormBuilder } from 'ngx-ftx-shared';
+import { debounceTime, shareReplay, tap, using } from 'rxjs';
+import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
+import { StepperService } from '../../services/stepper.service';
 
 @Component({
   selector: 'reserve-book',
@@ -26,7 +25,6 @@ import { DataFormBuilder } from 'ngx-ftx-shared';
     MultipleInputComponent,
     ButtonComponent,
     FormControlEntityComponent,
-    PatchFormGroupValueDirective,
     FtxFormsComponent,
   ],
   templateUrl: './reserve-book.component.html',
@@ -34,9 +32,11 @@ import { DataFormBuilder } from 'ngx-ftx-shared';
 })
 export class ReserveBookComponent implements OnInit {
   private readonly _stepperStore = inject(Store);
+
   readonly generateFormBuilderService: GenerateFormBuilderService = inject(
     GenerateFormBuilderService
   );
+
   dynamicForm: any; // eslint-disable-line
   jsonData: DataFormBuilder = {
     values: [
@@ -105,7 +105,6 @@ export class ReserveBookComponent implements OnInit {
             ' builder create evere',
         },
       },
-
       {
         labelHint: 'Address street',
         label: 'address',
@@ -306,7 +305,9 @@ export class ReserveBookComponent implements OnInit {
       },
     ],
   };
+
   private _stepperService = inject(StepperService);
+
   formValue$ = using(
     () =>
       this.dynamicForm.valueChanges
