@@ -7,9 +7,9 @@ import {
 import { provideEffects } from '@ngrx/effects';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import * as fromStepper from 'ngx-ftx-shared';
-import * as fromReserve from 'ngx-ftx-shared';
-import * as fromInfoUser from 'ngx-ftx-shared';
+import * as fromStepper from './../../ftx-sivan-shared/src';
+import * as fromReserve from './../../ftx-sivan-shared/src';
+import * as fromInfoUser from './../../ftx-sivan-shared/src';
 import {
   InfoUserEffects,
   ReserveEffects,

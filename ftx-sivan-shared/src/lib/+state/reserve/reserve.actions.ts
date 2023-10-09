@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { DataFormBuilder } from 'ngx-ftx-shared';
+import { DataFormBuilder } from '../../interfaces';
 import { ReserveEntity } from './reserve.models';
 
 export const initReserve = createAction('[Reserve Page] Init');
