@@ -12,9 +12,12 @@ import {
   tap,
   using,
 } from 'rxjs';
-import { formValueChange, selectStepperEntities } from '../../+state';
+import {
+  formValueChange,
+  selectStepperEntities,
+  StepperEntity,
+} from 'ngx-ftx-shared';
 import { Dictionary } from '@ngrx/entity';
-import { StepperEntity } from '../../+state/stepper.models';
 
 @Injectable({ providedIn: 'root' })
 export class StepperService {

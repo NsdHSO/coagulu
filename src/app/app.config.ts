@@ -1,19 +1,22 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import * as fromStepper from './+state/stepper.reducer';
+import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import * as fromStepper from 'ngx-ftx-shared';
+import * as fromReserve from 'ngx-ftx-shared';
+import * as fromInfoUser from 'ngx-ftx-shared';
+import {
+  InfoUserEffects,
+  ReserveEffects,
+  StepperEffects,
+} from 'ngx-ftx-shared';
 import { IconCoreModule } from 'ngx-liburg-icon';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import * as fromReserve from './+state/reserve/reserve.reducer';
-import { ReserveEffects, StepperEffects } from './+state';
-import * as fromInfoUser from './+state/info-user/info.reducer';
-import { InfoUserEffects } from './+state/info-user/info-user.effects';
+import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [

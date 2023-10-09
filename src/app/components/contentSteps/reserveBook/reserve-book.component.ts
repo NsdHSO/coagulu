@@ -13,7 +13,7 @@ import {
 } from 'ngx-ftx-forms';
 import { DataFormBuilder } from 'ngx-ftx-shared';
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
-import { formValueChangeReserve, selectReserveEntities } from '../../../+state';
+import { formValueChangeReserve, selectReserveEntities } from 'ngx-ftx-shared';
 import { StepperService } from '../../services/stepper.service';
 
 @Component({

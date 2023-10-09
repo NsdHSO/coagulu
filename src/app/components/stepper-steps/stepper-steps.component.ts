@@ -24,7 +24,7 @@ import {
 } from 'rxjs';
 import { StepperService } from '../services/stepper.service';
 import { ButtonComponent, FormBadgeComponent } from 'ngx-ftx-forms';
-import { FormStepper, selectStepsEntities, Step } from '../../+state';
+import { FormStepper, selectStepsEntities, Step } from 'ngx-ftx-shared';
 import { RenderYouDirective } from 'ngx-fts-tooltip';
 import { GenerativeService } from 'ngx-ftx-shared';
 

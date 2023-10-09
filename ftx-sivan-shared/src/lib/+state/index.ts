@@ -5,3 +5,4 @@ export * from './stepper.selectors';
 export * from './stepper.effects';
 export * from './reserve';
 export * from './info-user';
+export * from './stepper.models';
