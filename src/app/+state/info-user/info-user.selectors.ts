@@ -32,13 +32,13 @@ export const selectInfoUserEntities = createSelector(
   (state: InfoUserState) => selectEntities(state)
 );
 
-export const selectSelectedId = createSelector(
+export const selectInfoSelectedId = createSelector(
   selectInfoUserState,
   (state: InfoUserState) => state.selectedId
 );
 
-export const selectEntity = createSelector(
+export const selectInfoEntity = createSelector(
   selectInfoUserEntities,
-  selectSelectedId,
+  selectInfoSelectedId,
   (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
 );

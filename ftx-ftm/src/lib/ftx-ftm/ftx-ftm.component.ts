@@ -28,8 +28,10 @@ import {
   SivanInputComponent,
 } from 'ngx-ftx-shared';
 import { debounceTime, of, shareReplay, tap, using } from 'rxjs';
-import { infoUserValueChange } from '../../../../src/app/+state/info-user/info-user.actions';
-import { selectInfoUserEntities } from '../../../../src/app/+state/info-user/info-user.selectors';
+import {
+  infoUserValueChange,
+  selectInfoUserEntities,
+} from '../../../../src/app/+state';
 import {
   GetTypePipe,
   GetValueToShowPipe,

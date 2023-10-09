@@ -45,7 +45,9 @@ describe('InfoUser Selectors', () => {
     });
 
     it('selectEntity() should return the selected Entity', () => {
-      const result = InfoUserSelectors.selectEntity(state) as InfoUserEntity;
+      const result = InfoUserSelectors.selectInfoEntity(
+        state
+      ) as InfoUserEntity;
       const selId = getInfoUserId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
