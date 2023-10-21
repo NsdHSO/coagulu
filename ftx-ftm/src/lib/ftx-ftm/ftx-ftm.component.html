@@ -5,7 +5,7 @@
   }"
   [formGroup]="formData"
   (ngSubmit)="submit()"
-  class="p-3 flex flex-col gap-5 bg-slate-200 ngx-forms-form-wrapper rounded-br-lg rounded-bl-lg shadow-lg"
+  class="flex flex-col gap-5 p-3 rounded-br-lg rounded-bl-lg shadow-lg bg-slate-200 ngx-forms-form-wrapper"
 >
   <ng-container
     *ngFor="let control of formData.controls | keyvalue; let i = index"
@@ -23,7 +23,7 @@
         class="flex items-center"
         *ngIf="dataSource | validatorConfig : formData : control.key | async"
       >
-        <div class="max-w-42 w-32 h-10 flex items-center">
+        <div class="flex items-center w-32 h-10 max-w-42">
           {{ control.key | firstUpperCase }}
         </div>
         <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
@@ -50,7 +50,7 @@
       "
     >
       <div class="flex items-center">
-        <div class="max-w-42 w-32">{{ control.key | firstUpperCase }}</div>
+        <div class="w-32 max-w-42">{{ control.key | firstUpperCase }}</div>
         <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
           <ng-container
             *ngFor="let group of formData.get(control.key).controls | keyvalue"
@@ -95,7 +95,7 @@
       "
     >
       <div class="flex items-center">
-        <div class="max-w-42 w-32">{{ control.key | firstUpperCase }}</div>
+        <div class="w-32 max-w-42">{{ control.key | firstUpperCase }}</div>
         <div class="grid grid-flow-col gap-4 ftm-group-container-entity">
           <ng-container
             *ngFor="let array of formData.get(control.key).controls | keyvalue"
@@ -172,7 +172,7 @@
     </ng-container>
   </ng-container>
   <ngx-button-component
-    class="bg-white p-2"
+    class="p-2 bg-white"
     [disable]="formData.pristine || formData.invalid"
     roundedFull="rounded-md"
     >Submit

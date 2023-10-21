@@ -9,8 +9,8 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  inject,
   Input,
+  inject,
 } from '@angular/core';
 import {
   FormArray,
@@ -26,9 +26,10 @@ import {
   GenerativeService,
   SharedInputComponent,
   SivanInputComponent,
+  infoUserValueChange,
+  selectInfoUserEntities,
 } from 'ngx-ftx-shared';
 import { debounceTime, of, shareReplay, tap, using } from 'rxjs';
-import { infoUserValueChange, selectInfoUserEntities } from 'ngx-ftx-shared';
 import {
   GetTypePipe,
   GetValueToShowPipe,
