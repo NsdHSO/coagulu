@@ -67,8 +67,13 @@
     <p>Options are available:</p>
     <ul>
       <li
-        (click)="onBlur(option)"
-        *ngFor="let option of optionis; trackBy: generative.trackBy"
+        (click)="onBlur(option, index)"
+        *ngFor="
+          let option of optionis;
+          let index = index;
+          trackBy: generative.trackBy
+        "
+        [ngClass]="{ 'dark:bg-gray-700': index === selectedOption }"
       >
         {{ option }}
       </li>
@@ -83,6 +88,7 @@
       class="currency-flag"
       *ngFor="let option of optionis; trackBy: generative.trackBy"
       (click)="selectCountry(option)"
+      [ngClass]="{ 'dark:bg-gray-700': selectedOption?.icon === option.icon }"
     >
       <mat-icon class="!w-full" [svgIcon]="option.icon" />
     </div>

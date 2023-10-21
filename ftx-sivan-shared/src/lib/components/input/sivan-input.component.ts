@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { OutlineDirective, ScrollHintDirective } from '../../directive';
@@ -76,6 +82,7 @@ import { GenerativeService } from '../../service';
       transition('up <=> down', animate('300ms ease-out')),
     ]),
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SivanInputComponent {
   @Input({ required: true }) hintTop!: string;
@@ -83,6 +90,8 @@ export class SivanInputComponent {
   @Input() currencyControl?: NgControl | any | unknown; //eslint-disable-line
   @Input({ required: true }) placeholder!: string;
   @Input() colorMatIcon!: string;
+  //eslint-disable-next-line
+  selectedOption: { icon: string; placeholder: string } | any;
   optionis: any = []; //eslint-disable-line
   isInputClick = false;
   isInputCurrencyClick = false;
@@ -101,8 +110,10 @@ export class SivanInputComponent {
     }
   }
 
-  onBlur<T>(choice: T) {
+  onBlur<T>(choice: T, index: number) {
     this.isInputClick = false;
+    //eslint-disable-next-line
+    this.selectedOption = index;
     this.mainControl.setValue(choice);
   }
 
@@ -114,6 +125,7 @@ export class SivanInputComponent {
   >(option: T) {
     this.isInputCurrencyClick = false;
     this.currencyControl.setValue(option);
+    this.selectedOption = option;
   }
 
   currencyControll() {
