@@ -41,7 +41,14 @@ export class SpendMoneyComponent {
   } as DataFormBuilder;
 
   constructor() {
-    this.simple = this._fb.buildFormFromJson(this.simpleData);
+    this.simple = this._fb.buildFormFromJson({
+      label: 'name',
+      value: 412123,
+      validators: [{ type: TypeConstantEnum.REQUIRED }],
+      placeholder: 'Isvan Avramescu',
+      labelHint: 'Name for User',
+      updateOn: 'blur',
+    });
     this.currency = this._fb.buildFormFromJson({
       label: 'personalData',
       labelHint: 'Personal Data',

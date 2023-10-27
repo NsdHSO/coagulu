@@ -1,6 +1,6 @@
 import { MaskDirective } from './mask.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ElementRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 @Component({
@@ -29,6 +29,18 @@ fdescribe('MaskDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TestComponent],
+      providers: [
+        {
+          provide: ElementRef,
+          useValue: {
+            nativeElement: {
+              value: {
+                toString: () => '',
+              },
+            },
+          },
+        },
+      ],
     });
   });
 
