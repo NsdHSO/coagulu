@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Directive,
   ElementRef,
   HostListener,
@@ -40,13 +41,18 @@ export class MaskDirective {
     }
   }
 
+  ngAfterViewInit(): void {
+    if (this.elementRef.nativeElement.value) {
+      this.onInput(this.elementRef.nativeElement.value.toString());
+    }
+  }
+
   @HostListener('input', ['$event.target.value'])
   onInput(value: string) {
     // Remove any non-digit characters
-    value = value.replace(/\D/g, '');
 
     // Format the value according to your requirements
-    const formattedValue = this.formatValue(value, this.typeMask);
+    const formattedValue = this.formatValue(value.toString(), this.typeMask);
 
     // Update the input value with the formatted value
     this.renderer2.setProperty(
