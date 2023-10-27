@@ -18,7 +18,6 @@ import {
   trigger,
 } from '@angular/animations';
 import { GenerativeService } from '../../service';
-import { MaskDirective } from '../../directive/mask.directive';
 
 @Component({
   selector: 'sivan-input',
@@ -29,7 +28,6 @@ import { MaskDirective } from '../../directive/mask.directive';
     ReactiveFormsModule,
     FtxTooltipComponent,
     ScrollHintDirective,
-    MaskDirective,
   ],
   templateUrl: './sivan-input.component.html',
   styleUrls: ['./sivan-input.component.scss'],
