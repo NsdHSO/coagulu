@@ -16,6 +16,8 @@ node_modules
 *.launch
 .settings/
 *.sublime-workspace
+.yarn
+.pnp.cjs
 
 # IDE - VSCode
 .vscode/*
