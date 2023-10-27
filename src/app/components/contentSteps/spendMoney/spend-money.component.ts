@@ -79,6 +79,6 @@ export class SpendMoneyComponent {
   }
 
   public logFrom() {
-    console.log(this.currency);
+    console.log(this.simple.value);
   }
 }

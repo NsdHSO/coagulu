@@ -1,6 +1,6 @@
 import { MaskDirective } from './mask.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 @Component({
@@ -18,6 +18,7 @@ function createTestComponent(template: string = TEMPLATE) {
     set: { template: template },
   }).createComponent(TestComponent);
 }
+
 fdescribe('MaskDirective', () => {
   let fixture: ComponentFixture<any>;
 
@@ -58,5 +59,53 @@ fdescribe('MaskDirective', () => {
       'Oops, Please applied this directive only to the input directive'
     );
     warnSpy.mockRestore();
+  });
+
+  it('should format', () => {
+    const warnSpy = jest.spyOn(console, 'warn');
+    const template = `<input sivanMask value="1235"/>`;
+    fixture = createTestComponent(template);
+    const inputDebugElement: DebugElement = fixture.debugElement.query(
+      By.directive(MaskDirective)
+    );
+    const maskDirectiveInstance: MaskDirective =
+      inputDebugElement.injector.get(MaskDirective);
+    expect(
+      maskDirectiveInstance.formatValue(
+        '1235440009',
+        maskDirectiveInstance.typeMask
+      )
+    ).toBe('(123) 544 0009');
+  });
+
+  it('should format overhead', () => {
+    const template = `<input sivanMask value="1235"/>`;
+    fixture = createTestComponent(template);
+    const inputDebugElement: DebugElement = fixture.debugElement.query(
+      By.directive(MaskDirective)
+    );
+    const maskDirectiveInstance: MaskDirective =
+      inputDebugElement.injector.get(MaskDirective);
+    expect(
+      maskDirectiveInstance.formatValue(
+        '12354400092',
+        maskDirectiveInstance.typeMask
+      )
+    ).toBe('(123) 544 0009');
+  });
+  it('should format to small', () => {
+    const template = `<input sivanMask value="1235"/>`;
+    fixture = createTestComponent(template);
+    const inputDebugElement: DebugElement = fixture.debugElement.query(
+      By.directive(MaskDirective)
+    );
+    const maskDirectiveInstance: MaskDirective =
+      inputDebugElement.injector.get(MaskDirective);
+    expect(
+      maskDirectiveInstance.formatValue(
+        '123544',
+        maskDirectiveInstance.typeMask
+      )
+    ).toBe('(123) 544');
   });
 });
