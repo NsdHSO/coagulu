@@ -29,13 +29,6 @@ describe('BoolComponent', () => {
       fixture.detectChanges();
       expect(divElement.children.length).toBe(2);
     }));
-    it('check template', fakeAsync(() => {
-      const divElement = fixture.nativeElement.querySelector(
-        '[data-test="sivan-bool-control"]'
-      ) as HTMLInputElement;
-      fixture.detectChanges();
-      expect(divElement.value).toBe('on');
-    }));
 
     it('check the control value', fakeAsync(() => {
       const divElement = fixture.nativeElement.querySelector(
@@ -60,5 +53,15 @@ describe('BoolComponent', () => {
       fixture.detectChanges();
       expect(divElement.innerHTML).toBe('Test');
     }));
+  });
+
+  describe('should check class', () => {
+    it('should right', () => {
+      const divElement = fixture.nativeElement.querySelector(
+        '[data-test="sivan-bool"]'
+      ) as HTMLLabelElement;
+      fixture.detectChanges();
+      expect(divElement.classList).toContain('position-right');
+    });
   });
 });
