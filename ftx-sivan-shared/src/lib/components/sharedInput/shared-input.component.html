@@ -7,6 +7,13 @@
       [valuesToggled]="valuesToggled"
     />
   </ng-container>
+  <ng-container *ngSwitchCase="'boolean'">
+    <sivan-bool
+      [control]="control"
+      [placeholder]="placeholder"
+      [hintTop]="hintTop"
+    />
+  </ng-container>
   <ng-container *ngSwitchDefault>
     <sivan-input
       class="w-full"
