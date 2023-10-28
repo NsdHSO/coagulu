@@ -18,6 +18,7 @@ node_modules
 *.sublime-workspace
 .yarn
 .pnp.cjs
+.nx
 
 # IDE - VSCode
 .vscode/*
