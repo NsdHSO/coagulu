@@ -70,7 +70,7 @@ export class InfoUserComponent {
       {
         label: 'summary',
         value: true,
-        labelHint: 'Summary Type',
+        labelHint: 'Summary Test',
         typeInput: 'boolean',
         validators: [{ type: TypeConstantEnum.REQUIRED }],
       },
