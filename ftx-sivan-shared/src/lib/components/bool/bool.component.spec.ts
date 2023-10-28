@@ -61,7 +61,31 @@ describe('BoolComponent', () => {
         '[data-test="sivan-bool"]'
       ) as HTMLLabelElement;
       fixture.detectChanges();
-      expect(divElement.classList).toContain('position-right');
+      expect(divElement.classList).toContain('bool-position-right');
+    });
+    it('should left', () => {
+      component.positionLabel = 'left';
+      const divElement = fixture.nativeElement.querySelector(
+        '[data-test="sivan-bool"]'
+      ) as HTMLLabelElement;
+      fixture.detectChanges();
+      expect(divElement.classList).toContain('bool-position-left');
+    });
+    it('should top', () => {
+      component.positionLabel = 'up';
+      const divElement = fixture.nativeElement.querySelector(
+        '[data-test="sivan-bool"]'
+      ) as HTMLLabelElement;
+      fixture.detectChanges();
+      expect(divElement.classList).toContain('bool-position-up');
+    });
+    it('should bottom', () => {
+      component.positionLabel = 'down';
+      const divElement = fixture.nativeElement.querySelector(
+        '[data-test="sivan-bool"]'
+      ) as HTMLLabelElement;
+      fixture.detectChanges();
+      expect(divElement.classList).toContain('bool-position-down');
     });
   });
 });

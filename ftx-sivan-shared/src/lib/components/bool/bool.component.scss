@@ -1,0 +1,31 @@
+.bool {
+  &-position {
+    &-right {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    &-left {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: row-reverse;
+      gap: 0.5rem;
+    }
+
+    &-up {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: max-content;
+    }
+    &-down {
+      display: flex;
+      align-items: center;
+      flex-direction: column-reverse;
+      gap: 0.5rem;
+      width: max-content;
+    }
+  }
+}
