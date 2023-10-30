@@ -88,4 +88,20 @@ describe('BoolComponent', () => {
       expect(divElement.classList).toContain('bool-position-down');
     });
   });
+  describe('should check color', () => {
+    it('should be default', () => {
+      const divElement = fixture.nativeElement.querySelector(
+        '[data-test="sivan-bool"]'
+      ) as HTMLLabelElement;
+      expect(divElement.classList).toContain('bool-primary');
+    });
+    it('should be danger', () => {
+      const divElement = fixture.nativeElement.querySelector(
+        '[data-test="sivan-bool"]'
+      ) as HTMLLabelElement;
+      component.color = 'danger';
+      fixture.detectChanges();
+      expect(divElement.classList).toContain('bool-danger');
+    });
+  });
 });
