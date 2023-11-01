@@ -1,4 +1,8 @@
 <div data-test="sivan-shared-progress">
-  <div data-test="sivan-shared-progress-entities"></div>
+  <div>
+    <ng-container *ngFor="let config of configs">
+      <div data-test="sivan-shared-progress-entities"></div>
+    </ng-container>
+  </div>
   <div data-test="sivan-shared-progress-actions"></div>
 </div>

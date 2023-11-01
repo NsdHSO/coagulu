@@ -10,7 +10,7 @@ describe('ProgressComponent', () => {
     activatedSpy = {
       snapshot: {
         data: {
-          config: [{ icon: 'fa_solid:RO' }],
+          config: [{ icon: 'fa_solid:RO' }, { icon: 'fa_solid:CR' }],
         } as unknown,
       },
     } as ActivatedRoute as never;
@@ -39,5 +39,12 @@ describe('ProgressComponent', () => {
     );
     fixture.detectChanges();
     expect(wrapper.children.length).toEqual(2);
+  });
+  it('should check if generate correct entities', () => {
+    const wrapper: HTMLDivElement[] = fixture.nativeElement.querySelectorAll(
+      '[data-test="sivan-shared-progress-entities"]'
+    );
+    fixture.detectChanges();
+    expect(wrapper.length).toEqual(2);
   });
 });
