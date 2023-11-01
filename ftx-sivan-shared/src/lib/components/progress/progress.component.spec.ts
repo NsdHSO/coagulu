@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProgressComponent } from './progress.component';
 import { ActivatedRoute } from '@angular/router';
+import { NumberEnum, TWO } from 'ngx-ftx-shared';
 
 describe('ProgressComponent', () => {
   let component: ProgressComponent;
@@ -38,13 +39,13 @@ describe('ProgressComponent', () => {
       '[data-test="sivan-shared-progress"]'
     );
     fixture.detectChanges();
-    expect(wrapper.children.length).toEqual(2);
+    expect(wrapper.children.length).toEqual(TWO);
   });
   it('should check if generate correct entities', () => {
     const wrapper: HTMLDivElement[] = fixture.nativeElement.querySelectorAll(
       '[data-test="sivan-shared-progress-entities"]'
     );
     fixture.detectChanges();
-    expect(wrapper.length).toEqual(2);
+    expect(wrapper.length).toEqual(TWO);
   });
 });

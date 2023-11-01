@@ -1,5 +1,15 @@
-export enum ConstantsEnum {
+export enum NumberEnum {
   ZERO,
+  ONE,
+  TWO,
+  THREE,
+  FOUR,
+  FIVE,
+  SIX,
+  SEVEN,
+  EIGHT,
+  NINE,
+  TEN,
 }
 
 export enum TypeConstantEnum {
