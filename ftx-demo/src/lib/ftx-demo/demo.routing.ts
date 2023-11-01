@@ -5,7 +5,7 @@ import { StepperService } from '../components/services/stepper.service';
 
 export const demoRouting: Route[] = [
   {
-    path: '',
+    path: 'forms',
     loadComponent: () =>
       import('./../components/stepper/stepper.component').then(
         (c) => c.StepperComponent
@@ -63,7 +63,14 @@ export const demoRouting: Route[] = [
     ],
   },
   {
+    path: 'revolut',
+    loadComponent: () =>
+      import('./../components/stepper/stepper.component').then(
+        (c) => c.StepperComponent
+      ),
+  },
+  {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'revolut',
   },
 ];

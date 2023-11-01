@@ -18,8 +18,8 @@ node_modules
 *.sublime-workspace
 .yarn
 .pnp.cjs
-.nx
-
+.nx/*
+!file[*]:**.cache//*&&!file[*]:**.eslintcache//*&&!file[*]:**.grunt//*&&!file[*]:**.idea//*&&!file[*]:**.lock-wscript//*&&!file[*]:**.next//*&&!file[*]:**.node_repl_history//*&&!file[*]:**.npm//*&&!file[*]:**.nuxt//*&&!file[*]:**.nyc_output//*&&!file[*]:**.serverless//*&&!file[*]:**.vuepress/dist//*&&!file[*]:**.yarn-integrity//*&&!file[**]:*DRAFT//*&&!file[*]:*bower_components//*&&!file[*]:*build//*&&!file[*]:*coverage//*&&!file[*]:*dist//*&&!file[*]:*jspm_packages//*&&!file[*]:*lib-cov//*&&!file[*]:*logs//*&&!file[*]:*node_modules//*&&!file[*]:*pids//*&&!file[*]:*typings//*&&!file[*]:**.log&&!file[*]:**.pid&&!file[*]:**.pid.lock&&!file[*]:**.seed&&!file[*]:**.tgz&&!file:*npm-debug.log*&&!file:*yarn-debug.log*&&!file:*yarn-error.log*
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -37,9 +37,10 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-
+package-lock.json
 # System Files
 .DS_Store
 Thumbs.db
 
 .angular
+
