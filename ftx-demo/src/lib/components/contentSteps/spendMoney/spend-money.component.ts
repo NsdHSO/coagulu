@@ -3,12 +3,15 @@ import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import {
-  ButtonComponent,
   GenerateFormBuilderService,
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import { DataFormBuilder, SivanInputComponent } from 'ngx-ftx-shared';
+import {
+  ButtonComponent,
+  DataFormBuilder,
+  SivanInputComponent,
+} from 'ngx-ftx-shared';
 
 @Component({
   selector: 'spend-money',

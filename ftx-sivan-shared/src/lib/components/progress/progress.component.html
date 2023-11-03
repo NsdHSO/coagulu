@@ -1,8 +1,25 @@
-<div data-test="sivan-shared-progress">
-  <div>
-    <ng-container *ngFor="let config of configs">
-      <div data-test="sivan-shared-progress-entities"></div>
-    </ng-container>
+<div data-test="sivan-shared-progress" class="progress-wrapper">
+  <div class="progress-wrapper-content">
+    <router-outlet></router-outlet>
   </div>
-  <div data-test="sivan-shared-progress-actions"></div>
+  <div class="progress-wrapper-bar" [ngClass]="{ 'justify-center': !configs }">
+    <div class="flex flex-1" *ngIf="configs">
+      <ng-container *ngFor="let config of configs">
+        <div data-test="sivan-shared-progress-entities">
+          <mat-icon [svgIcon]="config.icon"> </mat-icon>
+        </div>
+      </ng-container>
+    </div>
+    <div class="gap-2 flex">
+      <ng-container *ngFor="let action of actions">
+        <ngx-button-component
+          data-test="sivan-shared-progress-actions"
+          roundedFull="rounded-md"
+          [disable]="action.disabled | async"
+        >
+          {{ action.name }}
+        </ngx-button-component>
+      </ng-container>
+    </div>
+  </div>
 </div>

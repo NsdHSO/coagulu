@@ -1,0 +1,11 @@
+.progress-wrapper {
+  &-content {
+    width: 100%;
+    height: calc(100vh - 3rem);
+  }
+  &-bar {
+    @apply flex items-center px-2 bg-green-50;
+    width: 100%;
+    height: 3rem;
+  }
+}

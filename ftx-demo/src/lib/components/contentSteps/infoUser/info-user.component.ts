@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  ButtonComponent,
   FormControlEntityComponent,
   MultipleInputComponent,
   PatchFormGroupValueDirective,
@@ -10,7 +9,7 @@ import {
   TypePattern,
 } from 'ngx-ftx-forms';
 import { FtxFtmComponent } from 'ngx-ftm';
-import { DataFormBuilder } from 'ngx-ftx-shared';
+import { ButtonComponent, DataFormBuilder } from 'ngx-ftx-shared';
 
 @Component({
   selector: 'info-user',

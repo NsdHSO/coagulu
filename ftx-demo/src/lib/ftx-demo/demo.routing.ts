@@ -1,6 +1,15 @@
 import { NavigationEnd, Route, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { catchError, filter, map, of, tap } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  filter,
+  interval,
+  map,
+  of,
+  startWith,
+  tap,
+} from 'rxjs';
 import { StepperService } from '../components/services/stepper.service';
 
 export const demoRouting: Route[] = [
@@ -65,9 +74,25 @@ export const demoRouting: Route[] = [
   {
     path: 'revolut',
     loadComponent: () =>
-      import('./../components/stepper/stepper.component').then(
-        (c) => c.StepperComponent
-      ),
+      import('ngx-ftx-shared').then((c) => c.ProgressComponent),
+    data: {
+      actions: [
+        {
+          disabled: interval(1500).pipe(
+            map((v) => v % 2 === 0),
+            startWith(true)
+          ),
+          name: 'Continue',
+        },
+        {
+          disabled: interval(2500).pipe(
+            map((v) => v % 2 === 0),
+            startWith(false)
+          ),
+          name: 'Has Done ',
+        },
+      ],
+    },
   },
   {
     path: '**',

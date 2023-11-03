@@ -19,8 +19,9 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ButtonComponent, GenerateFormBuilderService } from 'ngx-ftx-forms';
+import { GenerateFormBuilderService } from 'ngx-ftx-forms';
 import {
+  ButtonComponent,
   DataFormBuilder,
   FirstUpperCasePipe,
   GenerativeService,

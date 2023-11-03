@@ -3,7 +3,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import {
-  ButtonComponent,
   FormControlEntityComponent,
   FtxFormsComponent,
   GenerateFormBuilderService,
@@ -11,9 +10,13 @@ import {
   TypeConstantEnum,
   TypePattern,
 } from 'ngx-ftx-forms';
-import { DataFormBuilder } from 'ngx-ftx-shared';
+import {
+  formValueChangeReserve,
+  selectReserveEntities,
+  ButtonComponent,
+  DataFormBuilder,
+} from 'ngx-ftx-shared';
 import { debounceTime, shareReplay, tap, using } from 'rxjs';
-import { formValueChangeReserve, selectReserveEntities } from 'ngx-ftx-shared';
 import { StepperService } from '../../services/stepper.service';
 
 @Component({
