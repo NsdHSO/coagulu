@@ -77,7 +77,11 @@ describe('ProgressComponent', () => {
         snapshot: {
           data: {
             actions: [
-              { disable: disableSpy.asObservable(), name: 'Pause' },
+              {
+                disable: disableSpy.asObservable(),
+                name: 'Pause',
+                event: () => console.log('test'),
+              },
               { disable: notDisableSpy.asObservable(), name: 'Continue' },
             ],
           } as unknown,

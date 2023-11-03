@@ -7,18 +7,19 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
 
 @Component({
-  selector: 'ngx-button-component',
+  selector: 'sivan-button-component',
   standalone: true,
-  imports: [CommonModule, MatButtonModule],
+  imports: [CommonModule, MatButtonModule, MatRippleModule],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   @Output() marian = new EventEmitter();
-  @Input() public disable: boolean | undefined | null;
+  @Input() public disable: boolean | undefined | null = true;
   @Input() public roundedFull = '';
   @Input() public typeButton = '';
 }

@@ -3502,7 +3502,7 @@
       "inputs": [],
       "outputs": [],
       "providers": [],
-      "selector": "ngx-button-component",
+      "selector": "sivan-button-component",
       "styleUrls": ["./button.component.scss"],
       "styles": [],
       "templateUrl": ["./button.component.html"],

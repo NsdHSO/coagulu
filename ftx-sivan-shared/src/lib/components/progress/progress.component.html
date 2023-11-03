@@ -20,13 +20,14 @@
       <ng-container
         *ngFor="let action of actions; trackBy: generativeService.trackBy"
       >
-        <ngx-button-component
+        <sivan-button-component
           data-test="sivan-shared-progress-actions"
           roundedFull="rounded-md"
           [disable]="action.disabled | async"
+          (marian)="(action.event)"
         >
           {{ action.name }}
-        </ngx-button-component>
+        </sivan-button-component>
       </ng-container>
     </div>
   </div>
