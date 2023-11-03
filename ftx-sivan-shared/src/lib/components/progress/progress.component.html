@@ -4,14 +4,18 @@
   </div>
   <div class="progress-wrapper-bar" [ngClass]="{ 'justify-center': !configs }">
     <div class="flex flex-1" *ngIf="configs">
-      <ng-container *ngFor="let config of configs">
+      <ng-container
+        *ngFor="let config of configs; trackBy: generativeService.trackBy"
+      >
         <div data-test="sivan-shared-progress-entities">
           <mat-icon [svgIcon]="config.icon"> </mat-icon>
         </div>
       </ng-container>
     </div>
     <div class="gap-2 flex">
-      <ng-container *ngFor="let action of actions">
+      <ng-container
+        *ngFor="let action of actions; trackBy: generativeService.trackBy"
+      >
         <ngx-button-component
           data-test="sivan-shared-progress-actions"
           roundedFull="rounded-md"

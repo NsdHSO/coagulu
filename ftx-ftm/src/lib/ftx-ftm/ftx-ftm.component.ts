@@ -102,8 +102,6 @@ export class FtxFtmComponent {
 
   generateFormBuilderService = inject(GenerateFormBuilderService);
 
-  generativeService = inject(GenerativeService);
-
   private readonly _store = inject(Store);
 
   formData: FormGroup | FormControl | FormArray | any; //eslint-disable-line
