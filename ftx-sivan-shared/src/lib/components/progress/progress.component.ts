@@ -25,6 +25,6 @@ export class ProgressComponent {
    */
   generativeService = inject(GenerativeService);
 
-  configs = this._activateRoute.snapshot.data['config'];
+  configs = this._activateRoute.snapshot.data['stepper'];
   actions = this._activateRoute.snapshot.data['actions'];
 }

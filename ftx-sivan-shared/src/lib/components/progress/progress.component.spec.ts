@@ -18,7 +18,7 @@ describe('ProgressComponent', () => {
       activatedSpy = {
         snapshot: {
           data: {
-            config: [{ icon: 'fa_solid:RO' }, { icon: 'fa_solid:CR' }],
+            stepper: [{ icon: 'fa_solid:RO' }, { icon: 'fa_solid:CR' }],
             actions: [
               { disable: disableSpy.asObservable(), name: 'Pause' },
               { disable: notDisableSpy.asObservable(), name: 'Continue' },

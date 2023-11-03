@@ -85,10 +85,11 @@ export const demoRouting: Route[] = [
           name: 'Continue',
         },
         {
-          disabled: interval(2500).pipe(
-            map((v) => v % 2 === 0),
-            startWith(false)
-          ),
+          disabled: (() =>
+            interval(2500).pipe(
+              map((v) => v % 2 === 0),
+              startWith(false)
+            ))(),
           name: 'Has Done ',
         },
       ],
