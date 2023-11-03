@@ -6,3 +6,6 @@ export const decorators = [
 ];
 import docJson from '../documentation.json';
 setCompodocJson(docJson);
+export const parameters = {
+  layout: 'fullscreen',
+};
