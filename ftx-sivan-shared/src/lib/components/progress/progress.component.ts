@@ -24,6 +24,7 @@ export class ProgressComponent {
    * Instance of Generative for trackBy
    */
   generativeService = inject(GenerativeService);
+
   configs = this._activateRoute.snapshot.data['config'];
   actions = this._activateRoute.snapshot.data['actions'];
 }

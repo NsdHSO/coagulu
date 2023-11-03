@@ -2,7 +2,11 @@
   <div class="progress-wrapper-content">
     <router-outlet></router-outlet>
   </div>
-  <div class="progress-wrapper-bar" [ngClass]="{ 'justify-center': !configs }">
+  <div
+    class="progress-wrapper-bar"
+    [ngClass]="{ 'justify-center': !configs }"
+    data-test="sivan-shared-progress-bar"
+  >
     <div class="flex flex-1" *ngIf="configs">
       <ng-container
         *ngFor="let config of configs; trackBy: generativeService.trackBy"
