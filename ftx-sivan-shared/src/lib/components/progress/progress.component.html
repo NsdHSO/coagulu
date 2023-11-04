@@ -11,7 +11,7 @@
       <ng-container
         *ngFor="let config of configs; trackBy: generativeService.trackBy"
       >
-        <div data-test="sivan-shared-progress-entities">
+        <div data-test="sivan-shared-progress-icon">
           <mat-icon [svgIcon]="config.icon"> </mat-icon>
         </div>
       </ng-container>
@@ -22,9 +22,9 @@
       >
         <sivan-button-component
           data-test="sivan-shared-progress-actions"
-          roundedFull="rounded-md"
+          class="rounded-md text-white"
           [disable]="action.disabled | async"
-          (marian)="(action.event)"
+          (marian)="action.event($event)"
         >
           {{ action.name }}
         </sivan-button-component>

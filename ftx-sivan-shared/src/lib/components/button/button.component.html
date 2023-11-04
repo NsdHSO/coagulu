@@ -2,11 +2,11 @@
   [type]="typeButton"
   [disabled]="!disable"
   [ngClass]="{
-    'bg-blue-500 cursor-pointer': disable,
-    'bg-blue-700 cursor-not-allowed': !disable
+    'cursor-pointer': disable,
+    'cursor-not-allowed': !disable
   }"
   class="p-2 bg-blue-500 text-white"
-  [class]="roundedFull"
+  [class]="allClass"
   [attr.aria-label]="roundedFull"
   (click)="marian.emit()"
   mat-ripple

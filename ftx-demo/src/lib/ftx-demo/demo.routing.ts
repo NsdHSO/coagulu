@@ -11,6 +11,7 @@ import {
   tap,
 } from 'rxjs';
 import { StepperService } from '../components/services/stepper.service';
+import { configs } from '@typescript-eslint/eslint-plugin';
 
 export const demoRouting: Route[] = [
   {
@@ -76,6 +77,7 @@ export const demoRouting: Route[] = [
     loadComponent: () =>
       import('ngx-ftx-shared').then((c) => c.ProgressComponent),
     data: {
+      stepper: [{ icon: 'fa_solid:RO' }],
       actions: [
         {
           disabled: interval(1500).pipe(

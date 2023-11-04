@@ -5,6 +5,9 @@ import { BehaviorSubject } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { IconCoreModule } from 'ngx-liburg-icon';
 import { TWO } from '../../util';
+import { ButtonComponent } from 'ngx-ftx-shared';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 describe('ProgressComponent', () => {
   let component: ProgressComponent;
@@ -53,7 +56,7 @@ describe('ProgressComponent', () => {
     });
     it('should check if generate correct entities', () => {
       const wrapper: HTMLDivElement[] = fixture.nativeElement.querySelectorAll(
-        '[data-test="sivan-shared-progress-entities"]'
+        '[data-test="sivan-shared-progress-icon"]'
       );
       expect(wrapper.length).toEqual(TWO);
     });
@@ -80,7 +83,7 @@ describe('ProgressComponent', () => {
               {
                 disable: disableSpy.asObservable(),
                 name: 'Pause',
-                event: () => console.log('test'),
+                event: (e: unknown) => console.log(e),
               },
               { disable: notDisableSpy.asObservable(), name: 'Continue' },
             ],
@@ -88,7 +91,12 @@ describe('ProgressComponent', () => {
         },
       } as ActivatedRoute as never;
       await TestBed.configureTestingModule({
-        imports: [ProgressComponent, MatIconModule, IconCoreModule],
+        imports: [
+          ProgressComponent,
+          MatIconModule,
+          IconCoreModule,
+          ButtonComponent,
+        ],
         providers: [
           {
             provide: ActivatedRoute,
@@ -105,6 +113,17 @@ describe('ProgressComponent', () => {
         '[data-test="sivan-shared-progress-bar"]'
       );
       expect(wrapper.classList).toContain('justify-center');
+    });
+    it('should button be click', () => {
+      const wrapper: DebugElement = fixture.debugElement.query(
+        By.css('[data-test="sivan-shared-progress-actions"]')
+      );
+      const eventMock = 'test';
+      const consoleSpy = jest.spyOn(console, 'log'); // Spy on the console.log function
+      wrapper.triggerEventHandler('marian', eventMock);
+      fixture.detectChanges();
+
+      expect(consoleSpy).toHaveBeenCalledWith(eventMock);
     });
   });
 });

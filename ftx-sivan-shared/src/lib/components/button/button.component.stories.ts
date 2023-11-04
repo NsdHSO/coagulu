@@ -11,7 +11,7 @@ export default {
 export const Primary: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
   props: args,
   template: `
-      <sivan-button-component [disable]='disable' [roundedFull]='roundedFull' (marian)="marian()" >
+      <sivan-button-component [disable]='disable' [roundedFull]='roundedFull' (marian)="marian()" class="class">
             Click Me
       </sivan-button-component>
     `,
@@ -33,5 +33,10 @@ ButtonWithDocs.argTypes = {
   disable: {
     options: [true, false],
     control: { type: 'radio' },
+  },
+  class: {
+    control: 'select', // Type 'select' is automatically inferred when 'options' is defined
+    options: ['bg-red-500', 'text-blue', 'text-white'],
+    defaultValue: 'bg-red-500',
   },
 };

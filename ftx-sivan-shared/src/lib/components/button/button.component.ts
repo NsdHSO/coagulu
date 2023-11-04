@@ -22,4 +22,9 @@ export class ButtonComponent {
   @Input() public disable: boolean | undefined | null = true;
   @Input() public roundedFull = '';
   @Input() public typeButton = '';
+  @Input() public class = '';
+
+  get allClass() {
+    return this.class + ' ' + this.roundedFull;
+  }
 }
