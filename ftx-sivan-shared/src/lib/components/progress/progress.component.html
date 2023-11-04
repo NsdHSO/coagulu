@@ -7,11 +7,14 @@
     [ngClass]="{ 'justify-center': !configs }"
     data-test="sivan-shared-progress-bar"
   >
-    <div class="flex flex-1" *ngIf="configs">
+    <div class="flex flex-1 progress-wrapper-bar-config" *ngIf="configs">
       <ng-container
         *ngFor="let config of configs; trackBy: generativeService.trackBy"
       >
-        <div data-test="sivan-shared-progress-icon">
+        <div
+          data-test="sivan-shared-progress-icon"
+          class="progress-wrapper-bar-config-item"
+        >
           <mat-icon [svgIcon]="config.icon"> </mat-icon>
         </div>
       </ng-container>
