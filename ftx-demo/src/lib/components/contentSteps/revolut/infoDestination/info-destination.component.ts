@@ -16,19 +16,10 @@ export class InfoDestinationComponent {
     values: [
       {
         label: 'Ivan2',
-        bulkValues: [
-          {
-            value: null,
-            validators: [{ type: TypeConstantEnum.REQUIRED }],
-            labelHint: 'Childrens',
-          },
-          {
-            label: 'train',
-            value: 232,
-            placeholder: 'NAMING',
-            labelHint: 'Number',
-          },
-        ],
+        value: null,
+        validators: [{ type: TypeConstantEnum.REQUIRED }],
+        labelHint: 'Childrens',
+        placeholder: 'Country Bank',
       },
     ],
   };
