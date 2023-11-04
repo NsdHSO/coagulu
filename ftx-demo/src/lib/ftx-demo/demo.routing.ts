@@ -1,17 +1,7 @@
 import { NavigationEnd, Route, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import {
-  catchError,
-  debounceTime,
-  filter,
-  interval,
-  map,
-  of,
-  startWith,
-  tap,
-} from 'rxjs';
+import { catchError, filter, interval, map, of, startWith, tap } from 'rxjs';
 import { StepperService } from '../components/services/stepper.service';
-import { configs } from '@typescript-eslint/eslint-plugin';
 
 export const demoRouting: Route[] = [
   {
@@ -85,6 +75,7 @@ export const demoRouting: Route[] = [
             startWith(true)
           ),
           name: 'Continue',
+          event: (event: unknown) => console.log(event),
         },
         {
           disabled: (() =>
@@ -96,6 +87,19 @@ export const demoRouting: Route[] = [
         },
       ],
     },
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import(
+            './../components/contentSteps/revolut/infoDestination/info-destination.component'
+          ).then((c) => c.InfoDestinationComponent),
+      },
+      {
+        path: '**',
+        redirectTo: '',
+      },
+    ],
   },
   {
     path: '**',

@@ -172,8 +172,8 @@
     </ng-container>
   </ng-container>
   <sivan-button-component
-    class="p-2 bg-white"
-    [disable]="formData.pristine || formData.invalid"
+    class="p-2"
+    [disable]="!(formData.pristine || formData.invalid)"
     roundedFull="rounded-md"
     >Submit
   </sivan-button-component>
